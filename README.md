@@ -2,6 +2,13 @@
 
 이 저장소는 **바로 실행 가능한 생성형 AI 백엔드 MVP** 템플릿입니다.
 
+## 실행은 어디서?
+아래 명령은 모두 **이 저장소 루트 디렉터리(`/workspace/-`)**에서 실행합니다.
+
+```bash
+cd /workspace/-
+```
+
 ## 기능
 - FastAPI 기반 `/chat` API
 - OpenAI Responses API 호출
@@ -9,18 +16,26 @@
 - 단일 질문(`message`) + 다중 질문(`questions`) 모두 지원
 - pytest 자동 테스트 포함
 
-## 실행 방법
+## 실행 방법 (로컬)
 ```bash
+cd /workspace/-
 python -m venv .venv
 source .venv/bin/activate
 pip install -r requirements-dev.txt
 cp .env.example .env
 # .env에 OPENAI_API_KEY 입력
-uvicorn app.main:app --reload --port 8000
+uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
+```
+
+서버 확인:
+```bash
+curl http://127.0.0.1:8000/health
 ```
 
 ## 테스트 실행
 ```bash
+cd /workspace/-
+source .venv/bin/activate
 pytest -q
 ```
 
