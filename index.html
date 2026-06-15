@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>일상</title>
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { background:#080808; display:flex; justify-content:center; align-items:center; height:100vh; overflow:hidden; }
+    #wrap { position:relative; width:960px; height:540px; }
+    canvas { display:block; image-rendering:pixelated; image-rendering:crisp-edges; }
+    #ui { position:absolute; inset:0; pointer-events:none; font-family:'Courier New',monospace; }
+
+    #hud { position:absolute; top:12px; right:16px; color:#ddd; font-size:13px; text-shadow:1px 1px 2px #000; text-align:right; line-height:1.9; }
+    #d-day { font-size:15px; color:#fff; }
+
+    #dialog {
+      position:absolute; bottom:28px; left:50%; transform:translateX(-50%);
+      width:78%; background:rgba(4,4,12,0.90); border:2px solid rgba(200,200,200,0.55);
+      padding:18px 22px 14px; color:#e0e0e0; font-size:15px; line-height:1.75;
+      display:none; pointer-events:auto; cursor:pointer;
+    }
+    #dialog-hint { margin-top:10px; text-align:right; color:#666; font-size:11px; }
+
+    #interact-hint {
+      position:absolute; bottom:32px; left:50%; transform:translateX(-50%);
+      color:#fff; font-size:12px; background:rgba(0,0,0,0.65);
+      padding:5px 12px; display:none; letter-spacing:1px;
+    }
+
+    #controls-hint { position:absolute; bottom:10px; left:14px; color:#333; font-size:11px; line-height:2; }
+
+    #title {
+      position:absolute; inset:0; background:#050507;
+      display:flex; flex-direction:column; align-items:center; justify-content:center;
+      color:#fff;
+    }
+    #title h1 { font-size:54px; letter-spacing:18px; font-weight:300; margin-bottom:10px; }
+    #title .sub { font-size:13px; color:#555; letter-spacing:6px; margin-bottom:64px; }
+    #title button {
+      background:none; border:1px solid #444; color:#999;
+      padding:12px 38px; font-size:14px; cursor:pointer;
+      font-family:inherit; letter-spacing:5px; transition:all .3s;
+    }
+    #title button:hover { border-color:#ddd; color:#fff; }
+
+    #fade { position:absolute; inset:0; background:#000; pointer-events:none; opacity:0; transition:opacity 1s; }
+  </style>
+</head>
+<body>
+<div id="wrap">
+  <canvas id="c" width="960" height="540"></canvas>
+  <div id="ui">
+    <div id="hud"><div id="d-day">1일차</div><div id="d-time">오전 7:00</div></div>
+    <div id="dialog"><div id="dialog-text"></div><div id="dialog-hint">[ Space 또는 클릭 ]</div></div>
+    <div id="interact-hint">[ E ] 상호작용</div>
+    <div id="controls-hint">← → 이동 &nbsp;|&nbsp; E 상호작용 &nbsp;|&nbsp; Space 대화 넘기기</div>
+  </div>
+  <div id="fade"></div>
+  <div id="title">
+    <h1>일상</h1>
+    <p class="sub">평범한 하루하루를 살아간다</p>
+    <button id="startBtn">시작하기</button>
+  </div>
+</div>
+<script src="src/constants.js"></script>
+<script src="src/input.js"></script>
+<script src="src/draw.js"></script>
+<script src="src/game.js"></script>
+</body>
+</html>
