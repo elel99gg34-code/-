@@ -750,12 +750,10 @@ function renderWorld(G) {
     }
   }
 
-  // Player
-  if (!G.dialogActive || G.state.playerState !== 'sleeping') {
-    const px = Math.floor(G.playerX + worldOx);
-    const py = FLOOR_Y - PLAYER_H;
-    drawPlayer(px, py, G.playerDir, G.playerAnim, G.state.playerState === 'sleeping');
-  }
+  // Player (always drawn; sleeping = lying-in-bed pose)
+  const ppx = Math.floor(G.playerX + worldOx);
+  const ppy = FLOOR_Y - PLAYER_H;
+  drawPlayer(ppx, ppy, G.playerDir, G.playerAnim, G.state.playerState === 'sleeping');
 
   // Horror overlays
   drawHorrorVignette(G.state.horrorLevel);

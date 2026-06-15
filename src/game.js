@@ -218,6 +218,14 @@ const STORIES = {
     "...",
     "어디선가 소리가 들리는 것 같다. 창문 밖에서?"
   ],
+  day3_window_live: [
+    "창밖을 봤다.",
+    "...",
+    "나무가 조금 이상하게 서있는 것 같다.",
+    "...아니, 그냥 나무다.",
+    "...",
+    "빨리 시선을 거뒀다."
+  ],
   day3_window_live_before: [
     "창문 쪽을 보고 싶지 않다.",
     "...",
@@ -320,21 +328,27 @@ const STORIES = {
 };
 
 // ── Interaction zones (worldX = center, in logical pixels) ────────────────────
+// worldX calculated from draw.js: room_base_x + furniture_ox + half_width
 const INTERACTS = [
-  { id:'bed',          worldX:  237, label:'침대',   room: RM.BED },
-  { id:'desk',         worldX:   72, label:'책상',   room: RM.BED },
-  { id:'win_bed',      worldX:   78, label:'창문',   room: RM.BED },
-  { id:'frontdoor',    worldX:  337, label:'현관문', room: RM.HALL },
-  { id:'mirror_hall',  worldX:  462, label:'거울',   room: RM.HALL },
-  { id:'win_live',     worldX:  693, label:'창문',   room: RM.LIVE },
-  { id:'sofa',         worldX:  752, label:'소파',   room: RM.LIVE },
-  { id:'tv',           worldX:  895, label:'TV',     room: RM.LIVE },
-  { id:'table',        worldX:  998, label:'식탁',   room: RM.KITCHEN },
-  { id:'fridge',       worldX: 1246, label:'냉장고', room: RM.KITCHEN },
-  { id:'sink_kit',     worldX: 1176, label:'싱크대', room: RM.KITCHEN },
-  { id:'shower',       worldX: 1340, label:'샤워기', room: RM.BATH },
-  { id:'mirror_bath',  worldX: 1426, label:'거울',   room: RM.BATH },
-  { id:'toilet',       worldX: 1500, label:'화장실', room: RM.BATH },
+  // Bedroom (room base 0)  ← window first so it wins when near window, not desk
+  { id:'win_bed',      worldX:   95, label:'창문',   room: RM.BED },   // 0+55+23=78 → right side
+  { id:'desk',         worldX:   60, label:'책상',   room: RM.BED },   // 0+48+18=66
+  { id:'bed',          worldX:  234, label:'침대',   room: RM.BED },   // 0+210+24=234
+  // Hallway (room base 320)
+  { id:'frontdoor',    worldX:  336, label:'현관문', room: RM.HALL },  // 320+4+12=336
+  { id:'mirror_hall',  worldX:  462, label:'거울',   room: RM.HALL },  // 320+130+12=462
+  // Living Room (room base 640)
+  { id:'win_live',     worldX:  692, label:'창문',   room: RM.LIVE },  // 640+20+32=692
+  { id:'sofa',         worldX:  778, label:'소파',   room: RM.LIVE },  // 640+110+28=778
+  { id:'tv',           worldX:  915, label:'TV',     room: RM.LIVE },  // 640+255+20=915
+  // Kitchen (room base 960)
+  { id:'table',        worldX: 1008, label:'식탁',   room: RM.KITCHEN }, // 960+30+18=1008
+  { id:'sink_kit',     worldX: 1135, label:'싱크대', room: RM.KITCHEN }, // 960+165+10=1135
+  { id:'fridge',       worldX: 1255, label:'냉장고', room: RM.KITCHEN }, // 960+284+11=1255
+  // Bathroom (room base 1280)
+  { id:'shower',       worldX: 1324, label:'샤워기', room: RM.BATH },  // 1280+20+24=1324
+  { id:'mirror_bath',  worldX: 1428, label:'거울',   room: RM.BATH },  // 1280+136+12=1428
+  { id:'toilet',       worldX: 1529, label:'화장실', room: RM.BATH },  // 1280+240+9=1529
 ];
 
 // ── Main Game object ──────────────────────────────────────────────────────────
