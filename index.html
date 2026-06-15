@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>마인크래프트</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: #000; overflow: hidden; font-family: 'Minecraft', monospace; }
+canvas { display: block; }
+
+@font-face {
+  font-family: 'Minecraft';
+  src: url('https://fonts.cdnfonts.com/css/minecraft-4') format('woff2');
+}
+
+#game-container { position: relative; width: 100vw; height: 100vh; }
+
+/* Crosshair */
+#crosshair {
+  position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 20px; height: 20px;
+  pointer-events: none; z-index: 100;
+}
+#crosshair::before, #crosshair::after {
+  content: ''; position: absolute; background: rgba(255,255,255,0.8);
+}
+#crosshair::before { width: 2px; height: 20px; left: 9px; top: 0; }
+#crosshair::after { width: 20px; height: 2px; top: 9px; left: 0; }
+
+/* HUD */
+#hud {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  display: flex; flex-direction: column; align-items: center;
+  pointer-events: none; z-index: 100;
+}
+
+/* Health & Food */
+#stats-bar {
+  display: flex; justify-content: space-between;
+  width: 364px; margin-bottom: 4px;
+}
+.stat-icons { display: flex; gap: 2px; }
+.heart, .food { width: 18px; height: 18px; image-rendering: pixelated; }
+
+/* Hotbar */
+#hotbar {
+  display: flex; gap: 2px; padding: 2px;
+  background: rgba(0,0,0,0.5);
+  border: 2px solid #555;
+  margin-bottom: 0;
+}
+.hotbar-slot {
+  width: 44px; height: 44px;
+  background: rgba(0,0,0,0.7);
+  border: 2px solid #555;
+  position: relative;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+}
+.hotbar-slot.selected {
+  border: 2px solid #fff;
+  background: rgba(255,255,255,0.1);
+}
+.slot-count {
+  position: absolute; bottom: 1px; right: 3px;
+  font-size: 10px; color: #fff; font-weight: bold;
+  text-shadow: 1px 1px 0 #000;
+}
+.item-icon {
+  width: 32px; height: 32px;
+  image-rendering: pixelated;
+}
+
+/* XP Bar */
+#xp-bar-container {
+  width: 364px; height: 5px;
+  background: #000; margin-bottom: 2px;
+}
+#xp-bar { height: 100%; background: #80ff20; width: 0%; transition: width 0.3s; }
+
+/* Screen overlay for menus */
+#screen-overlay {
+  display: none; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.5); z-index: 200;
+  align-items: center; justify-content: center;
+}
+#screen-overlay.active { display: flex; }
+
+/* Inventory Window */
+#inventory-screen {
+  display: none; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+  z-index: 200; align-items: center; justify-content: center;
+}
+#inventory-screen.active { display: flex; }
+
+.inv-window {
+  background: #c6c6c6;
+  border: 3px solid #fff;
+  border-bottom-color: #555;
+  border-right-color: #555;
+  padding: 8px;
+  position: relative;
+  image-rendering: pixelated;
+}
+
+.inv-title {
+  font-size: 14px; color: #404040;
+  margin-bottom: 8px; font-weight: bold;
+  text-shadow: 1px 1px 0 rgba(255,255,255,0.5);
+}
+
+.inv-section { margin-bottom: 8px; }
+
+/* Slots */
+.inv-grid { display: grid; gap: 2px; }
+.inv-slot {
+  width: 36px; height: 36px;
+  background: #8b8b8b;
+  border: 2px solid #373737;
+  border-top-color: #373737;
+  border-left-color: #373737;
+  border-bottom-color: #fff;
+  border-right-color: #fff;
+  position: relative;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  transition: background 0.05s;
+}
+.inv-slot:hover { background: rgba(255,255,255,0.3); }
+.inv-slot.slot-active { background: rgba(255,255,200,0.3); }
+.inv-slot .slot-count {
+  position: absolute; bottom: 1px; right: 2px;
+  font-size: 10px; color: #fff; font-weight: bold;
+  text-shadow: 1px 1px 0 #000, -1px -1px 0 #000;
+}
+
+/* Player preview in inventory */
+#player-preview {
+  width: 60px; height: 90px;
+  background: linear-gradient(to bottom, #87CEEB, #87CEEB 60%, #3a8a3a 60%);
+  border: 2px solid #373737;
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden; position: relative;
+}
+
+/* Crafting */
+.craft-area {
+  display: flex; align-items: center; gap: 8px;
+  margin-bottom: 8px;
+}
+.craft-grid { display: grid; gap: 2px; }
+.craft-arrow {
+  font-size: 20px; color: #555;
+}
+.craft-result {
+  width: 36px; height: 36px;
+  background: #8b8b8b;
+  border: 2px solid #373737;
+  border-bottom-color: #fff;
+  border-right-color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; position: relative;
+}
+
+/* Armor slots */
+.armor-slots {
+  display: flex; flex-direction: column; gap: 2px;
+}
+
+/* Crafting table screen */
+#crafting-screen {
+  display: none; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+  z-index: 200; align-items: center; justify-content: center;
+}
+#crafting-screen.active { display: flex; }
+
+/* Pause screen */
+#pause-screen {
+  display: none; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+  z-index: 300; background: rgba(0,0,0,0.5);
+  align-items: center; justify-content: center; flex-direction: column;
+  gap: 8px;
+}
+#pause-screen.active { display: flex; }
+.pause-btn {
+  width: 200px; padding: 8px;
+  background: #5a5a5a;
+  border: 2px solid #aaa;
+  color: #fff; font-size: 16px;
+  cursor: pointer; text-align: center;
+  font-family: 'Minecraft', monospace;
+}
+.pause-btn:hover { background: #888; }
+.pause-title {
+  color: #fff; font-size: 32px; margin-bottom: 16px;
+  text-shadow: 2px 2px 0 #555;
+}
+
+/* Block break overlay */
+#break-overlay {
+  display: none; position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none; z-index: 150;
+}
+
+/* Start screen */
+#start-screen {
+  display: flex; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+  z-index: 500; background: #1a1a2e;
+  align-items: center; justify-content: center; flex-direction: column;
+  gap: 12px;
+}
+.start-title {
+  color: #ffff55; font-size: 48px; font-weight: bold;
+  text-shadow: 3px 3px 0 #5a5a00, -3px -3px 0 #5a5a00;
+  margin-bottom: 20px;
+  animation: titlePulse 2s infinite;
+}
+@keyframes titlePulse {
+  0%,100% { transform: scale(1); }
+  50% { transform: scale(1.02); }
+}
+.start-btn {
+  width: 280px; padding: 12px;
+  background: linear-gradient(to bottom, #888, #666);
+  border: 3px solid #aaa;
+  border-bottom-color: #333;
+  border-right-color: #333;
+  color: #fff; font-size: 18px;
+  cursor: pointer; text-align: center;
+  font-family: 'Minecraft', monospace;
+  letter-spacing: 1px;
+}
+.start-btn:hover { background: linear-gradient(to bottom, #aaa, #888); }
+
+/* Floating item picked up text */
+#pickup-text {
+  position: absolute; bottom: 120px; left: 50%;
+  transform: translateX(-50%);
+  color: #fff; font-size: 14px;
+  pointer-events: none; z-index: 150;
+  opacity: 0; transition: opacity 0.3s;
+  text-shadow: 1px 1px 0 #000;
+}
+
+/* Block tooltip */
+#block-tooltip {
+  position: absolute; top: 20px; left: 50%; transform: translateX(-50%);
+  background: rgba(0,0,0,0.7); color: #fff;
+  padding: 4px 8px; font-size: 14px;
+  pointer-events: none; z-index: 150;
+  text-shadow: 1px 1px 0 #000;
+  display: none;
+}
+
+/* Debug info */
+#debug-info {
+  position: absolute; top: 8px; left: 8px;
+  color: #fff; font-size: 11px;
+  text-shadow: 1px 1px 0 #000;
+  pointer-events: none; z-index: 100;
+  line-height: 1.6;
+  display: none;
+}
+
+/* Drag item */
+#drag-item {
+  position: fixed; pointer-events: none; z-index: 1000;
+  display: none; width: 36px; height: 36px;
+}
+
+/* Coordinates display */
+#coords {
+  position: absolute; top: 8px; right: 8px;
+  color: #fff; font-size: 11px;
+  text-shadow: 1px 1px 0 #000;
+  pointer-events: none; z-index: 100;
+  line-height: 1.6; text-align: right;
+  display: none;
+}
+
+/* Canvas */
+#minecraft-canvas { display: block; }
+</style>
+</head>
+<body>
+<div id="game-container">
+  <canvas id="minecraft-canvas"></canvas>
+
+  <!-- Crosshair -->
+  <div id="crosshair"></div>
+
+  <!-- HUD -->
+  <div id="hud">
+    <div id="stats-bar">
+      <div class="stat-icons" id="health-icons"></div>
+      <div class="stat-icons" id="food-icons"></div>
+    </div>
+    <div id="xp-bar-container"><div id="xp-bar"></div></div>
+    <div id="hotbar"></div>
+  </div>
+
+  <!-- Pickup text -->
+  <div id="pickup-text"></div>
+
+  <!-- Block tooltip -->
+  <div id="block-tooltip"></div>
+
+  <!-- Debug info -->
+  <div id="debug-info"></div>
+  <div id="coords"></div>
+
+  <!-- Drag item -->
+  <canvas id="drag-item"></canvas>
+
+  <!-- Inventory Screen -->
+  <div id="inventory-screen">
+    <div class="inv-window" id="inv-window">
+      <div class="inv-title">보관함</div>
+      <div style="display:flex; gap:8px; margin-bottom:8px;">
+        <!-- Armor slots -->
+        <div class="armor-slots" id="armor-slots"></div>
+        <!-- Player preview -->
+        <div id="player-preview">
+          <canvas id="player-canvas" width="60" height="90"></canvas>
+        </div>
+        <!-- 2x2 Crafting -->
+        <div>
+          <div style="font-size:11px;color:#404040;margin-bottom:4px;">제작</div>
+          <div class="craft-area">
+            <div class="craft-grid" id="inv-craft-grid" style="grid-template-columns:repeat(2,36px)"></div>
+            <div class="craft-arrow">▶</div>
+            <div class="craft-result" id="inv-craft-result"></div>
+          </div>
+        </div>
+      </div>
+      <!-- Inventory grid 3x9 -->
+      <div class="inv-section">
+        <div class="inv-grid" id="inv-grid" style="grid-template-columns:repeat(9,36px)"></div>
+      </div>
+      <!-- Hotbar in inventory -->
+      <div class="inv-section">
+        <div class="inv-grid" id="inv-hotbar" style="grid-template-columns:repeat(9,36px); margin-top:4px;"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Crafting Table Screen -->
+  <div id="crafting-screen">
+    <div class="inv-window">
+      <div class="inv-title">제작</div>
+      <div style="display:flex; gap:8px; align-items:flex-start; margin-bottom:8px;">
+        <div>
+          <div style="font-size:11px;color:#404040;margin-bottom:4px;">제작대</div>
+          <div class="craft-area">
+            <div class="craft-grid" id="craft-grid" style="grid-template-columns:repeat(3,36px)"></div>
+            <div class="craft-arrow">▶</div>
+            <div class="craft-result" id="craft-result"></div>
+          </div>
+        </div>
+      </div>
+      <div class="inv-section">
+        <div class="inv-title" style="font-size:12px;">보관함</div>
+        <div class="inv-grid" id="craft-inv-grid" style="grid-template-columns:repeat(9,36px)"></div>
+      </div>
+      <div class="inv-section">
+        <div class="inv-grid" id="craft-inv-hotbar" style="grid-template-columns:repeat(9,36px); margin-top:4px;"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pause Screen -->
+  <div id="pause-screen">
+    <div class="pause-title">일시정지</div>
+    <button class="pause-btn" id="resume-btn">게임으로 돌아가기</button>
+    <button class="pause-btn" id="options-btn">옵션</button>
+    <button class="pause-btn" id="quit-btn">메인으로 나가기</button>
+  </div>
+
+  <!-- Start Screen -->
+  <div id="start-screen">
+    <div class="start-title">마인크래프트</div>
+    <button class="start-btn" id="play-btn">싱글플레이어</button>
+    <button class="start-btn">멀티플레이어</button>
+    <button class="start-btn">옵션</button>
+    <div style="color:#aaa; font-size:12px; margin-top:20px;">버전 1.20.4 (Clone)</div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="game.js"></script>
+</body>
+</html>
