@@ -483,7 +483,11 @@ body { background: #000; overflow: hidden; font-family: 'Consolas', 'Courier New
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-<script src="game.js"></script>
+<script src="data.js"></script>
+<script src="core.js"></script>
+<script src="render.js"></script>
+<script src="worldgen.js"></script>
+<script src="main.js"></script>
 <script src="features.js"></script>
 <script>
 // Show key hints after game starts
@@ -506,9 +510,9 @@ document.getElementById('start-options-btn').addEventListener('click', () => {
     '1 ~ 9      단축바 선택\n' +
     '마우스 휠   단축바 전환\n' +
     'Q          아이템 버리기\n\n' +
-    '좌클릭(꾱)  블록 캐기\n' +
-    '우클릭      블록 설치 / 상호작용\n' +
-    '(제작대 우클릭 → 3×3 제작 열기)\n\n' +
+    '좌클릭(꾱)  블록 캐기 / 몹 공격\n' +
+    '우클릭      블록 설치 / 상호작용 / 먹기\n' +
+    '(제작대 → 3×3 제작, 용광로 → 제련, 상자 → 보관)\n\n' +
     'F3         디버그 정보 표시\n'
   );
 });
