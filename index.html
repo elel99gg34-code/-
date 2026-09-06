@@ -101,6 +101,21 @@ body { background: #000; overflow: hidden; font-family: 'Consolas', 'Courier New
   background: rgba(0,0,0,0.5); padding: 6px 8px;
 }
 
+/* 피해 붉은 화면 */
+#damage-overlay {
+  position: fixed; inset: 0; z-index: 90;
+  pointer-events: none; opacity: 0;
+  background: radial-gradient(ellipse at center, rgba(255,0,0,0) 35%, rgba(180,0,0,0.75) 100%);
+  transition: opacity 0.1s;
+}
+/* 물속 파란 화면 */
+#water-overlay {
+  position: fixed; inset: 0; z-index: 89;
+  pointer-events: none; opacity: 0;
+  background: rgba(30,90,200,0.35);
+  transition: opacity 0.25s;
+}
+
 /* Drag item */
 #drag-item {
   position: fixed; pointer-events: none;
@@ -297,9 +312,14 @@ body { background: #000; overflow: hidden; font-family: 'Consolas', 'Courier New
     <div class="stat-icons" id="health-icons"></div>
     <div class="stat-icons" id="food-icons"></div>
   </div>
+  <div class="stat-icons" id="breath-icons" style="width:364px;justify-content:flex-end;margin-bottom:2px;"></div>
   <div id="xp-bar-container"><div id="xp-bar"></div></div>
   <div id="hotbar"></div>
 </div>
+
+<!-- 피해 / 물속 오버레이 -->
+<div id="damage-overlay"></div>
+<div id="water-overlay"></div>
 
 <!-- Pickup / tooltip -->
 <div id="pickup-text"></div>
@@ -394,6 +414,56 @@ body { background: #000; overflow: hidden; font-family: 'Consolas', 'Courier New
   </div>
 </div>
 
+<!-- ============ FURNACE SCREEN ============ -->
+<div class="screen-layer" id="furnace-screen">
+  <div class="mc-window">
+    <div class="mc-title">용광로</div>
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;justify-content:center;">
+      <div style="display:flex;flex-direction:column;align-items:center;gap:2px;">
+        <div style="font-size:10px;color:#555;">재료</div>
+        <div class="inv-slot" id="furnace-input"></div>
+        <div id="fire-icon" style="width:20px;height:20px;"></div>
+        <div style="font-size:10px;color:#555;">연료</div>
+        <div class="inv-slot" id="furnace-fuel"></div>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:center;">
+        <div id="smelt-arrow" style="width:44px;height:20px;"></div>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:2px;">
+        <div style="font-size:10px;color:#555;">결과</div>
+        <div class="craft-result" id="furnace-output" style="width:46px;height:46px;"></div>
+      </div>
+    </div>
+    <div style="border-top:2px solid #888;padding-top:6px;">
+      <div class="inv-grid" id="furnace-inv-grid" style="grid-template-columns:repeat(9,36px);"></div>
+      <div class="inv-grid" id="furnace-inv-hotbar" style="grid-template-columns:repeat(9,36px);margin-top:4px;border-top:2px solid #999;padding-top:4px;"></div>
+    </div>
+    <div style="font-size:10px;color:#666;margin-top:6px;text-align:center;">E 또는 ESC 로 닫기</div>
+  </div>
+</div>
+
+<!-- ============ CHEST SCREEN ============ -->
+<div class="screen-layer" id="chest-screen">
+  <div class="mc-window">
+    <div class="mc-title">상자</div>
+    <div class="inv-grid" id="chest-grid" style="grid-template-columns:repeat(9,36px);margin-bottom:10px;"></div>
+    <div style="border-top:2px solid #888;padding-top:6px;">
+      <div class="mc-title" style="font-size:11px;">보관함</div>
+      <div class="inv-grid" id="chest-inv-grid" style="grid-template-columns:repeat(9,36px);"></div>
+      <div class="inv-grid" id="chest-inv-hotbar" style="grid-template-columns:repeat(9,36px);margin-top:4px;border-top:2px solid #999;padding-top:4px;"></div>
+    </div>
+    <div style="font-size:10px;color:#666;margin-top:6px;text-align:center;">E 또는 ESC 로 닫기</div>
+  </div>
+</div>
+
+<!-- ============ DEATH SCREEN ============ -->
+<div class="screen-layer" id="death-screen" style="background:rgba(120,0,0,0.55);">
+  <div style="text-align:center;">
+    <div style="color:#fff;font-size:34px;text-shadow:3px 3px 0 #400;margin-bottom:20px;">사망!</div>
+    <button class="mc-btn" id="respawn-btn">리스폰</button>
+  </div>
+</div>
+
 <!-- ============ PAUSE SCREEN ============ -->
 <div id="pause-screen">
   <div class="pause-title">일시 정지</div>
@@ -414,6 +484,7 @@ body { background: #000; overflow: hidden; font-family: 'Consolas', 'Courier New
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script src="game.js"></script>
+<script src="features.js"></script>
 <script>
 // Show key hints after game starts
 document.getElementById('play-btn').addEventListener('click', () => {
@@ -435,7 +506,7 @@ document.getElementById('start-options-btn').addEventListener('click', () => {
     '1 ~ 9      단축바 선택\n' +
     '마우스 휠   단축바 전환\n' +
     'Q          아이템 버리기\n\n' +
-    '좌클릭(꾹)  블록 캐기\n' +
+    '좌클릭(꾱)  블록 캐기\n' +
     '우클릭      블록 설치 / 상호작용\n' +
     '(제작대 우클릭 → 3×3 제작 열기)\n\n' +
     'F3         디버그 정보 표시\n'
