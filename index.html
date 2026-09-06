@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>마인크래프트</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: #000; overflow: hidden; font-family: 'Consolas', 'Courier New', monospace; }
+
+#minecraft-canvas { display: block; }
+
+/* Crosshair */
+#crosshair {
+  position: fixed; top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 22px; height: 22px;
+  pointer-events: none; z-index: 100;
+}
+#crosshair::before, #crosshair::after {
+  content: ''; position: absolute; background: rgba(255,255,255,0.85);
+  box-shadow: 0 0 2px rgba(0,0,0,0.8);
+}
+#crosshair::before { width: 2px; height: 22px; left: 10px; top: 0; }
+#crosshair::after  { width: 22px; height: 2px; top: 10px; left: 0; }
+
+/* HUD bottom */
+#hud {
+  position: fixed; bottom: 0; left: 0; right: 0;
+  display: flex; flex-direction: column; align-items: center;
+  pointer-events: none; z-index: 100; padding-bottom: 4px;
+}
+#stats-bar {
+  display: flex; justify-content: space-between;
+  width: 364px; margin-bottom: 3px;
+}
+.stat-icons { display: flex; gap: 1px; }
+
+/* XP bar */
+#xp-bar-container {
+  width: 364px; height: 6px; background: #000;
+  border: 1px solid #333; margin-bottom: 2px;
+}
+#xp-bar { height: 100%; background: #7cfc00; width: 35%; transition: width 0.3s; }
+
+/* Hotbar */
+#hotbar {
+  display: flex; gap: 2px; padding: 2px;
+  background: rgba(0,0,0,0.5);
+  border: 2px solid #555;
+}
+.hotbar-slot {
+  width: 44px; height: 44px;
+  background: rgba(0,0,0,0.65);
+  border: 2px solid #555;
+  position: relative; display: flex;
+  align-items: center; justify-content: center;
+  cursor: pointer;
+}
+.hotbar-slot.selected {
+  border: 2px solid #ffffff;
+  background: rgba(255,255,255,0.08);
+}
+
+/* Pickup text */
+#pickup-text {
+  position: fixed; bottom: 120px; left: 50%;
+  transform: translateX(-50%);
+  color: #fff; font-size: 13px;
+  pointer-events: none; z-index: 150;
+  opacity: 0; transition: opacity 0.4s;
+  text-shadow: 1px 1px 0 #000, -1px -1px 0 #000;
+  background: rgba(0,0,0,0.4); padding: 3px 8px;
+}
+
+/* Block tooltip */
+#block-tooltip {
+  position: fixed; top: 18px; left: 50%; transform: translateX(-50%);
+  background: rgba(0,0,0,0.65); color: #fff;
+  padding: 3px 8px; font-size: 13px;
+  pointer-events: none; z-index: 150;
+  text-shadow: 1px 1px 0 #000;
+  display: none; border: 1px solid #444;
+}
+
+/* Debug */
+#debug-info {
+  position: fixed; top: 8px; left: 8px;
+  color: #fff; font-size: 11px;
+  text-shadow: 1px 1px 0 #000;
+  pointer-events: none; z-index: 100;
+  line-height: 1.7; display: none;
+  background: rgba(0,0,0,0.5); padding: 6px 8px;
+}
+#coords {
+  position: fixed; top: 8px; right: 8px;
+  color: #fff; font-size: 11px;
+  text-shadow: 1px 1px 0 #000;
+  pointer-events: none; z-index: 100;
+  line-height: 1.7; display: none; text-align: right;
+  background: rgba(0,0,0,0.5); padding: 6px 8px;
+}
+
+/* 피해 붉은 화면 */
+#damage-overlay {
+  position: fixed; inset: 0; z-index: 90;
+  pointer-events: none; opacity: 0;
+  background: radial-gradient(ellipse at center, rgba(255,0,0,0) 35%, rgba(180,0,0,0.75) 100%);
+  transition: opacity 0.1s;
+}
+/* 물속 파란 화면 */
+#water-overlay {
+  position: fixed; inset: 0; z-index: 89;
+  pointer-events: none; opacity: 0;
+  background: rgba(30,90,200,0.35);
+  transition: opacity 0.25s;
+}
+
+/* Drag item */
+#drag-item {
+  position: fixed; pointer-events: none;
+  z-index: 1000; display: none;
+  width: 36px; height: 36px;
+}
+
+/* ============ INVENTORY / CRAFTING WINDOW ============ */
+.screen-layer {
+  display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+  z-index: 200; align-items: center; justify-content: center;
+  background: rgba(0,0,0,0.35);
+}
+.screen-layer.active { display: flex; }
+
+/* Minecraft-style panel */
+.mc-window {
+  background: #c6c6c6;
+  border-top: 2px solid #ffffff;
+  border-left: 2px solid #ffffff;
+  border-bottom: 3px solid #555555;
+  border-right: 3px solid #555555;
+  padding: 10px 12px;
+  user-select: none;
+  image-rendering: pixelated;
+}
+.mc-title {
+  font-size: 13px; color: #3f3f3f;
+  margin-bottom: 8px;
+  text-shadow: 1px 1px 0 rgba(255,255,255,0.7);
+  font-weight: bold;
+}
+
+/* Slots */
+.inv-slot {
+  width: 36px; height: 36px;
+  background: #8b8b8b;
+  border-top: 2px solid #373737;
+  border-left: 2px solid #373737;
+  border-bottom: 2px solid #ffffff;
+  border-right: 2px solid #ffffff;
+  position: relative; display: flex;
+  align-items: center; justify-content: center;
+  cursor: pointer;
+}
+.inv-slot:hover { background: rgba(255,255,255,0.25); }
+.inv-grid { display: grid; gap: 2px; }
+
+/* Craft result slot */
+.craft-result {
+  width: 36px; height: 36px;
+  background: #8b8b8b;
+  border-top: 2px solid #373737;
+  border-left: 2px solid #373737;
+  border-bottom: 2px solid #ffffff;
+  border-right: 2px solid #ffffff;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+}
+.craft-result:hover { background: rgba(255,255,200,0.4); }
+
+.craft-arrow {
+  font-size: 18px; color: #444;
+  margin: 0 4px;
+}
+
+/* Player preview */
+#player-preview {
+  border-top: 2px solid #373737;
+  border-left: 2px solid #373737;
+  border-bottom: 2px solid #ffffff;
+  border-right: 2px solid #ffffff;
+  background: linear-gradient(180deg,#88aacc 0%,#aaccee 100%);
+  overflow: hidden;
+}
+
+/* Armor slot labels */
+.armor-row {
+  display: flex; align-items: center; gap: 4px;
+  margin-bottom: 2px;
+}
+.armor-label { font-size: 9px; color: #555; width: 24px; text-align: right; }
+
+/* ============ PAUSE SCREEN ============ */
+#pause-screen {
+  display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+  z-index: 300; background: rgba(0,0,0,0.55);
+  align-items: center; justify-content: center; flex-direction: column;
+  gap: 6px;
+}
+#pause-screen.active { display: flex; }
+
+.pause-title {
+  color: #fff; font-size: 28px; margin-bottom: 20px;
+  text-shadow: 3px 3px 0 #333;
+  letter-spacing: 2px;
+}
+.mc-btn {
+  width: 200px; padding: 9px 0;
+  background: linear-gradient(180deg, #888 0%, #666 100%);
+  border-top: 2px solid #aaa;
+  border-left: 2px solid #aaa;
+  border-bottom: 2px solid #333;
+  border-right: 2px solid #333;
+  color: #fff; font-size: 14px;
+  cursor: pointer; text-align: center;
+  font-family: inherit; letter-spacing: 0.5px;
+}
+.mc-btn:hover {
+  background: linear-gradient(180deg, #aaa 0%, #888 100%);
+  border-top-color: #ddd; border-left-color: #ddd;
+}
+.mc-btn:active {
+  background: linear-gradient(180deg, #666 0%, #555 100%);
+  border-top-color: #333; border-left-color: #333;
+  border-bottom-color: #aaa; border-right-color: #aaa;
+}
+
+/* ============ START SCREEN ============ */
+#start-screen {
+  display: flex; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+  z-index: 500;
+  background: radial-gradient(ellipse at center, #1a3a5a 0%, #0a1a2a 100%);
+  align-items: center; justify-content: center; flex-direction: column;
+  gap: 10px;
+}
+
+.game-title {
+  font-size: 52px; font-weight: bold;
+  color: #ffff55;
+  text-shadow:
+    3px 3px 0 #5a5a00,
+    -1px -1px 0 #888800,
+    0 0 20px rgba(255,255,0,0.3);
+  margin-bottom: 10px;
+  letter-spacing: 3px;
+  animation: titleBob 3s ease-in-out infinite;
+}
+@keyframes titleBob {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+.title-sub {
+  color: #aaffaa; font-size: 13px;
+  margin-bottom: 24px; letter-spacing: 1px;
+  text-shadow: 1px 1px 0 #003300;
+}
+
+.start-btn {
+  width: 280px; padding: 11px 0;
+  background: linear-gradient(180deg, #7a7a7a 0%, #5a5a5a 100%);
+  border-top: 2px solid #aaa;
+  border-left: 2px solid #aaa;
+  border-bottom: 3px solid #333;
+  border-right: 3px solid #333;
+  color: #fff; font-size: 16px;
+  cursor: pointer; text-align: center;
+  font-family: inherit; letter-spacing: 1px;
+}
+.start-btn:hover {
+  background: linear-gradient(180deg, #9a9a9a 0%, #7a7a7a 100%);
+}
+.start-btn:active {
+  background: linear-gradient(180deg, #5a5a5a 0%, #4a4a4a 100%);
+  border-top-color: #333; border-left-color: #333;
+  border-bottom-color: #aaa; border-right-color: #aaa;
+}
+.version-tag {
+  color: #888; font-size: 11px; margin-top: 20px;
+}
+
+/* How to play hints */
+.key-hints {
+  position: fixed; bottom: 8px; right: 8px;
+  color: rgba(255,255,255,0.6); font-size: 10px;
+  line-height: 1.8; text-align: right;
+  pointer-events: none; z-index: 100;
+  display: none;
+}
+#key-hints-hud { display: none; }
+</style>
+</head>
+<body>
+
+<canvas id="minecraft-canvas"></canvas>
+
+<!-- Crosshair -->
+<div id="crosshair"></div>
+
+<!-- HUD -->
+<div id="hud">
+  <div id="stats-bar">
+    <div class="stat-icons" id="health-icons"></div>
+    <div class="stat-icons" id="food-icons"></div>
+  </div>
+  <div class="stat-icons" id="breath-icons" style="width:364px;justify-content:flex-end;margin-bottom:2px;"></div>
+  <div id="xp-bar-container"><div id="xp-bar"></div></div>
+  <div id="hotbar"></div>
+</div>
+
+<!-- 피해 / 물속 오버레이 -->
+<div id="damage-overlay"></div>
+<div id="water-overlay"></div>
+
+<!-- Pickup / tooltip -->
+<div id="pickup-text"></div>
+<div id="block-tooltip"></div>
+
+<!-- Debug -->
+<div id="debug-info"></div>
+<div id="coords"></div>
+
+<!-- Drag item -->
+<canvas id="drag-item" width="36" height="36"></canvas>
+
+<!-- Key hints -->
+<div class="key-hints" id="key-hints-hud">
+  WASD 이동 · 스페이스 점프<br>
+  E 인벤토리 · F 비행<br>
+  1-9 단축바 · Q 버리기<br>
+  F3 디버그 · ESC 일시정지
+</div>
+
+<!-- ============ INVENTORY SCREEN ============ -->
+<div class="screen-layer" id="inventory-screen">
+  <div class="mc-window">
+    <div class="mc-title">보관함</div>
+
+    <!-- Top row: armor | player | 2x2 craft -->
+    <div style="display:flex; gap:10px; margin-bottom:8px; align-items:flex-start;">
+
+      <!-- Armor slots -->
+      <div>
+        <div style="font-size:10px;color:#555;margin-bottom:4px;text-align:center;">방어구</div>
+        <div id="armor-slots" style="display:flex;flex-direction:column;gap:2px;"></div>
+      </div>
+
+      <!-- Player preview -->
+      <div id="player-preview">
+        <canvas id="player-canvas" width="60" height="90"></canvas>
+      </div>
+
+      <!-- 2x2 Crafting -->
+      <div>
+        <div style="font-size:10px;color:#555;margin-bottom:4px;">제작 (2×2)</div>
+        <div style="display:flex;align-items:center;gap:4px;">
+          <div class="inv-grid" id="inv-craft-grid" style="grid-template-columns:repeat(2,36px);"></div>
+          <div class="craft-arrow">▶</div>
+          <div class="craft-result" id="inv-craft-result"></div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Main inventory (3 rows × 9) -->
+    <div style="margin-bottom:2px;">
+      <div class="inv-grid" id="inv-grid" style="grid-template-columns:repeat(9,36px);"></div>
+    </div>
+
+    <!-- Hotbar row -->
+    <div>
+      <div class="inv-grid" id="inv-hotbar" style="grid-template-columns:repeat(9,36px);margin-top:4px;border-top:2px solid #888;padding-top:4px;"></div>
+    </div>
+
+    <div style="font-size:10px;color:#666;margin-top:6px;text-align:center;">E 또는 ESC 로 닫기</div>
+  </div>
+</div>
+
+<!-- ============ CRAFTING TABLE SCREEN ============ -->
+<div class="screen-layer" id="crafting-screen">
+  <div class="mc-window">
+    <div class="mc-title">제작</div>
+
+    <!-- 3x3 craft area -->
+    <div style="display:flex;align-items:center;gap:6px;margin-bottom:10px;">
+      <div>
+        <div style="font-size:10px;color:#555;margin-bottom:4px;">재료</div>
+        <div class="inv-grid" id="craft-grid" style="grid-template-columns:repeat(3,36px);"></div>
+      </div>
+      <div class="craft-arrow" style="font-size:24px;">▶</div>
+      <div>
+        <div style="font-size:10px;color:#555;margin-bottom:4px;">결과</div>
+        <div class="craft-result" id="craft-result" style="width:46px;height:46px;"></div>
+      </div>
+    </div>
+
+    <!-- Inventory in crafting screen -->
+    <div style="border-top:2px solid #888;padding-top:6px;">
+      <div style="font-size:10px;color:#555;margin-bottom:4px;">보관함</div>
+      <div class="inv-grid" id="craft-inv-grid" style="grid-template-columns:repeat(9,36px);margin-bottom:2px;"></div>
+      <div class="inv-grid" id="craft-inv-hotbar" style="grid-template-columns:repeat(9,36px);margin-top:4px;border-top:2px solid #999;padding-top:4px;"></div>
+    </div>
+
+    <div style="font-size:10px;color:#666;margin-top:6px;text-align:center;">E 또는 ESC 로 닫기</div>
+  </div>
+</div>
+
+<!-- ============ FURNACE SCREEN ============ -->
+<div class="screen-layer" id="furnace-screen">
+  <div class="mc-window">
+    <div class="mc-title">용광로</div>
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;justify-content:center;">
+      <div style="display:flex;flex-direction:column;align-items:center;gap:2px;">
+        <div style="font-size:10px;color:#555;">재료</div>
+        <div class="inv-slot" id="furnace-input"></div>
+        <div id="fire-icon" style="width:20px;height:20px;"></div>
+        <div style="font-size:10px;color:#555;">연료</div>
+        <div class="inv-slot" id="furnace-fuel"></div>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:center;">
+        <div id="smelt-arrow" style="width:44px;height:20px;"></div>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:2px;">
+        <div style="font-size:10px;color:#555;">결과</div>
+        <div class="craft-result" id="furnace-output" style="width:46px;height:46px;"></div>
+      </div>
+    </div>
+    <div style="border-top:2px solid #888;padding-top:6px;">
+      <div class="inv-grid" id="furnace-inv-grid" style="grid-template-columns:repeat(9,36px);"></div>
+      <div class="inv-grid" id="furnace-inv-hotbar" style="grid-template-columns:repeat(9,36px);margin-top:4px;border-top:2px solid #999;padding-top:4px;"></div>
+    </div>
+    <div style="font-size:10px;color:#666;margin-top:6px;text-align:center;">E 또는 ESC 로 닫기</div>
+  </div>
+</div>
+
+<!-- ============ CHEST SCREEN ============ -->
+<div class="screen-layer" id="chest-screen">
+  <div class="mc-window">
+    <div class="mc-title">상자</div>
+    <div class="inv-grid" id="chest-grid" style="grid-template-columns:repeat(9,36px);margin-bottom:10px;"></div>
+    <div style="border-top:2px solid #888;padding-top:6px;">
+      <div class="mc-title" style="font-size:11px;">보관함</div>
+      <div class="inv-grid" id="chest-inv-grid" style="grid-template-columns:repeat(9,36px);"></div>
+      <div class="inv-grid" id="chest-inv-hotbar" style="grid-template-columns:repeat(9,36px);margin-top:4px;border-top:2px solid #999;padding-top:4px;"></div>
+    </div>
+    <div style="font-size:10px;color:#666;margin-top:6px;text-align:center;">E 또는 ESC 로 닫기</div>
+  </div>
+</div>
+
+<!-- ============ DEATH SCREEN ============ -->
+<div class="screen-layer" id="death-screen" style="background:rgba(120,0,0,0.55);">
+  <div style="text-align:center;">
+    <div style="color:#fff;font-size:34px;text-shadow:3px 3px 0 #400;margin-bottom:20px;">사망!</div>
+    <button class="mc-btn" id="respawn-btn">리스폰</button>
+  </div>
+</div>
+
+<!-- ============ PAUSE SCREEN ============ -->
+<div id="pause-screen">
+  <div class="pause-title">일시 정지</div>
+  <button class="mc-btn" id="resume-btn">게임으로 돌아가기</button>
+  <button class="mc-btn" id="options-btn">옵션 (키 도움말)</button>
+  <button class="mc-btn" id="quit-btn">메인 메뉴로 나가기</button>
+</div>
+
+<!-- ============ START SCREEN ============ -->
+<div id="start-screen">
+  <div class="game-title">마인크래프트</div>
+  <div class="title-sub">Minecraft Clone v2.0</div>
+  <button class="start-btn" id="play-btn">싱글플레이어</button>
+  <button class="start-btn" disabled style="opacity:0.5;cursor:default;">멀티플레이어 (준비중)</button>
+  <button class="start-btn" id="start-options-btn">옵션 / 조작법</button>
+  <div class="version-tag">Three.js 기반 · 웹 마인크래프트 클론</div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="data.js"></script>
+<script src="core.js"></script>
+<script src="render.js"></script>
+<script src="worldgen.js"></script>
+<script src="main.js"></script>
+<script src="features.js"></script>
+<script>
+// Show key hints after game starts
+document.getElementById('play-btn').addEventListener('click', () => {
+  setTimeout(() => {
+    document.getElementById('key-hints-hud').style.display = 'block';
+    setTimeout(() => document.getElementById('key-hints-hud').style.display = 'none', 8000);
+  }, 500);
+});
+document.getElementById('start-options-btn').addEventListener('click', () => {
+  alert(
+    '조작법\n\n' +
+    'W A S D    이동\n' +
+    'Space      점프\n' +
+    'Shift      질주\n' +
+    'F          비행 모드 전환\n' +
+    '(비행 중 Space/Shift → 위아래)\n\n' +
+    'E          인벤토리 열기/닫기\n' +
+    'ESC        일시정지\n' +
+    '1 ~ 9      단축바 선택\n' +
+    '마우스 휠   단축바 전환\n' +
+    'Q          아이템 버리기\n\n' +
+    '좌클릭(꾱)  블록 캐기 / 몹 공격\n' +
+    '우클릭      블록 설치 / 상호작용 / 먹기\n' +
+    '(제작대 → 3×3 제작, 용광로 → 제련, 상자 → 보관)\n\n' +
+    'F3         디버그 정보 표시\n'
+  );
+});
+</script>
+</body>
+</html>
