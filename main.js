@@ -12,11 +12,16 @@ function addItem(id, count=1) {
       if(count<=0) return true;
     }
   }
-  // Empty slot
+  // 빈 슬롯에 64개씩 나눴 담는다
   for(let i=0;i<36;i++) {
-    if(!inventory[i]) {inventory[i]={id,count};return true;}
+    if(!inventory[i]) {
+      const put=Math.min(count,64);
+      inventory[i]={id,count:put};
+      count-=put;
+      if(count<=0) return true;
+    }
   }
-  return false;
+  return false;   // 인벤토리가 가득 참
 }
 
 function itemName(id) {
@@ -283,7 +288,10 @@ function slotClick(area,idx) {
   const cur=getSlot();
   if(dragItem) {
     if(cur && cur.id===dragItem.id && cur.count<64) {
-      cur.count+=dragItem.count; dragItem=null;
+      // 64개까지만 합치고 남으면 계속 들고 있는다
+      const take=Math.min(dragItem.count, 64-cur.count);
+      cur.count+=take; dragItem.count-=take;
+      if(dragItem.count<=0) dragItem=null;
     } else {
       setSlot(dragItem); dragItem=cur;
     }
