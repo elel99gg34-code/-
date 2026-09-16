@@ -16,7 +16,6 @@
     "icons": "node scripts/make-icons.js",
     "verify": "node scripts/verify.js",
     "dist:win": "npm run icons && npm run art && node scripts/make-installer.js",
-    "dist:win:portable": "npm run icons && electron-builder --win portable --x64",
     "dist:linux": "npm run icons && electron-builder --linux AppImage --x64",
     "pack": "electron-builder --win --x64 --dir",
     "art": "node scripts/make-installer-art.js",
