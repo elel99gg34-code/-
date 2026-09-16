@@ -1,0 +1,82 @@
+{
+  "name": "riot-machine",
+  "productName": "RIOT MACHINE",
+  "version": "1.0.0",
+  "description": "RIOT MACHINE \u2014 a punk electronic music studio. 130 hand-built synth instruments, step sequencer, piano roll, mixer, WAV/MP3 export and a local project vault.",
+  "main": "electron/main.js",
+  "author": {
+    "name": "RIOT MACHINE",
+    "email": "elel99gg34@gmail.com"
+  },
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "start": "electron .",
+    "dev": "electron . --dev",
+    "icons": "node scripts/make-icons.js",
+    "verify": "node scripts/verify.js",
+    "dist:win": "npm run icons && npm run art && node scripts/make-installer.js",
+    "dist:win:portable": "npm run icons && electron-builder --win portable --x64",
+    "dist:linux": "npm run icons && electron-builder --linux AppImage --x64",
+    "pack": "electron-builder --win --x64 --dir",
+    "art": "node scripts/make-installer-art.js",
+    "dist:win:fast": "node scripts/make-installer.js --no-pack"
+  },
+  "devDependencies": {
+    "electron": "44.3.0",
+    "electron-builder": "26.15.3"
+  },
+  "build": {
+    "appId": "com.riotmachine.studio",
+    "productName": "RIOT MACHINE",
+    "copyright": "Copyright (c) 2026 RIOT MACHINE",
+    "directories": {
+      "output": "dist",
+      "buildResources": "build"
+    },
+    "files": [
+      "electron/**/*",
+      "src/**/*",
+      "package.json",
+      "!**/*.map"
+    ],
+    "asar": true,
+    "compression": "maximum",
+    "win": {
+      "target": [
+        "dir"
+      ],
+      "icon": "build/icon.ico",
+      "artifactName": "RIOT-MACHINE-Setup-${version}-${arch}.${ext}"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowElevation": true,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "RIOT MACHINE",
+      "installerIcon": "build/icon.ico",
+      "uninstallerIcon": "build/icon.ico",
+      "installerHeaderIcon": "build/icon.ico",
+      "deleteAppDataOnUninstall": false,
+      "runAfterFinish": true,
+      "menuCategory": "RIOT MACHINE"
+    },
+    "linux": {
+      "target": [
+        "AppImage"
+      ],
+      "category": "AudioVideo",
+      "icon": "build/icons",
+      "synopsis": "Punk electronic music studio",
+      "description": "A punk electronic music studio with 130 synthesised instruments, a step sequencer, a piano roll, a mixer and WAV/MP3 export.",
+      "syncDesktopName": true
+    },
+    "electronLanguages": [
+      "en-US"
+    ]
+  },
+  "desktopName": "riot-machine.desktop"
+}
