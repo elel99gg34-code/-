@@ -60,7 +60,9 @@ exe = EXE(
     strip=False,
     upx=False,
     console=False,          # GUI 앱이므로 콘솔 창 없음
-    disable_windowed_traceback=False,
+    # True: 예외가 나도 모달 traceback 대화상자를 띄우지 않는다.
+    # 대화상자는 아무도 닫아 주지 않는 환경(CI, 자동 실행)에서 프로세스를 매달리게 한다.
+    disable_windowed_traceback=True,
     argv_emulation=False,
     target_arch=None,
     codesign_identity=None,

@@ -81,15 +81,39 @@ class MainWindow(QMainWindow):
 SELFTEST_REPORT_ENV = "EGGMATE_SELFTEST_REPORT"
 
 
+def configure_stdio() -> None:
+    """표준 출력을 UTF-8 로 맞춘다.
+
+    이 앱은 한글을 출력하는데, Windows 콘솔/파이프의 기본 인코딩은 cp1252 라서
+    그대로 print 하면 UnicodeEncodeError 가 난다. PYTHONUTF8 환경변수는 PyInstaller
+    번들에는 적용되지 않으므로 런타임에 직접 맞춰 준다. windowed 빌드에서는
+    스트림이 None 일 수 있으므로 그 경우는 조용히 넘어간다.
+    """
+    for stream in (sys.stdout, sys.stderr):
+        reconfigure = getattr(stream, "reconfigure", None)
+        if reconfigure is None:
+            continue
+        try:
+            reconfigure(encoding="utf-8", errors="replace")
+        except (OSError, ValueError):
+            pass
+
+
 def _report(message: str) -> None:
-    """콘솔이 없는 빌드(windowed exe)에서도 결과를 확인할 수 있게 파일로도 남긴다."""
-    print(message)
+    """콘솔이 없는 빌드(windowed exe)에서도 결과를 확인할 수 있게 파일로도 남긴다.
+
+    파일을 먼저 쓴다. 표준 출력 쪽이 실패하더라도 보고서는 남아야 한다.
+    """
     target = os.environ.get(SELFTEST_REPORT_ENV)
     if target:
         try:
             Path(target).write_text(message, encoding="utf-8")
         except OSError:
             pass
+    try:
+        print(message)
+    except (OSError, UnicodeEncodeError, AttributeError):
+        pass  # 콘솔이 없거나 인코딩이 맞지 않아도 자체 점검은 계속된다
 
 
 def selftest() -> int:
@@ -111,6 +135,8 @@ def selftest() -> int:
 
 
 def main() -> int:
+    configure_stdio()
+
     if "--selftest" in sys.argv:
         return selftest()
 

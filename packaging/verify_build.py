@@ -70,6 +70,8 @@ def check_selftest(exe: Path) -> bool:
 
     if code is None:
         print(f"FAIL: --selftest 가 {SELFTEST_TIMEOUT}초 안에 끝나지 않았습니다.")
+        if "Traceback" in piped:
+            print("→ 위 예외 직후 매달린 것으로 보입니다 (windowed 빌드의 오류 대화상자 등).")
         return False
     if code != 0:
         print(f"FAIL: --selftest 종료 코드 {code}")
