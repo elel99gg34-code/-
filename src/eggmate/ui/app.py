@@ -1,7 +1,9 @@
 """메인 윈도우."""
 from __future__ import annotations
 
+import os
 import sys
+from pathlib import Path
 
 from PySide6.QtCore import Qt
 from PySide6.QtGui import QIcon, QKeySequence, QShortcut
@@ -76,14 +78,31 @@ class MainWindow(QMainWindow):
         super().closeEvent(event)
 
 
+SELFTEST_REPORT_ENV = "EGGMATE_SELFTEST_REPORT"
+
+
+def _report(message: str) -> None:
+    """콘솔이 없는 빌드(windowed exe)에서도 결과를 확인할 수 있게 파일로도 남긴다."""
+    print(message)
+    target = os.environ.get(SELFTEST_REPORT_ENV)
+    if target:
+        try:
+            Path(target).write_text(message, encoding="utf-8")
+        except OSError:
+            pass
+
+
 def selftest() -> int:
-    """창을 띄우지 않고 번들 상태를 점검한다. 빌드 검증용(--selftest)."""
+    """창을 띄우지 않고 번들 상태를 점검한다. 빌드 검증용(--selftest).
+
+    QApplication 을 만들기 전에 끝나므로 디스플레이가 없어도 돌아간다.
+    """
     try:
         data, path = dataset_module.load()
     except DatasetError as exc:
-        print(f"SELFTEST FAIL: {exc}")
+        _report(f"SELFTEST FAIL: {exc}")
         return 1
-    print(
+    _report(
         f"SELFTEST OK: {APP_NAME} {__version__} · 데이터 {data.data_version} · "
         f"펫 {len(data.pets)}종 · 바이옴 {len(data.biomes)}개 · 뮤테이션 {len(data.mutations)}종\n"
         f"데이터 경로: {path}"

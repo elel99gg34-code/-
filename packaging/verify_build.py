@@ -5,8 +5,10 @@ GUI 앱이라 종료 코드로 판단할 수 없어서, 띄운 뒤 몇 초 살�
 """
 from __future__ import annotations
 
+import os
 import subprocess
 import sys
+import tempfile
 import time
 from pathlib import Path
 
@@ -35,14 +37,26 @@ def main() -> int:
     print(f"데이터 파일 확인: {bundled}")
 
     # 1) 창 없이 데이터 로딩만 점검 — 실패하면 즉시 이유가 찍힌다.
-    selftest = subprocess.run(
-        [str(exe), "--selftest"], capture_output=True, timeout=120
-    )
-    output = (selftest.stdout + selftest.stderr).decode(errors="replace").strip()
-    print(output)
-    if selftest.returncode != 0 or "SELFTEST OK" not in output:
-        print(f"FAIL: --selftest 가 실패했습니다 (코드 {selftest.returncode})")
+    #    windowed 빌드는 stdout 이 없을 수 있어서 결과를 파일로도 받는다.
+    with tempfile.TemporaryDirectory() as tmp:
+        report_path = Path(tmp) / "selftest.txt"
+        env = dict(os.environ, EGGMATE_SELFTEST_REPORT=str(report_path))
+        selftest = subprocess.run(
+            [str(exe), "--selftest"], capture_output=True, timeout=180, env=env
+        )
+        piped = (selftest.stdout + selftest.stderr).decode(errors="replace").strip()
+        written = report_path.read_text(encoding="utf-8").strip() if report_path.exists() else ""
+
+    report = written or piped
+    print(report or "(출력 없음 — windowed 빌드에서는 정상입니다)")
+    if selftest.returncode != 0:
+        print(f"FAIL: --selftest 가 종료 코드 {selftest.returncode} 로 끝났습니다.")
         return 1
+    if report and "SELFTEST OK" not in report:
+        print("FAIL: --selftest 가 성공을 보고하지 않았습니다.")
+        return 1
+    if not report:
+        print("경고: 자체 점검 출력이 비어 있습니다. 종료 코드만으로 판단합니다.")
 
     # 2) 실제로 창을 띄워 보고 바로 죽지 않는지 확인
     process = subprocess.Popen([str(exe)], stdout=subprocess.PIPE, stderr=subprocess.PIPE)

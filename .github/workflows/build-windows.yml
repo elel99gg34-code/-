@@ -9,6 +9,9 @@ on:
 
 env:
   PYTHON_VERSION: "3.12"
+  # 소스와 출력에 한글이 들어 있어 Windows 기본 인코딩(cp1252)으로는 읽고 쓸 수 없다.
+  PYTHONUTF8: "1"
+  PYTHONIOENCODING: "utf-8"
 
 jobs:
   test:
@@ -49,7 +52,7 @@ jobs:
         id: version
         shell: bash
         run: |
-          version=$(python -c "import re,pathlib; print(re.search(r'__version__ = \"([^\"]+)\"', pathlib.Path('src/eggmate/__init__.py').read_text()).group(1))")
+          version=$(PYTHONPATH=src python -c "import eggmate; print(eggmate.__version__)")
           echo "version=$version" >> "$GITHUB_OUTPUT"
           echo "Building version $version"
 
@@ -75,6 +78,9 @@ jobs:
 
       - name: Verify the built exe starts
         run: python packaging/verify_build.py dist/EggMate/EggMate.exe
+        env:
+          # GitHub 러너에는 상호작용 가능한 데스크톱이 없을 수 있어 offscreen 으로 띄운다.
+          QT_QPA_PLATFORM: offscreen
 
       - name: Install Inno Setup
         run: choco install innosetup --no-progress -y
