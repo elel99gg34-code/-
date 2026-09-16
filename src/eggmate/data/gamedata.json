@@ -1,0 +1,153 @@
+{
+  "schema_version": 1,
+  "data_version": "2026.09.16",
+  "game": "Steal An Egg (계란을 훔치세요)",
+  "place_id": 107778070777162,
+  "disclaimer": "커뮤니티 위키/가이드에서 교차 검증한 값입니다. 게임은 자주 패치되므로 인게임 Index 및 업그레이드 보드가 항상 최종 기준입니다. 값이 다르면 이 파일을 직접 수정하거나 앱에서 [데이터] 탭으로 불러오세요.",
+  "sources": [
+    "https://www.roblox.com/games/107778070777162/Steal-An-Egg",
+    "https://stealaneggwiki.net/eggs",
+    "https://stealaneggwiki.net/eternal-eggs",
+    "https://stealaneggwiki.net/secret-divine-eggs",
+    "https://stealanegg.fandom.com/wiki/Mutations",
+    "https://games.gg/roblox/guides/steal-an-egg-all-eggs-pets-and-income-rates/",
+    "https://games.gg/roblox/guides/steal-an-egg-biomes-guide/",
+    "https://timesaver.gg/blog/steal-an-egg-value-list",
+    "https://www.u7buy.com/blog/steal-an-egg-all-pets-guide/",
+    "https://www.eldorado.gg/blog/steal-an-egg/steal-an-egg-all-pets-index/",
+    "https://bloxodes.com/wiki/steal-an-egg/pets",
+    "https://stealanegg.pro/guide/how-to-steal-eggs"
+  ],
+
+  "income_model": {
+    "note": "무게 기반 수입 공식. r = 실제무게 / 기본무게.",
+    "breakpoint_ratio": 125.0,
+    "low_exponent": [37, 60],
+    "high_exponent": [2, 5],
+    "high_constant_exponent": [13, 60],
+    "formula_low": "income = base * r^(37/60) * mutation",
+    "formula_high": "income = base * 125^(13/60) * r^(2/5) * mutation",
+    "continuity_check": "r=125 에서 두 식이 정확히 일치 (125^(13/60) * 125^(24/60) = 125^(37/60))",
+    "published_spot_checks": [
+      {"ratio": 100, "expected_multiplier": 17},
+      {"ratio": 200, "expected_multiplier": 23},
+      {"ratio": 1000, "expected_multiplier": 45}
+    ]
+  },
+
+  "rarities": [
+    {"name": "Common",    "ko": "커먼",    "order": 1, "color": "#9aa4b2"},
+    {"name": "Uncommon",  "ko": "언커먼",  "order": 2, "color": "#4ade80"},
+    {"name": "Rare",      "ko": "레어",    "order": 3, "color": "#38bdf8"},
+    {"name": "Epic",      "ko": "에픽",    "order": 4, "color": "#a78bfa"},
+    {"name": "Legendary", "ko": "레전더리","order": 5, "color": "#fbbf24"},
+    {"name": "Mythic",    "ko": "미식",    "order": 6, "color": "#fb7185"},
+    {"name": "Cosmic",    "ko": "코스믹",  "order": 7, "color": "#22d3ee", "note": "일부 출처는 이 등급을 별도 티어로 세지 않습니다."},
+    {"name": "Secret",    "ko": "시크릿",  "order": 8, "color": "#f472b6"},
+    {"name": "Eternal",   "ko": "이터널",  "order": 9, "color": "#fb923c"},
+    {"name": "Divine",    "ko": "디바인",  "order": 10, "color": "#fde047"}
+  ],
+
+  "biomes": [
+    {"name": "Forest",         "ko": "숲",        "order": 1,  "speed_required": 0,          "speed_note": "제한 없음"},
+    {"name": "Lake",           "ko": "호수",      "order": 2,  "speed_required": 900},
+    {"name": "Desert",         "ko": "사막",      "order": 3,  "speed_required": 10000},
+    {"name": "Jungle",         "ko": "정글",      "order": 4,  "speed_required": 40000,      "speed_note": "약 4만 (출처별 편차)"},
+    {"name": "Snow",           "ko": "설원",      "order": 5,  "speed_required": 170000,     "speed_note": "약 17만"},
+    {"name": "Volcano",        "ko": "화산",      "order": 6,  "speed_required": 700000,     "speed_note": "70만~100만 보고됨"},
+    {"name": "Abyss Ocean",    "ko": "심해",      "order": 7,  "speed_required": 2500000,    "speed_note": "약 250만"},
+    {"name": "Prehistoric",    "ko": "선사시대",  "order": 8,  "speed_required": 17000000,   "speed_note": "1700만~1800만"},
+    {"name": "Cosmic",         "ko": "우주",      "order": 9,  "speed_required": 700000000,  "speed_note": "선사시대 대비 약 39~41배 점프 (최대 난관)"},
+    {"name": "Cherry Blossom", "ko": "벚꽃",      "order": 10, "speed_required": 2500000000},
+    {"name": "Titan Temple",   "ko": "타이탄 신전","order": 11, "speed_required": 7000000000}
+  ],
+
+  "mutations": [
+    {"name": "None",        "ko": "없음",       "multiplier": 1.0,  "source": "-"},
+    {"name": "Silver",      "ko": "실버",       "multiplier": 1.2,  "source": "맵 랜덤 알 / 퓨즈 머신"},
+    {"name": "Bloom",       "ko": "블룸",       "multiplier": 1.25, "source": "사쿠라 인큐베이터 (사쿠라 크리스탈 필요)"},
+    {"name": "Golden",      "ko": "골든",       "multiplier": 2.0,  "source": "맵 랜덤 알 / 퓨즈 머신"},
+    {"name": "Spirit Bloom","ko": "스피릿 블룸","multiplier": 2.5,  "source": "사쿠라 인큐베이터", "note": "일부 출처는 3.0x로 표기 — 인게임 확인 권장"},
+    {"name": "Fractured",   "ko": "프랙처드",   "multiplier": 2.75, "source": "이벤트 / 특수"},
+    {"name": "Parasite",    "ko": "패러사이트", "multiplier": 3.0,  "source": "이벤트 전용 — 일반 부화로는 절대 안 나옴"},
+    {"name": "Rainbow",     "ko": "레인보우",   "multiplier": 3.5,  "source": "맵 랜덤 알 / 퓨즈 머신", "note": "현재 최고 배율 & 최고 희귀"}
+  ],
+
+  "pets": [
+    {"name": "Chicken",               "ko": "치킨",            "biome": "Forest",         "rarity": "Common",    "income": 1},
+    {"name": "Dog",                   "ko": "개",              "biome": "Forest",         "rarity": "Common",    "income": 2},
+    {"name": "Bird",                  "ko": "새",              "biome": "Forest",         "rarity": "Uncommon",  "income": 8},
+    {"name": "Owl",                   "ko": "올빼미",          "biome": "Forest",         "rarity": "Rare",      "income": 35},
+    {"name": "Raccoon",               "ko": "너구리",          "biome": "Forest",         "rarity": "Rare",      "income": 45},
+    {"name": "Fox",                   "ko": "여우",            "biome": "Forest",         "rarity": "Epic",      "income": 180},
+    {"name": "Bear",                  "ko": "곰",              "biome": "Forest",         "rarity": "Epic",      "income": 240},
+    {"name": "Brr Brr Patapim",       "ko": "브르브르 파타핌", "biome": "Forest",         "rarity": "Legendary", "income": 1800},
+
+    {"name": "Frog",                  "ko": "개구리",          "biome": "Lake",           "rarity": "Common",    "income": 3},
+    {"name": "Catfish",               "ko": "메기",            "biome": "Lake",           "rarity": "Uncommon",  "income": 12},
+    {"name": "Turtle",                "ko": "거북이",          "biome": "Lake",           "rarity": "Rare",      "income": 60},
+
+    {"name": "Jerboa",                "ko": "저보아",          "biome": "Desert",         "rarity": "Common",    "income": 6, "note": "커먼 최고 수입"},
+    {"name": "Sand Spider",           "ko": "모래거미",        "biome": "Desert",         "rarity": "Mythic",    "income": 16000, "note": "미식 최저 수입"},
+
+    {"name": "Orangutini Ananassini", "ko": "오랑구티니",      "biome": "Jungle",         "rarity": "Legendary", "income": 5500},
+    {"name": "Spider",                "ko": "거미",            "biome": "Jungle",         "rarity": "Mythic",    "income": 22000, "note": "중반 가성비 추천"},
+    {"name": "King Snake",            "ko": "킹 스네이크",     "biome": "Jungle",         "rarity": "Secret",    "income": null},
+
+    {"name": "Mammoth",               "ko": "매머드",          "biome": "Snow",           "rarity": "Legendary", "income": 42000},
+    {"name": "King Mammoth",          "ko": "킹 매머드",       "biome": "Snow",           "rarity": "Mythic",    "income": 400000},
+    {"name": "Yeti",                  "ko": "예티",            "biome": "Snow",           "rarity": "Secret",    "income": null},
+    {"name": "Ice Dragon",            "ko": "아이스 드래곤",   "biome": "Snow",           "rarity": "Eternal",   "income": 65000000, "note": "이터널 최저"},
+
+    {"name": "Flaming Bull",          "ko": "플레이밍 불",     "biome": "Volcano",        "rarity": "Legendary", "income": 9500},
+    {"name": "Lava Iguana",           "ko": "라바 이구아나",   "biome": "Volcano",        "rarity": "Legendary", "income": 11000},
+    {"name": "Chillin Chilli",        "ko": "칠린 칠리",       "biome": "Volcano",        "rarity": "Mythic",    "income": null},
+    {"name": "Cerberus",              "ko": "케르베로스",      "biome": "Volcano",        "rarity": "Secret",    "income": 8000000},
+    {"name": "Phoenix",               "ko": "피닉스",          "biome": "Volcano",        "rarity": "Eternal",   "income": 85000000},
+    {"name": "Lava Dragon",           "ko": "라바 드래곤",     "biome": "Volcano",        "rarity": "Eternal",   "income": 100000000},
+
+    {"name": "Beluga Whale",          "ko": "벨루가",          "biome": "Abyss Ocean",    "rarity": "Mythic",    "income": 850000},
+    {"name": "Kraken",                "ko": "크라켄",          "biome": "Abyss Ocean",    "rarity": "Secret",    "income": 15000000},
+    {"name": "El Maja",               "ko": "엘 마하",         "biome": "Abyss Ocean",    "rarity": "Eternal",   "income": 130000000},
+
+    {"name": "Ankylosaurus",          "ko": "안킬로사우루스",  "biome": "Prehistoric",    "rarity": "Mythic",    "income": 120000, "note": "미식 최고 수입"},
+    {"name": "Bronto",                "ko": "브론토",          "biome": "Prehistoric",    "rarity": "Mythic",    "income": 1500000},
+    {"name": "T-Rex",                 "ko": "티렉스",          "biome": "Prehistoric",    "rarity": "Secret",    "income": 25000000},
+    {"name": "Tralaledon",            "ko": "트랄라레돈",      "biome": "Prehistoric",    "rarity": "Secret",    "income": 32000000},
+    {"name": "Mosasaurus",            "ko": "모사사우루스",    "biome": "Prehistoric",    "rarity": "Eternal",   "income": 180000000},
+
+    {"name": "Cosmic Skeleton Boss",  "ko": "코스믹 스켈레톤", "biome": "Cosmic",         "rarity": "Secret",    "income": 45000000},
+    {"name": "Cosmic Dragon",         "ko": "코스믹 드래곤",   "biome": "Cosmic",         "rarity": "Secret",    "income": 60000000},
+    {"name": "Eternal Lunar Dragon",  "ko": "이터널 루나 드래곤","biome": "Cosmic",       "rarity": "Eternal",   "income": 250000000},
+    {"name": "Unicorn",               "ko": "유니콘",          "biome": "Cosmic",         "rarity": "Divine",    "income": 1000000000},
+
+    {"name": "Oni Tiger",             "ko": "오니 타이거",     "biome": "Cherry Blossom", "rarity": "Eternal",   "income": 600000000},
+    {"name": "Kitsune",               "ko": "키츠네",          "biome": "Cherry Blossom", "rarity": "Divine",    "income": 1800000000},
+
+    {"name": "Gorilla King",          "ko": "고릴라 킹",       "biome": "Titan Temple",   "rarity": "Eternal",   "income": 880000000, "note": "이터널 최고"},
+    {"name": "Nightflame",            "ko": "나이트플레임",    "biome": "Titan Temple",   "rarity": "Divine",    "income": null},
+
+    {"name": "Aetheron",              "ko": "에테론",          "biome": "Monster Egg",    "rarity": "Divine",    "income": 6900000000, "note": "현재 게임 내 최고 수입 (Robux 전용 몬스터 알 계열)"}
+  ],
+
+  "mechanics": {
+    "steal_phases": ["접근(Approach)", "탈취(Grab)", "탈출(Escape)", "보관(Deposit)"],
+    "guardian": "둥지마다 감지 반경을 가진 가디언이 순찰. 치킨은 반경이 좁고 드래곤급은 넓음. 순찰 궤도가 가장 멀어질 때 접근하면 안전한 탈취 창이 열림.",
+    "caught_penalty": "잡히면 래그돌로 바이옴 밖으로 날아가고 런 전체를 잃음. 들고 있던 알은 바닥에 떨어져 근처 아무 플레이어나 주울 수 있음.",
+    "carry_penalty": "알을 많이/크게 들수록 이동 속도가 감소. 스피드 요구치는 알을 집은 뒤 추격이 시작될 때부터 의미가 생김.",
+    "safety_margin_recommended": 2.0,
+    "safety_margin_note": "표기된 최소 스피드는 '깔끔한 런에서 간신히 도망칠 수 있는' 값. 권장 진입선은 최소치의 2배.",
+    "treadmill": "첫 베이스 업그레이드($1,000) 구매 시 자동 해금. 위에 서 있으면 시간당 스피드가 쌓임. 레벨을 올릴수록 1회 획득 스피드 증가.",
+    "trails": "스피드 상점의 트레일 배율이 러닝머신과 별개로 스피드 증가량을 곱함. 예산이 되는 한 최고 트레일 유지 권장.",
+    "pen": "동시에 장착 가능한 펫 수의 상한 = 수입의 직접적 캡. +1 EQUIP 업그레이드가 후반엔 $75M 수준까지 올라감.",
+    "fuse_machine": {
+      "inputs": 3,
+      "rule": "완전히 같은 펫 3마리만 투입 가능 (서로 다른 펫 혼합 불가)",
+      "cost": "펫 등급에 비례해 현금 수수료가 붙음",
+      "mutation_loss": "투입한 펫의 뮤테이션은 결과물로 전달되지 않음 — 뮤테이션 붙은 펫 투입은 손해",
+      "mutation_chance": "결과물에 새 뮤테이션이 붙을 확률이 있음",
+      "advice": "그 3마리가 현재 내 최고 수입원이라면 퓨즈하지 말고 그대로 두는 게 총 수입이 더 높음. 퓨즈 전후 총 $/s를 반드시 비교할 것."
+    },
+    "codes": "2026년 9월 기준 코드 리딤 시스템 자체가 게임에 없음. '코드 배포' 주장은 대부분 사기이므로 주의."
+  }
+}

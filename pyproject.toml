@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "eggmate"
+version = "1.0.0"
+description = "Steal An Egg(계란을 훔치세요) 계산기 & 도우미 - 수입/확률/진행도 계산 데스크톱 앱"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+dependencies = ["PySide6-Essentials>=6.7,<7"]
+
+[project.scripts]
+eggmate = "eggmate.ui.app:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+eggmate = ["data/*.json", "data/*.ico"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+addopts = "-q"
