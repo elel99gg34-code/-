@@ -17,6 +17,10 @@ import tempfile
 import time
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "src"))
+
+from eggmate.core.diagnostics import configure_stdio  # noqa: E402
+
 SELFTEST_TIMEOUT = 90
 GRACE_SECONDS = 12
 
@@ -111,6 +115,8 @@ def check_launch(exe: Path) -> bool:
 
 
 def main() -> int:
+    configure_stdio()  # 이 스크립트도 한글을 출력한다
+
     if len(sys.argv) < 2:
         print("사용법: verify_build.py <실행파일 경로>")
         return 2

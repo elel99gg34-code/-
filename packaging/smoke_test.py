@@ -21,8 +21,9 @@ os.environ["XDG_DATA_HOME"] = _TEMP
 
 from PySide6.QtWidgets import QApplication  # noqa: E402
 
+from eggmate.core.diagnostics import configure_stdio  # noqa: E402
 from eggmate.ui import theme  # noqa: E402
-from eggmate.ui.app import MainWindow  # noqa: E402
+from eggmate.ui.app import MainWindow, main as app_main  # noqa: E402
 
 EXPECTED_TABS = [
     "펫 도감", "수입 계산기", "확률 계산기", "부화 기록", "진행 플래너", "퓨즈 판단", "정보",
@@ -30,6 +31,8 @@ EXPECTED_TABS = [
 
 
 def main() -> int:
+    configure_stdio()  # 이 스크립트도 한글을 출력한다
+
     app = QApplication([])
     app.setStyleSheet(theme.STYLESHEET)
 
@@ -89,6 +92,16 @@ def main() -> int:
     window.reload_dataset()
     app.processEvents()
     window.close()
+
+    # --selftest 는 창을 만들기 전에 끝나야 한다 (디스플레이 없는 환경 대비).
+    saved_argv = sys.argv
+    try:
+        sys.argv = ["EggMate", "--selftest"]
+        if app_main() != 0:
+            print("FAIL: --selftest 경로가 0 이 아닌 값을 돌려줬습니다.")
+            return 1
+    finally:
+        sys.argv = saved_argv
 
     print(f"OK: 탭 {len(tabs)}개가 모두 정상 동작합니다 — {', '.join(tabs)}")
     return 0
