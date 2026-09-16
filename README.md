@@ -96,10 +96,10 @@ r >= 125 :  수입 = 기본수입 × 125^(13/60) × r^(2/5)     × 뮤테이션�
 
 ### 설치 프로그램 (권장)
 [Releases](../../releases) 에서 `EggMate-x.y.z-Setup.exe` 를 받아 실행하세요.
-관리자 권한 없이 설치됩니다.
+관리자 권한 없이 설치됩니다. 설치 파일은 약 28MB 입니다.
 
-빌드가 아직 없다면 Actions 탭 → 최신 `Build Windows installer` 실행 →
-Artifacts 에서 받을 수 있습니다.
+릴리스가 아직 없다면 [Actions](../../actions/workflows/build-windows.yml) 탭에서
+최신 성공 실행을 열고 Artifacts 의 `EggMate-x.y.z-Setup` 을 받으면 됩니다.
 
 ### 무설치(포터블)
 같은 위치의 `EggMate-x.y.z-portable` 아티팩트를 풀고 `EggMate.exe` 를 실행하세요.
@@ -174,14 +174,14 @@ src/eggmate/
     tabs/            탭 7개
   data/
     gamedata.json    출처가 붙은 게임 수치
-tests/             단위 테스트 120개
+tests/             단위 테스트 131개
 packaging/         아이콘 생성, PyInstaller 스펙, Inno Setup, CI 검증 스크립트
 ```
 
 계산 로직은 UI 와 완전히 분리돼 있어서 GUI 없이도 import 해 쓸 수 있습니다.
 
 ```bash
-python -m pytest tests/ -q      # 120 passed
+python -m pytest tests/ -q      # 131 passed
 ```
 
 <br>
