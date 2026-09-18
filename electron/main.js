@@ -483,7 +483,7 @@ async function runSelfTest() {
       check('app booted', !!(app && app.ready));
 
       const mod = await import('/js/data/instruments.js');
-      check('rack has 130 instruments', mod.INSTRUMENTS.length === 130, mod.INSTRUMENTS.length);
+      check('rack has 260 instruments', mod.INSTRUMENTS.length === 260, mod.INSTRUMENTS.length);
 
       check('audio context', !!app.engine.ctx, app.engine.ctx && app.engine.ctx.sampleRate);
       check('audio worklet loaded', app.engine.ctx.__riotWorklet === true, app.engine.ctx.__riotWorklet);
@@ -508,7 +508,7 @@ async function runSelfTest() {
           else triggerSynth(probe, probe.destination, inst, { time: 0.001, vel: 0.9, dur: 0.05, midi: inst.defaultNote || 60 });
         } catch (e) { bad.push(inst.id + ': ' + e.message); }
       }
-      check('all 130 instruments trigger', bad.length === 0, bad.slice(0, 5).join(' | '));
+      check('all 260 instruments trigger', bad.length === 0, bad.slice(0, 5).join(' | '));
 
       // Render each instrument alone and confirm it actually makes sound.
       const { renderInstrument } = await import('/js/audio/engine.js');
@@ -567,7 +567,7 @@ async function runSelfTest() {
 
       // Views render.
       for (const v of ['rack', 'mixer', 'song', 'vault', 'studio']) { app.setView(v); await wait(90); }
-      check('rack cards rendered', document.querySelectorAll('.icard').length === 130, document.querySelectorAll('.icard').length);
+      check('rack cards rendered', document.querySelectorAll('.icard').length === 260, document.querySelectorAll('.icard').length);
       check('mixer strips rendered', document.querySelectorAll('.strip').length === app.project.tracks.length + 1, document.querySelectorAll('.strip').length);
 
       // Piano roll.

@@ -2,7 +2,7 @@
   "name": "riot-machine",
   "productName": "RIOT MACHINE",
   "version": "1.0.0",
-  "description": "RIOT MACHINE \u2014 a punk electronic music studio. 130 hand-built synth instruments, step sequencer, piano roll, mixer, WAV/MP3 export and a local project vault.",
+  "description": "RIOT MACHINE \u2014 a punk electronic music studio. 260 hand-built synth instruments, step sequencer, piano roll, mixer, WAV/MP3 export and a local project vault.",
   "main": "electron/main.js",
   "author": {
     "name": "RIOT MACHINE",
