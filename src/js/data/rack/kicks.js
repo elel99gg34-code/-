@@ -163,5 +163,69 @@ export const KICKS = [
     ring: { partials: [1, 1.63, 2.41], base: 180, wave: 'sine', filter: 'bandpass', cut: 500, q: 0.8, decay: 0.2, level: 0.3 },
     click: { level: 0.5, decay: 0.003, hp: 2400 },
     shaper: { curve: 'destroy', drive: 0.55 }, gain: 0.86, defaultNote: 36
+  },
+
+  {
+    id: 'kick_minimal', name: 'Minimal', tags: ['dry', 'short'],
+    bodies: [{ wave: 'sine', f0: 118, f1: 52, pitchDecay: 0.016, curve: 2.4, decay: 0.19, level: 1 }],
+    click: { level: 0.35, decay: 0.003, hp: 1200 },
+    gain: 0.88, defaultNote: 36
+  },
+  {
+    id: 'kick_hardstyle', name: 'Hardstyle Kick', tags: ['hard', 'pitched'],
+    bodies: [
+      { wave: 'sine', f0: 210, f1: 48, pitchDecay: 0.018, curve: 3, decay: 0.12, level: 1 },
+      { wave: 'sine', f0: 72, f1: 40, pitchDecay: 0.18, decay: 0.7, level: 0.7, attack: 0.02 }
+    ],
+    click: { level: 0.6, decay: 0.004, hp: 2400 },
+    shaper: { curve: 'destroy', drive: 0.78 },
+    filter: { type: 'lowpass', cutoff: 4200, q: 0.9 }, gain: 0.92, defaultNote: 36
+  },
+  {
+    id: 'kick_break', name: 'Break Kick', tags: ['breakbeat', 'mid'],
+    bodies: [{ wave: 'triangle', f0: 142, f1: 62, pitchDecay: 0.022, curve: 2, decay: 0.2, level: 0.95 }],
+    noises: [{ color: 'pink', level: 0.28, bp: 1200, q: 1.2, decay: 0.03 }],
+    click: { level: 0.5, decay: 0.004, hp: 2000 },
+    shaper: { curve: 'tube', drive: 0.34 },
+    filter: { type: 'lowpass', cutoff: 6400, q: 0.9 }, gain: 0.88, defaultNote: 36
+  },
+  {
+    id: 'kick_puresub', name: 'Pure Sub', tags: ['sub', 'clean'],
+    bodies: [{ wave: 'sine', f0: 68, f1: 38, pitchDecay: 0.07, curve: 1.3, decay: 0.9, level: 1 }],
+    gain: 0.95, defaultNote: 36
+  },
+  {
+    id: 'kick_noisekick', name: 'Noise Kick', tags: ['industrial', 'harsh'],
+    bodies: [{ wave: 'sine', f0: 140, f1: 45, pitchDecay: 0.025, curve: 2.2, decay: 0.22, level: 0.8 }],
+    noises: [
+      { color: 'brown', level: 0.6, lp: 700, decay: 0.16 },
+      { color: 'white', level: 0.3, hp: 2400, decay: 0.03 }
+    ],
+    shaper: { curve: 'rect', drive: 0.6 }, gain: 0.88, defaultNote: 36
+  },
+  {
+    id: 'kick_wood', name: 'Wood Kick', tags: ['acoustic', 'dry'],
+    bodies: [
+      { wave: 'sine', f0: 108, f1: 60, pitchDecay: 0.03, decay: 0.2, level: 0.9 },
+      { wave: 'triangle', f0: 310, f1: 190, pitchDecay: 0.012, decay: 0.04, level: 0.28 }
+    ],
+    noises: [{ color: 'pink', level: 0.22, bp: 900, q: 2.2, decay: 0.02 }],
+    click: { level: 0.45, decay: 0.003, hp: 1800, tone: 'tick' },
+    gain: 0.86, defaultNote: 36
+  },
+  {
+    id: 'kick_reso', name: 'Resonant Kick', tags: ['tonal', 'ring'],
+    bodies: [{ wave: 'sine', f0: 150, f1: 52, pitchDecay: 0.026, curve: 2.2, decay: 0.3, level: 0.95 }],
+    ring: { partials: [1, 2.02, 3.08], base: 110, wave: 'sine', filter: 'bandpass', cut: 300, q: 1.1, decay: 0.5, level: 0.26 },
+    click: { level: 0.4, decay: 0.004, hp: 1600 },
+    shaper: { curve: 'tube', drive: 0.3 }, gain: 0.9, defaultNote: 36
+  },
+  {
+    id: 'kick_stomp', name: 'Stomp', tags: ['huge', 'room'],
+    bodies: [{ wave: 'triangle', f0: 164, f1: 42, pitchDecay: 0.05, curve: 2, decay: 0.55, level: 1 }],
+    noises: [{ color: 'brown', level: 0.35, lp: 500, decay: 0.2 }],
+    click: { level: 0.4, decay: 0.006, hp: 900 },
+    shaper: { curve: 'tube', drive: 0.44 },
+    gain: 0.94, sends: { reverb: 0.16 }, defaultNote: 36
   }
 ];

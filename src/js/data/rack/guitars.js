@@ -201,5 +201,81 @@ export const GUITARS = [
     filter: { type: 'lowpass', cutoff: 1400, q: 2.8, env: 1.4, keytrack: 0.4 },
     ampEnv: env(0.003, 0.5, 0.55, 0.2), filtEnv: env(0.002, 0.26, 0.2, 0.14),
     shaper: { curve: 'tube', drive: 0.55 }, gain: 0.46, defaultNote: 40
+  },
+
+  {
+    id: 'gtr_crunch', name: 'Crunch Rhythm', tags: ['rhythm', 'crunch'],
+    oscs: [{ wave: 'sawtooth', level: 0.85, unison: 2, spread: 7 }, { wave: 'square', level: 0.4, semi: 7 }],
+    noise: { color: 'white', level: 0.14, bp: 3000, q: 1.8, decay: 0.014 },
+    filter: { type: 'lowpass', cutoff: 2200, q: 2.6, env: 1.6, keytrack: 0.4 },
+    ampEnv: env(0.002, 0.28, 0.4, 0.12), filtEnv: env(0.002, 0.16, 0.16, 0.1),
+    shaper: { curve: 'tube', drive: 0.6, oversample: '4x' }, gain: 0.48, defaultNote: 45
+  },
+  {
+    id: 'gtr_sludge', name: 'Sludge', tags: ['doom', 'slow'],
+    oscs: [{ wave: 'grind', level: 0.85, unison: 2, spread: 9 }, { wave: 'sawtooth', level: 0.4, semi: 7, cent: -8 }],
+    sub: { wave: 'sine', oct: -1, level: 0.3 },
+    filter: { type: 'lowpass', cutoff: 1100, q: 2.4, env: 1.2, keytrack: 0.35 },
+    ampEnv: env(0.02, 1.2, 0.7, 0.5), filtEnv: env(0.05, 0.7, 0.3, 0.3),
+    shaper: { curve: 'fuzz', drive: 0.8, oversample: '4x' },
+    gain: 0.4, sends: { reverb: 0.22 }, defaultNote: 36
+  },
+  {
+    id: 'gtr_chime', name: 'Chime Guitar', tags: ['clean', 'jangle'],
+    oscs: [
+      { wave: 'glass', level: 0.7, unison: 2, spread: 8, width: 0.6 },
+      { wave: 'hollow', level: 0.45, cent: 5 }
+    ],
+    noise: { color: 'white', level: 0.2, bp: 5000, q: 2.4, decay: 0.01 },
+    filter: { type: 'highpass', cutoff: 420, q: 1, env: 0.8, keytrack: 0.7 },
+    ampEnv: env(0.002, 1.2, 0.1, 0.34), filtEnv: env(0.001, 0.4, 0.1, 0.2),
+    gain: 0.44, sends: { reverb: 0.3, delay: 0.16 }, defaultNote: 64
+  },
+  {
+    id: 'gtr_muff', name: 'Big Muff', tags: ['fuzz', 'sustain'],
+    oscs: [{ wave: 'square', level: 0.85 }, { wave: 'razor', level: 0.45, cent: 7 }],
+    filter: { type: 'lowpass', cutoff: 1800, q: 2.2, env: 1, keytrack: 0.4 },
+    ampEnv: env(0.006, 1.4, 0.7, 0.4), filtEnv: env(0.01, 0.6, 0.3, 0.24),
+    shaper: { curve: 'fuzz', drive: 0.9, oversample: '4x' },
+    gain: 0.36, sends: { reverb: 0.2 }, defaultNote: 52
+  },
+  {
+    id: 'gtr_country', name: 'Country Pick', tags: ['clean', 'twang'],
+    oscs: [{ wave: 'reed', level: 0.8 }, { wave: 'wire', level: 0.4, cent: 6 }],
+    noise: { color: 'white', level: 0.3, bp: 4400, q: 2.6, decay: 0.01 },
+    filter: { type: 'bandpass', cutoff: 2400, q: 1.6, env: 2.2, keytrack: 0.7, velToEnv: 0.85 },
+    ampEnv: env(0.001, 0.7, 0.06, 0.2), filtEnv: env(0.001, 0.24, 0.06, 0.12),
+    gain: 0.7, sends: { reverb: 0.26 }, defaultNote: 57
+  },
+  {
+    id: 'gtr_shred', name: 'Shred Lead', tags: ['lead', 'metal'],
+    oscs: [{ wave: 'razor', level: 0.9, unison: 2, spread: 5 }, { wave: 'sawtooth', level: 0.35, oct: 1 }],
+    filter: { type: 'lowpass', cutoff: 3200, q: 3, env: 1.6, keytrack: 0.5 },
+    ampEnv: env(0.004, 0.5, 0.8, 0.22), filtEnv: env(0.004, 0.3, 0.3, 0.16),
+    lfo: { wave: 'sine', rate: 5.8, depth: 0.14, target: 'pitch', delay: 0.3, fade: 0.3 },
+    shaper: { curve: 'tube', drive: 0.68, oversample: '4x' },
+    gain: 0.42, sends: { reverb: 0.22, delay: 0.16 }, defaultNote: 64
+  },
+  {
+    id: 'gtr_dirtyclean', name: 'Dirty Clean', tags: ['edge', 'breakup'],
+    oscs: [{ wave: 'hollow', level: 0.8 }, { wave: 'sawtooth', level: 0.35, cent: 6 }],
+    noise: { color: 'white', level: 0.18, bp: 3600, q: 2, decay: 0.012 },
+    filter: { type: 'lowpass', cutoff: 2800, q: 1.8, env: 1.8, keytrack: 0.6, velToEnv: 0.85 },
+    ampEnv: env(0.002, 0.9, 0.2, 0.26), filtEnv: env(0.001, 0.32, 0.12, 0.18),
+    shaper: { curve: 'tube', drive: 0.4 },
+    gain: 0.48, sends: { reverb: 0.2 }, defaultNote: 55
+  },
+  {
+    id: 'gtr_dronewall', name: 'Drone Wall', tags: ['drone', 'noise'],
+    oscs: [
+      { wave: 'buzz', level: 0.6, unison: 3, spread: 12, width: 0.9 },
+      { wave: 'razor', level: 0.4, semi: 7, unison: 2, spread: 18 }
+    ],
+    noise: { color: 'pink', level: 0.2, bp: 2200, q: 0.8 },
+    filter: { type: 'lowpass', cutoff: 2000, q: 2.4, env: 1, keytrack: 0.4 },
+    ampEnv: env(0.6, 1.4, 0.9, 1.2), filtEnv: env(1, 1.4, 0.5, 0.8),
+    lfo: { wave: 'sine', rate: 0.16, depth: 0.4, target: 'filter', fade: 1.5 },
+    shaper: { curve: 'fuzz', drive: 0.6 },
+    gain: 0.3, sends: { reverb: 0.45 }, defaultNote: 45
   }
 ];

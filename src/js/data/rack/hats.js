@@ -118,5 +118,41 @@ export const HATS = [
     ring: { partials: HAT_PARTIALS, base: 320, wave: 'square', filter: 'highpass', cut: 7200, q: 0.9, decay: 0.17, level: 0.44, hold: 0.025 },
     noises: [{ color: 'white', level: 0.22, hp: 7800, decay: 0.14 }],
     gain: 0.46, defaultNote: 44
+  },
+
+  {
+    id: 'hat_foot', name: 'Foot Hat', tags: ['pedal', 'soft'],
+    ring: { partials: HAT_PARTIALS, base: 270, wave: 'square', filter: 'bandpass', cut: 4600, q: 1.6, decay: 0.028, level: 0.42 },
+    gain: 0.44, velCurve: 1.3, defaultNote: 44
+  },
+  {
+    id: 'hat_crisp', name: 'Crisp Hat', tags: ['clean', 'modern'],
+    noises: [{ color: 'white', level: 0.6, hp: 9500, decay: 0.03 }],
+    ring: { partials: HAT_PARTIALS, base: 400, wave: 'square', filter: 'highpass', cut: 9000, q: 0.8, decay: 0.035, level: 0.3 },
+    gain: 0.46, defaultNote: 42
+  },
+  {
+    id: 'hat_trap', name: 'Trap Hat', tags: ['trap', 'tight'],
+    ring: { partials: HAT_PARTIALS, base: 350, wave: 'square', filter: 'highpass', cut: 8600, q: 1, decay: 0.022, level: 0.5 },
+    noises: [{ color: 'violet', level: 0.24, hp: 10000, decay: 0.014 }],
+    gain: 0.48, defaultNote: 42
+  },
+  {
+    id: 'hat_vinyl', name: 'Vinyl Hat', tags: ['lofi', 'dusty'],
+    noises: [{ color: 'vinyl', level: 0.7, hp: 5200, decay: 0.05 }],
+    ring: { partials: HAT_PARTIALS, base: 290, wave: 'triangle', filter: 'bandpass', cut: 5000, q: 1.2, decay: 0.045, level: 0.3 },
+    shaper: { curve: 'crush', drive: 0.4 }, gain: 0.46, defaultNote: 42
+  },
+  {
+    id: 'hat_bright', name: 'Bright Hat', tags: ['sharp', 'cutting'],
+    ring: { partials: [1, 1.42, 1.98, 2.61, 3.4, 4.6], base: 520, wave: 'square', filter: 'highpass', cut: 9800, q: 0.9, decay: 0.05, level: 0.44 },
+    noises: [{ color: 'violet', level: 0.3, hp: 11000, decay: 0.03 }],
+    gain: 0.42, defaultNote: 42
+  },
+  {
+    id: 'hat_longopen', name: 'Long Open', tags: ['long', 'wash'],
+    ring: { partials: HAT_PARTIALS, base: 310, wave: 'square', filter: 'highpass', cut: 6400, q: 0.8, decay: 0.85, level: 0.4, hold: 0.12 },
+    noises: [{ color: 'white', level: 0.26, hp: 6800, decay: 0.7, hold: 0.08, holdLevel: 0.8 }],
+    gain: 0.44, sends: { reverb: 0.14 }, defaultNote: 46
   }
 ];

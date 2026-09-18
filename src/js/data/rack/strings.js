@@ -102,5 +102,39 @@ export const STRINGS = [
     lfo: { wave: 'triangle', rate: 3.2, depth: 0.6, target: 'filter', fade: 0.2 },
     shaper: { curve: 'rect', drive: 0.42 },
     gain: 0.34, sends: { reverb: 0.36 }, defaultNote: 55
+  },
+
+  {
+    id: 'str_viola', name: 'Viola', tags: ['mid', 'bowed'],
+    oscs: [{ wave: 'sawtooth', level: 0.85, unison: 2, spread: 6 }, { wave: 'hollow', level: 0.32, cent: -5 }],
+    noise: { color: 'pink', level: 0.12, bp: 3600, q: 1.7 },
+    filter: { type: 'lowpass', cutoff: 2100, q: 1.8, env: 1.5, keytrack: 0.65 },
+    ampEnv: env(0.08, 0.45, 0.9, 0.3), filtEnv: env(0.15, 0.55, 0.5, 0.26),
+    lfo: { wave: 'sine', rate: 5.7, depth: 0.1, target: 'pitch', delay: 0.35, fade: 0.55 },
+    gain: 0.46, sends: { reverb: 0.35 }, defaultNote: 55
+  },
+  {
+    id: 'str_stab', name: 'String Stab', tags: ['short', 'cinematic'],
+    oscs: [{ wave: 'sawtooth', level: 0.8, unison: 5, spread: 16, width: 0.9 }],
+    noise: { color: 'white', level: 0.2, bp: 3800, q: 2, decay: 0.012 },
+    filter: { type: 'lowpass', cutoff: 2400, q: 2.4, env: 2.2, keytrack: 0.6, velToEnv: 0.85 },
+    ampEnv: env(0.006, 0.26, 0.0, 0.12), filtEnv: env(0.006, 0.18, 0.06, 0.1),
+    gain: 0.36, sends: { reverb: 0.4 }, defaultNote: 60
+  },
+  {
+    id: 'str_col_legno', name: 'Col Legno', tags: ['percussive', 'wood'],
+    oscs: [{ wave: 'hollow', level: 0.5 }, { wave: 'wire', level: 0.35, oct: 1 }],
+    noise: { color: 'white', level: 0.6, bp: 2600, q: 2.6, decay: 0.016 },
+    filter: { type: 'bandpass', cutoff: 1900, q: 1.1, env: 2, keytrack: 0.6 },
+    ampEnv: env(0.001, 0.14, 0.0, 0.06), filtEnv: env(0.001, 0.09, 0.05, 0.05),
+    gain: 1.7, sends: { reverb: 0.28 }, defaultNote: 60
+  },
+  {
+    id: 'str_gliss', name: 'Gliss Strings', tags: ['slide', 'tense'],
+    oscs: [{ wave: 'sawtooth', level: 0.8, unison: 4, spread: 18, width: 0.9 }],
+    filter: { type: 'lowpass', cutoff: 2000, q: 2, env: 1.8, keytrack: 0.55 },
+    ampEnv: env(0.1, 0.5, 0.9, 0.35), filtEnv: env(0.2, 0.6, 0.5, 0.3),
+    lfo: { wave: 'sine', rate: 6.2, depth: 0.14, target: 'pitch', delay: 0.2, fade: 0.4 },
+    glide: 0.16, poly: 1, gain: 0.4, sends: { reverb: 0.42 }, defaultNote: 64
   }
 ];

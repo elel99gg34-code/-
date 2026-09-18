@@ -36,10 +36,10 @@ export const VOICES = [
   {
     id: 'vox_robot', name: 'Robot Voice', tags: ['digital', 'formant'],
     oscs: [{ wave: 'pulse25', level: 0.9 }, { wave: 'vox', level: 0.5, cent: 6 }],
-    filter: { type: 'bandpass', cutoff: 900, q: 8, env: 1.6, keytrack: 0.4, poles: 4 },
+    filter: { type: 'bandpass', cutoff: 900, q: 3.5, env: 1.6, keytrack: 0.4 },
     ampEnv: env(0.006, 0.2, 0.85, 0.08), filtEnv: env(0.01, 0.2, 0.4, 0.08),
     lfo: { wave: 'square', rate: 9, depth: 0.5, target: 'filter', fade: 0.05 },
-    gain: 0.46, defaultNote: 55,
+    gain: 1.1, defaultNote: 55,
     fx: [{ type: 'crush', bits: 7, reduction: 4, mix: 0.6 }]
   },
   {
@@ -124,5 +124,60 @@ export const VOICES = [
     lfo: { wave: 'sine', rate: 6.5, depth: 0.5, target: 'pitch', delay: 0.1, fade: 0.2 },
     gain: 0.4, sends: { reverb: 0.36, delay: 0.24 }, defaultNote: 67,
     fx: [{ type: 'ring', freq: 143, mix: 0.35 }]
+  },
+
+  {
+    id: 'vox_eeh', name: 'Eeh', tags: ['bright', 'formant'],
+    oscs: [{ wave: 'vox', level: 0.9, unison: 2, spread: 9 }],
+    /* "ee" is a low first formant with a very high second one. */
+    filter: { type: 'bandpass', cutoff: 2300, q: 2.4, env: 1.2, keytrack: 0.6 },
+    ampEnv: env(0.06, 0.4, 0.88, 0.26), filtEnv: env(0.1, 0.4, 0.5, 0.22),
+    lfo: { wave: 'sine', rate: 5.2, depth: 0.09, target: 'pitch', delay: 0.3, fade: 0.35 },
+    gain: 0.72, sends: { reverb: 0.3 }, defaultNote: 67
+  },
+  {
+    id: 'vox_hum', name: 'Hum', tags: ['closed', 'soft'],
+    oscs: [{ wave: 'vox', level: 0.7 }, { wave: 'sine', level: 0.4 }],
+    filter: { type: 'lowpass', cutoff: 600, q: 2.6, env: 1, keytrack: 0.6 },
+    ampEnv: env(0.12, 0.5, 0.9, 0.36), filtEnv: env(0.2, 0.5, 0.55, 0.3),
+    lfo: { wave: 'sine', rate: 4.6, depth: 0.06, target: 'pitch', delay: 0.4, fade: 0.5 },
+    gain: 0.56, sends: { reverb: 0.36 }, defaultNote: 55
+  },
+  {
+    id: 'vox_falsetto', name: 'Falsetto', tags: ['high', 'thin'],
+    oscs: [{ wave: 'vox', level: 0.8, unison: 2, spread: 7 }, { wave: 'sine', level: 0.3, oct: 1 }],
+    noise: { color: 'white', level: 0.12, bp: 4200, q: 1.6, keytrack: true },
+    filter: { type: 'bandpass', cutoff: 1500, q: 2.2, env: 1.4, keytrack: 0.7 },
+    ampEnv: env(0.05, 0.4, 0.88, 0.28), filtEnv: env(0.09, 0.4, 0.5, 0.22),
+    lfo: { wave: 'sine', rate: 5.8, depth: 0.12, target: 'pitch', delay: 0.25, fade: 0.3 },
+    gain: 0.66, sends: { reverb: 0.4 }, defaultNote: 76
+  },
+  {
+    id: 'vox_growl', name: 'Vocal Growl', tags: ['harsh', 'low'],
+    oscs: [{ wave: 'vox', level: 0.7, unison: 2, spread: 16 }, { wave: 'grind', level: 0.4, oct: -1 }],
+    fm: { ratio: 1.007, index: 1.2, decay: 0.5, sustain: 0.7 },
+    filter: { type: 'bandpass', cutoff: 700, q: 2.6, env: 1.8, keytrack: 0.5 },
+    ampEnv: env(0.02, 0.35, 0.85, 0.2), filtEnv: env(0.05, 0.4, 0.4, 0.18),
+    shaper: { curve: 'fuzz', drive: 0.55 },
+    gain: 0.54, sends: { reverb: 0.28 }, defaultNote: 43
+  },
+  {
+    id: 'vox_childchoir', name: 'Child Choir', tags: ['choir', 'high'],
+    oscs: [
+      { wave: 'vox', level: 0.7, unison: 4, spread: 16, width: 0.85 },
+      { wave: 'sine', level: 0.25, oct: 1, cent: 5 }
+    ],
+    filter: { type: 'bandpass', cutoff: 1400, q: 1.8, env: 1.2, keytrack: 0.65 },
+    ampEnv: env(0.35, 0.9, 0.9, 0.9), filtEnv: env(0.55, 0.9, 0.55, 0.7),
+    lfo: { wave: 'sine', rate: 4.8, depth: 0.06, target: 'pitch', delay: 0.5, fade: 0.7 },
+    gain: 0.5, sends: { reverb: 0.52 }, defaultNote: 72
+  },
+  {
+    id: 'vox_breathhit', name: 'Breath Hit', tags: ['percussive', 'noise'],
+    oscs: [{ wave: 'vox', level: 0.3 }],
+    noise: { color: 'white', level: 0.85, bp: 2200, q: 1, keytrack: true },
+    filter: { type: 'bandpass', cutoff: 1800, q: 1.4, env: 2, keytrack: 0.5 },
+    ampEnv: env(0.006, 0.18, 0.0, 0.08), filtEnv: env(0.008, 0.12, 0.05, 0.06),
+    gain: 0.7, sends: { reverb: 0.26 }, defaultNote: 60
   }
 ];

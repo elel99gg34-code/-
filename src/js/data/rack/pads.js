@@ -177,5 +177,62 @@ export const PADS = [
     ampEnv: env(1.6, 2, 0.92, 2.2), filtEnv: env(2.4, 2, 0.5, 1.6),
     lfo: { wave: 'sine', rate: 0.08, depth: 0.5, target: 'filter', fade: 3 },
     gain: 0.34, sends: { reverb: 0.5 }, defaultNote: 43
+  },
+
+  {
+    id: 'pad_crystal', name: 'Crystal', tags: ['bright', 'fm'],
+    oscs: [{ wave: 'glass', level: 0.7, unison: 3, spread: 14, width: 0.85 }],
+    fm: { ratio: 3.02, index: 0.8, decay: 2.4, sustain: 0.3 },
+    filter: { type: 'highpass', cutoff: 600, q: 1.1, env: 0.9, keytrack: 0.6 },
+    ampEnv: env(0.7, 1.6, 0.85, 1.6), filtEnv: env(1.2, 1.4, 0.5, 1),
+    gain: 0.32, sends: { reverb: 0.55, delay: 0.24 }, defaultNote: 72
+  },
+  {
+    id: 'pad_reversewash', name: 'Reverse Wash', tags: ['swell', 'fx'],
+    oscs: [{ wave: 'razor', level: 0.6, unison: 4, spread: 24, width: 0.95 }],
+    noise: { color: 'white', level: 0.2, bp: 3000, q: 0.8 },
+    filter: { type: 'bandpass', cutoff: 900, q: 1.8, env: 3, keytrack: 0.4 },
+    ampEnv: env(2.4, 0.5, 0.9, 0.3), filtEnv: env(3, 0.5, 0.9, 0.25),
+    gain: 0.34, sends: { reverb: 0.55 }, defaultNote: 60
+  },
+  {
+    id: 'pad_lowdrone', name: 'Low Drone', tags: ['sub', 'dark'],
+    oscs: [{ wave: 'buzz', level: 0.5 }, { wave: 'sine', level: 0.55, oct: -1 }],
+    sub: { wave: 'sine', oct: -1, level: 0.35, bypassFilter: true },
+    noise: { color: 'brown', level: 0.18, lp: 400 },
+    filter: { type: 'lowpass', cutoff: 380, q: 3, env: 0.9, keytrack: 0.35 },
+    ampEnv: env(1.8, 2.2, 0.95, 2.4), filtEnv: env(2.6, 2.2, 0.55, 1.8),
+    lfo: { wave: 'sine', rate: 0.06, depth: 0.45, target: 'filter', fade: 3 },
+    shaper: { curve: 'tube', drive: 0.3 },
+    gain: 0.44, sends: { reverb: 0.4 }, defaultNote: 31
+  },
+  {
+    id: 'pad_breath', name: 'Breath Pad', tags: ['soft', 'airy'],
+    oscs: [{ wave: 'vox', level: 0.55, unison: 3, spread: 18, width: 0.9 }, { wave: 'sine', level: 0.25 }],
+    noise: { color: 'white', level: 0.3, bp: 3000, q: 1, keytrack: true },
+    filter: { type: 'lowpass', cutoff: 2200, q: 1.2, env: 1.2, keytrack: 0.6 },
+    ampEnv: env(1, 1.4, 0.9, 1.4), filtEnv: env(1.6, 1.4, 0.55, 1),
+    lfo: { wave: 'sine', rate: 0.22, depth: 0.28, target: 'filter', fade: 2 },
+    gain: 0.36, sends: { reverb: 0.5 }, defaultNote: 64
+  },
+  {
+    id: 'pad_fm', name: 'FM Pad', tags: ['digital', 'evolving'],
+    oscs: [{ wave: 'sine', level: 0.9, unison: 2, spread: 8 }],
+    fm: { ratio: 1.414, index: 2.2, decay: 2.6, sustain: 0.45 },
+    filter: { type: 'lowpass', cutoff: 2600, q: 1.6, env: 1.4, keytrack: 0.55 },
+    ampEnv: env(0.9, 1.6, 0.88, 1.5), filtEnv: env(1.4, 1.6, 0.5, 1.1),
+    lfo: { wave: 'triangle', rate: 0.13, depth: 0.5, target: 'filter', fade: 2.2 },
+    gain: 0.4, sends: { reverb: 0.48, delay: 0.2 }, defaultNote: 60
+  },
+  {
+    id: 'pad_saturated', name: 'Saturated Pad', tags: ['thick', 'driven'],
+    oscs: [
+      { wave: 'sawtooth', level: 0.7, unison: 5, spread: 20, width: 0.9 },
+      { wave: 'razor', level: 0.35, oct: -1 }
+    ],
+    filter: { type: 'lowpass', cutoff: 1700, q: 2, env: 1.4, keytrack: 0.45 },
+    ampEnv: env(0.5, 1.2, 0.9, 1.1), filtEnv: env(0.9, 1.2, 0.5, 0.8),
+    shaper: { curve: 'tube', drive: 0.5 },
+    gain: 0.28, sends: { reverb: 0.42 }, defaultNote: 48
   }
 ];

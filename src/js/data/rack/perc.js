@@ -139,5 +139,42 @@ export const PERC = [
     noises: [{ color: 'metal', level: 0.7, hp: 3400, attack: 0.004, hold: 0.05, holdLevel: 0.7, decay: 0.22 }],
     ring: { partials: [1, 1.83, 2.41, 4.13, 6.7], base: 1400, wave: 'square', filter: 'highpass', cut: 5200, q: 0.9, decay: 0.26, level: 0.2 },
     gain: 0.46, sends: { reverb: 0.16 }, defaultNote: 66
+  },
+
+  {
+    id: 'perc_cabasa', name: 'Cabasa', tags: ['shaker', 'scrape'],
+    noises: [{ color: 'white', level: 0.6, bp: 6800, q: 1.1, attack: 0.004, hold: 0.02, holdLevel: 0.7, decay: 0.04 }],
+    gain: 0.44, defaultNote: 69
+  },
+  {
+    id: 'perc_djembe', name: 'Djembe', tags: ['hand', 'deep'],
+    bodies: [{ wave: 'sine', f0: 210, f1: 140, pitchDecay: 0.03, decay: 0.24, level: 0.9 }],
+    noises: [{ color: 'pink', level: 0.3, bp: 1400, q: 1.2, decay: 0.035 }],
+    shaper: { curve: 'tube', drive: 0.24 }, gain: 0.66, defaultNote: 50
+  },
+  {
+    id: 'perc_tabla', name: 'Tabla', tags: ['hand', 'tonal'],
+    bodies: [{ wave: 'sine', f0: 340, f1: 200, pitchDecay: 0.05, curve: 1.5, decay: 0.3, level: 0.85 }],
+    ring: { partials: [1, 2.0, 3.0], base: 400, wave: 'sine', filter: 'bandpass', cut: 900, q: 1.4, decay: 0.22, level: 0.22 },
+    noises: [{ color: 'white', level: 0.2, bp: 2600, q: 2.2, decay: 0.014 }],
+    gain: 0.62, defaultNote: 58
+  },
+  {
+    id: 'perc_castanet', name: 'Castanet', tags: ['wood', 'snap'],
+    ring: { partials: [1, 2.9, 5.2], base: 1600, wave: 'square', filter: 'bandpass', cut: 3800, q: 1.4, decay: 0.035, level: 0.55 },
+    click: { level: 0.5, decay: 0.002, hp: 4200 }, gain: 0.5, defaultNote: 71
+  },
+  {
+    id: 'perc_belltree', name: 'Bell Tree', tags: ['metal', 'cascade'],
+    ring: { partials: [1, 1.9, 3.2, 4.8, 7.1, 10.4, 14.2], base: 1800, wave: 'sine', filter: 'highpass', cut: 5200, q: 0.8, decay: 1.6, level: 0.24, attack: 0.05, hold: 0.2 },
+    noises: [{ color: 'violet', level: 0.2, hp: 9000, attack: 0.04, hold: 0.18, holdLevel: 0.7, decay: 0.9 }],
+    gain: 0.4, sends: { reverb: 0.34 }, defaultNote: 84
+  },
+  {
+    id: 'perc_spring', name: 'Spring Boing', tags: ['fx', 'ring'],
+    ring: { partials: [1, 1.34, 1.83, 2.51], base: 320, wave: 'sine', filter: 'bandpass', cut: 800, q: 2.2, decay: 0.7, level: 0.5 },
+    bodies: [{ wave: 'sine', f0: 700, f1: 180, pitchDecay: 0.18, curve: 1.4, decay: 0.4, level: 0.35 }],
+    click: { level: 0.3, decay: 0.003, hp: 1800 },
+    gain: 0.5, sends: { reverb: 0.22 }, defaultNote: 60
   }
 ];

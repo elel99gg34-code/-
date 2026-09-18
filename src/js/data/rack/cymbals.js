@@ -77,5 +77,30 @@ export const CYMBALS = [
     ring: { partials: [1, 1.18, 1.52, 2.03, 2.71, 3.44, 4.5, 5.9, 7.7], base: 128, wave: 'sine', filter: 'bandpass', cut: 1100, q: 0.3, decay: 4.2, level: 0.5, hold: 0.6 },
     noises: [{ color: 'metal', level: 0.3, bp: 1800, q: 0.4, decay: 3.4, hold: 0.5, holdLevel: 0.85 }],
     shaper: { curve: 'tube', drive: 0.22 }, gain: 0.52, sends: { reverb: 0.45 }, defaultNote: 47
+  },
+
+  {
+    id: 'cym_crash_bright', name: 'Bright Crash', tags: ['bright', 'cutting'],
+    ring: { partials: CYM_PARTIALS, base: 380, wave: 'square', filter: 'highpass', cut: 5200, q: 0.6, decay: 1.2, level: 0.34, hold: 0.08 },
+    noises: [{ color: 'violet', level: 0.3, hp: 8000, decay: 1, hold: 0.05, holdLevel: 0.8 }],
+    gain: 0.46, sends: { reverb: 0.2 }, defaultNote: 49
+  },
+  {
+    id: 'cym_roll', name: 'Cymbal Roll', tags: ['swell', 'build'],
+    noises: [{ color: 'white', level: 0.7, hp: 3600, attack: 1.1, hold: 0.1, holdLevel: 0.9, decay: 0.3 }],
+    ring: { partials: CYM_PARTIALS, base: 300, wave: 'square', filter: 'highpass', cut: 4200, q: 0.5, decay: 0.4, level: 0.28, attack: 1 },
+    gain: 0.48, sends: { reverb: 0.4 }, defaultNote: 49
+  },
+  {
+    id: 'cym_choke', name: 'Choke Crash', tags: ['short', 'stab'],
+    ring: { partials: CYM_PARTIALS, base: 310, wave: 'square', filter: 'highpass', cut: 3800, q: 0.6, decay: 0.16, level: 0.5 },
+    noises: [{ color: 'white', level: 0.35, hp: 4600, decay: 0.12 }],
+    shaper: { curve: 'hard', drive: 0.35 }, gain: 0.5, defaultNote: 49
+  },
+  {
+    id: 'cym_mini', name: 'Mini Splash', tags: ['tiny', 'quick'],
+    ring: { partials: CYM_PARTIALS, base: 760, wave: 'square', filter: 'highpass', cut: 7200, q: 0.7, decay: 0.2, level: 0.34 },
+    noises: [{ color: 'violet', level: 0.25, hp: 9500, decay: 0.14 }],
+    gain: 0.44, sends: { reverb: 0.14 }, defaultNote: 57
   }
 ];

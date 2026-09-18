@@ -97,5 +97,39 @@ export const MALLETS = [
     filter: { type: 'highpass', cutoff: 420, q: 0.8, env: 0.5, keytrack: 0.75 },
     ampEnv: env(0.002, 3, 0.0, 1.4), filtEnv: env(0.002, 1, 0.1, 0.6),
     gain: 0.4, sends: { reverb: 0.52, delay: 0.24 }, defaultNote: 79
+  },
+
+  {
+    id: 'mlt_bassmarimba', name: 'Bass Marimba', tags: ['bar', 'low'],
+    oscs: [{ wave: 'sine', level: 1 }, { wave: 'sine', level: 0.2, semi: 19 }],
+    fm: { ratio: 4.0, index: 1.4, decay: 0.06, sustain: 0.02 },
+    filter: { type: 'lowpass', cutoff: 1400, q: 1, env: 1, keytrack: 0.85 },
+    ampEnv: env(0.002, 1.2, 0.0, 0.4), filtEnv: env(0.002, 0.34, 0.06, 0.2),
+    gain: 0.62, sends: { reverb: 0.26 }, defaultNote: 43
+  },
+  {
+    id: 'mlt_carillon', name: 'Carillon', tags: ['bell', 'church'],
+    oscs: [{ wave: 'bell', level: 0.9, unison: 2, spread: 5 }, { wave: 'sine', level: 0.3, semi: 12 }],
+    fm: { ratio: 2.76, index: 2.2, decay: 1.4, sustain: 0.16 },
+    filter: { type: 'lowpass', cutoff: 4200, q: 1, env: 0.8, keytrack: 0.7 },
+    ampEnv: env(0.004, 5, 0.0, 2.6), filtEnv: env(0.004, 1.8, 0.1, 1.2),
+    gain: 0.44, sends: { reverb: 0.55, delay: 0.16 }, defaultNote: 55
+  },
+  {
+    id: 'mlt_anvilbell', name: 'Anvil Bell', tags: ['metal', 'industrial'],
+    oscs: [{ wave: 'metal', level: 0.6 }, { wave: 'square', level: 0.4 }],
+    fm: { ratio: 5.41, index: 2.8, decay: 0.3, sustain: 0.12 },
+    filter: { type: 'bandpass', cutoff: 2200, q: 1.2, env: 1.6, keytrack: 0.7 },
+    ampEnv: env(0.001, 1.6, 0.0, 0.6), filtEnv: env(0.001, 0.5, 0.08, 0.3),
+    shaper: { curve: 'diode', drive: 0.4 },
+    gain: 0.5, sends: { reverb: 0.4 }, defaultNote: 60
+  },
+  {
+    id: 'mlt_chimebar', name: 'Chime Bar', tags: ['bar', 'clean'],
+    oscs: [{ wave: 'sine', level: 1 }, { wave: 'glass', level: 0.25, oct: 1 }],
+    fm: { ratio: 6.01, index: 1.1, decay: 0.12, sustain: 0.03 },
+    filter: { type: 'highpass', cutoff: 380, q: 0.8, env: 0.4, keytrack: 0.8 },
+    ampEnv: env(0.001, 2.2, 0.0, 0.9), filtEnv: env(0.001, 0.6, 0.1, 0.3),
+    gain: 0.5, sends: { reverb: 0.44, delay: 0.18 }, defaultNote: 76
   }
 ];

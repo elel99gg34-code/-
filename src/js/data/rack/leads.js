@@ -264,5 +264,95 @@ export const LEADS = [
     ampEnv: env(0.006, 0.3, 0.85, 0.2), filtEnv: env(0.008, 0.3, 0.35, 0.16),
     shaper: { curve: 'tube', drive: 0.52 },
     gain: 0.32, sends: { reverb: 0.24, delay: 0.16 }, defaultNote: 60
+  },
+
+  {
+    id: 'lead_detune', name: 'Detune Lead', tags: ['thick', 'analog'],
+    oscs: [
+      { wave: 'sawtooth', level: 0.8, cent: -16 },
+      { wave: 'sawtooth', level: 0.8, cent: 16 },
+      { wave: 'square', level: 0.35, oct: -1 }
+    ],
+    filter: { type: 'lowpass', cutoff: 2800, q: 3, env: 1.8, keytrack: 0.5, poles: 4 },
+    ampEnv: env(0.008, 0.3, 0.85, 0.16), filtEnv: env(0.01, 0.3, 0.35, 0.14),
+    shaper: { curve: 'tube', drive: 0.34 },
+    gain: 0.4, sends: { reverb: 0.2, delay: 0.16 }, defaultNote: 64
+  },
+  {
+    id: 'lead_ocarina', name: 'Ocarina', tags: ['pure', 'folk'],
+    oscs: [{ wave: 'sine', level: 0.95 }, { wave: 'triangle', level: 0.18, oct: 1 }],
+    noise: { color: 'pink', level: 0.16, bp: 2800, q: 1.3, keytrack: true },
+    filter: { type: 'lowpass', cutoff: 2400, q: 1.1, env: 0.9, keytrack: 0.75 },
+    ampEnv: env(0.03, 0.25, 0.92, 0.16), filtEnv: env(0.06, 0.3, 0.6, 0.16),
+    lfo: { wave: 'sine', rate: 5.2, depth: 0.1, target: 'pitch', delay: 0.3, fade: 0.4 },
+    gain: 0.52, sends: { reverb: 0.34 }, defaultNote: 72
+  },
+  {
+    id: 'lead_nes', name: 'NES Triangle', tags: ['8bit', 'retro'],
+    oscs: [{ wave: 'triangle', level: 1 }],
+    filter: { type: 'lowpass', cutoff: 6000, q: 0.6, env: 0.3, keytrack: 0.7 },
+    ampEnv: env(0.001, 0.06, 0.8, 0.02), filtEnv: env(0.001, 0.1, 0.7, 0.02),
+    gain: 0.56, defaultNote: 64,
+    fx: [{ type: 'crush', bits: 4, reduction: 4, mix: 0.9 }]
+  },
+  {
+    id: 'lead_gliss', name: 'Gliss Lead', tags: ['portamento', 'smooth'],
+    oscs: [{ wave: 'sawtooth', level: 0.8, unison: 2, spread: 9 }, { wave: 'sine', level: 0.35, oct: -1 }],
+    filter: { type: 'lowpass', cutoff: 2200, q: 3.4, env: 1.8, keytrack: 0.5 },
+    ampEnv: env(0.02, 0.3, 0.9, 0.2), filtEnv: env(0.04, 0.35, 0.4, 0.18),
+    lfo: { wave: 'sine', rate: 5, depth: 0.12, target: 'pitch', delay: 0.4, fade: 0.4 },
+    glide: 0.14, poly: 1, gain: 0.44, sends: { reverb: 0.3, delay: 0.2 }, defaultNote: 67
+  },
+  {
+    id: 'lead_fmpluck', name: 'FM Pluck Lead', tags: ['fm', 'short'],
+    oscs: [{ wave: 'sine', level: 1 }],
+    fm: { ratio: 2.01, index: 5, decay: 0.09, sustain: 0.03 },
+    filter: { type: 'lowpass', cutoff: 4200, q: 1.4, env: 1.2, keytrack: 0.7, velToEnv: 0.8 },
+    ampEnv: env(0.001, 0.32, 0.0, 0.12), filtEnv: env(0.001, 0.16, 0.05, 0.08),
+    gain: 0.5, sends: { delay: 0.26, reverb: 0.2 }, defaultNote: 72
+  },
+  {
+    id: 'lead_hard', name: 'Hard Lead', tags: ['aggressive', 'clipped'],
+    oscs: [{ wave: 'razor', level: 0.9, unison: 3, spread: 10 }, { wave: 'square', level: 0.4, oct: -1 }],
+    filter: { type: 'lowpass', cutoff: 2600, q: 4.2, env: 1.8, keytrack: 0.5, poles: 4 },
+    ampEnv: env(0.003, 0.26, 0.85, 0.12), filtEnv: env(0.003, 0.24, 0.3, 0.1),
+    shaper: { curve: 'destroy', drive: 0.62 },
+    gain: 0.34, sends: { delay: 0.16 }, defaultNote: 64
+  },
+  {
+    id: 'lead_softsine', name: 'Soft Sine', tags: ['gentle', 'round'],
+    oscs: [{ wave: 'sine', level: 1 }, { wave: 'sine', level: 0.2, oct: 1, cent: 4 }],
+    filter: { type: 'lowpass', cutoff: 3200, q: 0.7, env: 0.5, keytrack: 0.75 },
+    ampEnv: env(0.03, 0.4, 0.88, 0.3), filtEnv: env(0.05, 0.4, 0.6, 0.22),
+    lfo: { wave: 'sine', rate: 4.6, depth: 0.07, target: 'pitch', delay: 0.4, fade: 0.5 },
+    gain: 0.52, sends: { reverb: 0.34, delay: 0.18 }, defaultNote: 72
+  },
+  {
+    id: 'lead_ring', name: 'Ring Lead', tags: ['metallic', 'inharmonic'],
+    oscs: [{ wave: 'square', level: 0.8 }, { wave: 'sine', level: 0.4, oct: 1 }],
+    filter: { type: 'lowpass', cutoff: 3400, q: 2.2, env: 1.4, keytrack: 0.55 },
+    ampEnv: env(0.004, 0.3, 0.8, 0.16), filtEnv: env(0.006, 0.3, 0.35, 0.14),
+    gain: 0.46, sends: { reverb: 0.26, delay: 0.2 }, defaultNote: 67,
+    fx: [{ type: 'ring', freq: 317, mix: 0.4 }]
+  },
+  {
+    id: 'lead_porta', name: 'Porta Lead', tags: ['mono', 'slide'],
+    oscs: [{ wave: 'pulse25', level: 0.9 }, { wave: 'sawtooth', level: 0.4, cent: -10 }],
+    filter: { type: 'lowpass', cutoff: 1900, q: 5, env: 2.4, keytrack: 0.5, poles: 4 },
+    ampEnv: env(0.004, 0.28, 0.85, 0.12), filtEnv: env(0.006, 0.26, 0.3, 0.1),
+    shaper: { curve: 'tube', drive: 0.36 },
+    glide: 0.08, poly: 1, gain: 0.44, sends: { delay: 0.2 }, defaultNote: 60
+  },
+  {
+    id: 'lead_orchstab', name: 'Orch Stab', tags: ['stab', 'cinematic'],
+    oscs: [
+      { wave: 'sawtooth', level: 0.7, unison: 4, spread: 16, width: 0.85 },
+      { wave: 'vox', level: 0.35, oct: -1, unison: 2, spread: 10 },
+      { wave: 'hollow', level: 0.3, semi: 7 }
+    ],
+    filter: { type: 'lowpass', cutoff: 1800, q: 2.6, env: 2.4, keytrack: 0.5, velToEnv: 0.85 },
+    ampEnv: env(0.006, 0.3, 0.0, 0.16), filtEnv: env(0.01, 0.2, 0.06, 0.12),
+    shaper: { curve: 'tube', drive: 0.34 },
+    gain: 0.36, sends: { reverb: 0.4 }, defaultNote: 55
   }
 ];

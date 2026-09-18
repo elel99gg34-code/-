@@ -136,5 +136,46 @@ export const FXINST = [
       { type: 'crush', bits: 4, reduction: 12, jitter: 0.6, mix: 0.9 },
       { type: 'gate', depth: 1, shape: 0.06, pattern: [1, 0, 1, 1, 0, 0, 1, 0] }
     ]
+  },
+
+  {
+    id: 'fx_whitehit', name: 'White Hit', tags: ['hit', 'noise'],
+    oscs: [{ wave: 'sine', level: 0.1 }],
+    noise: { color: 'white', level: 0.95, hp: 300 },
+    filter: { type: 'lowpass', cutoff: 8000, q: 1.2, env: -2.6, keytrack: 0.2 },
+    ampEnv: env(0.002, 0.7, 0.0, 0.25), filtEnv: env(0.002, 0.4, 0.06, 0.2),
+    shaper: { curve: 'hard', drive: 0.4 },
+    gain: 0.5, sends: { reverb: 0.4 }, defaultNote: 60
+  },
+  {
+    id: 'fx_braam', name: 'Braam', tags: ['hit', 'cinematic'],
+    oscs: [
+      { wave: 'sawtooth', level: 0.7, unison: 4, spread: 20, width: 0.9 },
+      { wave: 'buzz', level: 0.4, oct: -1 }
+    ],
+    sub: { wave: 'sine', oct: -1, level: 0.4, bypassFilter: true },
+    filter: { type: 'lowpass', cutoff: 900, q: 2.2, env: 2.2, keytrack: 0.3 },
+    ampEnv: env(0.03, 1.8, 0.3, 0.8), filtEnv: env(0.12, 1.4, 0.2, 0.5),
+    pitchEnv: { amt: 2, d: 0.6 },
+    shaper: { curve: 'tube', drive: 0.5 },
+    gain: 0.4, sends: { reverb: 0.5 }, defaultNote: 36
+  },
+  {
+    id: 'fx_bitfall', name: 'Bit Fall', tags: ['digital', 'fall'],
+    oscs: [{ wave: 'pulse25', level: 0.9 }, { wave: 'wire', level: 0.35, oct: 1 }],
+    filter: { type: 'lowpass', cutoff: 5200, q: 1.8, env: -2, keytrack: 0.3 },
+    ampEnv: env(0.002, 0.9, 0.2, 0.2), filtEnv: env(0.004, 0.7, 0.06, 0.16),
+    pitchEnv: { amt: 28, d: 0.8 },
+    gain: 0.44, defaultNote: 72,
+    fx: [{ type: 'crush', bits: 5, reduction: 7, mix: 0.85 }]
+  },
+  {
+    id: 'fx_alarm', name: 'Alarm', tags: ['siren', 'harsh'],
+    oscs: [{ wave: 'square', level: 0.8 }, { wave: 'square', level: 0.4, semi: 7 }],
+    filter: { type: 'bandpass', cutoff: 1800, q: 2.2, env: 1.4, keytrack: 0.4 },
+    ampEnv: env(0.006, 0.3, 0.9, 0.1), filtEnv: env(0.02, 0.3, 0.6, 0.1),
+    lfo: { wave: 'square', rate: 4.2, depth: 5, target: 'pitch', fade: 0.02 },
+    shaper: { curve: 'hard', drive: 0.4 },
+    gain: 0.42, sends: { reverb: 0.26 }, defaultNote: 72
   }
 ];

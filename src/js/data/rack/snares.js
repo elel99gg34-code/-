@@ -170,5 +170,65 @@ export const SNARES = [
     shaper: { curve: 'destroy', drive: 0.82 },
     filter: { type: 'lowpass', cutoff: 9000, q: 1 },
     gain: 0.76, defaultNote: 38
+  },
+
+  {
+    id: 'snr_dub', name: 'Dub Snare', tags: ['wide', 'delay'],
+    bodies: [{ wave: 'triangle', f0: 214, f1: 172, pitchDecay: 0.03, decay: 0.14, level: 0.5 }],
+    noises: [{ color: 'white', level: 0.65, hp: 1600, lp: 7000, decay: 0.18 }],
+    shaper: { curve: 'tube', drive: 0.3 },
+    gain: 0.78, sends: { reverb: 0.3, delay: 0.32 }, defaultNote: 38
+  },
+  {
+    id: 'snr_crossstick', name: 'Cross Stick', tags: ['tick', 'quiet'],
+    bodies: [{ wave: 'square', f0: 960, f1: 620, pitchDecay: 0.005, decay: 0.028, level: 0.55 }],
+    noises: [{ color: 'white', level: 0.3, bp: 2200, q: 3.4, decay: 0.02 }],
+    gain: 0.6, velCurve: 1.3, defaultNote: 37
+  },
+  {
+    id: 'snr_marching', name: 'Marching', tags: ['roll', 'tight'],
+    bodies: [{ wave: 'triangle', f0: 290, f1: 235, pitchDecay: 0.014, decay: 0.06, level: 0.45 }],
+    noises: [
+      { color: 'white', level: 0.75, hp: 2600, lp: 11000, decay: 0.08 },
+      { color: 'violet', level: 0.25, hp: 7000, decay: 0.03 }
+    ],
+    shaper: { curve: 'hard', drive: 0.35 }, gain: 0.76, defaultNote: 38
+  },
+  {
+    id: 'snr_metallic', name: 'Metallic Snare', tags: ['metal', 'ring'],
+    bodies: [{ wave: 'square', f0: 250, f1: 200, pitchDecay: 0.02, decay: 0.1, level: 0.4 }],
+    ring: { partials: [1, 1.71, 2.43, 3.91], base: 620, wave: 'square', filter: 'bandpass', cut: 2600, q: 0.9, decay: 0.28, level: 0.3 },
+    noises: [{ color: 'metal', level: 0.45, hp: 2800, decay: 0.16 }],
+    shaper: { curve: 'diode', drive: 0.5 }, gain: 0.76, defaultNote: 38
+  },
+  {
+    id: 'snr_brush', name: 'Brush Snare', tags: ['soft', 'jazz'],
+    bodies: [{ wave: 'sine', f0: 200, f1: 170, pitchDecay: 0.02, decay: 0.06, level: 0.22 }],
+    noises: [{ color: 'pink', level: 0.6, bp: 2600, q: 0.7, attack: 0.008, decay: 0.16 }],
+    gain: 0.66, velCurve: 1.4, sends: { reverb: 0.16 }, defaultNote: 38
+  },
+  {
+    id: 'snr_sidesnap', name: 'Sidestick Snap', tags: ['snap', 'dry'],
+    noises: [{ color: 'white', level: 0.8, bp: 2000, q: 2.6, decay: 0.028 }],
+    click: { level: 0.55, decay: 0.0025, hp: 3400 },
+    bodies: [{ wave: 'triangle', f0: 420, f1: 320, pitchDecay: 0.008, decay: 0.03, level: 0.3 }],
+    gain: 0.72, defaultNote: 37
+  },
+  {
+    id: 'snr_bigroom', name: 'Big Room', tags: ['huge', 'reverb'],
+    bodies: [{ wave: 'triangle', f0: 218, f1: 172, pitchDecay: 0.03, decay: 0.18, level: 0.5 }],
+    noises: [
+      { color: 'white', level: 0.7, hp: 1400, lp: 9500, decay: 0.3 },
+      { color: 'pink', level: 0.35, bp: 800, q: 0.9, decay: 0.4 }
+    ],
+    shaper: { curve: 'soft', drive: 0.3 },
+    gain: 0.8, sends: { reverb: 0.45 }, defaultNote: 38
+  },
+  {
+    id: 'snr_dusty', name: 'Dusty Snare', tags: ['lofi', 'dark'],
+    bodies: [{ wave: 'sine', f0: 196, f1: 158, pitchDecay: 0.03, decay: 0.12, level: 0.5 }],
+    noises: [{ color: 'vinyl', level: 0.7, hp: 700, lp: 4200, decay: 0.18 }],
+    filter: { type: 'lowpass', cutoff: 4000, q: 0.9 },
+    shaper: { curve: 'crush', drive: 0.45 }, gain: 0.78, defaultNote: 38
   }
 ];
