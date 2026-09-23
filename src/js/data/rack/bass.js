@@ -352,5 +352,128 @@ export const BASSES = [
     filter: { type: 'lowpass', cutoff: 950, q: 2.8, env: 1.6, keytrack: 0.4, poles: 4 },
     ampEnv: env(0.005, 0.3, 0.85, 0.12), filtEnv: env(0.005, 0.26, 0.3, 0.1),
     shaper: { curve: 'tube', drive: 0.4 }, gain: 0.6, poly: 1, defaultNote: 33
+  },
+
+  {
+    id: 'bass_gliss', name: 'Gliss Bass', tags: ['slide', 'mono'],
+    oscs: [{ wave: 'sawtooth', level: 0.9 }, { wave: 'square', level: 0.35, oct: -1 }],
+    filter: { type: 'lowpass', cutoff: 700, q: 4, env: 2, keytrack: 0.45, poles: 4 },
+    ampEnv: env(0.006, 0.3, 0.88, 0.14), filtEnv: env(0.008, 0.28, 0.35, 0.12),
+    shaper: { curve: 'tube', drive: 0.34 },
+    glide: 0.13, poly: 1, gain: 0.64, defaultNote: 33
+  },
+  {
+    id: 'bass_pulse', name: 'Pulse Bass', tags: ['hollow', 'pwm'],
+    oscs: [{ wave: 'pulse12', level: 0.9 }, { wave: 'pulse25', level: 0.45, cent: 9 }],
+    sub: { wave: 'sine', oct: -1, level: 0.35, bypassFilter: true },
+    filter: { type: 'lowpass', cutoff: 900, q: 3.2, env: 1.8, keytrack: 0.45 },
+    ampEnv: env(0.005, 0.3, 0.86, 0.12), filtEnv: env(0.006, 0.3, 0.35, 0.1),
+    lfo: { wave: 'sine', rate: 0.45, depth: 0.28, target: 'filter', fade: 0.5 },
+    gain: 0.6, poly: 1, defaultNote: 33
+  },
+  {
+    id: 'bass_dark', name: 'Dark Bass', tags: ['muted', 'deep'],
+    oscs: [{ wave: 'hollow', level: 0.9 }, { wave: 'sine', level: 0.4 }],
+    sub: { wave: 'sine', oct: -1, level: 0.4, bypassFilter: true },
+    filter: { type: 'lowpass', cutoff: 380, q: 2.4, env: 1, keytrack: 0.45 },
+    ampEnv: env(0.008, 0.35, 0.9, 0.18), filtEnv: env(0.012, 0.35, 0.45, 0.14),
+    gain: 0.7, poly: 1, defaultNote: 28
+  },
+  {
+    id: 'bass_bright', name: 'Bright Bass', tags: ['cutting', 'open'],
+    oscs: [{ wave: 'razor', level: 0.85 }, { wave: 'sawtooth', level: 0.4, oct: 1, cent: 7 }],
+    sub: { wave: 'sine', oct: -1, level: 0.3, bypassFilter: true },
+    filter: { type: 'lowpass', cutoff: 2400, q: 2, env: 1.4, keytrack: 0.5 },
+    ampEnv: env(0.004, 0.28, 0.85, 0.12), filtEnv: env(0.004, 0.26, 0.35, 0.1),
+    shaper: { curve: 'tube', drive: 0.32 }, gain: 0.54, poly: 1, defaultNote: 36
+  },
+  {
+    id: 'bass_dub', name: 'Dub Bass', tags: ['round', 'reggae'],
+    oscs: [{ wave: 'sine', level: 1 }, { wave: 'triangle', level: 0.3, cent: 5 }],
+    sub: { wave: 'sine', oct: -1, level: 0.35, bypassFilter: true },
+    filter: { type: 'lowpass', cutoff: 260, q: 1.6, env: 1.2, keytrack: 0.5 },
+    ampEnv: env(0.012, 0.4, 0.9, 0.24), filtEnv: env(0.02, 0.4, 0.4, 0.18),
+    shaper: { curve: 'tube', drive: 0.22 },
+    glide: 0.05, poly: 1, gain: 0.8, defaultNote: 28
+  },
+  {
+    id: 'bass_house', name: 'House Bass', tags: ['bouncy', 'warm'],
+    oscs: [{ wave: 'sawtooth', level: 0.85 }, { wave: 'square', level: 0.35, oct: -1 }],
+    filter: { type: 'lowpass', cutoff: 620, q: 4.5, env: 2.2, keytrack: 0.45, velToEnv: 0.8, poles: 4 },
+    ampEnv: env(0.004, 0.22, 0.3, 0.09), filtEnv: env(0.004, 0.16, 0.12, 0.08),
+    shaper: { curve: 'tube', drive: 0.36 }, gain: 0.66, poly: 1, defaultNote: 33
+  },
+  {
+    id: 'bass_techno', name: 'Techno Bass', tags: ['driving', 'dark'],
+    oscs: [{ wave: 'sawtooth', level: 0.9, unison: 2, spread: 5 }],
+    sub: { wave: 'sine', oct: -1, level: 0.42, bypassFilter: true },
+    filter: { type: 'lowpass', cutoff: 460, q: 5.5, env: 1.8, keytrack: 0.35, poles: 4 },
+    ampEnv: env(0.004, 0.24, 0.6, 0.1), filtEnv: env(0.004, 0.2, 0.2, 0.09),
+    shaper: { curve: 'tube', drive: 0.48 }, gain: 0.66, poly: 1, defaultNote: 31
+  },
+  {
+    id: 'bass_psy', name: 'Psy Bass', tags: ['tight', 'rolling'],
+    oscs: [{ wave: 'sawtooth', level: 0.9 }],
+    sub: { wave: 'sine', oct: -1, level: 0.5, bypassFilter: true },
+    filter: { type: 'lowpass', cutoff: 520, q: 3, env: 1.6, keytrack: 0.4, poles: 4 },
+    ampEnv: env(0.002, 0.13, 0.0, 0.04), filtEnv: env(0.002, 0.1, 0.05, 0.04),
+    shaper: { curve: 'hard', drive: 0.42 }, gain: 0.74, poly: 1, defaultNote: 28
+  },
+  {
+    id: 'bass_deepwobble', name: 'Deep Wobble', tags: ['dubstep', 'slow'],
+    oscs: [{ wave: 'sawtooth', level: 0.85, unison: 3, spread: 14 }],
+    sub: { wave: 'sine', oct: -1, level: 0.5, bypassFilter: true },
+    filter: { type: 'lowpass', cutoff: 260, q: 11, env: 1.4, keytrack: 0.15, poles: 4 },
+    ampEnv: env(0.01, 0.35, 0.95, 0.14), filtEnv: env(0.02, 0.35, 0.6, 0.12),
+    lfo: { wave: 'sine', rate: 1.7, depth: 1.3, target: 'filter', fade: 0.02 },
+    shaper: { curve: 'saturate', drive: 0.42 }, gain: 0.66, poly: 1, defaultNote: 28
+  },
+  {
+    id: 'bass_snarl', name: 'FM Snarl', tags: ['fm', 'neuro'],
+    oscs: [{ wave: 'sine', level: 0.9 }, { wave: 'grind', level: 0.35, cent: 11 }],
+    fm: { ratio: 2.51, index: 6.5, decay: 0.4, sustain: 0.45 },
+    sub: { wave: 'sine', oct: -1, level: 0.35, bypassFilter: true },
+    filter: { type: 'lowpass', cutoff: 1100, q: 4, env: 2, keytrack: 0.4, poles: 4 },
+    ampEnv: env(0.006, 0.3, 0.85, 0.12), filtEnv: env(0.01, 0.3, 0.35, 0.1),
+    lfo: { wave: 'triangle', rate: 6.5, depth: 0.5, target: 'filter', fade: 0.05 },
+    shaper: { curve: 'fold', drive: 0.5 }, gain: 0.6, poly: 1, defaultNote: 33
+  },
+  {
+    id: 'bass_ring', name: 'Ring Bass', tags: ['metallic', 'inharmonic'],
+    oscs: [{ wave: 'square', level: 0.85 }],
+    sub: { wave: 'sine', oct: -1, level: 0.42, bypassFilter: true },
+    filter: { type: 'lowpass', cutoff: 1100, q: 2.4, env: 1.4, keytrack: 0.45 },
+    ampEnv: env(0.005, 0.3, 0.8, 0.12), filtEnv: env(0.006, 0.3, 0.3, 0.1),
+    gain: 0.8, poly: 1, defaultNote: 33,
+    fx: [{ type: 'ring', freq: 97, mix: 0.4 }]
+  },
+  {
+    id: 'bass_noise', name: 'Noise Bass', tags: ['industrial', 'harsh'],
+    oscs: [{ wave: 'grind', level: 0.7, unison: 2, spread: 9 }],
+    sub: { wave: 'sine', oct: -1, level: 0.45, bypassFilter: true },
+    noise: { color: 'brown', level: 0.3, lp: 600 },
+    filter: { type: 'lowpass', cutoff: 800, q: 3.4, env: 1.6, keytrack: 0.35 },
+    ampEnv: env(0.006, 0.32, 0.82, 0.14), filtEnv: env(0.008, 0.3, 0.3, 0.12),
+    shaper: { curve: 'destroy', drive: 0.6 }, gain: 0.58, poly: 1, defaultNote: 31
+  },
+  {
+    id: 'bass_stacksub', name: 'Stack Sub', tags: ['layered', 'huge'],
+    oscs: [
+      { wave: 'sine', level: 0.8 },
+      { wave: 'triangle', level: 0.4, cent: 6 },
+      { wave: 'square', level: 0.22, oct: 1 }
+    ],
+    sub: { wave: 'sine', oct: -1, level: 0.55, bypassFilter: true },
+    filter: { type: 'lowpass', cutoff: 520, q: 1.8, env: 1.2, keytrack: 0.45 },
+    ampEnv: env(0.008, 0.4, 0.92, 0.2), filtEnv: env(0.012, 0.4, 0.45, 0.16),
+    shaper: { curve: 'saturate', drive: 0.3 }, gain: 0.66, poly: 1, defaultNote: 28
+  },
+  {
+    id: 'bass_guitar', name: 'Bass Guitar', tags: ['organic', 'fingered'],
+    oscs: [{ wave: 'hollow', level: 0.85 }, { wave: 'sawtooth', level: 0.35, cent: 4 }],
+    noise: { color: 'white', level: 0.18, bp: 2000, q: 2, decay: 0.016 },
+    filter: { type: 'lowpass', cutoff: 900, q: 2, env: 2, keytrack: 0.5, velToEnv: 0.8 },
+    ampEnv: env(0.003, 0.6, 0.45, 0.16), filtEnv: env(0.002, 0.24, 0.14, 0.12),
+    shaper: { curve: 'tube', drive: 0.28 }, gain: 0.66, poly: 1, defaultNote: 33
   }
 ];

@@ -176,5 +176,85 @@ export const PERC = [
     bodies: [{ wave: 'sine', f0: 700, f1: 180, pitchDecay: 0.18, curve: 1.4, decay: 0.4, level: 0.35 }],
     click: { level: 0.3, decay: 0.003, hp: 1800 },
     gain: 0.5, sends: { reverb: 0.22 }, defaultNote: 60
+  },
+
+  {
+    id: 'perc_timpani', name: 'Timpani', tags: ['orchestral', 'deep'],
+    bodies: [
+      { wave: 'sine', f0: 132, f1: 104, pitchDecay: 0.06, decay: 1.1, level: 0.95 },
+      { wave: 'sine', f0: 198, f1: 156, pitchDecay: 0.04, decay: 0.6, level: 0.3 }
+    ],
+    noises: [{ color: 'pink', level: 0.24, lp: 1400, decay: 0.03 }],
+    shaper: { curve: 'tube', drive: 0.24 },
+    gain: 0.72, sends: { reverb: 0.34 }, defaultNote: 48
+  },
+  {
+    id: 'perc_grancassa', name: 'Gran Cassa', tags: ['orchestral', 'huge'],
+    bodies: [{ wave: 'sine', f0: 96, f1: 52, pitchDecay: 0.08, decay: 1.4, level: 1 }],
+    noises: [{ color: 'brown', level: 0.35, lp: 700, decay: 0.3 }],
+    shaper: { curve: 'tube', drive: 0.26 },
+    gain: 0.78, sends: { reverb: 0.4 }, defaultNote: 36
+  },
+  {
+    id: 'perc_concerttom', name: 'Concert Tom', tags: ['tom', 'orchestral'],
+    bodies: [{ wave: 'sine', f0: 230, f1: 168, pitchDecay: 0.06, decay: 0.5, level: 0.95 }],
+    noises: [{ color: 'pink', level: 0.18, lp: 2400, decay: 0.04 }],
+    gain: 0.72, sends: { reverb: 0.26 }, defaultNote: 47
+  },
+  {
+    id: 'perc_snareroll', name: 'Snare Roll', tags: ['roll', 'build'],
+    noises: [{ color: 'white', level: 0.75, hp: 2400, lp: 10000, attack: 0.5, hold: 0.12, holdLevel: 0.95, decay: 0.2 }],
+    bodies: [{ wave: 'triangle', f0: 250, f1: 220, pitchDecay: 0.3, decay: 0.4, level: 0.2, attack: 0.45 }],
+    gain: 0.66, sends: { reverb: 0.3 }, defaultNote: 38
+  },
+  {
+    id: 'perc_udu', name: 'Udu', tags: ['hand', 'clay'],
+    bodies: [{ wave: 'sine', f0: 168, f1: 118, pitchDecay: 0.045, decay: 0.3, level: 0.95 }],
+    ring: { partials: [1, 2.8], base: 420, wave: 'sine', filter: 'bandpass', cut: 700, q: 2.2, decay: 0.18, level: 0.2 },
+    noises: [{ color: 'pink', level: 0.18, bp: 900, q: 2, decay: 0.014 }],
+    gain: 0.68, defaultNote: 50
+  },
+  {
+    id: 'perc_cuica', name: 'Cuica', tags: ['friction', 'squeak'],
+    bodies: [{ wave: 'triangle', f0: 300, f1: 560, pitchDecay: 0.14, decay: 0.24, level: 0.7 }],
+    noises: [{ color: 'pink', level: 0.3, bp: 1600, q: 2.4, decay: 0.16 }],
+    shaper: { curve: 'tube', drive: 0.3 }, gain: 0.6, defaultNote: 62
+  },
+  {
+    id: 'perc_vibraslap', name: 'Vibraslap', tags: ['rattle', 'wood'],
+    ring: { partials: [1, 1.74, 2.63, 3.81, 5.4], base: 620, wave: 'square', filter: 'bandpass', cut: 2200, q: 0.8, decay: 0.7, level: 0.42, hold: 0.06 },
+    noises: [{ color: 'crackle', level: 0.4, bp: 3200, q: 1.2, hold: 0.06, holdLevel: 0.8, decay: 0.5 }],
+    click: { level: 0.5, decay: 0.003, hp: 2400 },
+    gain: 0.52, defaultNote: 58
+  },
+  {
+    id: 'perc_woodfish', name: 'Wood Fish', tags: ['wood', 'hollow'],
+    ring: { partials: [1, 2.1, 3.6], base: 520, wave: 'sine', filter: 'bandpass', cut: 1200, q: 1.8, decay: 0.1, level: 0.6 },
+    click: { level: 0.4, decay: 0.002, hp: 2000 }, gain: 0.6, defaultNote: 60
+  },
+  {
+    id: 'perc_ratchet', name: 'Ratchet', tags: ['noise', 'mechanical'],
+    noises: [{ color: 'crackle', level: 0.8, bp: 3600, q: 1.4, attack: 0.004, hold: 0.14, holdLevel: 0.9, decay: 0.06 }],
+    gain: 0.54, defaultNote: 66
+  },
+  {
+    id: 'perc_whip', name: 'Whip', tags: ['crack', 'sharp'],
+    noises: [{ color: 'white', level: 0.9, bp: 4200, q: 1.1, sweep: 0.35, sweepTime: 0.03, decay: 0.05 }],
+    click: { level: 0.6, decay: 0.002, hp: 4000 },
+    shaper: { curve: 'hard', drive: 0.4 }, gain: 0.6, defaultNote: 64
+  },
+  {
+    id: 'perc_hammer', name: 'Hammer', tags: ['industrial', 'impact'],
+    bodies: [{ wave: 'triangle', f0: 190, f1: 76, pitchDecay: 0.02, curve: 2.4, decay: 0.2, level: 0.9 }],
+    ring: { partials: [1, 2.4, 4.1, 6.9], base: 480, wave: 'square', filter: 'bandpass', cut: 2000, q: 0.9, decay: 0.35, level: 0.3 },
+    click: { level: 0.7, decay: 0.003, hp: 3000 },
+    shaper: { curve: 'diode', drive: 0.5 }, gain: 0.66, sends: { reverb: 0.24 }, defaultNote: 45
+  },
+  {
+    id: 'perc_bucket', name: 'Bucket Hit', tags: ['junk', 'plastic'],
+    bodies: [{ wave: 'square', f0: 260, f1: 180, pitchDecay: 0.014, decay: 0.09, level: 0.5 }],
+    ring: { partials: [1, 1.9, 3.1], base: 380, wave: 'sine', filter: 'bandpass', cut: 900, q: 1.6, decay: 0.16, level: 0.3 },
+    noises: [{ color: 'pink', level: 0.3, bp: 1800, q: 1.4, decay: 0.03 }],
+    shaper: { curve: 'crush', drive: 0.4 }, gain: 0.6, defaultNote: 52
   }
 ];

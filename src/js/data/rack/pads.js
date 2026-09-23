@@ -234,5 +234,99 @@ export const PADS = [
     ampEnv: env(0.5, 1.2, 0.9, 1.1), filtEnv: env(0.9, 1.2, 0.5, 0.8),
     shaper: { curve: 'tube', drive: 0.5 },
     gain: 0.28, sends: { reverb: 0.42 }, defaultNote: 48
+  },
+
+  {
+    id: 'pad_choirpad', name: 'Choir Pad', tags: ['vocal', 'warm'],
+    oscs: [
+      { wave: 'vox', level: 0.65, unison: 4, spread: 18, width: 0.9 },
+      { wave: 'hollow', level: 0.3, oct: -1, cent: 6 }
+    ],
+    filter: { type: 'bandpass', cutoff: 950, q: 1.4, env: 1.2, keytrack: 0.6 },
+    ampEnv: env(0.8, 1.4, 0.9, 1.4), filtEnv: env(1.2, 1.4, 0.55, 1),
+    lfo: { wave: 'sine', rate: 4.2, depth: 0.05, target: 'pitch', delay: 0.7, fade: 0.9 },
+    gain: 0.44, sends: { reverb: 0.52 }, defaultNote: 55
+  },
+  {
+    id: 'pad_void', name: 'Void', tags: ['dark', 'empty'],
+    oscs: [{ wave: 'hollow', level: 0.5, unison: 3, spread: 22, width: 0.9 }],
+    noise: { color: 'brown', level: 0.22, lp: 500 },
+    filter: { type: 'lowpass', cutoff: 420, q: 4, env: 1.2, keytrack: 0.3 },
+    ampEnv: env(2, 2.4, 0.92, 2.6), filtEnv: env(2.8, 2.4, 0.45, 1.8),
+    lfo: { wave: 'sine', rate: 0.05, depth: 0.5, target: 'filter', fade: 3.5 },
+    gain: 0.44, sends: { reverb: 0.55 }, defaultNote: 36
+  },
+  {
+    id: 'pad_sunrise', name: 'Sunrise', tags: ['warm', 'rising'],
+    oscs: [
+      { wave: 'sawtooth', level: 0.65, unison: 4, spread: 16, width: 0.9 },
+      { wave: 'glass', level: 0.3, oct: 1, cent: 5 }
+    ],
+    filter: { type: 'lowpass', cutoff: 800, q: 2, env: 3, keytrack: 0.5 },
+    ampEnv: env(1.4, 1.6, 0.9, 1.6), filtEnv: env(2.2, 1.8, 0.6, 1.2),
+    gain: 0.32, sends: { reverb: 0.5, delay: 0.2 }, defaultNote: 60
+  },
+  {
+    id: 'pad_metal', name: 'Metal Pad', tags: ['inharmonic', 'cold'],
+    oscs: [{ wave: 'metal', level: 0.45, unison: 2, spread: 12 }, { wave: 'bell', level: 0.35 }],
+    fm: { ratio: 2.41, index: 1.2, decay: 2.4, sustain: 0.3 },
+    filter: { type: 'bandpass', cutoff: 1600, q: 1.6, env: 1.4, keytrack: 0.6 },
+    ampEnv: env(0.8, 1.6, 0.85, 1.6), filtEnv: env(1.2, 1.6, 0.5, 1.1),
+    gain: 0.5, sends: { reverb: 0.52 }, defaultNote: 60
+  },
+  {
+    id: 'pad_rain', name: 'Rain Pad', tags: ['texture', 'wet'],
+    oscs: [{ wave: 'glass', level: 0.45, unison: 3, spread: 20, width: 0.9 }],
+    noise: { color: 'white', level: 0.4, bp: 4200, q: 0.9 },
+    filter: { type: 'bandpass', cutoff: 2600, q: 1.4, env: 1.4, keytrack: 0.55 },
+    ampEnv: env(1, 1.6, 0.88, 1.6), filtEnv: env(1.6, 1.6, 0.5, 1.1),
+    lfo: { wave: 'sine', rate: 0.15, depth: 0.4, target: 'filter', fade: 2.2 },
+    gain: 0.44, sends: { reverb: 0.56, delay: 0.22 }, defaultNote: 67
+  },
+  {
+    id: 'pad_octave', name: 'Octave Pad', tags: ['stacked', 'full'],
+    oscs: [
+      { wave: 'sawtooth', level: 0.6, unison: 3, spread: 14, width: 0.85 },
+      { wave: 'sawtooth', level: 0.4, oct: 1, cent: 7, unison: 2, spread: 10 },
+      { wave: 'sine', level: 0.4, oct: -1 }
+    ],
+    filter: { type: 'lowpass', cutoff: 2000, q: 1.4, env: 1.4, keytrack: 0.5 },
+    ampEnv: env(0.6, 1.2, 0.9, 1.2), filtEnv: env(1, 1.2, 0.5, 0.9),
+    gain: 0.3, sends: { reverb: 0.45 }, defaultNote: 48
+  },
+  {
+    id: 'pad_soft', name: 'Soft Pad', tags: ['gentle', 'round'],
+    oscs: [{ wave: 'sine', level: 0.7, unison: 3, spread: 12, width: 0.8 }, { wave: 'triangle', level: 0.35, cent: 7 }],
+    filter: { type: 'lowpass', cutoff: 1600, q: 0.9, env: 1, keytrack: 0.55 },
+    ampEnv: env(0.9, 1.4, 0.9, 1.4), filtEnv: env(1.4, 1.4, 0.6, 1),
+    gain: 0.48, sends: { reverb: 0.48 }, defaultNote: 60
+  },
+  {
+    id: 'pad_wide', name: 'Wide Pad', tags: ['stereo', 'huge'],
+    oscs: [
+      { wave: 'sawtooth', level: 0.65, unison: 7, spread: 34, width: 1 },
+      { wave: 'hollow', level: 0.3, oct: -1, unison: 2, spread: 16 }
+    ],
+    filter: { type: 'lowpass', cutoff: 2400, q: 1.4, env: 1.4, keytrack: 0.5 },
+    ampEnv: env(0.8, 1.4, 0.9, 1.4), filtEnv: env(1.2, 1.4, 0.5, 1),
+    gain: 0.28, sends: { reverb: 0.5 }, defaultNote: 55,
+    fx: [{ type: 'width', width: 1.6 }]
+  },
+  {
+    id: 'pad_bright', name: 'Bright Pad', tags: ['open', 'airy'],
+    oscs: [{ wave: 'razor', level: 0.6, unison: 4, spread: 18, width: 0.9 }, { wave: 'glass', level: 0.3, oct: 1 }],
+    filter: { type: 'highpass', cutoff: 700, q: 1.2, env: 1, keytrack: 0.6 },
+    ampEnv: env(0.6, 1.2, 0.88, 1.2), filtEnv: env(1, 1.2, 0.55, 0.9),
+    gain: 0.32, sends: { reverb: 0.48, delay: 0.2 }, defaultNote: 67
+  },
+  {
+    id: 'pad_lofi', name: 'Lo-Fi Pad', tags: ['lofi', 'dusty'],
+    oscs: [{ wave: 'hollow', level: 0.7, unison: 3, spread: 24, width: 0.85 }],
+    noise: { color: 'vinyl', level: 0.18, lp: 5000 },
+    filter: { type: 'lowpass', cutoff: 1500, q: 1.4, env: 1.2, keytrack: 0.45 },
+    ampEnv: env(0.7, 1.3, 0.88, 1.3), filtEnv: env(1.1, 1.3, 0.5, 0.9),
+    lfo: { wave: 'sine', rate: 0.38, depth: 0.14, target: 'pitch', fade: 1.4 },
+    shaper: { curve: 'crush', drive: 0.3 },
+    gain: 0.38, sends: { reverb: 0.45 }, defaultNote: 55
   }
 ];

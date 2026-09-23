@@ -1,31 +1,35 @@
-# The Rack — all 390 instruments
+# The Rack — all 590 instruments
 
 Every instrument is synthesised from scratch by `src/js/audio/voice.js`. There are no samples anywhere in this app: the whole rack is a few kilobytes of parameters, so it renders identically at any sample rate.
 
 The tables live one family per module under `src/js/data/rack/`; `src/js/data/instruments.js` stitches them together and documents every field.
 
+This file is generated — run `npm run docs` after changing the rack.
+
 | Family | Count | Colour |
 |---|---:|---|
-| Kicks | 30 | `#ff3b30` |
-| Snares | 30 | `#ff9f0a` |
-| Hats | 26 | `#ffd60a` |
-| Percussion | 28 | `#32d74b` |
-| Cymbals | 16 | `#66d4cf` |
-| Bass | 40 | `#0a84ff` |
-| Guitars | 30 | `#bf5af2` |
-| Leads | 40 | `#ff2d95` |
-| Pads | 24 | `#5e5ce6` |
-| Plucks | 22 | `#64d2ff` |
-| Organs & Keys | 14 | `#efe3c8` |
-| Mallets & Bells | 14 | `#d6a35c` |
-| Strings & Bows | 14 | `#a8e6cf` |
-| Brass & Winds | 14 | `#e07a5f` |
-| Voices | 18 | `#ffb3c7` |
-| Atmospheres | 12 | `#7c9cbf` |
-| FX & Noise | 18 | `#8e8e93` |
-| **Total** | **390** | |
+| Kicks | 42 | `#ff3b30` |
+| Snares | 42 | `#ff9f0a` |
+| Hats | 36 | `#ffd60a` |
+| Percussion | 40 | `#32d74b` |
+| Cymbals | 22 | `#66d4cf` |
+| Bass | 54 | `#0a84ff` |
+| Guitars | 40 | `#bf5af2` |
+| Leads | 54 | `#ff2d95` |
+| Pads | 34 | `#5e5ce6` |
+| Plucks | 30 | `#64d2ff` |
+| Organs & Keys | 22 | `#efe3c8` |
+| Chip & Console | 20 | `#c3f73a` |
+| Mallets & Bells | 20 | `#d6a35c` |
+| Strings & Bows | 20 | `#a8e6cf` |
+| Brass & Winds | 22 | `#e07a5f` |
+| Voices | 26 | `#ffb3c7` |
+| Modular & Experimental | 22 | `#b388ff` |
+| Atmospheres | 18 | `#7c9cbf` |
+| FX & Noise | 26 | `#8e8e93` |
+| **Total** | **590** | |
 
-## Kicks (30)
+## Kicks (42)
 
 | # | Instrument | Engine | Character |
 |---:|---|---|---|
@@ -59,8 +63,20 @@ The tables live one family per module under `src/js/data/rack/`; `src/js/data/in
 | 28 | **Wood Kick** | drum | acoustic, dry |
 | 29 | **Resonant Kick** | drum | tonal, ring |
 | 30 | **Stomp** | drum | huge, room |
+| 31 | **UK Garage Kick** | drum | garage, tight |
+| 32 | **Jungle Kick** | drum | breakbeat, old |
+| 33 | **DnB Kick** | drum | fast, punchy |
+| 34 | **Soft Kick** | drum | ambient, gentle |
+| 35 | **Dirty Kick** | drum | grit, mid |
+| 36 | **Ultra Short** | drum | blip, tiny |
+| 37 | **Boom** | drum | huge, sub |
+| 38 | **Punch Tight** | drum | tight, modern |
+| 39 | **Analog Kick** | drum | vintage, warm |
+| 40 | **Digital Kick** | drum | fm, clean |
+| 41 | **Click Layer** | drum | attack, layered |
+| 42 | **Big Room Kick** | drum | edm, long |
 
-## Snares (30)
+## Snares (42)
 
 | # | Instrument | Engine | Character |
 |---:|---|---|---|
@@ -78,7 +94,7 @@ The tables live one family per module under `src/js/data/rack/`; `src/js/data/in
 | 12 | **Pitchbend Snare** | drum | fx, sweep |
 | 13 | **808 Snare** | drum | classic, thin |
 | 14 | **Live Snare** | drum | acoustic, room |
-| 15 | **Piccolo** | drum | high, crack |
+| 15 | **Piccolo Snare** | drum | high, crack |
 | 16 | **Deep Snare** | drum | low, fat |
 | 17 | **White Slap** | drum | noise, pure |
 | 18 | **Electro Snare** | drum | fm, digital |
@@ -94,8 +110,20 @@ The tables live one family per module under `src/js/data/rack/`; `src/js/data/in
 | 28 | **Sidestick Snap** | drum | snap, dry |
 | 29 | **Big Room** | drum | huge, reverb |
 | 30 | **Dusty Snare** | drum | lofi, dark |
+| 31 | **Jungle Snare** | drum | breakbeat, old |
+| 32 | **Garage Snare** | drum | garage, snappy |
+| 33 | **Fat Snare** | drum | thick, body |
+| 34 | **Bright Snare** | drum | cutting, high |
+| 35 | **Thin Snare** | drum | dry, small |
+| 36 | **Wood Snare** | drum | acoustic, woody |
+| 37 | **808 Long** | drum | classic, tail |
+| 38 | **Hall Snare** | drum | big, wet |
+| 39 | **Grinder** | drum | distorted, industrial |
+| 40 | **Flam** | drum | double, roll |
+| 41 | **Power Rim** | drum | rimshot, loud |
+| 42 | **Digital Snare** | drum | fm, clean |
 
-## Hats (26)
+## Hats (36)
 
 | # | Instrument | Engine | Character |
 |---:|---|---|---|
@@ -125,8 +153,18 @@ The tables live one family per module under `src/js/data/rack/`; `src/js/data/in
 | 24 | **Vinyl Hat** | drum | lofi, dusty |
 | 25 | **Bright Hat** | drum | sharp, cutting |
 | 26 | **Long Open** | drum | long, wash |
+| 27 | **Short Open** | drum | medium, tight |
+| 28 | **Dirty Hat** | drum | grit, harsh |
+| 29 | **Glassy Hat** | drum | clean, tonal |
+| 30 | **Soft Hat** | drum | quiet, round |
+| 31 | **909 Hat** | drum | classic, metallic |
+| 32 | **606 Hat** | drum | classic, splashy |
+| 33 | **Stutter Hat** | drum | glitch, gated |
+| 34 | **Suck Hat** | drum | fx, reverse |
+| 35 | **Wash Hat** | drum | long, noisy |
+| 36 | **Pitched Hat** | drum | tonal, melodic |
 
-## Percussion (28)
+## Percussion (40)
 
 | # | Instrument | Engine | Character |
 |---:|---|---|---|
@@ -158,8 +196,20 @@ The tables live one family per module under `src/js/data/rack/`; `src/js/data/in
 | 26 | **Castanet** | drum | wood, snap |
 | 27 | **Bell Tree** | drum | metal, cascade |
 | 28 | **Spring Boing** | drum | fx, ring |
+| 29 | **Timpani** | drum | orchestral, deep |
+| 30 | **Gran Cassa** | drum | orchestral, huge |
+| 31 | **Concert Tom** | drum | tom, orchestral |
+| 32 | **Snare Roll** | drum | roll, build |
+| 33 | **Udu** | drum | hand, clay |
+| 34 | **Cuica** | drum | friction, squeak |
+| 35 | **Vibraslap** | drum | rattle, wood |
+| 36 | **Wood Fish** | drum | wood, hollow |
+| 37 | **Ratchet** | drum | noise, mechanical |
+| 38 | **Whip** | drum | crack, sharp |
+| 39 | **Hammer** | drum | industrial, impact |
+| 40 | **Bucket Hit** | drum | junk, plastic |
 
-## Cymbals (16)
+## Cymbals (22)
 
 | # | Instrument | Engine | Character |
 |---:|---|---|---|
@@ -179,8 +229,14 @@ The tables live one family per module under `src/js/data/rack/`; `src/js/data/in
 | 14 | **Cymbal Roll** | drum | swell, build |
 | 15 | **Choke Crash** | drum | short, stab |
 | 16 | **Mini Splash** | drum | tiny, quick |
+| 17 | **Dark Ride** | drum | dark, wash |
+| 18 | **Short Crash** | drum | quick, tight |
+| 19 | **Big Bell** | drum | tonal, loud |
+| 20 | **Long Sizzle** | drum | rivets, wash |
+| 21 | **Reverse Splash** | drum | fx, swell |
+| 22 | **Junk Lid** | drum | trash, clang |
 
-## Bass (40)
+## Bass (54)
 
 | # | Instrument | Engine | Character |
 |---:|---|---|---|
@@ -224,8 +280,22 @@ The tables live one family per module under `src/js/data/rack/`; `src/js/data/in
 | 38 | **Bass Stab** | synth | stab, tight |
 | 39 | **Arp Bass** | synth | arp, bright |
 | 40 | **Fifth Bass** | synth | power, wide |
+| 41 | **Gliss Bass** | synth | slide, mono |
+| 42 | **Pulse Bass** | synth | hollow, pwm |
+| 43 | **Dark Bass** | synth | muted, deep |
+| 44 | **Bright Bass** | synth | cutting, open |
+| 45 | **Dub Bass** | synth | round, reggae |
+| 46 | **House Bass** | synth | bouncy, warm |
+| 47 | **Techno Bass** | synth | driving, dark |
+| 48 | **Psy Bass** | synth | tight, rolling |
+| 49 | **Deep Wobble** | synth | dubstep, slow |
+| 50 | **FM Snarl** | synth | fm, neuro |
+| 51 | **Ring Bass** | synth | metallic, inharmonic |
+| 52 | **Noise Bass** | synth | industrial, harsh |
+| 53 | **Stack Sub** | synth | layered, huge |
+| 54 | **Bass Guitar** | synth | organic, fingered |
 
-## Guitars (30)
+## Guitars (40)
 
 | # | Instrument | Engine | Character |
 |---:|---|---|---|
@@ -259,8 +329,18 @@ The tables live one family per module under `src/js/data/rack/`; `src/js/data/in
 | 28 | **Shred Lead** | synth | lead, metal |
 | 29 | **Dirty Clean** | synth | edge, breakup |
 | 30 | **Drone Wall** | synth | drone, noise |
+| 31 | **Stoner Riff** | synth | fuzz, heavy |
+| 32 | **Thrash** | synth | metal, fast |
+| 33 | **Emo Clean** | synth | clean, chorus |
+| 34 | **Math Tap** | synth | tapping, bright |
+| 35 | **Down Tuned** | synth | low, heavy |
+| 36 | **Reverse Guitar** | synth | fx, swell |
+| 37 | **Octave Up** | synth | octave, bright |
+| 38 | **Lo-Fi Guitar** | synth | lofi, dusty |
+| 39 | **Ambient Loop** | synth | ambient, wash |
+| 40 | **Strum Chord** | synth | chord, wide |
 
-## Leads (40)
+## Leads (54)
 
 | # | Instrument | Engine | Character |
 |---:|---|---|---|
@@ -304,8 +384,22 @@ The tables live one family per module under `src/js/data/rack/`; `src/js/data/in
 | 38 | **Ring Lead** | synth | metallic, inharmonic |
 | 39 | **Porta Lead** | synth | mono, slide |
 | 40 | **Orch Stab** | synth | stab, cinematic |
+| 41 | **Psy Lead** | synth | psy, squelch |
+| 42 | **Hardcore Lead** | synth | harsh, rave |
+| 43 | **Dreamy Lead** | synth | soft, wide |
+| 44 | **Bright Lead** | synth | cutting, saw |
+| 45 | **Dark Lead** | synth | muted, moody |
+| 46 | **Bell Pluck Lead** | synth | fm, pluck |
+| 47 | **Growl Lead** | synth | fm, aggressive |
+| 48 | **Vibrato Lead** | synth | expressive, mono |
+| 49 | **Octave Lead** | synth | stacked, big |
+| 50 | **Tape Lead** | synth | lofi, warm |
+| 51 | **Reso Lead** | synth | resonant, sweep |
+| 52 | **Unison Wall** | synth | huge, detuned |
+| 53 | **Glass Lead** | synth | bright, clean |
+| 54 | **Warning Lead** | synth | siren, alarm |
 
-## Pads (24)
+## Pads (34)
 
 | # | Instrument | Engine | Character |
 |---:|---|---|---|
@@ -333,8 +427,18 @@ The tables live one family per module under `src/js/data/rack/`; `src/js/data/in
 | 22 | **Breath Pad** | synth | soft, airy |
 | 23 | **FM Pad** | synth | digital, evolving |
 | 24 | **Saturated Pad** | synth | thick, driven |
+| 25 | **Choir Pad** | synth | vocal, warm |
+| 26 | **Void** | synth | dark, empty |
+| 27 | **Sunrise** | synth | warm, rising |
+| 28 | **Metal Pad** | synth | inharmonic, cold |
+| 29 | **Rain Pad** | synth | texture, wet |
+| 30 | **Octave Pad** | synth | stacked, full |
+| 31 | **Soft Pad** | synth | gentle, round |
+| 32 | **Wide Pad** | synth | stereo, huge |
+| 33 | **Bright Pad** | synth | open, airy |
+| 34 | **Lo-Fi Pad** | synth | lofi, dusty |
 
-## Plucks (22)
+## Plucks (30)
 
 | # | Instrument | Engine | Character |
 |---:|---|---|---|
@@ -360,8 +464,16 @@ The tables live one family per module under `src/js/data/rack/`; `src/js/data/in
 | 20 | **FM Pluck** | synth | digital, tight |
 | 21 | **Muted Pluck** | synth | short, dry |
 | 22 | **Bell Pluck** | synth | bell, ring |
+| 23 | **Oud** | synth | string, eastern |
+| 24 | **Guzheng** | synth | string, eastern |
+| 25 | **Bouzouki** | synth | string, bright |
+| 26 | **Ukulele** | synth | acoustic, small |
+| 27 | **Zither** | synth | string, ringing |
+| 28 | **Soft Pluck** | synth | gentle, round |
+| 29 | **Wide Pluck** | synth | stereo, lush |
+| 30 | **Dark Pluck** | synth | muted, moody |
 
-## Organs & Keys (14)
+## Organs & Keys (22)
 
 | # | Instrument | Engine | Character |
 |---:|---|---|---|
@@ -379,8 +491,41 @@ The tables live one family per module under `src/js/data/rack/`; `src/js/data/in
 | 12 | **Honky Tonk** | synth | detuned, saloon |
 | 13 | **Farfisa** | synth | organ, thin |
 | 14 | **Melodica** | synth | reed, breathy |
+| 15 | **Electric Grand** | synth | electric, bright |
+| 16 | **DX Piano** | synth | fm, 80s |
+| 17 | **Perc Organ** | synth | organ, attack |
+| 18 | **Theatre Organ** | synth | organ, vibrato |
+| 19 | **Clavichord** | synth | plucked, quiet |
+| 20 | **Spinet** | synth | plucked, thin |
+| 21 | **Synth Piano** | synth | digital, hybrid |
+| 22 | **Lo-Fi Piano** | synth | lofi, dusty |
 
-## Mallets & Bells (14)
+## Chip & Console (20)
+
+| # | Instrument | Engine | Character |
+|---:|---|---|---|
+| 1 | **Pulse 12%** | synth | nes, thin |
+| 2 | **Pulse 25%** | synth | nes, hollow |
+| 3 | **Square 50%** | synth | nes, full |
+| 4 | **Chip Triangle** | synth | nes, bass |
+| 5 | **Chip Noise** | synth | nes, percussive |
+| 6 | **Chip Arp** | synth | arp, fast |
+| 7 | **Chip Bass** | synth | bass, square |
+| 8 | **Chip Lead** | synth | lead, vibrato |
+| 9 | **SID Saw** | synth | c64, buzzy |
+| 10 | **SID Ring** | synth | c64, metallic |
+| 11 | **SID Filter** | synth | c64, sweep |
+| 12 | **Wave Channel** | synth | gameboy, soft |
+| 13 | **FM Console Bell** | synth | ym2612, bright |
+| 14 | **FM Console Bass** | synth | ym2612, punch |
+| 15 | **FM Console Brass** | synth | ym2612, fat |
+| 16 | **Pling** | synth | blip, short |
+| 17 | **Coin** | synth | sfx, arcade |
+| 18 | **Jump** | synth | sfx, arcade |
+| 19 | **Hurt Blip** | synth | sfx, noisy |
+| 20 | **Power Up** | synth | sfx, rise |
+
+## Mallets & Bells (20)
 
 | # | Instrument | Engine | Character |
 |---:|---|---|---|
@@ -398,8 +543,14 @@ The tables live one family per module under `src/js/data/rack/`; `src/js/data/in
 | 12 | **Carillon** | synth | bell, church |
 | 13 | **Anvil Bell** | synth | metal, industrial |
 | 14 | **Chime Bar** | synth | bar, clean |
+| 15 | **Soft Marimba** | synth | bar, mellow |
+| 16 | **Balafon** | synth | bar, buzzy |
+| 17 | **Glass Armonica** | synth | bowed, eerie |
+| 18 | **Singing Bowl** | synth | bell, meditative |
+| 19 | **Temple Bell** | synth | bell, deep |
+| 20 | **Metallophone** | synth | bar, metal |
 
-## Strings & Bows (14)
+## Strings & Bows (20)
 
 | # | Instrument | Engine | Character |
 |---:|---|---|---|
@@ -417,8 +568,14 @@ The tables live one family per module under `src/js/data/rack/`; `src/js/data/in
 | 12 | **String Stab** | synth | short, cinematic |
 | 13 | **Col Legno** | synth | percussive, wood |
 | 14 | **Gliss Strings** | synth | slide, tense |
+| 15 | **Contrabass** | synth | low, orchestral |
+| 16 | **String Quartet** | synth | chamber, intimate |
+| 17 | **Sul Ponticello** | synth | glassy, tense |
+| 18 | **Spiccato** | synth | short, bouncing |
+| 19 | **Fiddle** | synth | folk, raw |
+| 20 | **Bowed Pad** | synth | sustain, lush |
 
-## Brass & Winds (14)
+## Brass & Winds (22)
 
 | # | Instrument | Engine | Character |
 |---:|---|---|---|
@@ -436,8 +593,16 @@ The tables live one family per module under `src/js/data/rack/`; `src/js/data/in
 | 12 | **Bagpipe** | synth | drone, folk |
 | 13 | **Didgeridoo** | synth | drone, low |
 | 14 | **Harmonica** | synth | reed, blues |
+| 15 | **Muted Trumpet** | synth | mute, nasal |
+| 16 | **Flugelhorn** | synth | warm, round |
+| 17 | **Euphonium** | synth | low, mellow |
+| 18 | **Soprano Sax** | synth | reed, high |
+| 19 | **Tenor Sax** | synth | reed, breathy |
+| 20 | **Piccolo** | synth | high, piercing |
+| 21 | **Bassoon** | synth | reed, low |
+| 22 | **Shakuhachi** | synth | breathy, eastern |
 
-## Voices (18)
+## Voices (26)
 
 | # | Instrument | Engine | Character |
 |---:|---|---|---|
@@ -459,8 +624,43 @@ The tables live one family per module under `src/js/data/rack/`; `src/js/data/in
 | 16 | **Vocal Growl** | synth | harsh, low |
 | 17 | **Child Choir** | synth | choir, high |
 | 18 | **Breath Hit** | synth | percussive, noise |
+| 19 | **High Aah** | synth | open, soprano |
+| 20 | **Ooh Pad** | synth | pad, dark |
+| 21 | **Syllable** | synth | chop, rhythmic |
+| 22 | **Doo** | synth | scat, short |
+| 23 | **Throat Sing** | synth | harmonic, drone |
+| 24 | **Opera** | synth | vibrato, big |
+| 25 | **Radio Voice** | synth | lofi, narrow |
+| 26 | **Vocal Chop** | synth | stab, edm |
 
-## Atmospheres (12)
+## Modular & Experimental (22)
+
+| # | Instrument | Engine | Character |
+|---:|---|---|---|
+| 1 | **West Coast** | synth | fold, buchla |
+| 2 | **Complex Osc** | synth | fm, evolving |
+| 3 | **Self Oscillation** | synth | resonant, pure |
+| 4 | **Wavefolder** | synth | fold, harsh |
+| 5 | **Lowpass Gate** | synth | vactrol, plucky |
+| 6 | **Bucket Brigade** | synth | analog, delay |
+| 7 | **Krell Patch** | synth | generative, random |
+| 8 | **Sample & Hold** | synth | stepped, random |
+| 9 | **Clock Divider** | synth | stepped, rhythmic |
+| 10 | **Chaos** | synth | unstable, noise |
+| 11 | **Ping Filter** | synth | resonant, percussive |
+| 12 | **Physical String** | synth | karplus, plucked |
+| 13 | **Metallic Resonator** | synth | inharmonic, ring |
+| 14 | **Modular Drone** | synth | drone, slow |
+| 15 | **FM Chaos** | synth | fm, inharmonic |
+| 16 | **Ring Stack** | synth | ring, metallic |
+| 17 | **Granular Cloud** | synth | texture, stutter |
+| 18 | **Feedback Patch** | synth | howl, unstable |
+| 19 | **Bleep Sequence** | synth | stepped, short |
+| 20 | **Rumble Module** | synth | sub, noise |
+| 21 | **Shimmer Cell** | synth | bright, texture |
+| 22 | **Burst Generator** | synth | percussive, noise |
+
+## Atmospheres (18)
 
 | # | Instrument | Engine | Character |
 |---:|---|---|---|
@@ -476,8 +676,14 @@ The tables live one family per module under `src/js/data/rack/`; `src/js/data/in
 | 10 | **Shortwave** | synth | radio, noisy |
 | 11 | **Cathedral Air** | synth | holy, huge |
 | 12 | **Static Field** | synth | harsh, digital |
+| 13 | **Forest** | synth | nature, bright |
+| 14 | **City Hum** | synth | urban, low |
+| 15 | **Fire** | synth | crackle, warm |
+| 16 | **Snowfall** | synth | soft, high |
+| 17 | **Subway** | synth | industrial, rumble |
+| 18 | **Deep Space** | synth | drone, vast |
 
-## FX & Noise (18)
+## FX & Noise (26)
 
 | # | Instrument | Engine | Character |
 |---:|---|---|---|
@@ -499,4 +705,11 @@ The tables live one family per module under `src/js/data/rack/`; `src/js/data/in
 | 16 | **Braam** | synth | hit, cinematic |
 | 17 | **Bit Fall** | synth | digital, fall |
 | 18 | **Alarm** | synth | siren, harsh |
-
+| 19 | **Uplifter** | synth | transition, rise |
+| 20 | **Reverse Impact** | synth | swell, hit |
+| 21 | **Stutter Glitch** | synth | glitch, gated |
+| 22 | **Metal Hit** | synth | hit, industrial |
+| 23 | **Air Horn** | synth | rave, blast |
+| 24 | **Turntable Scratch** | synth | dj, fx |
+| 25 | **Rewind** | synth | fx, rise |
+| 26 | **Drop Hit** | synth | hit, huge |

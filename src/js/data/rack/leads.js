@@ -354,5 +354,129 @@ export const LEADS = [
     ampEnv: env(0.006, 0.3, 0.0, 0.16), filtEnv: env(0.01, 0.2, 0.06, 0.12),
     shaper: { curve: 'tube', drive: 0.34 },
     gain: 0.36, sends: { reverb: 0.4 }, defaultNote: 55
+  },
+
+  {
+    id: 'lead_psy', name: 'Psy Lead', tags: ['psy', 'squelch'],
+    oscs: [{ wave: 'sawtooth', level: 0.9 }, { wave: 'square', level: 0.35, oct: -1 }],
+    filter: { type: 'lowpass', cutoff: 1200, q: 11, env: 3, keytrack: 0.4, velToEnv: 0.85, poles: 4 },
+    ampEnv: env(0.002, 0.2, 0.15, 0.06), filtEnv: env(0.002, 0.16, 0.06, 0.05),
+    shaper: { curve: 'diode', drive: 0.44 },
+    glide: 0.03, poly: 1, gain: 0.54, sends: { delay: 0.2 }, defaultNote: 60
+  },
+  {
+    id: 'lead_hardcore', name: 'Hardcore Lead', tags: ['harsh', 'rave'],
+    oscs: [{ wave: 'razor', level: 0.9, unison: 3, spread: 13 }, { wave: 'square', level: 0.4, semi: 7 }],
+    filter: { type: 'lowpass', cutoff: 3000, q: 3.4, env: 1.6, keytrack: 0.5 },
+    ampEnv: env(0.003, 0.26, 0.85, 0.12), filtEnv: env(0.004, 0.24, 0.3, 0.1),
+    shaper: { curve: 'destroy', drive: 0.7 },
+    gain: 0.32, sends: { reverb: 0.2, delay: 0.16 }, defaultNote: 64
+  },
+  {
+    id: 'lead_dreamy', name: 'Dreamy Lead', tags: ['soft', 'wide'],
+    oscs: [{ wave: 'sine', level: 0.8, unison: 3, spread: 11, width: 0.8 }, { wave: 'glass', level: 0.3, oct: 1 }],
+    filter: { type: 'lowpass', cutoff: 3000, q: 1, env: 0.9, keytrack: 0.7 },
+    ampEnv: env(0.06, 0.6, 0.85, 0.5), filtEnv: env(0.1, 0.6, 0.55, 0.36),
+    lfo: { wave: 'sine', rate: 4.4, depth: 0.08, target: 'pitch', delay: 0.4, fade: 0.5 },
+    gain: 0.42, sends: { reverb: 0.45, delay: 0.26 }, defaultNote: 72
+  },
+  {
+    id: 'lead_bright', name: 'Bright Lead', tags: ['cutting', 'saw'],
+    oscs: [{ wave: 'razor', level: 0.9, unison: 2, spread: 8 }, { wave: 'glass', level: 0.3, oct: 1 }],
+    filter: { type: 'highpass', cutoff: 400, q: 1.4, env: 1, keytrack: 0.6 },
+    ampEnv: env(0.004, 0.26, 0.85, 0.12), filtEnv: env(0.006, 0.26, 0.5, 0.1),
+    shaper: { curve: 'tube', drive: 0.3 },
+    gain: 0.4, sends: { reverb: 0.2, delay: 0.18 }, defaultNote: 72
+  },
+  {
+    id: 'lead_dark', name: 'Dark Lead', tags: ['muted', 'moody'],
+    oscs: [{ wave: 'hollow', level: 0.85, unison: 2, spread: 7 }, { wave: 'sawtooth', level: 0.3, oct: -1 }],
+    filter: { type: 'lowpass', cutoff: 1200, q: 3.2, env: 1.4, keytrack: 0.5, poles: 4 },
+    ampEnv: env(0.01, 0.3, 0.85, 0.2), filtEnv: env(0.02, 0.3, 0.3, 0.16),
+    gain: 0.5, sends: { reverb: 0.3, delay: 0.16 }, defaultNote: 60
+  },
+  {
+    id: 'lead_bellpluck', name: 'Bell Pluck Lead', tags: ['fm', 'pluck'],
+    oscs: [{ wave: 'sine', level: 1 }],
+    fm: { ratio: 5.01, index: 3.8, decay: 0.1, sustain: 0.03 },
+    filter: { type: 'lowpass', cutoff: 5200, q: 1.2, env: 1, keytrack: 0.7, velToEnv: 0.8 },
+    ampEnv: env(0.001, 0.5, 0.0, 0.18), filtEnv: env(0.001, 0.2, 0.06, 0.1),
+    gain: 0.46, sends: { reverb: 0.3, delay: 0.26 }, defaultNote: 76
+  },
+  {
+    id: 'lead_growl', name: 'Growl Lead', tags: ['fm', 'aggressive'],
+    oscs: [{ wave: 'grind', level: 0.8, unison: 2, spread: 10 }],
+    fm: { ratio: 1.49, index: 3.4, decay: 0.3, sustain: 0.55 },
+    filter: { type: 'lowpass', cutoff: 1800, q: 5, env: 2.2, keytrack: 0.45, poles: 4 },
+    ampEnv: env(0.004, 0.3, 0.85, 0.14), filtEnv: env(0.008, 0.3, 0.3, 0.12),
+    lfo: { wave: 'triangle', rate: 5.5, depth: 0.55, target: 'filter', fade: 0.06 },
+    shaper: { curve: 'fold', drive: 0.48 },
+    gain: 0.42, sends: { delay: 0.16 }, defaultNote: 60
+  },
+  {
+    id: 'lead_vibrato', name: 'Vibrato Lead', tags: ['expressive', 'mono'],
+    oscs: [{ wave: 'sawtooth', level: 0.9 }, { wave: 'reed', level: 0.35, cent: -7 }],
+    filter: { type: 'lowpass', cutoff: 2400, q: 2.6, env: 1.6, keytrack: 0.55 },
+    ampEnv: env(0.02, 0.3, 0.9, 0.18), filtEnv: env(0.04, 0.35, 0.4, 0.16),
+    lfo: { wave: 'sine', rate: 6.4, depth: 0.28, target: 'pitch', delay: 0.25, fade: 0.25 },
+    shaper: { curve: 'tube', drive: 0.32 },
+    poly: 1, gain: 0.46, sends: { reverb: 0.28, delay: 0.18 }, defaultNote: 67
+  },
+  {
+    id: 'lead_octave', name: 'Octave Lead', tags: ['stacked', 'big'],
+    oscs: [
+      { wave: 'sawtooth', level: 0.7, unison: 2, spread: 8 },
+      { wave: 'sawtooth', level: 0.5, oct: 1, cent: 6, unison: 2, spread: 10 },
+      { wave: 'square', level: 0.3, oct: -1 }
+    ],
+    filter: { type: 'lowpass', cutoff: 3200, q: 2.2, env: 1.6, keytrack: 0.5 },
+    ampEnv: env(0.006, 0.3, 0.85, 0.16), filtEnv: env(0.008, 0.3, 0.35, 0.14),
+    shaper: { curve: 'tube', drive: 0.34 },
+    gain: 0.34, sends: { reverb: 0.22, delay: 0.18 }, defaultNote: 64
+  },
+  {
+    id: 'lead_tape', name: 'Tape Lead', tags: ['lofi', 'warm'],
+    oscs: [{ wave: 'hollow', level: 0.85, unison: 2, spread: 12 }, { wave: 'sine', level: 0.3, oct: -1 }],
+    noise: { color: 'vinyl', level: 0.14, lp: 6000 },
+    filter: { type: 'lowpass', cutoff: 2200, q: 1.6, env: 1.2, keytrack: 0.55 },
+    ampEnv: env(0.02, 0.4, 0.85, 0.24), filtEnv: env(0.04, 0.4, 0.45, 0.2),
+    lfo: { wave: 'sine', rate: 0.5, depth: 0.16, target: 'pitch', fade: 0.8 },
+    shaper: { curve: 'saturate', drive: 0.3 },
+    gain: 0.46, sends: { reverb: 0.3, delay: 0.2 }, defaultNote: 67
+  },
+  {
+    id: 'lead_reso', name: 'Reso Lead', tags: ['resonant', 'sweep'],
+    oscs: [{ wave: 'sawtooth', level: 0.9, unison: 2, spread: 9 }],
+    filter: { type: 'lowpass', cutoff: 900, q: 13, env: 3.2, keytrack: 0.45, poles: 4 },
+    ampEnv: env(0.004, 0.3, 0.8, 0.14), filtEnv: env(0.02, 0.4, 0.2, 0.14),
+    lfo: { wave: 'triangle', rate: 0.6, depth: 0.7, target: 'filter', fade: 0.3 },
+    gain: 0.5, sends: { delay: 0.22 }, defaultNote: 60
+  },
+  {
+    id: 'lead_unisonwall', name: 'Unison Wall', tags: ['huge', 'detuned'],
+    oscs: [
+      { wave: 'sawtooth', level: 0.8, unison: 7, spread: 34, width: 1 },
+      { wave: 'razor', level: 0.35, oct: -1, unison: 2, spread: 12 }
+    ],
+    filter: { type: 'lowpass', cutoff: 3000, q: 1.6, env: 1.4, keytrack: 0.5 },
+    ampEnv: env(0.01, 0.35, 0.88, 0.24), filtEnv: env(0.02, 0.4, 0.4, 0.2),
+    shaper: { curve: 'tube', drive: 0.32 },
+    gain: 0.28, sends: { reverb: 0.3, delay: 0.2 }, defaultNote: 60
+  },
+  {
+    id: 'lead_glass', name: 'Glass Lead', tags: ['bright', 'clean'],
+    oscs: [{ wave: 'glass', level: 0.9, unison: 2, spread: 7 }, { wave: 'sine', level: 0.3, oct: 1 }],
+    filter: { type: 'highpass', cutoff: 500, q: 1.1, env: 0.8, keytrack: 0.7 },
+    ampEnv: env(0.004, 0.4, 0.75, 0.24), filtEnv: env(0.006, 0.34, 0.5, 0.18),
+    gain: 0.46, sends: { reverb: 0.36, delay: 0.24 }, defaultNote: 76
+  },
+  {
+    id: 'lead_warning', name: 'Warning Lead', tags: ['siren', 'alarm'],
+    oscs: [{ wave: 'square', level: 0.85 }, { wave: 'sawtooth', level: 0.4, cent: 14 }],
+    filter: { type: 'bandpass', cutoff: 1600, q: 2.4, env: 1.6, keytrack: 0.45 },
+    ampEnv: env(0.006, 0.3, 0.9, 0.12), filtEnv: env(0.01, 0.3, 0.5, 0.1),
+    lfo: { wave: 'triangle', rate: 2.4, depth: 2.2, target: 'pitch', fade: 0.05 },
+    shaper: { curve: 'hard', drive: 0.42 },
+    gain: 0.6, sends: { reverb: 0.24 }, defaultNote: 67
   }
 ];

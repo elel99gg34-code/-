@@ -136,5 +136,67 @@ export const STRINGS = [
     ampEnv: env(0.1, 0.5, 0.9, 0.35), filtEnv: env(0.2, 0.6, 0.5, 0.3),
     lfo: { wave: 'sine', rate: 6.2, depth: 0.14, target: 'pitch', delay: 0.2, fade: 0.4 },
     glide: 0.16, poly: 1, gain: 0.4, sends: { reverb: 0.42 }, defaultNote: 64
+  },
+
+  {
+    id: 'str_contrabass', name: 'Contrabass', tags: ['low', 'orchestral'],
+    oscs: [{ wave: 'sawtooth', level: 0.85, unison: 2, spread: 5 }, { wave: 'hollow', level: 0.3, cent: 4 }],
+    sub: { wave: 'sine', oct: -1, level: 0.3, bypassFilter: true },
+    noise: { color: 'brown', level: 0.12, lp: 900 },
+    filter: { type: 'lowpass', cutoff: 520, q: 2.2, env: 1.6, keytrack: 0.55 },
+    ampEnv: env(0.12, 0.6, 0.9, 0.4), filtEnv: env(0.24, 0.7, 0.5, 0.32),
+    lfo: { wave: 'sine', rate: 4.4, depth: 0.07, target: 'pitch', delay: 0.5, fade: 0.7 },
+    gain: 0.56, sends: { reverb: 0.34 }, defaultNote: 33
+  },
+  {
+    id: 'str_quartet', name: 'String Quartet', tags: ['chamber', 'intimate'],
+    oscs: [
+      { wave: 'sawtooth', level: 0.7, unison: 3, spread: 9, width: 0.7 },
+      { wave: 'reed', level: 0.28, cent: -6 }
+    ],
+    noise: { color: 'pink', level: 0.1, bp: 4000, q: 1.8 },
+    filter: { type: 'lowpass', cutoff: 2600, q: 1.4, env: 1.5, keytrack: 0.6 },
+    ampEnv: env(0.1, 0.5, 0.9, 0.35), filtEnv: env(0.2, 0.6, 0.5, 0.3),
+    lfo: { wave: 'sine', rate: 5.5, depth: 0.08, target: 'pitch', delay: 0.4, fade: 0.6 },
+    gain: 0.4, sends: { reverb: 0.42 }, defaultNote: 60
+  },
+  {
+    id: 'str_sul_pont', name: 'Sul Ponticello', tags: ['glassy', 'tense'],
+    oscs: [{ wave: 'razor', level: 0.7, unison: 2, spread: 8 }, { wave: 'glass', level: 0.35, oct: 1 }],
+    noise: { color: 'white', level: 0.24, bp: 6000, q: 1.6 },
+    filter: { type: 'highpass', cutoff: 1400, q: 1.8, env: 1.2, keytrack: 0.7 },
+    ampEnv: env(0.09, 0.5, 0.88, 0.3), filtEnv: env(0.16, 0.5, 0.5, 0.26),
+    lfo: { wave: 'sine', rate: 6, depth: 0.1, target: 'pitch', delay: 0.3, fade: 0.5 },
+    gain: 0.46, sends: { reverb: 0.4 }, defaultNote: 72
+  },
+  {
+    id: 'str_spiccato', name: 'Spiccato', tags: ['short', 'bouncing'],
+    oscs: [{ wave: 'sawtooth', level: 0.8, unison: 3, spread: 12, width: 0.8 }],
+    noise: { color: 'white', level: 0.22, bp: 3400, q: 2, decay: 0.012 },
+    filter: { type: 'lowpass', cutoff: 2200, q: 2.6, env: 2.4, keytrack: 0.65, velToEnv: 0.85 },
+    ampEnv: env(0.004, 0.16, 0.0, 0.07), filtEnv: env(0.004, 0.1, 0.05, 0.06),
+    gain: 0.44, sends: { reverb: 0.34 }, defaultNote: 60
+  },
+  {
+    id: 'str_fiddle', name: 'Fiddle', tags: ['folk', 'raw'],
+    oscs: [{ wave: 'razor', level: 0.85 }, { wave: 'reed', level: 0.35, cent: 8 }],
+    noise: { color: 'white', level: 0.18, bp: 4600, q: 1.6 },
+    filter: { type: 'lowpass', cutoff: 2800, q: 2.2, env: 1.6, keytrack: 0.7 },
+    ampEnv: env(0.03, 0.35, 0.9, 0.2), filtEnv: env(0.06, 0.4, 0.5, 0.2),
+    lfo: { wave: 'sine', rate: 6.6, depth: 0.16, target: 'pitch', delay: 0.2, fade: 0.3 },
+    shaper: { curve: 'tube', drive: 0.28 },
+    gain: 0.46, sends: { reverb: 0.3 }, defaultNote: 69
+  },
+  {
+    id: 'str_bowed_pad', name: 'Bowed Pad', tags: ['sustain', 'lush'],
+    oscs: [
+      { wave: 'sawtooth', level: 0.7, unison: 5, spread: 20, width: 0.92 },
+      { wave: 'hollow', level: 0.3, oct: -1 }
+    ],
+    noise: { color: 'pink', level: 0.1, bp: 3000, q: 1.2 },
+    filter: { type: 'lowpass', cutoff: 1600, q: 1.8, env: 2, keytrack: 0.5 },
+    ampEnv: env(0.9, 1.4, 0.92, 1.4), filtEnv: env(1.4, 1.4, 0.5, 1),
+    lfo: { wave: 'sine', rate: 4.8, depth: 0.05, target: 'pitch', delay: 0.9, fade: 1.2 },
+    gain: 0.34, sends: { reverb: 0.52 }, defaultNote: 55
   }
 ];

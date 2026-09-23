@@ -227,5 +227,92 @@ export const KICKS = [
     click: { level: 0.4, decay: 0.006, hp: 900 },
     shaper: { curve: 'tube', drive: 0.44 },
     gain: 0.94, sends: { reverb: 0.16 }, defaultNote: 36
+  },
+
+  {
+    id: 'kick_uk', name: 'UK Garage Kick', tags: ['garage', 'tight'],
+    bodies: [{ wave: 'sine', f0: 136, f1: 54, pitchDecay: 0.02, curve: 2.4, decay: 0.22, level: 1 }],
+    click: { level: 0.52, decay: 0.0035, hp: 2000 },
+    noises: [{ color: 'white', level: 0.14, hp: 3200, decay: 0.008 }],
+    shaper: { curve: 'tube', drive: 0.28 }, gain: 0.9, defaultNote: 36
+  },
+  {
+    id: 'kick_jungle', name: 'Jungle Kick', tags: ['breakbeat', 'old'],
+    bodies: [{ wave: 'triangle', f0: 128, f1: 58, pitchDecay: 0.025, decay: 0.24, level: 0.95 }],
+    noises: [{ color: 'pink', level: 0.34, bp: 1500, q: 1, decay: 0.05 }],
+    click: { level: 0.4, decay: 0.004, hp: 1600 },
+    filter: { type: 'lowpass', cutoff: 5200, q: 0.9 },
+    shaper: { curve: 'crush', drive: 0.35 }, gain: 0.88, defaultNote: 36
+  },
+  {
+    id: 'kick_dnb', name: 'DnB Kick', tags: ['fast', 'punchy'],
+    bodies: [{ wave: 'sine', f0: 168, f1: 50, pitchDecay: 0.017, curve: 2.8, decay: 0.17, level: 1 }],
+    click: { level: 0.66, decay: 0.003, hp: 2800, tone: 'tick' },
+    noises: [{ color: 'white', level: 0.2, hp: 4200, decay: 0.007 }],
+    shaper: { curve: 'hard', drive: 0.45 }, gain: 0.92, defaultNote: 36
+  },
+  {
+    id: 'kick_soft', name: 'Soft Kick', tags: ['ambient', 'gentle'],
+    bodies: [{ wave: 'sine', f0: 100, f1: 46, pitchDecay: 0.05, decay: 0.4, level: 0.9 }],
+    gain: 0.8, velCurve: 1.3, sends: { reverb: 0.16 }, defaultNote: 36
+  },
+  {
+    id: 'kick_dirty', name: 'Dirty Kick', tags: ['grit', 'mid'],
+    bodies: [{ wave: 'triangle', f0: 158, f1: 47, pitchDecay: 0.024, curve: 2.2, decay: 0.3, level: 1 }],
+    noises: [{ color: 'crackle', level: 0.28, bp: 1800, q: 1.1, decay: 0.06 }],
+    shaper: { curve: 'rect', drive: 0.55 },
+    filter: { type: 'lowpass', cutoff: 6800, q: 1 }, gain: 0.88, defaultNote: 36
+  },
+  {
+    id: 'kick_ultrashort', name: 'Ultra Short', tags: ['blip', 'tiny'],
+    bodies: [{ wave: 'sine', f0: 126, f1: 58, pitchDecay: 0.008, curve: 3, decay: 0.07, level: 1 }],
+    click: { level: 0.7, decay: 0.002, hp: 3000, tone: 'tick' },
+    gain: 0.86, defaultNote: 36
+  },
+  {
+    id: 'kick_boom', name: 'Boom', tags: ['huge', 'sub'],
+    bodies: [
+      { wave: 'sine', f0: 150, f1: 38, pitchDecay: 0.06, curve: 1.8, decay: 1.1, level: 1 },
+      { wave: 'sine', f0: 60, f1: 34, pitchDecay: 0.3, decay: 1.6, level: 0.5 }
+    ],
+    click: { level: 0.3, decay: 0.005, hp: 1200 },
+    shaper: { curve: 'saturate', drive: 0.3 }, gain: 0.95, sends: { reverb: 0.12 }, defaultNote: 36
+  },
+  {
+    id: 'kick_punchtight', name: 'Punch Tight', tags: ['tight', 'modern'],
+    bodies: [{ wave: 'sine', f0: 172, f1: 53, pitchDecay: 0.015, curve: 2.6, decay: 0.2, level: 1 }],
+    click: { level: 0.55, decay: 0.003, hp: 2600 },
+    noises: [{ color: 'white', level: 0.16, hp: 5000, decay: 0.005 }],
+    shaper: { curve: 'hard', drive: 0.5 },
+    filter: { type: 'lowpass', cutoff: 8500, q: 0.9 }, gain: 0.92, defaultNote: 36
+  },
+  {
+    id: 'kick_analog', name: 'Analog Kick', tags: ['vintage', 'warm'],
+    bodies: [{ wave: 'sine', f0: 144, f1: 49, pitchDecay: 0.033, curve: 1.9, decay: 0.46, level: 1 }],
+    click: { level: 0.3, decay: 0.005, hp: 1000 },
+    noises: [{ color: 'pink', level: 0.12, lp: 600, decay: 0.03 }],
+    shaper: { curve: 'tube', drive: 0.36 }, gain: 0.92, defaultNote: 36
+  },
+  {
+    id: 'kick_digital', name: 'Digital Kick', tags: ['fm', 'clean'],
+    bodies: [{ wave: 'sine', f0: 160, f1: 46, pitchDecay: 0.02, curve: 2.4, decay: 0.28, level: 1, fm: 0.8, fmRatio: 1.41, fmDecay: 0.02 }],
+    click: { level: 0.5, decay: 0.0025, hp: 3400, tone: 'tick' },
+    gain: 0.9, defaultNote: 36
+  },
+  {
+    id: 'kick_clicklayer', name: 'Click Layer', tags: ['attack', 'layered'],
+    bodies: [{ wave: 'sine', f0: 118, f1: 48, pitchDecay: 0.022, curve: 2.2, decay: 0.26, level: 0.9 }],
+    click: { level: 0.95, decay: 0.004, hp: 4200, tone: 'tick' },
+    noises: [{ color: 'blue', level: 0.24, hp: 6000, decay: 0.006 }],
+    gain: 0.88, defaultNote: 36
+  },
+  {
+    id: 'kick_bigroom', name: 'Big Room Kick', tags: ['edm', 'long'],
+    bodies: [
+      { wave: 'sine', f0: 190, f1: 46, pitchDecay: 0.022, curve: 2.6, decay: 0.24, level: 1 },
+      { wave: 'sine', f0: 58, f1: 44, pitchDecay: 0.25, decay: 0.9, level: 0.55, attack: 0.015 }
+    ],
+    click: { level: 0.55, decay: 0.004, hp: 2400 },
+    shaper: { curve: 'tube', drive: 0.46 }, gain: 0.94, sends: { reverb: 0.1 }, defaultNote: 36
   }
 ];

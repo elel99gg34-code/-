@@ -121,5 +121,65 @@ export const ATMOS = [
     lfo: { wave: 'triangle', rate: 0.44, depth: 0.6, target: 'filter', fade: 1.5 },
     gain: 0.36, sends: { reverb: 0.34 }, defaultNote: 72,
     fx: [{ type: 'crush', bits: 5, reduction: 6, jitter: 0.4, mix: 0.6 }]
+  },
+
+  {
+    id: 'atm_forest', name: 'Forest', tags: ['nature', 'bright'],
+    oscs: [{ wave: 'sine', level: 0.04 }],
+    noise: { color: 'white', level: 0.6, bp: 5200, q: 0.8 },
+    filter: { type: 'highpass', cutoff: 2200, q: 1.1, env: 1, keytrack: 0.3 },
+    ampEnv: env(1.2, 1.6, 0.9, 1.6), filtEnv: env(1.8, 1.6, 0.6, 1.2),
+    lfo: { wave: 'triangle', rate: 0.27, depth: 0.5, target: 'filter', fade: 2 },
+    gain: 0.5, sends: { reverb: 0.4 }, defaultNote: 72
+  },
+  {
+    id: 'atm_city', name: 'City Hum', tags: ['urban', 'low'],
+    oscs: [{ wave: 'sine', level: 0.35 }, { wave: 'buzz', level: 0.2, oct: -1 }],
+    noise: { color: 'brown', level: 0.55, lp: 1600 },
+    filter: { type: 'lowpass', cutoff: 700, q: 1.6, env: 1, keytrack: 0.3 },
+    ampEnv: env(1.4, 1.8, 0.94, 1.8), filtEnv: env(2, 1.8, 0.6, 1.4),
+    lfo: { wave: 'sine', rate: 0.11, depth: 0.35, target: 'filter', fade: 2.6 },
+    gain: 0.46, sends: { reverb: 0.34 }, defaultNote: 40
+  },
+  {
+    id: 'atm_fire', name: 'Fire', tags: ['crackle', 'warm'],
+    oscs: [{ wave: 'sine', level: 0.05 }],
+    noise: { color: 'crackle', level: 0.9, bp: 1600, q: 0.7 },
+    filter: { type: 'lowpass', cutoff: 2600, q: 1.1, env: 1.2, keytrack: 0.3 },
+    ampEnv: env(0.8, 1.4, 0.92, 1.4), filtEnv: env(1.2, 1.4, 0.6, 1),
+    lfo: { wave: 'triangle', rate: 0.42, depth: 0.45, target: 'filter', fade: 1.4 },
+    gain: 0.56, sends: { reverb: 0.3 }, defaultNote: 55
+  },
+  {
+    id: 'atm_snow', name: 'Snowfall', tags: ['soft', 'high'],
+    oscs: [{ wave: 'sine', level: 0.04 }],
+    noise: { color: 'violet', level: 0.65, hp: 6000 },
+    filter: { type: 'highpass', cutoff: 5000, q: 0.9, env: 0.8, keytrack: 0.3 },
+    ampEnv: env(1.8, 2, 0.9, 2.2), filtEnv: env(2.4, 2, 0.6, 1.6),
+    lfo: { wave: 'sine', rate: 0.08, depth: 0.35, target: 'filter', fade: 3 },
+    gain: 0.5, sends: { reverb: 0.5 }, defaultNote: 84
+  },
+  {
+    id: 'atm_subway', name: 'Subway', tags: ['industrial', 'rumble'],
+    oscs: [{ wave: 'sine', level: 0.45 }, { wave: 'grind', level: 0.2, oct: -1 }],
+    sub: { wave: 'sine', oct: -1, level: 0.3, bypassFilter: true },
+    noise: { color: 'brown', level: 0.6, lp: 900 },
+    filter: { type: 'lowpass', cutoff: 420, q: 2.4, env: 1.4, keytrack: 0.3 },
+    ampEnv: env(1, 1.6, 0.94, 1.6), filtEnv: env(1.6, 1.6, 0.55, 1.2),
+    lfo: { wave: 'triangle', rate: 0.33, depth: 0.5, target: 'filter', fade: 1.6 },
+    shaper: { curve: 'saturate', drive: 0.28 },
+    gain: 0.5, sends: { reverb: 0.4 }, defaultNote: 31
+  },
+  {
+    id: 'atm_space', name: 'Deep Space', tags: ['drone', 'vast'],
+    oscs: [
+      { wave: 'sine', level: 0.35, unison: 3, spread: 20, width: 0.95 },
+      { wave: 'hollow', level: 0.22, oct: -1, cent: 9 }
+    ],
+    noise: { color: 'pink', level: 0.2, lp: 1600 },
+    filter: { type: 'lowpass', cutoff: 900, q: 2.6, env: 1.6, keytrack: 0.4 },
+    ampEnv: env(2.4, 2.6, 0.92, 3), filtEnv: env(3.2, 2.6, 0.5, 2.2),
+    lfo: { wave: 'sine', rate: 0.04, depth: 0.55, target: 'filter', fade: 4 },
+    gain: 0.5, sends: { reverb: 0.6 }, defaultNote: 43
   }
 ];

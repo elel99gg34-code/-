@@ -177,5 +177,86 @@ export const FXINST = [
     lfo: { wave: 'square', rate: 4.2, depth: 5, target: 'pitch', fade: 0.02 },
     shaper: { curve: 'hard', drive: 0.4 },
     gain: 0.42, sends: { reverb: 0.26 }, defaultNote: 72
+  },
+
+  {
+    id: 'fx_uplifter', name: 'Uplifter', tags: ['transition', 'rise'],
+    oscs: [{ wave: 'razor', level: 0.6, unison: 4, spread: 24, width: 0.95 }],
+    noise: { color: 'white', level: 0.35, hp: 800 },
+    filter: { type: 'highpass', cutoff: 400, q: 3.4, env: 4.5, keytrack: 0.15 },
+    ampEnv: env(1.4, 0.4, 0.95, 0.2), filtEnv: env(2.2, 0.4, 0.95, 0.2),
+    pitchEnv: { amt: -14, d: 2.2 },
+    gain: 0.36, sends: { reverb: 0.34 }, defaultNote: 64
+  },
+  {
+    id: 'fx_reverse_impact', name: 'Reverse Impact', tags: ['swell', 'hit'],
+    oscs: [{ wave: 'sawtooth', level: 0.55, unison: 3, spread: 20 }],
+    noise: { color: 'brown', level: 0.5, lp: 2600 },
+    filter: { type: 'lowpass', cutoff: 1400, q: 2, env: 2.4, keytrack: 0.2 },
+    ampEnv: env(1.3, 0.25, 0.9, 0.1), filtEnv: env(1.6, 0.3, 0.9, 0.1),
+    gain: 0.46, sends: { reverb: 0.45 }, defaultNote: 48
+  },
+  {
+    id: 'fx_stutter', name: 'Stutter Glitch', tags: ['glitch', 'gated'],
+    oscs: [{ wave: 'wire', level: 0.6 }, { wave: 'square', level: 0.35, oct: 1 }],
+    noise: { color: 'blue', level: 0.3, hp: 3200 },
+    filter: { type: 'bandpass', cutoff: 2400, q: 2.2, env: 1.6, keytrack: 0.4 },
+    ampEnv: env(0.002, 0.6, 0.6, 0.1), filtEnv: env(0.004, 0.4, 0.4, 0.1),
+    gain: 0.6, sends: { delay: 0.22 }, defaultNote: 72,
+    fx: [
+      { type: 'gate', depth: 1, shape: 0.05, pattern: [1, 1, 0, 1, 0, 1, 1, 0] },
+      { type: 'crush', bits: 5, reduction: 8, jitter: 0.4, mix: 0.7 }
+    ]
+  },
+  {
+    id: 'fx_metalhit', name: 'Metal Hit', tags: ['hit', 'industrial'],
+    oscs: [{ wave: 'metal', level: 0.6 }, { wave: 'square', level: 0.3 }],
+    fm: { ratio: 4.41, index: 3.4, decay: 0.2, sustain: 0.05 },
+    filter: { type: 'bandpass', cutoff: 2200, q: 1.4, env: 2, keytrack: 0.5 },
+    ampEnv: env(0.001, 1.2, 0.0, 0.5), filtEnv: env(0.002, 0.4, 0.06, 0.24),
+    shaper: { curve: 'diode', drive: 0.5 },
+    gain: 0.7, sends: { reverb: 0.42 }, defaultNote: 55
+  },
+  {
+    id: 'fx_airhorn', name: 'Air Horn', tags: ['rave', 'blast'],
+    oscs: [
+      { wave: 'sawtooth', level: 0.7, unison: 2, spread: 8 },
+      { wave: 'sawtooth', level: 0.5, semi: 7, cent: 9 },
+      { wave: 'square', level: 0.3, oct: -1 }
+    ],
+    filter: { type: 'lowpass', cutoff: 2200, q: 2.6, env: 1.8, keytrack: 0.5 },
+    ampEnv: env(0.02, 0.4, 0.92, 0.18), filtEnv: env(0.05, 0.4, 0.5, 0.16),
+    shaper: { curve: 'hard', drive: 0.5 },
+    gain: 0.4, sends: { reverb: 0.3 }, defaultNote: 55
+  },
+  {
+    id: 'fx_scratch', name: 'Turntable Scratch', tags: ['dj', 'fx'],
+    oscs: [{ wave: 'buzz', level: 0.45 }],
+    noise: { color: 'vinyl', level: 0.7, bp: 1800, q: 1.1 },
+    filter: { type: 'bandpass', cutoff: 1600, q: 2, env: 2, keytrack: 0.4 },
+    ampEnv: env(0.006, 0.26, 0.4, 0.08), filtEnv: env(0.01, 0.2, 0.3, 0.07),
+    lfo: { wave: 'triangle', rate: 7.5, depth: 5, target: 'pitch', fade: 0.02 },
+    gain: 0.6, defaultNote: 48
+  },
+  {
+    id: 'fx_rewind', name: 'Rewind', tags: ['fx', 'rise'],
+    oscs: [{ wave: 'sawtooth', level: 0.7, unison: 2, spread: 12 }],
+    noise: { color: 'vinyl', level: 0.35, lp: 7000 },
+    filter: { type: 'lowpass', cutoff: 4200, q: 2, env: 2, keytrack: 0.3 },
+    ampEnv: env(0.006, 1, 0.3, 0.2), filtEnv: env(0.02, 0.9, 0.5, 0.18),
+    pitchEnv: { amt: -30, d: 0.85 },
+    shaper: { curve: 'saturate', drive: 0.3 },
+    gain: 0.42, defaultNote: 55
+  },
+  {
+    id: 'fx_drop', name: 'Drop Hit', tags: ['hit', 'huge'],
+    oscs: [{ wave: 'sawtooth', level: 0.6, unison: 3, spread: 18 }],
+    sub: { wave: 'sine', oct: -1, level: 0.55, bypassFilter: true },
+    noise: { color: 'white', level: 0.4, hp: 2200, decay: 0.2 },
+    filter: { type: 'lowpass', cutoff: 1200, q: 2, env: 2.4, keytrack: 0.25 },
+    ampEnv: env(0.003, 1.6, 0.0, 0.6), filtEnv: env(0.006, 0.6, 0.06, 0.3),
+    pitchEnv: { amt: 12, d: 0.4 },
+    shaper: { curve: 'tube', drive: 0.44 },
+    gain: 0.5, sends: { reverb: 0.45 }, defaultNote: 40
   }
 ];

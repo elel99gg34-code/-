@@ -115,7 +115,7 @@ export const SNARES = [
     shaper: { curve: 'tube', drive: 0.24 }, gain: 0.8, sends: { reverb: 0.18 }, defaultNote: 38
   },
   {
-    id: 'snr_piccolo', name: 'Piccolo', tags: ['high', 'crack'],
+    id: 'snr_piccolo', name: 'Piccolo Snare', tags: ['high', 'crack'],
     bodies: [{ wave: 'triangle', f0: 340, f1: 280, pitchDecay: 0.015, decay: 0.07, level: 0.5 }],
     noises: [{ color: 'white', level: 0.72, hp: 3400, decay: 0.1 }],
     shaper: { curve: 'hard', drive: 0.4 }, gain: 0.78, defaultNote: 38
@@ -230,5 +230,99 @@ export const SNARES = [
     noises: [{ color: 'vinyl', level: 0.7, hp: 700, lp: 4200, decay: 0.18 }],
     filter: { type: 'lowpass', cutoff: 4000, q: 0.9 },
     shaper: { curve: 'crush', drive: 0.45 }, gain: 0.78, defaultNote: 38
+  },
+
+  {
+    id: 'snr_jungle', name: 'Jungle Snare', tags: ['breakbeat', 'old'],
+    bodies: [{ wave: 'triangle', f0: 232, f1: 184, pitchDecay: 0.022, decay: 0.1, level: 0.5 }],
+    noises: [{ color: 'pink', level: 0.75, hp: 1700, lp: 8200, decay: 0.15 }],
+    filter: { type: 'lowpass', cutoff: 7600, q: 0.9 },
+    shaper: { curve: 'crush', drive: 0.4 }, gain: 0.8, defaultNote: 38
+  },
+  {
+    id: 'snr_garage', name: 'Garage Snare', tags: ['garage', 'snappy'],
+    bodies: [{ wave: 'triangle', f0: 268, f1: 214, pitchDecay: 0.016, decay: 0.07, level: 0.45 }],
+    noises: [{ color: 'white', level: 0.72, hp: 2800, lp: 11000, decay: 0.1 }],
+    shaper: { curve: 'hard', drive: 0.42 }, gain: 0.78, defaultNote: 38
+  },
+  {
+    id: 'snr_fat', name: 'Fat Snare', tags: ['thick', 'body'],
+    bodies: [
+      { wave: 'triangle', f0: 188, f1: 150, pitchDecay: 0.04, decay: 0.24, level: 0.62 },
+      { wave: 'sine', f0: 282, f1: 228, pitchDecay: 0.02, decay: 0.12, level: 0.26 }
+    ],
+    noises: [{ color: 'white', level: 0.62, hp: 1200, lp: 8000, decay: 0.2 }],
+    shaper: { curve: 'tube', drive: 0.42 }, gain: 0.84, defaultNote: 38
+  },
+  {
+    id: 'snr_bright', name: 'Bright Snare', tags: ['cutting', 'high'],
+    bodies: [{ wave: 'triangle', f0: 300, f1: 246, pitchDecay: 0.014, decay: 0.07, level: 0.42 }],
+    noises: [
+      { color: 'white', level: 0.7, hp: 3600, decay: 0.12 },
+      { color: 'violet', level: 0.3, hp: 8500, decay: 0.05 }
+    ],
+    gain: 0.78, defaultNote: 38
+  },
+  {
+    id: 'snr_thin', name: 'Thin Snare', tags: ['dry', 'small'],
+    bodies: [{ wave: 'sine', f0: 262, f1: 222, pitchDecay: 0.012, decay: 0.05, level: 0.34 }],
+    noises: [{ color: 'white', level: 0.55, bp: 4200, q: 1.3, decay: 0.07 }],
+    gain: 0.7, defaultNote: 38
+  },
+  {
+    id: 'snr_wood', name: 'Wood Snare', tags: ['acoustic', 'woody'],
+    bodies: [
+      { wave: 'triangle', f0: 216, f1: 176, pitchDecay: 0.025, decay: 0.12, level: 0.5 },
+      { wave: 'square', f0: 640, f1: 480, pitchDecay: 0.008, decay: 0.03, level: 0.2 }
+    ],
+    noises: [{ color: 'pink', level: 0.5, bp: 2200, q: 1.1, decay: 0.12 }],
+    gain: 0.78, defaultNote: 38
+  },
+  {
+    id: 'snr_808long', name: '808 Long', tags: ['classic', 'tail'],
+    bodies: [{ wave: 'triangle', f0: 240, f1: 240, pitchDecay: 0.01, decay: 0.26, level: 0.45 }],
+    noises: [{ color: 'white', level: 0.55, hp: 1800, lp: 9000, decay: 0.34 }],
+    gain: 0.76, defaultNote: 38
+  },
+  {
+    id: 'snr_hall', name: 'Hall Snare', tags: ['big', 'wet'],
+    bodies: [{ wave: 'triangle', f0: 210, f1: 168, pitchDecay: 0.03, decay: 0.16, level: 0.5 }],
+    noises: [{ color: 'white', level: 0.68, hp: 1500, lp: 9000, decay: 0.24 }],
+    shaper: { curve: 'soft', drive: 0.28 },
+    gain: 0.78, sends: { reverb: 0.55 }, defaultNote: 38
+  },
+  {
+    id: 'snr_grinder', name: 'Grinder', tags: ['distorted', 'industrial'],
+    bodies: [{ wave: 'square', f0: 244, f1: 186, pitchDecay: 0.02, decay: 0.13, level: 0.5 }],
+    noises: [
+      { color: 'metal', level: 0.6, hp: 2200, decay: 0.2 },
+      { color: 'white', level: 0.4, hp: 1400, decay: 0.12 }
+    ],
+    shaper: { curve: 'destroy', drive: 0.72 },
+    filter: { type: 'lowpass', cutoff: 8800, q: 1 }, gain: 0.76, defaultNote: 38
+  },
+  {
+    id: 'snr_flam', name: 'Flam', tags: ['double', 'roll'],
+    bodies: [
+      { wave: 'triangle', f0: 250, f1: 200, pitchDecay: 0.014, decay: 0.05, level: 0.32 },
+      { wave: 'triangle', f0: 232, f1: 186, pitchDecay: 0.02, decay: 0.11, level: 0.5, attack: 0.028 }
+    ],
+    noises: [
+      { color: 'white', level: 0.4, hp: 2600, decay: 0.05 },
+      { color: 'white', level: 0.62, hp: 2200, attack: 0.03, decay: 0.16 }
+    ],
+    gain: 0.78, defaultNote: 38
+  },
+  {
+    id: 'snr_powerrim', name: 'Power Rim', tags: ['rimshot', 'loud'],
+    bodies: [{ wave: 'square', f0: 1900, f1: 460, pitchDecay: 0.005, curve: 2.2, decay: 0.05, level: 0.65 }],
+    noises: [{ color: 'white', level: 0.5, bp: 2800, q: 2.4, decay: 0.05 }],
+    shaper: { curve: 'hard', drive: 0.56 }, gain: 0.8, defaultNote: 38
+  },
+  {
+    id: 'snr_digital', name: 'Digital Snare', tags: ['fm', 'clean'],
+    bodies: [{ wave: 'sine', f0: 254, f1: 200, pitchDecay: 0.016, decay: 0.09, level: 0.45, fm: 2.4, fmRatio: 5.1, fmDecay: 0.025 }],
+    noises: [{ color: 'blue', level: 0.55, hp: 4200, decay: 0.09 }],
+    gain: 0.76, defaultNote: 38
   }
 ];

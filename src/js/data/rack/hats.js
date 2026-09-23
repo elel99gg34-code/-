@@ -154,5 +154,63 @@ export const HATS = [
     ring: { partials: HAT_PARTIALS, base: 310, wave: 'square', filter: 'highpass', cut: 6400, q: 0.8, decay: 0.85, level: 0.4, hold: 0.12 },
     noises: [{ color: 'white', level: 0.26, hp: 6800, decay: 0.7, hold: 0.08, holdLevel: 0.8 }],
     gain: 0.44, sends: { reverb: 0.14 }, defaultNote: 46
+  },
+
+  {
+    id: 'hat_shortopen', name: 'Short Open', tags: ['medium', 'tight'],
+    ring: { partials: HAT_PARTIALS, base: 330, wave: 'square', filter: 'highpass', cut: 7800, q: 0.9, decay: 0.1, level: 0.44 },
+    noises: [{ color: 'white', level: 0.2, hp: 8200, decay: 0.08 }],
+    gain: 0.46, defaultNote: 44
+  },
+  {
+    id: 'hat_dirty', name: 'Dirty Hat', tags: ['grit', 'harsh'],
+    noises: [{ color: 'crackle', level: 0.7, hp: 6200, decay: 0.05 }],
+    ring: { partials: HAT_PARTIALS, base: 340, wave: 'square', filter: 'highpass', cut: 6400, q: 1, decay: 0.05, level: 0.34 },
+    shaper: { curve: 'rect', drive: 0.5 }, gain: 0.46, defaultNote: 42
+  },
+  {
+    id: 'hat_glassy', name: 'Glassy Hat', tags: ['clean', 'tonal'],
+    ring: { partials: [1, 2.41, 4.72, 7.91], base: 1300, wave: 'sine', filter: 'highpass', cut: 6000, q: 0.8, decay: 0.12, level: 0.42 },
+    noises: [{ color: 'violet', level: 0.16, hp: 10500, decay: 0.02 }],
+    gain: 0.46, sends: { reverb: 0.12 }, defaultNote: 42
+  },
+  {
+    id: 'hat_soft', name: 'Soft Hat', tags: ['quiet', 'round'],
+    noises: [{ color: 'pink', level: 0.55, bp: 7200, q: 0.9, attack: 0.003, decay: 0.045 }],
+    gain: 0.44, velCurve: 1.4, defaultNote: 42
+  },
+  {
+    id: 'hat_909', name: '909 Hat', tags: ['classic', 'metallic'],
+    ring: { partials: [1, 1.35, 1.79, 2.34, 2.98, 3.79], base: 362, wave: 'square', filter: 'highpass', cut: 8000, q: 1, decay: 0.045, level: 0.48 },
+    noises: [{ color: 'metal', level: 0.2, hp: 8800, decay: 0.03 }],
+    gain: 0.46, defaultNote: 42
+  },
+  {
+    id: 'hat_606', name: '606 Hat', tags: ['classic', 'splashy'],
+    ring: { partials: HAT_PARTIALS, base: 290, wave: 'square', filter: 'highpass', cut: 6600, q: 0.7, decay: 0.09, level: 0.46 },
+    noises: [{ color: 'white', level: 0.3, hp: 7000, decay: 0.07 }],
+    gain: 0.45, defaultNote: 42
+  },
+  {
+    id: 'hat_stutter', name: 'Stutter Hat', tags: ['glitch', 'gated'],
+    noises: [{ color: 'white', level: 0.62, hp: 8000, hold: 0.03, holdLevel: 0.5, decay: 0.03 }],
+    ring: { partials: HAT_PARTIALS, base: 380, wave: 'square', filter: 'highpass', cut: 8600, q: 1.1, decay: 0.06, level: 0.3 },
+    gain: 0.46, defaultNote: 42
+  },
+  {
+    id: 'hat_suck', name: 'Suck Hat', tags: ['fx', 'reverse'],
+    noises: [{ color: 'white', level: 0.62, hp: 6800, attack: 0.055, decay: 0.012 }],
+    gain: 0.48, defaultNote: 42
+  },
+  {
+    id: 'hat_wash', name: 'Wash Hat', tags: ['long', 'noisy'],
+    noises: [{ color: 'violet', level: 0.5, hp: 7600, hold: 0.06, holdLevel: 0.6, decay: 0.5 }],
+    ring: { partials: HAT_PARTIALS, base: 300, wave: 'square', filter: 'highpass', cut: 6800, q: 0.6, decay: 0.45, level: 0.24 },
+    gain: 0.42, sends: { reverb: 0.16 }, defaultNote: 46
+  },
+  {
+    id: 'hat_pitched', name: 'Pitched Hat', tags: ['tonal', 'melodic'],
+    ring: { partials: [1, 2, 3, 4.2], base: 880, wave: 'square', filter: 'bandpass', cut: 4200, q: 1.6, decay: 0.07, level: 0.5 },
+    gain: 0.46, defaultNote: 42
   }
 ];

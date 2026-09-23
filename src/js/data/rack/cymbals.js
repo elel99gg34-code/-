@@ -102,5 +102,44 @@ export const CYMBALS = [
     ring: { partials: CYM_PARTIALS, base: 760, wave: 'square', filter: 'highpass', cut: 7200, q: 0.7, decay: 0.2, level: 0.34 },
     noises: [{ color: 'violet', level: 0.25, hp: 9500, decay: 0.14 }],
     gain: 0.44, sends: { reverb: 0.14 }, defaultNote: 57
+  },
+
+  {
+    id: 'cym_ride_dark', name: 'Dark Ride', tags: ['dark', 'wash'],
+    ring: { partials: CYM_PARTIALS, base: 300, wave: 'square', filter: 'bandpass', cut: 3200, q: 0.5, decay: 1.4, level: 0.3 },
+    click: { level: 0.3, decay: 0.003, hp: 3600 },
+    gain: 0.46, sends: { reverb: 0.2 }, defaultNote: 51
+  },
+  {
+    id: 'cym_crash_short', name: 'Short Crash', tags: ['quick', 'tight'],
+    ring: { partials: CYM_PARTIALS, base: 320, wave: 'square', filter: 'highpass', cut: 4400, q: 0.6, decay: 0.5, level: 0.42, hold: 0.04 },
+    noises: [{ color: 'white', level: 0.28, hp: 5200, decay: 0.4 }],
+    gain: 0.48, sends: { reverb: 0.16 }, defaultNote: 49
+  },
+  {
+    id: 'cym_bell_big', name: 'Big Bell', tags: ['tonal', 'loud'],
+    ring: { partials: [1, 2.0, 3.01, 4.2, 5.4], base: 480, wave: 'square', filter: 'bandpass', cut: 2400, q: 0.9, decay: 1.5, level: 0.45 },
+    click: { level: 0.55, decay: 0.003, hp: 4000 },
+    shaper: { curve: 'tube', drive: 0.26 },
+    gain: 0.48, sends: { reverb: 0.3 }, defaultNote: 53
+  },
+  {
+    id: 'cym_sizzle_long', name: 'Long Sizzle', tags: ['rivets', 'wash'],
+    noises: [{ color: 'violet', level: 0.45, hp: 8000, hold: 0.2, holdLevel: 0.85, decay: 2.2 }],
+    ring: { partials: CYM_PARTIALS, base: 420, wave: 'square', filter: 'highpass', cut: 6200, q: 0.5, decay: 2, level: 0.22, hold: 0.2 },
+    gain: 0.44, sends: { reverb: 0.28 }, defaultNote: 51
+  },
+  {
+    id: 'cym_reverse_splash', name: 'Reverse Splash', tags: ['fx', 'swell'],
+    noises: [{ color: 'violet', level: 0.7, hp: 6000, attack: 0.34, decay: 0.03 }],
+    ring: { partials: CYM_PARTIALS, base: 560, wave: 'square', filter: 'highpass', cut: 6400, decay: 0.04, level: 0.34, attack: 0.32 },
+    gain: 0.48, sends: { reverb: 0.26 }, defaultNote: 55
+  },
+  {
+    id: 'cym_junklid', name: 'Junk Lid', tags: ['trash', 'clang'],
+    ring: { partials: [1, 1.22, 1.71, 2.36, 3.11, 4.4], base: 390, wave: 'square', filter: 'bandpass', cut: 2600, q: 0.6, decay: 0.6, level: 0.5 },
+    noises: [{ color: 'metal', level: 0.45, hp: 3200, decay: 0.5 }],
+    click: { level: 0.5, decay: 0.003, hp: 3400 },
+    shaper: { curve: 'diode', drive: 0.55 }, gain: 0.5, sends: { reverb: 0.2 }, defaultNote: 52
   }
 ];

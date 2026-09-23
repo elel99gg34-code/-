@@ -184,5 +184,77 @@ export const PLUCKS = [
     filter: { type: 'highpass', cutoff: 380, q: 0.9, env: 0.5, keytrack: 0.7 },
     ampEnv: env(0.001, 1.4, 0.0, 0.5), filtEnv: env(0.001, 0.4, 0.08, 0.24),
     gain: 0.46, sends: { reverb: 0.42, delay: 0.2 }, defaultNote: 72
+  },
+
+  {
+    id: 'plk_oud', name: 'Oud', tags: ['string', 'eastern'],
+    oscs: [{ wave: 'hollow', level: 0.8, unison: 2, spread: 10, width: 0.5 }, { wave: 'wire', level: 0.35, cent: 7 }],
+    noise: { color: 'white', level: 0.26, bp: 2800, q: 2.2, decay: 0.012 },
+    filter: { type: 'lowpass', cutoff: 2200, q: 1.6, env: 2, keytrack: 0.7, velToEnv: 0.85 },
+    ampEnv: env(0.001, 0.9, 0.03, 0.26), filtEnv: env(0.001, 0.3, 0.06, 0.16),
+    gain: 0.52, sends: { reverb: 0.3 }, defaultNote: 57
+  },
+  {
+    id: 'plk_guzheng', name: 'Guzheng', tags: ['string', 'eastern'],
+    oscs: [{ wave: 'wire', level: 0.8 }, { wave: 'glass', level: 0.4, oct: 1, cent: 5 }],
+    noise: { color: 'white', level: 0.3, bp: 4200, q: 2.4, decay: 0.01 },
+    filter: { type: 'lowpass', cutoff: 3600, q: 1.8, env: 2.2, keytrack: 0.8, velToEnv: 0.85 },
+    ampEnv: env(0.001, 1.3, 0.02, 0.4), filtEnv: env(0.001, 0.4, 0.05, 0.2),
+    lfo: { wave: 'sine', rate: 5.6, depth: 0.09, target: 'pitch', delay: 0.25, fade: 0.35 },
+    gain: 0.5, sends: { reverb: 0.36, delay: 0.16 }, defaultNote: 69
+  },
+  {
+    id: 'plk_bouzouki', name: 'Bouzouki', tags: ['string', 'bright'],
+    oscs: [
+      { wave: 'wire', level: 0.7, unison: 2, spread: 13, width: 0.6 },
+      { wave: 'hollow', level: 0.35, cent: -8 }
+    ],
+    noise: { color: 'white', level: 0.3, bp: 4600, q: 2.6, decay: 0.009 },
+    filter: { type: 'bandpass', cutoff: 2400, q: 1.4, env: 2.2, keytrack: 0.75, velToEnv: 0.85 },
+    ampEnv: env(0.001, 0.8, 0.03, 0.24), filtEnv: env(0.001, 0.28, 0.06, 0.14),
+    gain: 0.6, sends: { reverb: 0.3 }, defaultNote: 64
+  },
+  {
+    id: 'plk_ukulele', name: 'Ukulele', tags: ['acoustic', 'small'],
+    oscs: [{ wave: 'hollow', level: 0.8 }, { wave: 'glass', level: 0.3, oct: 1, cent: 6 }],
+    noise: { color: 'white', level: 0.28, bp: 4200, q: 2.4, decay: 0.008 },
+    filter: { type: 'lowpass', cutoff: 3400, q: 1.2, env: 2, keytrack: 0.75, velToEnv: 0.8 },
+    ampEnv: env(0.001, 0.6, 0.03, 0.18), filtEnv: env(0.001, 0.22, 0.06, 0.12),
+    gain: 0.52, sends: { reverb: 0.26 }, defaultNote: 72
+  },
+  {
+    id: 'plk_zither', name: 'Zither', tags: ['string', 'ringing'],
+    oscs: [
+      { wave: 'wire', level: 0.65, unison: 2, spread: 7, width: 0.5 },
+      { wave: 'glass', level: 0.35, semi: 12 }
+    ],
+    noise: { color: 'white', level: 0.22, bp: 3800, q: 2.2, decay: 0.008 },
+    filter: { type: 'highpass', cutoff: 380, q: 1, env: 0.8, keytrack: 0.75 },
+    ampEnv: env(0.001, 1.6, 0.02, 0.5), filtEnv: env(0.001, 0.4, 0.06, 0.24),
+    gain: 0.48, sends: { reverb: 0.4, delay: 0.2 }, defaultNote: 72
+  },
+  {
+    id: 'plk_soft', name: 'Soft Pluck', tags: ['gentle', 'round'],
+    oscs: [{ wave: 'sine', level: 0.9 }, { wave: 'triangle', level: 0.35, oct: 1 }],
+    filter: { type: 'lowpass', cutoff: 1800, q: 1.6, env: 2, keytrack: 0.7, velToEnv: 0.85 },
+    ampEnv: env(0.002, 0.7, 0.0, 0.24), filtEnv: env(0.002, 0.26, 0.06, 0.14),
+    gain: 0.56, sends: { reverb: 0.32 }, defaultNote: 67
+  },
+  {
+    id: 'plk_wide', name: 'Wide Pluck', tags: ['stereo', 'lush'],
+    oscs: [
+      { wave: 'sawtooth', level: 0.7, unison: 5, spread: 22, width: 0.95 },
+      { wave: 'glass', level: 0.3, oct: 1, cent: 8 }
+    ],
+    filter: { type: 'lowpass', cutoff: 1800, q: 4.5, env: 2.8, keytrack: 0.6, velToEnv: 0.8 },
+    ampEnv: env(0.002, 0.5, 0.0, 0.2), filtEnv: env(0.002, 0.22, 0.05, 0.12),
+    gain: 0.36, sends: { reverb: 0.4, delay: 0.28 }, defaultNote: 67
+  },
+  {
+    id: 'plk_dark', name: 'Dark Pluck', tags: ['muted', 'moody'],
+    oscs: [{ wave: 'hollow', level: 0.85 }, { wave: 'sine', level: 0.4, oct: -1 }],
+    filter: { type: 'lowpass', cutoff: 900, q: 3.2, env: 2.2, keytrack: 0.6, velToEnv: 0.85 },
+    ampEnv: env(0.002, 0.6, 0.0, 0.2), filtEnv: env(0.002, 0.22, 0.06, 0.12),
+    gain: 0.6, sends: { reverb: 0.34 }, defaultNote: 55
   }
 ];

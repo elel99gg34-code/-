@@ -152,5 +152,85 @@ export const KEYS = [
     ampEnv: env(0.02, 0.2, 0.92, 0.14), filtEnv: env(0.04, 0.25, 0.7, 0.14),
     lfo: { wave: 'sine', rate: 5.2, depth: 0.08, target: 'pitch', delay: 0.3, fade: 0.35 },
     gain: 0.54, sends: { reverb: 0.28 }, defaultNote: 67
+  },
+
+  {
+    id: 'key_cp70', name: 'Electric Grand', tags: ['electric', 'bright'],
+    oscs: [
+      { wave: 'hollow', level: 0.7, unison: 2, spread: 5, width: 0.4 },
+      { wave: 'wire', level: 0.35, cent: 5 }
+    ],
+    noise: { color: 'white', level: 0.2, bp: 3200, q: 2.2, decay: 0.008 },
+    filter: { type: 'lowpass', cutoff: 3000, q: 1.4, env: 2.2, keytrack: 0.7, velToEnv: 0.9 },
+    ampEnv: env(0.002, 1.8, 0.1, 0.36), filtEnv: env(0.001, 0.5, 0.08, 0.22),
+    shaper: { curve: 'tube', drive: 0.22 },
+    gain: 0.48, sends: { reverb: 0.24 }, defaultNote: 60
+  },
+  {
+    id: 'key_dx', name: 'DX Piano', tags: ['fm', '80s'],
+    oscs: [{ wave: 'sine', level: 1 }, { wave: 'sine', level: 0.2, semi: 19 }],
+    fm: { ratio: 14.0, index: 1.6, decay: 0.05, sustain: 0.01 },
+    filter: { type: 'lowpass', cutoff: 5200, q: 0.8, env: 0.8, keytrack: 0.7, velToEnv: 0.9 },
+    ampEnv: env(0.002, 2, 0.12, 0.4), filtEnv: env(0.002, 0.6, 0.1, 0.24),
+    gain: 0.48, sends: { reverb: 0.3, delay: 0.14 }, defaultNote: 64,
+    fx: [{ type: 'chorus', rate: 0.4, depth: 0.003, mix: 0.35 }]
+  },
+  {
+    id: 'key_organ_perc', name: 'Perc Organ', tags: ['organ', 'attack'],
+    oscs: [{ wave: 'organ', level: 0.85 }, { wave: 'sine', level: 0.45, semi: 19 }],
+    fm: { ratio: 3.0, index: 0.9, decay: 0.12, sustain: 0.0 },
+    filter: { type: 'lowpass', cutoff: 4000, q: 0.8, env: 0.5, keytrack: 0.6 },
+    ampEnv: env(0.003, 0.1, 0.9, 0.05), filtEnv: env(0.004, 0.14, 0.75, 0.05),
+    shaper: { curve: 'tube', drive: 0.3 },
+    gain: 0.44, sends: { reverb: 0.2 }, defaultNote: 64
+  },
+  {
+    id: 'key_theatre', name: 'Theatre Organ', tags: ['organ', 'vibrato'],
+    oscs: [
+      { wave: 'organ', level: 0.75, unison: 2, spread: 8 },
+      { wave: 'reed', level: 0.35, cent: -6 },
+      { wave: 'sine', level: 0.25, semi: 12 }
+    ],
+    filter: { type: 'lowpass', cutoff: 3000, q: 1, env: 0.6, keytrack: 0.6 },
+    ampEnv: env(0.02, 0.15, 0.94, 0.14), filtEnv: env(0.04, 0.2, 0.75, 0.12),
+    lfo: { wave: 'sine', rate: 5.8, depth: 0.12, target: 'pitch', delay: 0.2, fade: 0.3 },
+    gain: 0.42, sends: { reverb: 0.4 }, defaultNote: 60
+  },
+  {
+    id: 'key_clavichord', name: 'Clavichord', tags: ['plucked', 'quiet'],
+    oscs: [{ wave: 'wire', level: 0.8 }, { wave: 'triangle', level: 0.3, cent: 6 }],
+    noise: { color: 'white', level: 0.24, bp: 3600, q: 2.6, decay: 0.006 },
+    filter: { type: 'bandpass', cutoff: 1600, q: 1.3, env: 2.2, keytrack: 0.7, velToEnv: 0.9 },
+    ampEnv: env(0.001, 0.5, 0.04, 0.14), filtEnv: env(0.001, 0.2, 0.06, 0.1),
+    gain: 0.74, sends: { reverb: 0.24 }, defaultNote: 60
+  },
+  {
+    id: 'key_spinet', name: 'Spinet', tags: ['plucked', 'thin'],
+    oscs: [{ wave: 'razor', level: 0.7 }, { wave: 'glass', level: 0.35, oct: 1, cent: 4 }],
+    noise: { color: 'white', level: 0.24, bp: 5200, q: 2.6, decay: 0.006 },
+    filter: { type: 'highpass', cutoff: 420, q: 1, env: 0.6, keytrack: 0.75 },
+    ampEnv: env(0.001, 0.7, 0.02, 0.18), filtEnv: env(0.001, 0.24, 0.08, 0.12),
+    gain: 0.42, sends: { reverb: 0.32 }, defaultNote: 67
+  },
+  {
+    id: 'key_synthpiano', name: 'Synth Piano', tags: ['digital', 'hybrid'],
+    oscs: [
+      { wave: 'sawtooth', level: 0.6, unison: 2, spread: 6 },
+      { wave: 'sine', level: 0.5 },
+      { wave: 'glass', level: 0.25, oct: 1 }
+    ],
+    filter: { type: 'lowpass', cutoff: 2600, q: 1.8, env: 2.4, keytrack: 0.7, velToEnv: 0.9 },
+    ampEnv: env(0.002, 1.4, 0.1, 0.3), filtEnv: env(0.002, 0.42, 0.08, 0.2),
+    gain: 0.42, sends: { reverb: 0.28, delay: 0.14 }, defaultNote: 60
+  },
+  {
+    id: 'key_lofipiano', name: 'Lo-Fi Piano', tags: ['lofi', 'dusty'],
+    oscs: [{ wave: 'hollow', level: 0.8, unison: 2, spread: 9, width: 0.4 }],
+    noise: { color: 'vinyl', level: 0.22, lp: 4600 },
+    filter: { type: 'lowpass', cutoff: 1700, q: 1.4, env: 2, keytrack: 0.65, velToEnv: 0.9 },
+    ampEnv: env(0.003, 1.4, 0.08, 0.3), filtEnv: env(0.002, 0.4, 0.08, 0.18),
+    lfo: { wave: 'sine', rate: 0.42, depth: 0.12, target: 'pitch', fade: 1 },
+    shaper: { curve: 'crush', drive: 0.34 },
+    gain: 0.5, sends: { reverb: 0.3 }, defaultNote: 60
   }
 ];

@@ -277,5 +277,102 @@ export const GUITARS = [
     lfo: { wave: 'sine', rate: 0.16, depth: 0.4, target: 'filter', fade: 1.5 },
     shaper: { curve: 'fuzz', drive: 0.6 },
     gain: 0.3, sends: { reverb: 0.45 }, defaultNote: 45
+  },
+
+  {
+    id: 'gtr_stoner', name: 'Stoner Riff', tags: ['fuzz', 'heavy'],
+    oscs: [{ wave: 'sawtooth', level: 0.85, unison: 2, spread: 10 }, { wave: 'square', level: 0.45, semi: 7 }],
+    sub: { wave: 'sine', oct: -1, level: 0.28 },
+    filter: { type: 'lowpass', cutoff: 1600, q: 2.4, env: 1.2, keytrack: 0.4 },
+    ampEnv: env(0.006, 0.8, 0.6, 0.3), filtEnv: env(0.01, 0.4, 0.25, 0.2),
+    shaper: { curve: 'fuzz', drive: 0.78, oversample: '4x' },
+    gain: 0.4, sends: { reverb: 0.2 }, defaultNote: 40
+  },
+  {
+    id: 'gtr_thrash', name: 'Thrash', tags: ['metal', 'fast'],
+    oscs: [{ wave: 'razor', level: 0.9, unison: 2, spread: 6 }, { wave: 'square', level: 0.4, semi: 7 }],
+    filter: { type: 'lowpass', cutoff: 2000, q: 3, env: 1.8, keytrack: 0.35, velToEnv: 0.85 },
+    ampEnv: env(0.001, 0.13, 0.12, 0.06), filtEnv: env(0.001, 0.08, 0.08, 0.05),
+    shaper: { curve: 'hard', drive: 0.75, oversample: '4x' },
+    gain: 0.5, defaultNote: 40
+  },
+  {
+    id: 'gtr_emo', name: 'Emo Clean', tags: ['clean', 'chorus'],
+    oscs: [{ wave: 'hollow', level: 0.8, unison: 2, spread: 7, width: 0.5 }, { wave: 'glass', level: 0.3, oct: 1 }],
+    noise: { color: 'white', level: 0.18, bp: 4000, q: 2.2, decay: 0.012 },
+    filter: { type: 'lowpass', cutoff: 3200, q: 1.3, env: 1.8, keytrack: 0.65, velToEnv: 0.8 },
+    ampEnv: env(0.002, 1.2, 0.14, 0.34), filtEnv: env(0.001, 0.4, 0.1, 0.2),
+    gain: 0.46, sends: { reverb: 0.32, delay: 0.18 }, defaultNote: 59,
+    fx: [{ type: 'chorus', rate: 0.5, depth: 0.005, mix: 0.45 }]
+  },
+  {
+    id: 'gtr_math', name: 'Math Tap', tags: ['tapping', 'bright'],
+    oscs: [{ wave: 'glass', level: 0.8 }, { wave: 'wire', level: 0.35, cent: 6 }],
+    noise: { color: 'white', level: 0.24, bp: 4600, q: 2.4, decay: 0.008 },
+    filter: { type: 'lowpass', cutoff: 3800, q: 2.2, env: 2.4, keytrack: 0.75, velToEnv: 0.85 },
+    ampEnv: env(0.001, 0.6, 0.05, 0.18), filtEnv: env(0.001, 0.22, 0.06, 0.12),
+    gain: 0.48, sends: { reverb: 0.26, delay: 0.2 }, defaultNote: 67
+  },
+  {
+    id: 'gtr_downtune', name: 'Down Tuned', tags: ['low', 'heavy'],
+    oscs: [{ wave: 'grind', level: 0.9, unison: 2, spread: 5 }, { wave: 'sawtooth', level: 0.35, semi: 7 }],
+    sub: { wave: 'sine', oct: -1, level: 0.3 },
+    filter: { type: 'lowpass', cutoff: 900, q: 3.2, env: 1.6, keytrack: 0.3, poles: 4 },
+    ampEnv: env(0.002, 0.2, 0.2, 0.08), filtEnv: env(0.002, 0.12, 0.1, 0.06),
+    shaper: { curve: 'destroy', drive: 0.75, oversample: '4x' },
+    gain: 0.5, defaultNote: 28
+  },
+  {
+    id: 'gtr_reverse', name: 'Reverse Guitar', tags: ['fx', 'swell'],
+    oscs: [{ wave: 'razor', level: 0.7, unison: 2, spread: 9 }],
+    filter: { type: 'lowpass', cutoff: 2400, q: 2.2, env: 1.6, keytrack: 0.5 },
+    ampEnv: env(0.7, 0.3, 0.9, 0.12), filtEnv: env(0.9, 0.3, 0.9, 0.12),
+    shaper: { curve: 'tube', drive: 0.45 },
+    gain: 0.42, sends: { reverb: 0.4, delay: 0.2 }, defaultNote: 55
+  },
+  {
+    id: 'gtr_octaver', name: 'Octave Up', tags: ['octave', 'bright'],
+    oscs: [
+      { wave: 'sawtooth', level: 0.6 },
+      { wave: 'razor', level: 0.7, oct: 1, cent: 4 },
+      { wave: 'glass', level: 0.3, oct: 2 }
+    ],
+    filter: { type: 'lowpass', cutoff: 4200, q: 2, env: 1.4, keytrack: 0.6 },
+    ampEnv: env(0.003, 0.5, 0.5, 0.2), filtEnv: env(0.003, 0.26, 0.2, 0.14),
+    shaper: { curve: 'fuzz', drive: 0.6 },
+    gain: 0.4, sends: { reverb: 0.22 }, defaultNote: 55
+  },
+  {
+    id: 'gtr_lofi', name: 'Lo-Fi Guitar', tags: ['lofi', 'dusty'],
+    oscs: [{ wave: 'hollow', level: 0.8 }, { wave: 'sawtooth', level: 0.3, cent: 8 }],
+    noise: { color: 'vinyl', level: 0.2, lp: 5000 },
+    filter: { type: 'lowpass', cutoff: 1800, q: 1.6, env: 1.4, keytrack: 0.55 },
+    ampEnv: env(0.003, 0.9, 0.16, 0.26), filtEnv: env(0.002, 0.3, 0.1, 0.16),
+    shaper: { curve: 'crush', drive: 0.42 },
+    gain: 0.5, sends: { reverb: 0.24 }, defaultNote: 55
+  },
+  {
+    id: 'gtr_ambient', name: 'Ambient Loop', tags: ['ambient', 'wash'],
+    oscs: [
+      { wave: 'razor', level: 0.6, unison: 3, spread: 16, width: 0.9 },
+      { wave: 'glass', level: 0.3, oct: 1, cent: 6 }
+    ],
+    filter: { type: 'lowpass', cutoff: 2200, q: 1.8, env: 1.2, keytrack: 0.5 },
+    ampEnv: env(1.1, 1.4, 0.85, 1.4), filtEnv: env(1.6, 1.4, 0.5, 1),
+    lfo: { wave: 'sine', rate: 0.2, depth: 0.3, target: 'filter', fade: 1.6 },
+    shaper: { curve: 'tube', drive: 0.32 },
+    gain: 0.34, sends: { reverb: 0.55, delay: 0.3 }, defaultNote: 59
+  },
+  {
+    id: 'gtr_strum', name: 'Strum Chord', tags: ['chord', 'wide'],
+    oscs: [
+      { wave: 'hollow', level: 0.6, unison: 2, spread: 9, width: 0.6 },
+      { wave: 'hollow', level: 0.45, semi: 7, unison: 2, spread: 11, width: 0.8 },
+      { wave: 'glass', level: 0.3, semi: 12, cent: 5 }
+    ],
+    noise: { color: 'white', level: 0.3, bp: 3600, q: 1.6, decay: 0.03 },
+    filter: { type: 'lowpass', cutoff: 3200, q: 1.2, env: 1.8, keytrack: 0.7, velToEnv: 0.8 },
+    ampEnv: env(0.008, 1.3, 0.1, 0.4), filtEnv: env(0.004, 0.45, 0.08, 0.24),
+    gain: 0.4, sends: { reverb: 0.3 }, defaultNote: 52
   }
 ];

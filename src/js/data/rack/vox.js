@@ -179,5 +179,73 @@ export const VOICES = [
     filter: { type: 'bandpass', cutoff: 1800, q: 1.4, env: 2, keytrack: 0.5 },
     ampEnv: env(0.006, 0.18, 0.0, 0.08), filtEnv: env(0.008, 0.12, 0.05, 0.06),
     gain: 0.7, sends: { reverb: 0.26 }, defaultNote: 60
+  },
+
+  {
+    id: 'vox_aah_high', name: 'High Aah', tags: ['open', 'soprano'],
+    oscs: [{ wave: 'vox', level: 0.85, unison: 3, spread: 12, width: 0.8 }],
+    filter: { type: 'bandpass', cutoff: 1100, q: 2.2, env: 1.2, keytrack: 0.65 },
+    ampEnv: env(0.1, 0.5, 0.88, 0.36), filtEnv: env(0.16, 0.5, 0.5, 0.28),
+    lfo: { wave: 'sine', rate: 5.4, depth: 0.1, target: 'pitch', delay: 0.35, fade: 0.4 },
+    gain: 0.6, sends: { reverb: 0.42 }, defaultNote: 76
+  },
+  {
+    id: 'vox_ooh_pad', name: 'Ooh Pad', tags: ['pad', 'dark'],
+    oscs: [{ wave: 'vox', level: 0.7, unison: 4, spread: 18, width: 0.9 }, { wave: 'sine', level: 0.3, oct: -1 }],
+    filter: { type: 'lowpass', cutoff: 520, q: 3.4, env: 1.4, keytrack: 0.6 },
+    ampEnv: env(0.9, 1.4, 0.9, 1.4), filtEnv: env(1.4, 1.4, 0.5, 1),
+    lfo: { wave: 'sine', rate: 4, depth: 0.05, target: 'pitch', delay: 0.8, fade: 1 },
+    gain: 0.62, sends: { reverb: 0.5 }, defaultNote: 48
+  },
+  {
+    id: 'vox_syllable', name: 'Syllable', tags: ['chop', 'rhythmic'],
+    oscs: [{ wave: 'vox', level: 0.85, unison: 2, spread: 10 }],
+    filter: { type: 'bandpass', cutoff: 1300, q: 2.4, env: 2.2, keytrack: 0.55 },
+    ampEnv: env(0.008, 0.2, 0.55, 0.07), filtEnv: env(0.02, 0.2, 0.3, 0.07),
+    lfo: { wave: 'triangle', rate: 7, depth: 0.5, target: 'filter', fade: 0.04 },
+    gain: 0.68, sends: { reverb: 0.26, delay: 0.2 }, defaultNote: 62
+  },
+  {
+    id: 'vox_doo', name: 'Doo', tags: ['scat', 'short'],
+    oscs: [{ wave: 'vox', level: 0.8 }, { wave: 'sine', level: 0.35 }],
+    filter: { type: 'lowpass', cutoff: 800, q: 2.6, env: 2, keytrack: 0.6, velToEnv: 0.8 },
+    ampEnv: env(0.008, 0.26, 0.2, 0.1), filtEnv: env(0.012, 0.2, 0.12, 0.09),
+    gain: 0.66, sends: { reverb: 0.3 }, defaultNote: 55
+  },
+  {
+    id: 'vox_throat', name: 'Throat Sing', tags: ['harmonic', 'drone'],
+    oscs: [{ wave: 'buzz', level: 0.5 }, { wave: 'vox', level: 0.6, unison: 2, spread: 7 }],
+    sub: { wave: 'sine', oct: -1, level: 0.25, bypassFilter: true },
+    filter: { type: 'bandpass', cutoff: 1500, q: 3, env: 2, keytrack: 0.7 },
+    ampEnv: env(0.3, 0.8, 0.92, 0.6), filtEnv: env(0.5, 0.9, 0.5, 0.4),
+    lfo: { wave: 'sine', rate: 0.5, depth: 0.6, target: 'filter', fade: 1 },
+    shaper: { curve: 'tube', drive: 0.3 },
+    gain: 0.68, sends: { reverb: 0.44 }, defaultNote: 40
+  },
+  {
+    id: 'vox_opera', name: 'Opera', tags: ['vibrato', 'big'],
+    oscs: [{ wave: 'vox', level: 0.85, unison: 3, spread: 10, width: 0.7 }],
+    filter: { type: 'bandpass', cutoff: 1000, q: 2.6, env: 1.6, keytrack: 0.65 },
+    ampEnv: env(0.09, 0.5, 0.9, 0.4), filtEnv: env(0.16, 0.5, 0.5, 0.3),
+    lfo: { wave: 'sine', rate: 5.8, depth: 0.32, target: 'pitch', delay: 0.25, fade: 0.35 },
+    gain: 0.66, sends: { reverb: 0.5 }, defaultNote: 69
+  },
+  {
+    id: 'vox_radio', name: 'Radio Voice', tags: ['lofi', 'narrow'],
+    oscs: [{ wave: 'vox', level: 0.9, unison: 2, spread: 8 }],
+    filter: { type: 'bandpass', cutoff: 1500, q: 3, env: 1.4, keytrack: 0.5 },
+    ampEnv: env(0.02, 0.3, 0.85, 0.16), filtEnv: env(0.04, 0.3, 0.45, 0.14),
+    gain: 0.86, defaultNote: 57,
+    fx: [
+      { type: 'eq', low: -14, mid: 6, midFreq: 1800, high: -12 },
+      { type: 'crush', bits: 7, reduction: 3, mix: 0.5 }
+    ]
+  },
+  {
+    id: 'vox_chop', name: 'Vocal Chop', tags: ['stab', 'edm'],
+    oscs: [{ wave: 'vox', level: 0.8, unison: 4, spread: 20, width: 0.9 }],
+    filter: { type: 'bandpass', cutoff: 1400, q: 1.8, env: 2.4, keytrack: 0.6, velToEnv: 0.85 },
+    ampEnv: env(0.005, 0.22, 0.0, 0.09), filtEnv: env(0.006, 0.16, 0.05, 0.08),
+    gain: 1.05, sends: { reverb: 0.34, delay: 0.26 }, defaultNote: 67
   }
 ];
