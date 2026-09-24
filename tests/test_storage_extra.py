@@ -289,37 +289,85 @@ def test_backup_includes_settings_when_present(db, tmp_path):
 
 
 # --- 마이그레이션 -----------------------------------------------------
-def test_legacy_hatches_db_is_migrated(tmp_path):
-    legacy = tmp_path / "hatches.db"
-    with sqlite3.connect(legacy) as conn:
+def _write_legacy_db(path, rows=1):
+    """구버전 DB 를 만들고 연결을 확실히 닫는다.
+
+    sqlite3.connect 를 with 로 써도 연결은 닫히지 않는다 (트랜잭션만 끝난다).
+    Windows 에서는 열린 파일을 옮길 수 없어서, 닫지 않으면 테스트가 깨진다.
+    """
+    conn = sqlite3.connect(path)
+    try:
         conn.execute(
             "CREATE TABLE hatches (id INTEGER PRIMARY KEY, created_at TEXT, biome TEXT,"
             " pet TEXT, rarity TEXT, mutation TEXT, weight REAL, note TEXT)"
         )
-        conn.execute(
-            "INSERT INTO hatches VALUES (1, '2026-01-01T00:00:00', 'Forest', 'Chicken',"
-            " 'Common', 'None', NULL, '옛기록')"
-        )
+        for index in range(rows):
+            conn.execute(
+                "INSERT INTO hatches VALUES (?, '2026-01-01T00:00:00', 'Forest', 'Chicken',"
+                " 'Common', 'None', NULL, '옛기록')",
+                (index + 1,),
+            )
+        conn.commit()
+    finally:
+        conn.close()
+
+
+def test_legacy_hatches_db_is_migrated(tmp_path):
+    _write_legacy_db(tmp_path / "hatches.db")
 
     with Database(tmp_path / "eggmate.db") as db:
-        records = HatchLog(db).all()
-        assert [r.pet for r in records] == ["Chicken"]
-    assert not legacy.exists(), "옮긴 뒤에는 원본 이름을 바꿔 두어야 한다"
+        assert [r.pet for r in HatchLog(db).all()] == ["Chicken"]
+        assert db.get_meta("legacy_migrated") == "1"
 
 
 def test_migration_does_not_run_twice(tmp_path):
-    legacy = tmp_path / "hatches.db"
-    with sqlite3.connect(legacy) as conn:
-        conn.execute(
-            "CREATE TABLE hatches (id INTEGER PRIMARY KEY, created_at TEXT, biome TEXT,"
-            " pet TEXT, rarity TEXT, mutation TEXT, weight REAL, note TEXT)"
-        )
-        conn.execute("INSERT INTO hatches VALUES (1, 'x', '', 'Chicken', '', 'None', NULL, '')")
+    _write_legacy_db(tmp_path / "hatches.db")
 
     for _ in range(2):
         with Database(tmp_path / "eggmate.db") as db:
             count = HatchLog(db).count()
     assert count == 1
+
+
+def test_migration_does_not_resurrect_cleared_records(tmp_path):
+    """옮긴 뒤 기록을 지웠다가 다시 열어도 옛 기록이 되살아나면 안 된다.
+
+    예전에는 원본 파일 이름 변경으로 완료를 표시해서, 이름 변경이 실패한 환경에서는
+    기록을 지운 뒤 다시 열 때 옛 기록이 돌아왔다.
+    """
+    legacy = tmp_path / "hatches.db"
+    _write_legacy_db(legacy, rows=3)
+
+    with Database(tmp_path / "eggmate.db") as db:
+        assert HatchLog(db).count() == 3
+        HatchLog(db).clear()
+
+    # 원본을 일부러 되살려 둬도 다시 옮겨 오면 안 된다.
+    migrated = legacy.with_suffix(".db.migrated")
+    if migrated.exists():
+        migrated.rename(legacy)
+
+    with Database(tmp_path / "eggmate.db") as db:
+        assert HatchLog(db).count() == 0
+
+
+def test_migration_is_skipped_when_records_already_exist(tmp_path):
+    target = tmp_path / "eggmate.db"
+    with Database(target) as db:
+        HatchLog(db).add(pet="이미 있는 기록")
+
+    _write_legacy_db(tmp_path / "hatches.db")
+    with Database(target) as db:
+        assert HatchLog(db).count() == 1
+        assert db.get_meta("legacy_migrated") == "skipped"
+
+
+def test_meta_round_trips(tmp_path):
+    with Database(tmp_path / "eggmate.db") as db:
+        assert db.get_meta("없는키", "기본값") == "기본값"
+        db.set_meta("키", "값1")
+        db.set_meta("키", "값2")
+        assert db.get_meta("키") == "값2"
 
 
 # --- 추가된 부화 기록 기능 -------------------------------------------

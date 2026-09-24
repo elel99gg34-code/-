@@ -73,7 +73,14 @@ CREATE TABLE IF NOT EXISTS timeline (
     note       TEXT    NOT NULL DEFAULT ''
 );
 CREATE INDEX IF NOT EXISTS idx_timeline_profile ON timeline(profile, created_at);
+
+CREATE TABLE IF NOT EXISTS meta (
+    key   TEXT PRIMARY KEY,
+    value TEXT NOT NULL
+);
 """
+
+LEGACY_MIGRATED_KEY = "legacy_migrated"
 
 
 def _now() -> str:
@@ -100,14 +107,33 @@ class Database:
         self._migrate_legacy()
 
     # --- 내부 ---------------------------------------------------------
+    def get_meta(self, key: str, default: str = "") -> str:
+        rows = self.execute("SELECT value FROM meta WHERE key = ?", (key,))
+        return rows[0]["value"] if rows else default
+
+    def set_meta(self, key: str, value: str) -> None:
+        self.write(
+            "INSERT INTO meta (key, value) VALUES (?, ?)"
+            " ON CONFLICT(key) DO UPDATE SET value = excluded.value",
+            (key, value),
+        )
+
     def _migrate_legacy(self) -> int:
-        """구버전 hatches.db 의 기록을 한 번만 옮겨 온다."""
+        """구버전 hatches.db 의 기록을 한 번만 옮겨 온다.
+
+        완료 표시는 DB 안의 meta 표에 남긴다. 예전에는 원본 파일 이름을 바꾸는 것으로
+        표시를 대신했는데, Windows 에서 파일이 잠겨 있으면 이름 변경이 실패해 표시가
+        남지 않았다. 그 상태에서 사용자가 기록을 전부 지우면 옛 기록이 되살아났다.
+        """
         if str(self.path) == ":memory:":
+            return 0
+        if self.get_meta(LEGACY_MIGRATED_KEY):
             return 0
         legacy = self.path.parent / LEGACY_DB_FILENAME
         if not legacy.exists():
             return 0
         if self.count("hatches") > 0:
+            self.set_meta(LEGACY_MIGRATED_KEY, "skipped")
             return 0
         try:
             with closing(sqlite3.connect(str(legacy))) as old:
@@ -127,6 +153,9 @@ class Database:
                 )
                 moved += 1
         self._conn.commit()
+        self.set_meta(LEGACY_MIGRATED_KEY, str(moved))
+
+        # 원본 정리는 어디까지나 덤이다. 실패해도 위 표시가 있으니 다시 옮기지 않는다.
         try:
             legacy.rename(legacy.with_suffix(".db.migrated"))
         except OSError:
