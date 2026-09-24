@@ -324,5 +324,98 @@ export const SNARES = [
     bodies: [{ wave: 'sine', f0: 254, f1: 200, pitchDecay: 0.016, decay: 0.09, level: 0.45, fm: 2.4, fmRatio: 5.1, fmDecay: 0.025 }],
     noises: [{ color: 'blue', level: 0.55, hp: 4200, decay: 0.09 }],
     gain: 0.76, defaultNote: 38
+  },
+  {
+    id: 'snr_clapstack', name: 'Clap Stack', tags: ['clap', 'layered'],
+    bodies: [{ wave: 'triangle', f0: 200, f1: 160, pitchDecay: 0.02, decay: 0.06, level: 0.4 }],
+    noises: [
+      { color: 'white', level: 0.5, bp: 1400, q: 1.1, decay: 0.012 },
+      { color: 'white', level: 0.5, bp: 1600, q: 1, attack: 0.012, decay: 0.014 },
+      { color: 'white', level: 0.6, bp: 1900, q: 0.7, attack: 0.026, decay: 0.16 }
+    ],
+    gain: 0.66, sends: { reverb: 0.2 }, defaultNote: 38
+  },
+  {
+    id: 'snr_rimclick', name: 'Rim Click Snare', tags: ['tight', 'wood'],
+    bodies: [{ wave: 'triangle', f0: 640, f1: 420, pitchDecay: 0.008, decay: 0.035, level: 0.8 }],
+    noises: [{ color: 'white', level: 0.3, bp: 3200, q: 2, decay: 0.014 }],
+    click: { level: 0.5, decay: 0.0012, hp: 4000 },
+    gain: 0.78, defaultNote: 37
+  },
+  {
+    id: 'snr_noisegate', name: 'Gated Noise', tags: ['gated', 'big'],
+    noises: [{ color: 'white', level: 0.85, bp: 1800, q: 0.55, attack: 0.001, hold: 0.09, holdLevel: 1, decay: 0.012 }],
+    bodies: [{ wave: 'triangle', f0: 210, f1: 175, pitchDecay: 0.02, decay: 0.05, level: 0.35 }],
+    gain: 0.5, sends: { reverb: 0.16 }, defaultNote: 38
+  },
+  {
+    id: 'snr_trap808', name: 'Trap Snare', tags: ['trap', 'tight'],
+    bodies: [{ wave: 'triangle', f0: 240, f1: 185, pitchDecay: 0.015, decay: 0.06, level: 0.55 }],
+    noises: [{ color: 'white', level: 0.7, bp: 2400, q: 0.8, decay: 0.1 }],
+    click: { level: 0.3, decay: 0.0012, hp: 4600 },
+    gain: 0.66, defaultNote: 38
+  },
+  {
+    id: 'snr_layerwood', name: 'Wood & Wire', tags: ['acoustic', 'layered'],
+    bodies: [
+      { wave: 'triangle', f0: 195, f1: 168, pitchDecay: 0.02, decay: 0.09, level: 0.5 },
+      { wave: 'sine', f0: 380, f1: 330, pitchDecay: 0.014, decay: 0.05, level: 0.3 }
+    ],
+    noises: [
+      { color: 'white', level: 0.5, bp: 2200, q: 0.9, decay: 0.12 },
+      { color: 'metal', level: 0.2, hp: 6000, decay: 0.07 }
+    ],
+    gain: 0.6, sends: { reverb: 0.2 }, defaultNote: 38
+  },
+  {
+    id: 'snr_clang', name: 'Clang Snare', tags: ['metal', 'industrial'],
+    ring: { partials: [1, 1.57, 2.14, 3.06, 4.11], base: 420, wave: 'square', filter: 'bandpass', cut: 2600, q: 0.8, decay: 0.2, level: 0.45 },
+    noises: [{ color: 'white', level: 0.55, bp: 2600, q: 0.7, decay: 0.12 }],
+    bodies: [{ wave: 'triangle', f0: 220, f1: 180, pitchDecay: 0.018, decay: 0.06, level: 0.4 }],
+    gain: 0.6, sends: { reverb: 0.24 }, defaultNote: 38
+  },
+  {
+    id: 'snr_tightgate', name: 'Tight Gate', tags: ['gated', 'short'],
+    noises: [{ color: 'white', level: 0.9, bp: 2600, q: 0.7, attack: 0.001, hold: 0.035, holdLevel: 1, decay: 0.006 }],
+    bodies: [{ wave: 'triangle', f0: 250, f1: 200, pitchDecay: 0.012, decay: 0.04, level: 0.4 }],
+    gain: 0.54, defaultNote: 38
+  },
+  {
+    id: 'snr_lofibit', name: 'Bitcrushed Snare', tags: ['lofi', 'digital'],
+    bodies: [{ wave: 'triangle', f0: 215, f1: 178, pitchDecay: 0.018, decay: 0.07, level: 0.5 }],
+    noises: [{ color: 'white', level: 0.66, bp: 2000, q: 0.8, decay: 0.11 }],
+    gain: 0.68, defaultNote: 38,
+    fx: [{ type: 'crush', bits: 5, reduction: 4, mix: 0.75 }]
+  },
+  {
+    id: 'snr_deepgate', name: 'Deep Gated', tags: ['gated', 'low'],
+    bodies: [{ wave: 'sine', f0: 170, f1: 138, pitchDecay: 0.025, decay: 0.1, level: 0.7 }],
+    noises: [{ color: 'pink', level: 0.7, bp: 1300, q: 0.6, attack: 0.002, hold: 0.07, holdLevel: 1, decay: 0.014 }],
+    gain: 0.56, sends: { reverb: 0.12 }, defaultNote: 38
+  },
+  {
+    id: 'snr_snappy', name: 'Snappy', tags: ['bright', 'tight'],
+    bodies: [{ wave: 'triangle', f0: 260, f1: 210, pitchDecay: 0.012, decay: 0.05, level: 0.45 }],
+    noises: [
+      { color: 'white', level: 0.6, bp: 3600, q: 1, decay: 0.06 },
+      { color: 'violet', level: 0.3, hp: 7000, decay: 0.03 }
+    ],
+    click: { level: 0.34, decay: 0.001, hp: 5200 },
+    gain: 0.7, defaultNote: 38
+  },
+  {
+    id: 'snr_looseskin', name: 'Loose Skin', tags: ['acoustic', 'fat'],
+    bodies: [
+      { wave: 'sine', f0: 178, f1: 142, pitchDecay: 0.035, decay: 0.16, level: 0.75 },
+      { wave: 'triangle', f0: 345, f1: 290, pitchDecay: 0.02, decay: 0.07, level: 0.3 }
+    ],
+    noises: [{ color: 'white', level: 0.45, bp: 1900, q: 0.8, decay: 0.16 }],
+    gain: 0.6, sends: { reverb: 0.22 }, defaultNote: 38
+  },
+  {
+    id: 'snr_noiseonly', name: 'Pure Noise Snare', tags: ['noise', 'clean'],
+    noises: [{ color: 'white', level: 0.9, bp: 2200, q: 0.6, decay: 0.13 }],
+    click: { level: 0.24, decay: 0.001, hp: 5000 },
+    gain: 0.6, defaultNote: 38
   }
 ];

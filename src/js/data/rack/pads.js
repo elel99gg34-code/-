@@ -328,5 +328,110 @@ export const PADS = [
     lfo: { wave: 'sine', rate: 0.38, depth: 0.14, target: 'pitch', fade: 1.4 },
     shaper: { curve: 'crush', drive: 0.3 },
     gain: 0.38, sends: { reverb: 0.45 }, defaultNote: 55
+  },
+  {
+    id: 'pad_shimmerpad', name: 'Shimmer Pad', tags: ['bright', 'wide'],
+    oscs: [
+      { wave: 'saw', level: 0.3, unison: 4, spread: 20 },
+      { wave: 'glass', level: 0.25, oct: 1, cent: 6 },
+      { wave: 'sine', level: 0.2, oct: 2 }
+    ],
+    filter: { type: 'lowpass', cutoff: 3600, q: 1.2, env: 1, keytrack: 0.5 },
+    ampEnv: env(0.6, 1.8, 0.8, 1.4), filtEnv: env(0.9, 1.6, 0.6, 0.9),
+    lfo: { wave: 'sine', rate: 0.22, depth: 0.3, target: 'filter' },
+    gain: 0.4, sends: { reverb: 0.52, delay: 0.2 }, defaultNote: 60
+  },
+  {
+    id: 'pad_dust', name: 'Dust Pad', tags: ['lofi', 'grain'],
+    oscs: [{ wave: 'saw', level: 0.35, unison: 3, spread: 14 }, { wave: 'triangle', level: 0.3, oct: -1 }],
+    noise: { color: 'vinyl', level: 0.16, lp: 4000 },
+    filter: { type: 'lowpass', cutoff: 2000, q: 1.2, env: 0.8, keytrack: 0.4 },
+    ampEnv: env(0.5, 1.6, 0.75, 1.2), filtEnv: env(0.8, 1.4, 0.6, 0.8),
+    shaper: { curve: 'tube', drive: 0.24 },
+    gain: 0.46, sends: { reverb: 0.44 }, defaultNote: 55
+  },
+  {
+    id: 'pad_hollow', name: 'Hollow Pad', tags: ['hollow', 'reed'],
+    oscs: [{ wave: 'hollow', level: 0.5, unison: 2, spread: 10 }, { wave: 'sine', level: 0.3, oct: -1 }],
+    filter: { type: 'lowpass', cutoff: 2400, q: 1.4, env: 0.9, keytrack: 0.5 },
+    ampEnv: env(0.5, 1.5, 0.8, 1.1), filtEnv: env(0.7, 1.4, 0.6, 0.8),
+    gain: 0.6, sends: { reverb: 0.44 }, defaultNote: 55
+  },
+  {
+    id: 'pad_swellstrings', name: 'Swell Strings', tags: ['string', 'slow'],
+    oscs: [
+      { wave: 'saw', level: 0.32, unison: 5, spread: 18 },
+      { wave: 'saw', level: 0.22, oct: 1, cent: -7 }
+    ],
+    filter: { type: 'lowpass', cutoff: 2600, q: 1.2, env: 1.2, keytrack: 0.5 },
+    ampEnv: env(1.1, 2, 0.85, 1.6), filtEnv: env(1.4, 1.8, 0.6, 1 ),
+    gain: 0.44, sends: { reverb: 0.52 }, defaultNote: 55
+  },
+  {
+    id: 'pad_ghost', name: 'Ghost Pad', tags: ['vox', 'eerie'],
+    oscs: [{ wave: 'vox', level: 0.45, unison: 3, spread: 16 }, { wave: 'sine', level: 0.25, oct: 1 }],
+    filter: { type: 'bandpass', cutoff: 900, q: 1.6, env: 1.6, keytrack: 0.6 },
+    ampEnv: env(0.8, 1.8, 0.8, 1.4), filtEnv: env(1.1, 1.6, 0.5, 0.9),
+    lfo: { wave: 'sine', rate: 0.18, depth: 0.4, target: 'filter' },
+    gain: 1.1, sends: { reverb: 0.56, delay: 0.2 }, defaultNote: 60
+  },
+  {
+    id: 'pad_polysynth', name: 'Poly Pad', tags: ['classic', 'warm'],
+    oscs: [{ wave: 'saw', level: 0.4, cent: -8 }, { wave: 'square', level: 0.3, cent: 8 }],
+    filter: { type: 'lowpass', cutoff: 2200, q: 2, env: 1.4, keytrack: 0.5 },
+    ampEnv: env(0.25, 1.2, 0.8, 0.8), filtEnv: env(0.4, 1, 0.5, 0.6),
+    gain: 0.52, sends: { reverb: 0.4 }, defaultNote: 55
+  },
+  {
+    id: 'pad_underwater', name: 'Submerged Pad', tags: ['dark', 'filtered'],
+    oscs: [{ wave: 'saw', level: 0.4, unison: 4, spread: 18 }],
+    filter: { type: 'lowpass', cutoff: 700, q: 3, env: 1.4, keytrack: 0.4 },
+    ampEnv: env(0.7, 1.8, 0.85, 1.4), filtEnv: env(1, 1.6, 0.5, 0.9),
+    lfo: { wave: 'sine', rate: 0.14, depth: 0.5, target: 'filter' },
+    gain: 0.72, sends: { reverb: 0.5 }, defaultNote: 48
+  },
+  {
+    id: 'pad_brasspad', name: 'Brass Pad', tags: ['brass', 'full'],
+    oscs: [{ wave: 'saw', level: 0.45, unison: 3, spread: 12 }, { wave: 'reed', level: 0.25 }],
+    filter: { type: 'lowpass', cutoff: 2000, q: 1.8, env: 2, keytrack: 0.5 },
+    ampEnv: env(0.3, 1.2, 0.85, 0.8), filtEnv: env(0.5, 1.2, 0.5, 0.6),
+    shaper: { curve: 'soft', drive: 0.22 },
+    gain: 0.48, sends: { reverb: 0.4 }, defaultNote: 55
+  },
+  {
+    id: 'pad_gritwall', name: 'Grit Wall Pad', tags: ['harsh', 'wide'],
+    oscs: [{ wave: 'grind', level: 0.35, unison: 3, spread: 22 }, { wave: 'saw', level: 0.25, oct: -1 }],
+    filter: { type: 'lowpass', cutoff: 1800, q: 1.6, env: 1.2, keytrack: 0.4 },
+    ampEnv: env(0.5, 1.6, 0.85, 1.2), filtEnv: env(0.8, 1.4, 0.6, 0.8),
+    shaper: { curve: 'saturate', drive: 0.36 },
+    gain: 0.4, sends: { reverb: 0.46 }, defaultNote: 48
+  },
+  {
+    id: 'pad_bellpad', name: 'Bell Pad', tags: ['bell', 'shimmer'],
+    oscs: [{ wave: 'bell', level: 0.4 }, { wave: 'sine', level: 0.35, oct: 1 }],
+    fm: { ratio: 3.02, index: 1.6, decay: 1.6, sustain: 0.4 },
+    filter: { type: 'lowpass', cutoff: 3800, q: 1.2, env: 1, keytrack: 0.7 },
+    ampEnv: env(0.4, 2, 0.7, 1.4), filtEnv: env(0.6, 1.6, 0.5, 0.9),
+    gain: 0.52, sends: { reverb: 0.54, delay: 0.2 }, defaultNote: 67
+  },
+  {
+    id: 'pad_stringmachine', name: 'String Machine', tags: ['retro', 'chorus'],
+    oscs: [
+      { wave: 'saw', level: 0.35, cent: -14, pan: -0.4 },
+      { wave: 'saw', level: 0.35, cent: 14, pan: 0.4 },
+      { wave: 'saw', level: 0.2, oct: 1 }
+    ],
+    filter: { type: 'lowpass', cutoff: 2800, q: 1, env: 0.8, keytrack: 0.5 },
+    ampEnv: env(0.2, 1.2, 0.85, 0.7), filtEnv: env(0.4, 1, 0.7, 0.5),
+    gain: 0.44, sends: { reverb: 0.44 }, defaultNote: 60,
+    fx: [{ type: 'chorus', rate: 0.5, depth: 0.006, delay: 0.014, feedback: 0.2, mix: 0.5 }]
+  },
+  {
+    id: 'pad_deepdrone', name: 'Deep Drone Pad', tags: ['drone', 'sub'],
+    oscs: [{ wave: 'sub', level: 0.5 }, { wave: 'saw', level: 0.25, oct: 1, unison: 2, spread: 12 }],
+    filter: { type: 'lowpass', cutoff: 900, q: 1.6, env: 0.6, keytrack: 0.4 },
+    ampEnv: env(1.2, 2.4, 0.9, 2), filtEnv: env(1.6, 2, 0.7, 1.2),
+    lfo: { wave: 'sine', rate: 0.09, depth: 0.3, target: 'filter' },
+    gain: 0.5, sends: { reverb: 0.5 }, defaultNote: 36
   }
 ];

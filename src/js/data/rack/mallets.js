@@ -183,5 +183,100 @@ export const MALLETS = [
     filter: { type: 'bandpass', cutoff: 2400, q: 1.3, env: 1.6, keytrack: 0.8 },
     ampEnv: env(0.002, 1.6, 0.0, 0.6), filtEnv: env(0.002, 0.5, 0.08, 0.3),
     gain: 1.1, sends: { reverb: 0.4 }, defaultNote: 72
+  },
+  {
+    id: 'mlt_vibes_bowed', name: 'Bowed Vibes', tags: ['bar', 'swell'],
+    oscs: [{ wave: 'sine', level: 0.6 }, { wave: 'bell', level: 0.3, semi: 12 }],
+    fm: { ratio: 3.98, index: 1.2, decay: 2, sustain: 0.6 },
+    filter: { type: 'lowpass', cutoff: 3000, q: 1.4, env: 1, keytrack: 0.8 },
+    ampEnv: env(0.6, 1.4, 0.8, 1), filtEnv: env(0.8, 1.2, 0.6, 0.6),
+    gain: 0.9, sends: { reverb: 0.48 }, defaultNote: 67
+  },
+  {
+    id: 'mlt_glass_bowl', name: 'Glass Bowl', tags: ['bowl', 'pure'],
+    oscs: [{ wave: 'sine', level: 0.7 }, { wave: 'sine', level: 0.3, semi: 19, cent: 8 }],
+    filter: { type: 'highpass', cutoff: 400, q: 0.7 },
+    ampEnv: env(0.5, 3, 0.5, 2),
+    lfo: { wave: 'sine', rate: 3.6, depth: 0.008, target: 'pitch', delay: 0.6 },
+    gain: 1.05, sends: { reverb: 0.52 }, defaultNote: 72
+  },
+  {
+    id: 'mlt_marimba_hard', name: 'Hard Marimba', tags: ['bar', 'attack'],
+    oscs: [{ wave: 'sine', level: 0.75 }, { wave: 'triangle', level: 0.3, semi: 24 }],
+    fm: { ratio: 3.93, index: 2.4, decay: 0.03, sustain: 0.0 },
+    filter: { type: 'lowpass', cutoff: 4000, q: 1.2, env: 1.6, keytrack: 0.8 },
+    ampEnv: env(0.001, 0.5, 0.0, 0.18), filtEnv: env(0.002, 0.14, 0.1, 0.1),
+    gain: 0.86, sends: { reverb: 0.24 }, defaultNote: 60
+  },
+  {
+    id: 'mlt_cowbell_tuned', name: 'Tuned Cowbell', tags: ['metal', 'pitched'],
+    oscs: [{ wave: 'square', level: 0.4 }, { wave: 'square', level: 0.35, semi: 7, cent: 24 }],
+    filter: { type: 'bandpass', cutoff: 2000, q: 1.6, env: 1, keytrack: 0.8 },
+    ampEnv: env(0.001, 0.4, 0.0, 0.14), filtEnv: env(0.002, 0.2, 0.2, 0.1),
+    gain: 0.8, sends: { reverb: 0.22 }, defaultNote: 67
+  },
+  {
+    id: 'mlt_agogo_tuned', name: 'Agogo Bells', tags: ['metal', 'bright'],
+    oscs: [{ wave: 'bell', level: 0.6 }],
+    fm: { ratio: 2.76, index: 3, decay: 0.06, sustain: 0.01 },
+    filter: { type: 'highpass', cutoff: 900, q: 0.8 },
+    ampEnv: env(0.001, 0.5, 0.0, 0.18),
+    gain: 1.15, sends: { reverb: 0.28 }, defaultNote: 76
+  },
+  {
+    id: 'mlt_church_bell', name: 'Church Bell', tags: ['bell', 'huge'],
+    oscs: [{ wave: 'bell', level: 0.5 }, { wave: 'sine', level: 0.4, oct: -1 }],
+    fm: { ratio: 2.4, index: 3.4, decay: 1.4, sustain: 0.2 },
+    filter: { type: 'lowpass', cutoff: 3200, q: 1, env: 0.8, keytrack: 0.7 },
+    ampEnv: env(0.002, 4, 0.0, 2), filtEnv: env(0.01, 1.2, 0.2, 0.8),
+    gain: 0.68, sends: { reverb: 0.54 }, defaultNote: 48
+  },
+  {
+    id: 'mlt_steelpan_hi', name: 'High Steel Pan', tags: ['steel', 'bright'],
+    oscs: [{ wave: 'sine', level: 0.6 }, { wave: 'metal', level: 0.3, semi: 12 }],
+    fm: { ratio: 2.01, index: 2.8, decay: 0.16, sustain: 0.05 },
+    filter: { type: 'lowpass', cutoff: 4400, q: 1.4, env: 1.4, keytrack: 0.8 },
+    ampEnv: env(0.002, 0.8, 0.0, 0.28), filtEnv: env(0.004, 0.24, 0.12, 0.14),
+    gain: 0.92, sends: { reverb: 0.34 }, defaultNote: 72
+  },
+  {
+    id: 'mlt_kalimba_bass', name: 'Bass Kalimba', tags: ['tine', 'low'],
+    oscs: [{ wave: 'sine', level: 0.8 }, { wave: 'triangle', level: 0.25, semi: 12 }],
+    fm: { ratio: 3.2, index: 1.4, decay: 0.06, sustain: 0.01 },
+    filter: { type: 'lowpass', cutoff: 2200, q: 1.4, env: 1.4, keytrack: 0.8 },
+    ampEnv: env(0.001, 0.8, 0.0, 0.3), filtEnv: env(0.002, 0.22, 0.1, 0.14),
+    gain: 0.86, sends: { reverb: 0.28 }, defaultNote: 48
+  },
+  {
+    id: 'mlt_tubular_low', name: 'Low Tubular', tags: ['tube', 'deep'],
+    oscs: [{ wave: 'sine', level: 0.6 }, { wave: 'bell', level: 0.35, semi: 7 }],
+    fm: { ratio: 1.74, index: 3, decay: 1, sustain: 0.15 },
+    filter: { type: 'lowpass', cutoff: 2600, q: 1.2, env: 1, keytrack: 0.7 },
+    ampEnv: env(0.002, 3, 0.0, 1.4), filtEnv: env(0.006, 1, 0.2, 0.6),
+    gain: 0.78, sends: { reverb: 0.5 }, defaultNote: 52
+  },
+  {
+    id: 'mlt_woodblock_tuned', name: 'Tuned Woodblock', tags: ['wood', 'dry'],
+    oscs: [{ wave: 'triangle', level: 0.8 }],
+    fm: { ratio: 2.4, index: 1.6, decay: 0.02, sustain: 0.0 },
+    filter: { type: 'lowpass', cutoff: 3600, q: 1.6, env: 1.6, keytrack: 0.8 },
+    ampEnv: env(0.001, 0.14, 0.0, 0.05), filtEnv: env(0.001, 0.06, 0.05, 0.03),
+    gain: 1.1, sends: { reverb: 0.16 }, defaultNote: 72
+  },
+  {
+    id: 'mlt_bell_dark', name: 'Dark Bell', tags: ['bell', 'low'],
+    oscs: [{ wave: 'sine', level: 0.7 }, { wave: 'metal', level: 0.2, semi: 14 }],
+    fm: { ratio: 1.41, index: 2.6, decay: 0.8, sustain: 0.1 },
+    filter: { type: 'lowpass', cutoff: 1800, q: 1.4, env: 1, keytrack: 0.7 },
+    ampEnv: env(0.002, 2.4, 0.0, 1), filtEnv: env(0.006, 0.8, 0.15, 0.5),
+    gain: 0.9, sends: { reverb: 0.48 }, defaultNote: 55
+  },
+  {
+    id: 'mlt_thumbchime', name: 'Thumb Chime', tags: ['chime', 'small'],
+    oscs: [{ wave: 'glass', level: 0.55 }, { wave: 'sine', level: 0.4, oct: 1 }],
+    fm: { ratio: 8.2, index: 1.8, decay: 0.04, sustain: 0.0 },
+    filter: { type: 'highpass', cutoff: 1600, q: 0.7 },
+    ampEnv: env(0.001, 0.9, 0.0, 0.34),
+    gain: 1.25, sends: { reverb: 0.46, delay: 0.14 }, defaultNote: 84
   }
 ];

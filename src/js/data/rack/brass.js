@@ -221,5 +221,106 @@ export const BRASS = [
     ampEnv: env(0.06, 0.4, 0.85, 0.28), filtEnv: env(0.1, 0.45, 0.5, 0.24),
     lfo: { wave: 'sine', rate: 4.6, depth: 0.16, target: 'pitch', delay: 0.35, fade: 0.5 },
     gain: 0.74, sends: { reverb: 0.44 }, defaultNote: 72
+  },
+  {
+    id: 'brs_horn_section', name: 'Horn Section', tags: ['section', 'full'],
+    oscs: [
+      { wave: 'saw', level: 0.35, unison: 3, spread: 12 },
+      { wave: 'reed', level: 0.25, cent: 7 },
+      { wave: 'saw', level: 0.2, oct: -1 }
+    ],
+    filter: { type: 'lowpass', cutoff: 2200, q: 1.8, env: 2.2, keytrack: 0.6 },
+    ampEnv: env(0.05, 0.5, 0.85, 0.2), filtEnv: env(0.08, 0.5, 0.5, 0.18),
+    shaper: { curve: 'soft', drive: 0.24 },
+    gain: 0.46, sends: { reverb: 0.36 }, defaultNote: 55
+  },
+  {
+    id: 'brs_fall', name: 'Brass Fall', tags: ['fall', 'fx'],
+    oscs: [{ wave: 'saw', level: 0.55, unison: 2, spread: 10 }, { wave: 'reed', level: 0.25 }],
+    filter: { type: 'lowpass', cutoff: 2000, q: 2.4, env: 2, keytrack: 0.5 },
+    ampEnv: env(0.02, 0.8, 0.0, 0.2), filtEnv: env(0.03, 0.5, 0.1, 0.2),
+    pitchEnv: { amt: -12, d: 0.5 },
+    gain: 0.6, sends: { reverb: 0.34 }, defaultNote: 60
+  },
+  {
+    id: 'brs_doit', name: 'Brass Doit', tags: ['rise', 'fx'],
+    oscs: [{ wave: 'saw', level: 0.55, unison: 2, spread: 10 }],
+    filter: { type: 'lowpass', cutoff: 2200, q: 2.4, env: 2, keytrack: 0.5 },
+    ampEnv: env(0.02, 0.5, 0.2, 0.14), filtEnv: env(0.03, 0.4, 0.2, 0.14),
+    pitchEnv: { amt: 7, d: 0.22 },
+    gain: 0.62, sends: { reverb: 0.3 }, defaultNote: 60
+  },
+  {
+    id: 'brs_trumpet_muted2', name: 'Harmon Mute', tags: ['muted', 'thin'],
+    oscs: [{ wave: 'reed', level: 0.6 }, { wave: 'buzz', level: 0.2, cent: 5 }],
+    filter: { type: 'bandpass', cutoff: 1500, q: 2.2, env: 1.6, keytrack: 0.8 },
+    ampEnv: env(0.03, 0.3, 0.85, 0.14), filtEnv: env(0.04, 0.3, 0.6, 0.14),
+    lfo: { wave: 'sine', rate: 5.2, depth: 0.014, target: 'pitch', delay: 0.3 },
+    gain: 1.15, sends: { reverb: 0.36 }, defaultNote: 67
+  },
+  {
+    id: 'brs_french_horn_soft', name: 'Soft French Horn', tags: ['warm', 'round'],
+    oscs: [{ wave: 'hollow', level: 0.55 }, { wave: 'sine', level: 0.35, oct: -1 }],
+    filter: { type: 'lowpass', cutoff: 1600, q: 1.4, env: 1.4, keytrack: 0.8 },
+    ampEnv: env(0.09, 0.5, 0.85, 0.26), filtEnv: env(0.14, 0.5, 0.6, 0.2),
+    gain: 0.86, sends: { reverb: 0.44 }, defaultNote: 55
+  },
+  {
+    id: 'brs_contrabassoon', name: 'Contrabassoon', tags: ['low', 'reed'],
+    oscs: [{ wave: 'reed', level: 0.6 }, { wave: 'sub', level: 0.35, oct: -1 }],
+    filter: { type: 'lowpass', cutoff: 900, q: 1.8, env: 1.2, keytrack: 0.8 },
+    ampEnv: env(0.05, 0.4, 0.85, 0.2), filtEnv: env(0.07, 0.4, 0.6, 0.16),
+    gain: 0.9, sends: { reverb: 0.34 }, defaultNote: 36
+  },
+  {
+    id: 'brs_pan_flute', name: 'Pan Flute', tags: ['breath', 'hollow'],
+    oscs: [{ wave: 'sine', level: 0.75 }],
+    noise: { color: 'white', level: 0.25, bp: 2600, q: 1, decay: 0.3, keytrack: 0.7 },
+    filter: { type: 'lowpass', cutoff: 2600, q: 1.6, env: 1, keytrack: 0.85 },
+    ampEnv: env(0.05, 0.3, 0.85, 0.16), filtEnv: env(0.06, 0.3, 0.6, 0.14),
+    lfo: { wave: 'sine', rate: 5, depth: 0.016, target: 'pitch', delay: 0.25 },
+    gain: 0.86, sends: { reverb: 0.44 }, defaultNote: 72
+  },
+  {
+    id: 'brs_recorder', name: 'Recorder', tags: ['breath', 'simple'],
+    oscs: [{ wave: 'sine', level: 0.8 }, { wave: 'triangle', level: 0.2, oct: 1 }],
+    noise: { color: 'white', level: 0.16, hp: 4000, decay: 0.16 },
+    filter: { type: 'lowpass', cutoff: 3400, q: 1.2, env: 0.8, keytrack: 0.85 },
+    ampEnv: env(0.03, 0.2, 0.9, 0.1), filtEnv: env(0.04, 0.24, 0.7, 0.1),
+    gain: 0.8, sends: { reverb: 0.34 }, defaultNote: 76
+  },
+  {
+    id: 'brs_sax_growl', name: 'Growl Sax', tags: ['sax', 'dirty'],
+    oscs: [{ wave: 'reed', level: 0.55 }, { wave: 'grind', level: 0.25, cent: -7 }],
+    filter: { type: 'bandpass', cutoff: 1200, q: 1.8, env: 2, keytrack: 0.8 },
+    ampEnv: env(0.02, 0.4, 0.85, 0.16), filtEnv: env(0.03, 0.4, 0.5, 0.16),
+    lfo: { wave: 'sine', rate: 6.4, depth: 0.03, target: 'pitch', delay: 0.15 },
+    shaper: { curve: 'tube', drive: 0.34 },
+    gain: 1.05, sends: { reverb: 0.34 }, defaultNote: 55
+  },
+  {
+    id: 'brs_tuba_solo', name: 'Solo Tuba', tags: ['low', 'round'],
+    oscs: [{ wave: 'hollow', level: 0.6 }, { wave: 'sine', level: 0.4, oct: -1 }],
+    filter: { type: 'lowpass', cutoff: 700, q: 1.6, env: 1.4, keytrack: 0.8 },
+    ampEnv: env(0.06, 0.4, 0.85, 0.24), filtEnv: env(0.08, 0.4, 0.6, 0.18),
+    gain: 0.9, sends: { reverb: 0.34 }, defaultNote: 33
+  },
+  {
+    id: 'brs_ska_stab', name: 'Ska Stab', tags: ['stab', 'section'],
+    oscs: [
+      { wave: 'saw', level: 0.4, unison: 2, spread: 10 },
+      { wave: 'reed', level: 0.3, semi: 7 }
+    ],
+    filter: { type: 'lowpass', cutoff: 2600, q: 2.6, env: 2.4, keytrack: 0.6 },
+    ampEnv: env(0.006, 0.22, 0.0, 0.08), filtEnv: env(0.008, 0.16, 0.05, 0.08),
+    shaper: { curve: 'soft', drive: 0.26 },
+    gain: 0.68, sends: { reverb: 0.28 }, defaultNote: 60
+  },
+  {
+    id: 'brs_synthbrass', name: 'Synth Brass', tags: ['retro', 'fat'],
+    oscs: [{ wave: 'saw', level: 0.45, unison: 3, spread: 14 }, { wave: 'square', level: 0.22, oct: -1 }],
+    filter: { type: 'lowpass', cutoff: 1800, q: 2.4, env: 2.6, keytrack: 0.5 },
+    ampEnv: env(0.04, 0.4, 0.85, 0.16), filtEnv: env(0.06, 0.4, 0.4, 0.16),
+    gain: 0.46, sends: { reverb: 0.3 }, defaultNote: 55
   }
 ];

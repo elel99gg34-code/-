@@ -141,5 +141,64 @@ export const CYMBALS = [
     noises: [{ color: 'metal', level: 0.45, hp: 3200, decay: 0.5 }],
     click: { level: 0.5, decay: 0.003, hp: 3400 },
     shaper: { curve: 'diode', drive: 0.55 }, gain: 0.5, sends: { reverb: 0.2 }, defaultNote: 52
+  },
+  {
+    id: 'cym_crash_thin', name: 'Thin Crash', tags: ['bright', 'fast'],
+    ring: { partials: [1, 1.411, 1.8372, 2.4131, 2.9631, 3.7412, 4.4419, 5.7133], base: 620, wave: 'square', filter: 'highpass', cut: 5600, q: 0.5, decay: 1.1, level: 0.5 },
+    noises: [{ color: 'violet', level: 0.4, hp: 8000, decay: 0.8 }],
+    gain: 0.4, sends: { reverb: 0.34 }, defaultNote: 49
+  },
+  {
+    id: 'cym_ride_ping', name: 'Ride Ping', tags: ['ride', 'defined'],
+    ring: { partials: [1, 1.411, 1.8372, 2.4131, 2.9631], base: 700, wave: 'square', filter: 'bandpass', cut: 4200, q: 0.9, decay: 0.9, level: 0.55 },
+    click: { level: 0.3, decay: 0.0014, hp: 6000 },
+    gain: 0.5, sends: { reverb: 0.26 }, defaultNote: 51
+  },
+  {
+    id: 'cym_swell', name: 'Cymbal Swell', tags: ['swell', 'reverse'],
+    ring: { partials: [1, 1.411, 1.8372, 2.4131, 2.9631, 3.7412, 4.4419, 5.7133], base: 560, wave: 'square', filter: 'highpass', cut: 5200, q: 0.5, attack: 0.7, decay: 0.3, level: 0.6 },
+    noises: [{ color: 'violet', level: 0.4, hp: 7000, attack: 0.72, decay: 0.24 }],
+    gain: 0.34, sends: { reverb: 0.4 }, defaultNote: 49
+  },
+  {
+    id: 'cym_trashstack', name: 'Trash Stack Short', tags: ['stack', 'short'],
+    ring: { partials: [1, 1.63, 2.29, 3.11, 4.02, 5.31], base: 780, wave: 'square', filter: 'highpass', cut: 6400, q: 0.6, decay: 0.16, level: 0.7 },
+    noises: [{ color: 'metal', level: 0.4, hp: 7000, decay: 0.1 }],
+    gain: 0.5, sends: { reverb: 0.18 }, defaultNote: 49
+  },
+  {
+    id: 'cym_gong_small', name: 'Small Gong', tags: ['gong', 'metal'],
+    ring: { partials: [1, 1.26, 1.79, 2.34, 3.02, 3.91], base: 260, wave: 'square', filter: 'bandpass', cut: 1800, q: 0.7, decay: 2.2, level: 0.6 },
+    gain: 0.44, sends: { reverb: 0.42 }, defaultNote: 45
+  },
+  {
+    id: 'cym_hihat_foot_open', name: 'Foot Splash', tags: ['pedal', 'short'],
+    ring: { partials: [1, 1.342, 1.7183, 2.0473, 2.6415, 3.1213], base: 400, wave: 'square', filter: 'highpass', cut: 6800, q: 0.6, decay: 0.16, level: 0.55 },
+    noises: [{ color: 'white', level: 0.3, hp: 7400, decay: 0.1 }],
+    gain: 0.6, defaultNote: 44
+  },
+  {
+    id: 'cym_bell_ride', name: 'Ride Bell Cup', tags: ['bell', 'cut'],
+    ring: { partials: [1, 2.02, 3.04, 4.11, 5.4], base: 620, wave: 'square', filter: 'bandpass', cut: 3000, q: 1, decay: 0.8, level: 0.75 },
+    click: { level: 0.34, decay: 0.0012, hp: 5400 },
+    gain: 0.48, sends: { reverb: 0.26 }, defaultNote: 53
+  },
+  {
+    id: 'cym_crash_crushed', name: 'Crushed Crash', tags: ['lofi', 'digital'],
+    ring: { partials: [1, 1.411, 1.8372, 2.4131, 2.9631, 3.7412], base: 560, wave: 'square', filter: 'highpass', cut: 5000, q: 0.5, decay: 0.9, level: 0.6 },
+    gain: 0.5, sends: { reverb: 0.26 }, defaultNote: 49,
+    fx: [{ type: 'crush', bits: 5, reduction: 5, mix: 0.85 }]
+  },
+  {
+    id: 'cym_wash_long', name: 'Long Wash', tags: ['wash', 'ambient'],
+    ring: { partials: [1, 1.411, 1.8372, 2.4131, 2.9631, 3.7412, 4.4419, 5.7133], base: 480, wave: 'square', filter: 'highpass', cut: 4600, q: 0.5, decay: 3.2, level: 0.45 },
+    noises: [{ color: 'violet', level: 0.3, hp: 6600, attack: 0.1, decay: 2.4 }],
+    gain: 0.4, sends: { reverb: 0.44 }, defaultNote: 49
+  },
+  {
+    id: 'cym_clash', name: 'Hand Clash', tags: ['orchestral', 'big'],
+    ring: { partials: [1, 1.35, 1.87, 2.41, 3.1, 3.96, 4.83], base: 520, wave: 'square', filter: 'highpass', cut: 4200, q: 0.5, decay: 1.8, level: 0.6 },
+    noises: [{ color: 'white', level: 0.4, hp: 5200, decay: 1.1 }],
+    gain: 0.38, sends: { reverb: 0.4 }, defaultNote: 49
   }
 ];

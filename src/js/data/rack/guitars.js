@@ -374,5 +374,115 @@ export const GUITARS = [
     filter: { type: 'lowpass', cutoff: 3200, q: 1.2, env: 1.8, keytrack: 0.7, velToEnv: 0.8 },
     ampEnv: env(0.008, 1.3, 0.1, 0.4), filtEnv: env(0.004, 0.45, 0.08, 0.24),
     gain: 0.4, sends: { reverb: 0.3 }, defaultNote: 52
+  },
+  {
+    id: 'gtr_hardcore', name: 'Hardcore Chug', tags: ['palm', 'heavy'],
+    oscs: [{ wave: 'razor', level: 0.5 }, { wave: 'square', level: 0.3, oct: -1 }],
+    filter: { type: 'lowpass', cutoff: 2200, q: 2.4, env: 2, keytrack: 0.5, velToEnv: 0.7 },
+    ampEnv: env(0.002, 0.16, 0.3, 0.06), filtEnv: env(0.003, 0.1, 0.1, 0.06),
+    shaper: { curve: 'hard', drive: 0.55 },
+    gain: 0.34, defaultNote: 40
+  },
+  {
+    id: 'gtr_openchord', name: 'Open Chord', tags: ['clean', 'ring'],
+    oscs: [
+      { wave: 'saw', level: 0.35 },
+      { wave: 'saw', level: 0.3, semi: 7, cent: 4 },
+      { wave: 'triangle', level: 0.3, oct: 1, cent: -3 }
+    ],
+    filter: { type: 'lowpass', cutoff: 3400, q: 1.4, env: 1.6, keytrack: 0.7 },
+    ampEnv: env(0.004, 1.6, 0.1, 0.5), filtEnv: env(0.006, 0.5, 0.15, 0.3),
+    gain: 0.5, sends: { reverb: 0.3 }, defaultNote: 52
+  },
+  {
+    id: 'gtr_tapping', name: 'Tapped Lead', tags: ['lead', 'fast'],
+    oscs: [{ wave: 'saw', level: 0.6 }, { wave: 'square', level: 0.25, cent: 7 }],
+    filter: { type: 'lowpass', cutoff: 3000, q: 4, env: 2.4, keytrack: 0.7 },
+    ampEnv: env(0.003, 0.5, 0.6, 0.12), filtEnv: env(0.006, 0.25, 0.3, 0.1),
+    shaper: { curve: 'soft', drive: 0.4 },
+    gain: 0.44, sends: { reverb: 0.24, delay: 0.16 }, defaultNote: 64
+  },
+  {
+    id: 'gtr_ringmod', name: 'Ring Guitar', tags: ['metal', 'weird'],
+    oscs: [{ wave: 'saw', level: 0.6 }],
+    filter: { type: 'lowpass', cutoff: 2800, q: 2, env: 1.6, keytrack: 0.6 },
+    ampEnv: env(0.003, 0.8, 0.3, 0.2), filtEnv: env(0.006, 0.4, 0.2, 0.16),
+    shaper: { curve: 'tube', drive: 0.34 },
+    gain: 0.72, sends: { reverb: 0.22 }, defaultNote: 52,
+    fx: [{ type: 'ring', freq: 317, mix: 0.45 }]
+  },
+  {
+    id: 'gtr_slapback', name: 'Slapback', tags: ['clean', 'rockabilly'],
+    oscs: [{ wave: 'saw', level: 0.55 }, { wave: 'triangle', level: 0.3, cent: 6 }],
+    filter: { type: 'lowpass', cutoff: 3800, q: 1.6, env: 1.8, keytrack: 0.7 },
+    ampEnv: env(0.002, 0.6, 0.1, 0.16), filtEnv: env(0.003, 0.24, 0.1, 0.12),
+    gain: 0.56, sends: { reverb: 0.18 }, defaultNote: 52,
+    fx: [{ type: 'delay', timeL: 0.1, timeR: 0.1, feedback: 0.18, damp: 4200, mix: 0.3 }]
+  },
+  {
+    id: 'gtr_fuzzface', name: 'Germanium Fuzz', tags: ['fuzz', 'vintage'],
+    oscs: [{ wave: 'saw', level: 0.6 }, { wave: 'square', level: 0.25, cent: -9 }],
+    filter: { type: 'lowpass', cutoff: 2400, q: 1.6, env: 1.4, keytrack: 0.6 },
+    ampEnv: env(0.004, 1, 0.4, 0.22), filtEnv: env(0.008, 0.4, 0.25, 0.16),
+    shaper: { curve: 'fuzz', drive: 0.62 },
+    gain: 0.3, sends: { reverb: 0.2 }, defaultNote: 52
+  },
+  {
+    id: 'gtr_shoegaze', name: 'Shoegaze Wall', tags: ['wall', 'ambient'],
+    oscs: [
+      { wave: 'saw', level: 0.4, unison: 4, spread: 20 },
+      { wave: 'saw', level: 0.25, oct: 1, cent: 8 }
+    ],
+    filter: { type: 'lowpass', cutoff: 2600, q: 1.2, env: 1.2, keytrack: 0.5 },
+    ampEnv: env(0.06, 1.6, 0.6, 0.7), filtEnv: env(0.1, 0.8, 0.4, 0.4),
+    lfo: { wave: 'sine', rate: 0.7, depth: 0.03, target: 'pitch', delay: 0.2 },
+    shaper: { curve: 'saturate', drive: 0.36 },
+    gain: 0.34, sends: { reverb: 0.5, delay: 0.2 }, defaultNote: 52
+  },
+  {
+    id: 'gtr_punkbarre', name: 'Barre Chord', tags: ['punk', 'crunch'],
+    oscs: [
+      { wave: 'saw', level: 0.4 },
+      { wave: 'saw', level: 0.36, semi: 7, cent: 5 },
+      { wave: 'saw', level: 0.26, oct: 1 }
+    ],
+    filter: { type: 'lowpass', cutoff: 2800, q: 1.8, env: 1.6, keytrack: 0.5 },
+    ampEnv: env(0.003, 0.9, 0.5, 0.2), filtEnv: env(0.006, 0.35, 0.3, 0.14),
+    shaper: { curve: 'tube', drive: 0.5 },
+    gain: 0.3, sends: { reverb: 0.2 }, defaultNote: 45
+  },
+  {
+    id: 'gtr_pedalsteel', name: 'Pedal Steel', tags: ['glide', 'clean'],
+    oscs: [{ wave: 'saw', level: 0.45 }, { wave: 'triangle', level: 0.35, cent: 5 }],
+    filter: { type: 'lowpass', cutoff: 2800, q: 1.6, env: 1.2, keytrack: 0.7 },
+    ampEnv: env(0.08, 1.4, 0.55, 0.5), filtEnv: env(0.1, 0.6, 0.4, 0.3),
+    pitchEnv: { amt: 2, d: 0.3 },
+    gain: 0.52, sends: { reverb: 0.4, delay: 0.14 }, defaultNote: 55
+  },
+  {
+    id: 'gtr_nashville', name: 'High Strung', tags: ['bright', 'clean'],
+    oscs: [{ wave: 'saw', level: 0.4, oct: 1 }, { wave: 'glass', level: 0.3, oct: 1, cent: 7 }],
+    filter: { type: 'lowpass', cutoff: 5200, q: 1.4, env: 1.6, keytrack: 0.8 },
+    ampEnv: env(0.002, 0.9, 0.08, 0.26), filtEnv: env(0.004, 0.3, 0.12, 0.16),
+    gain: 0.6, sends: { reverb: 0.3 }, defaultNote: 55
+  },
+  {
+    id: 'gtr_noisegate_chug', name: 'Gated Chug', tags: ['palm', 'tight'],
+    oscs: [{ wave: 'grind', level: 0.55 }],
+    sub: { wave: 'sine', oct: -1, level: 0.25 },
+    filter: { type: 'lowpass', cutoff: 2000, q: 2.6, env: 2, keytrack: 0.4 },
+    ampEnv: env(0.001, 0.1, 0.0, 0.02), filtEnv: env(0.002, 0.08, 0.05, 0.03),
+    shaper: { curve: 'hard', drive: 0.5 },
+    gain: 0.42, defaultNote: 38
+  },
+  {
+    id: 'gtr_ebowhigh', name: 'High Ebow', tags: ['sustain', 'lead'],
+    oscs: [{ wave: 'saw', level: 0.5 }, { wave: 'sine', level: 0.3, oct: 1 }],
+    fm: { ratio: 2.005, index: 1.2, decay: 2, sustain: 0.8 },
+    filter: { type: 'lowpass', cutoff: 3000, q: 3, env: 1.4, keytrack: 0.7 },
+    ampEnv: env(0.3, 1.2, 0.85, 0.5), filtEnv: env(0.4, 1, 0.6, 0.3),
+    lfo: { wave: 'sine', rate: 5, depth: 0.014, target: 'pitch', delay: 0.5 },
+    shaper: { curve: 'soft', drive: 0.3 },
+    gain: 0.46, sends: { reverb: 0.42, delay: 0.16 }, defaultNote: 67
   }
 ];

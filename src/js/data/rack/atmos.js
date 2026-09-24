@@ -181,5 +181,106 @@ export const ATMOS = [
     ampEnv: env(2.4, 2.6, 0.92, 3), filtEnv: env(3.2, 2.6, 0.5, 2.2),
     lfo: { wave: 'sine', rate: 0.04, depth: 0.55, target: 'filter', fade: 4 },
     gain: 0.5, sends: { reverb: 0.6 }, defaultNote: 43
+  },
+  {
+    id: 'atm_thunder', name: 'Distant Thunder', tags: ['weather', 'low'],
+    noise: { color: 'brown', level: 0.85, lp: 900, rate: 0.35 },
+    oscs: [{ wave: 'sub', level: 0.2 }],
+    filter: { type: 'lowpass', cutoff: 600, q: 1.4, env: 1.6, keytrack: 0.2 },
+    ampEnv: env(0.2, 2.4, 0.4, 1.6), filtEnv: env(0.3, 2, 0.3, 1),
+    shaper: { curve: 'tube', drive: 0.3 },
+    gain: 0.6, sends: { reverb: 0.5 }, defaultNote: 31
+  },
+  {
+    id: 'atm_powerlines', name: 'Power Lines', tags: ['hum', 'electric'],
+    oscs: [{ wave: 'sine', level: 0.5 }, { wave: 'square', level: 0.2, semi: 12 }],
+    noise: { color: 'pink', level: 0.3, bp: 2400, q: 1 },
+    filter: { type: 'bandpass', cutoff: 1400, q: 1.6, env: 0.8, keytrack: 0.5 },
+    ampEnv: env(0.4, 1.2, 0.9, 1), filtEnv: env(0.6, 1.2, 0.7, 0.7),
+    lfo: { wave: 'sine', rate: 0.3, depth: 0.3, target: 'filter' },
+    gain: 0.68, sends: { reverb: 0.44 }, defaultNote: 48
+  },
+  {
+    id: 'atm_factory', name: 'Factory Floor', tags: ['machine', 'rhythmic'],
+    noise: { color: 'pink', level: 0.55, bp: 1400, q: 1.1 },
+    oscs: [{ wave: 'grind', level: 0.25 }],
+    filter: { type: 'lowpass', cutoff: 1800, q: 2, env: 1.2, keytrack: 0.3 },
+    ampEnv: env(0.2, 1, 0.9, 0.6), filtEnv: env(0.4, 1, 0.6, 0.5),
+    lfo: { wave: 'square', rate: 3.5, depth: 0.35, target: 'amp' },
+    shaper: { curve: 'saturate', drive: 0.26 },
+    gain: 0.68, sends: { reverb: 0.4 }, defaultNote: 40
+  },
+  {
+    id: 'atm_church_air', name: 'Nave Air', tags: ['space', 'still'],
+    oscs: [{ wave: 'organ', level: 0.3, unison: 2, spread: 8 }, { wave: 'sine', level: 0.25, oct: 1 }],
+    noise: { color: 'pink', level: 0.18, hp: 2000 },
+    filter: { type: 'lowpass', cutoff: 2200, q: 1.2, env: 0.6, keytrack: 0.5 },
+    ampEnv: env(1.4, 2.4, 0.9, 2.4), filtEnv: env(1.8, 2, 0.7, 1.4),
+    gain: 0.78, sends: { reverb: 0.6 }, defaultNote: 55
+  },
+  {
+    id: 'atm_tape_hiss', name: 'Tape Hiss Bed', tags: ['lofi', 'bed'],
+    noise: { color: 'vinyl', level: 0.7, hp: 900, lp: 8000 },
+    oscs: [{ wave: 'sine', level: 0.16 }],
+    filter: { type: 'bandpass', cutoff: 2600, q: 0.7, env: 0.5, keytrack: 0.3 },
+    ampEnv: env(0.6, 1.4, 0.9, 1.2), filtEnv: env(0.8, 1.4, 0.7, 0.8),
+    gain: 0.9, sends: { reverb: 0.34 }, defaultNote: 60
+  },
+  {
+    id: 'atm_traffic', name: 'Traffic', tags: ['city', 'bed'],
+    noise: { color: 'brown', level: 0.7, lp: 2200, rate: 0.5 },
+    filter: { type: 'lowpass', cutoff: 1400, q: 1, env: 0.8, keytrack: 0.3 },
+    ampEnv: env(0.8, 1.6, 0.9, 1.4), filtEnv: env(1, 1.6, 0.7, 1),
+    lfo: { wave: 'sine', rate: 0.13, depth: 0.35, target: 'filter' },
+    gain: 0.5, sends: { reverb: 0.42 }, defaultNote: 43
+  },
+  {
+    id: 'atm_insects', name: 'Night Insects', tags: ['nature', 'high'],
+    noise: { color: 'violet', level: 0.6, bp: 6400, q: 2.2, rate: 0.8 },
+    filter: { type: 'bandpass', cutoff: 6000, q: 1.6, env: 1, keytrack: 0.4 },
+    ampEnv: env(0.4, 1.2, 0.85, 0.9), filtEnv: env(0.6, 1.2, 0.6, 0.7),
+    lfo: { wave: 'sine', rate: 9, depth: 0.4, target: 'amp' },
+    gain: 1.15, sends: { reverb: 0.46 }, defaultNote: 84
+  },
+  {
+    id: 'atm_deep_space', name: 'Interstellar', tags: ['space', 'drone'],
+    oscs: [{ wave: 'sub', level: 0.4 }, { wave: 'sine', level: 0.25, semi: 7, cent: 9 }],
+    noise: { color: 'brown', level: 0.2, lp: 500 },
+    filter: { type: 'lowpass', cutoff: 700, q: 1.6, env: 0.6, keytrack: 0.4 },
+    ampEnv: env(1.6, 3, 0.9, 2.8), filtEnv: env(2, 2.4, 0.7, 1.6),
+    lfo: { wave: 'sine', rate: 0.07, depth: 0.4, target: 'filter' },
+    gain: 0.68, sends: { reverb: 0.6 }, defaultNote: 33
+  },
+  {
+    id: 'atm_dripping', name: 'Dripping Cave', tags: ['water', 'sparse'],
+    oscs: [{ wave: 'sine', level: 0.5 }, { wave: 'glass', level: 0.25, oct: 1 }],
+    noise: { color: 'blue', level: 0.2, bp: 3400, q: 2.4, decay: 0.3 },
+    filter: { type: 'bandpass', cutoff: 2600, q: 1.8, env: 1.6, keytrack: 0.7 },
+    ampEnv: env(0.2, 1.4, 0.4, 1), filtEnv: env(0.3, 1.2, 0.3, 0.7),
+    gain: 0.9, sends: { reverb: 0.6, delay: 0.3 }, defaultNote: 67
+  },
+  {
+    id: 'atm_pylon_wind', name: 'Pylon Wind', tags: ['wind', 'metal'],
+    noise: { color: 'pink', level: 0.6, bp: 1200, q: 1.4, rate: 0.3 },
+    oscs: [{ wave: 'metal', level: 0.16, semi: 7 }],
+    filter: { type: 'bandpass', cutoff: 1400, q: 1.6, env: 1.4, keytrack: 0.5 },
+    ampEnv: env(0.9, 2, 0.85, 1.6), filtEnv: env(1.2, 1.8, 0.5, 1),
+    lfo: { wave: 'sine', rate: 0.17, depth: 0.5, target: 'filter' },
+    gain: 1.05, sends: { reverb: 0.52 }, defaultNote: 55
+  },
+  {
+    id: 'atm_crowd_stadium', name: 'Stadium Crowd', tags: ['crowd', 'big'],
+    noise: { color: 'pink', level: 0.75, bp: 1000, q: 0.6, rate: 0.6 },
+    filter: { type: 'bandpass', cutoff: 1100, q: 0.8, env: 1, keytrack: 0.3 },
+    ampEnv: env(0.6, 1.6, 0.9, 1.4), filtEnv: env(0.9, 1.6, 0.6, 1),
+    lfo: { wave: 'sine', rate: 0.22, depth: 0.35, target: 'amp' },
+    gain: 0.6, sends: { reverb: 0.56 }, defaultNote: 55
+  },
+  {
+    id: 'atm_geiger', name: 'Geiger Field', tags: ['crackle', 'tense'],
+    noise: { color: 'crackle', level: 0.9, hp: 2400 },
+    filter: { type: 'highpass', cutoff: 2600, q: 1, env: 1, keytrack: 0.4 },
+    ampEnv: env(0.2, 1, 0.9, 0.8), filtEnv: env(0.4, 1, 0.6, 0.6),
+    gain: 0.9, sends: { reverb: 0.44 }, defaultNote: 72
   }
 ];

@@ -314,5 +314,98 @@ export const KICKS = [
     ],
     click: { level: 0.55, decay: 0.004, hp: 2400 },
     shaper: { curve: 'tube', drive: 0.46 }, gain: 0.94, sends: { reverb: 0.1 }, defaultNote: 36
+  },
+  {
+    id: 'kick_subdrop', name: 'Sub Drop Kick', tags: ['sub', 'fall'],
+    bodies: [{ wave: 'sine', f0: 190, f1: 32, pitchDecay: 0.14, curve: 2.4, decay: 0.7, level: 1 }],
+    click: { level: 0.3, decay: 0.002, hp: 2400 },
+    gain: 0.72, defaultNote: 36
+  },
+  {
+    id: 'kick_knock', name: 'Knock', tags: ['tight', 'wood'],
+    bodies: [{ wave: 'triangle', f0: 260, f1: 62, pitchDecay: 0.018, decay: 0.12, level: 0.95 }],
+    noises: [{ color: 'white', level: 0.16, bp: 1700, q: 1.4, decay: 0.014 }],
+    click: { level: 0.5, decay: 0.0018, hp: 3200, tone: 0.6 },
+    gain: 0.74, defaultNote: 36
+  },
+  {
+    id: 'kick_lofi_tape', name: 'Tape Saturated', tags: ['lofi', 'warm'],
+    bodies: [{ wave: 'sine', f0: 140, f1: 48, pitchDecay: 0.03, decay: 0.32, level: 1 }],
+    noises: [{ color: 'vinyl', level: 0.12, lp: 3400, decay: 0.2 }],
+    click: { level: 0.2, decay: 0.003, hp: 1400 },
+    filter: { type: 'lowpass', cutoff: 3200, q: 0.7 },
+    shaper: { curve: 'tube', drive: 0.4 },
+    gain: 0.72, defaultNote: 36
+  },
+  {
+    id: 'kick_rave', name: 'Rave Kick', tags: ['hard', 'dance'],
+    bodies: [{ wave: 'sine', f0: 260, f1: 52, pitchDecay: 0.022, decay: 0.3, level: 1 }],
+    noises: [{ color: 'white', level: 0.2, hp: 2600, decay: 0.01 }],
+    click: { level: 0.45, decay: 0.0018, hp: 3600 },
+    shaper: { curve: 'hard', drive: 0.44 },
+    gain: 0.6, defaultNote: 36
+  },
+  {
+    id: 'kick_tribal', name: 'Tribal Kick', tags: ['acoustic', 'deep'],
+    bodies: [
+      { wave: 'sine', f0: 150, f1: 54, pitchDecay: 0.05, decay: 0.42, level: 0.9 },
+      { wave: 'triangle', f0: 300, f1: 120, pitchDecay: 0.02, decay: 0.1, level: 0.3 }
+    ],
+    noises: [{ color: 'brown', level: 0.2, lp: 1600, decay: 0.12 }],
+    gain: 0.72, sends: { reverb: 0.2 }, defaultNote: 36
+  },
+  {
+    id: 'kick_sidechain', name: 'Pumped Kick', tags: ['dance', 'long'],
+    bodies: [{ wave: 'sine', f0: 200, f1: 44, pitchDecay: 0.03, decay: 0.52, level: 1 }],
+    click: { level: 0.32, decay: 0.002, hp: 2800 },
+    filter: { type: 'lowpass', cutoff: 2600, q: 0.8, sweep: -0.4, sweepTime: 0.2 },
+    gain: 0.74, defaultNote: 36
+  },
+  {
+    id: 'kick_808dist', name: 'Distorted 808', tags: ['sub', 'distorted'],
+    bodies: [{ wave: 'sine', f0: 170, f1: 41, pitchDecay: 0.05, decay: 0.85, level: 1 }],
+    click: { level: 0.34, decay: 0.0022, hp: 3000 },
+    shaper: { curve: 'fuzz', drive: 0.38 },
+    gain: 0.52, defaultNote: 36
+  },
+  {
+    id: 'kick_clipped', name: 'Clipped Kick', tags: ['hard', 'square'],
+    bodies: [{ wave: 'square', f0: 165, f1: 46, pitchDecay: 0.02, decay: 0.24, level: 0.9 }],
+    click: { level: 0.4, decay: 0.0016, hp: 3400 },
+    filter: { type: 'lowpass', cutoff: 1600, q: 1.2 },
+    shaper: { curve: 'hard', drive: 0.6 },
+    gain: 0.5, defaultNote: 36
+  },
+  {
+    id: 'kick_layered_sub', name: 'Layered Sub', tags: ['sub', 'layered'],
+    bodies: [
+      { wave: 'sine', f0: 58, f1: 40, pitchDecay: 0.2, decay: 0.9, level: 0.8 },
+      { wave: 'triangle', f0: 240, f1: 80, pitchDecay: 0.02, decay: 0.13, level: 0.55 }
+    ],
+    click: { level: 0.34, decay: 0.002, hp: 3000 },
+    gain: 0.7, defaultNote: 36
+  },
+  {
+    id: 'kick_garage', name: 'Garage Kick', tags: ['garage', 'snap'],
+    bodies: [{ wave: 'sine', f0: 210, f1: 55, pitchDecay: 0.016, decay: 0.19, level: 0.95 }],
+    noises: [{ color: 'white', level: 0.24, bp: 3400, q: 1.1, decay: 0.012 }],
+    click: { level: 0.46, decay: 0.0015, hp: 4200 },
+    gain: 0.72, defaultNote: 36
+  },
+  {
+    id: 'kick_808short', name: '808 Short', tags: ['sub', 'tight'],
+    bodies: [{ wave: 'sine', f0: 160, f1: 45, pitchDecay: 0.03, decay: 0.24, level: 1 }],
+    click: { level: 0.3, decay: 0.002, hp: 3000 },
+    gain: 0.76, defaultNote: 36
+  },
+  {
+    id: 'kick_metal', name: 'Metal Kick', tags: ['metal', 'trigger'],
+    bodies: [{ wave: 'triangle', f0: 200, f1: 58, pitchDecay: 0.012, decay: 0.1, level: 0.7 }],
+    noises: [
+      { color: 'white', level: 0.4, bp: 2800, q: 1, decay: 0.03 },
+      { color: 'metal', level: 0.2, hp: 5000, decay: 0.02 }
+    ],
+    click: { level: 0.6, decay: 0.0014, hp: 4800, tone: 0.8 },
+    gain: 0.7, defaultNote: 36
   }
 ];

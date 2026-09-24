@@ -85,7 +85,7 @@ ManifestDPIAware true
 
 Name "\${APP_NAME} \${APP_VERSION}"
 OutFile "${q(OUTPUT)}"
-BrandingText "\${APP_NAME} \${APP_VERSION} — 590 instruments, no samples"
+BrandingText "\${APP_NAME} \${APP_VERSION} — 890 instruments, no samples"
 InstallDir "$LOCALAPPDATA\\Programs\\\${APP_NAME}"
 InstallDirRegKey HKCU "\${REG_APP}" "InstallDir"
 RequestExecutionLevel user
@@ -120,7 +120,7 @@ VIAddVersionKey "LegalCopyright"  "Copyright (c) 2026 \${PUBLISHER}"
 !define MUI_HEADERIMAGE_UNBITMAP "${q(path.join(BUILD, 'installer-header.bmp'))}"
 
 !define MUI_WELCOMEPAGE_TITLE "\${APP_NAME}"
-!define MUI_WELCOMEPAGE_TEXT "A punk electronic music studio.$\\r$\\n$\\r$\\n590 instruments, all synthesised — no sample library and no internet connection. Step sequencer, piano roll, mixer, and WAV / MP3 export.$\\r$\\n$\\r$\\nThis installs for the current user only, so it needs no administrator rights."
+!define MUI_WELCOMEPAGE_TEXT "A punk electronic music studio.$\\r$\\n$\\r$\\n890 instruments, all synthesised — no sample library and no internet connection. Step sequencer, piano roll, mixer, and WAV / MP3 export.$\\r$\\n$\\r$\\nThis installs for the current user only, so it needs no administrator rights."
 
 !define MUI_DIRECTORYPAGE_TEXT_TOP "\${APP_NAME} will be installed in the folder below. Choose another one if you prefer, then click Install."
 

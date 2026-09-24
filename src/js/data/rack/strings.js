@@ -198,5 +198,110 @@ export const STRINGS = [
     ampEnv: env(0.9, 1.4, 0.92, 1.4), filtEnv: env(1.4, 1.4, 0.5, 1),
     lfo: { wave: 'sine', rate: 4.8, depth: 0.05, target: 'pitch', delay: 0.9, fade: 1.2 },
     gain: 0.34, sends: { reverb: 0.52 }, defaultNote: 55
+  },
+  {
+    id: 'str_octet', name: 'String Octet', tags: ['ensemble', 'full'],
+    oscs: [
+      { wave: 'saw', level: 0.3, unison: 5, spread: 16 },
+      { wave: 'saw', level: 0.24, oct: -1, unison: 2, spread: 9 },
+      { wave: 'saw', level: 0.18, oct: 1, cent: 6 }
+    ],
+    filter: { type: 'lowpass', cutoff: 2800, q: 1.2, env: 1.2, keytrack: 0.6 },
+    ampEnv: env(0.14, 1, 0.85, 0.5), filtEnv: env(0.2, 0.9, 0.6, 0.4),
+    lfo: { wave: 'sine', rate: 5, depth: 0.012, target: 'pitch', delay: 0.4 },
+    gain: 0.44, sends: { reverb: 0.48 }, defaultNote: 55
+  },
+  {
+    id: 'str_solo_warm', name: 'Warm Solo Violin', tags: ['solo', 'warm'],
+    oscs: [{ wave: 'saw', level: 0.6 }, { wave: 'triangle', level: 0.25, cent: 5 }],
+    filter: { type: 'lowpass', cutoff: 2400, q: 2, env: 1.4, keytrack: 0.8 },
+    ampEnv: env(0.1, 0.6, 0.85, 0.3), filtEnv: env(0.14, 0.6, 0.6, 0.24),
+    lfo: { wave: 'sine', rate: 5.6, depth: 0.02, target: 'pitch', delay: 0.35 },
+    gain: 0.72, sends: { reverb: 0.44 }, defaultNote: 67
+  },
+  {
+    id: 'str_marcato', name: 'Marcato', tags: ['short', 'accent'],
+    oscs: [{ wave: 'saw', level: 0.5, unison: 3, spread: 12 }],
+    filter: { type: 'lowpass', cutoff: 2600, q: 2, env: 2, keytrack: 0.6, velToEnv: 0.8 },
+    ampEnv: env(0.008, 0.3, 0.3, 0.14), filtEnv: env(0.01, 0.2, 0.2, 0.1),
+    gain: 0.56, sends: { reverb: 0.36 }, defaultNote: 55
+  },
+  {
+    id: 'str_harmonic_high', name: 'High Harmonics', tags: ['harmonic', 'thin'],
+    oscs: [{ wave: 'sine', level: 0.6, oct: 1 }, { wave: 'glass', level: 0.3, oct: 2 }],
+    noise: { color: 'white', level: 0.08, hp: 6000, decay: 0.4 },
+    filter: { type: 'highpass', cutoff: 1400, q: 0.8 },
+    ampEnv: env(0.14, 0.8, 0.7, 0.5),
+    lfo: { wave: 'sine', rate: 4.8, depth: 0.012, target: 'pitch', delay: 0.4 },
+    gain: 1.05, sends: { reverb: 0.5 }, defaultNote: 76
+  },
+  {
+    id: 'str_bartok', name: 'Bartok Snap', tags: ['pizz', 'snap'],
+    oscs: [{ wave: 'saw', level: 0.55 }],
+    noise: { color: 'white', level: 0.3, bp: 2600, q: 1.4, decay: 0.02 },
+    filter: { type: 'lowpass', cutoff: 3000, q: 3, env: 2.6, keytrack: 0.7 },
+    ampEnv: env(0.001, 0.22, 0.0, 0.07), filtEnv: env(0.002, 0.1, 0.05, 0.05),
+    gain: 0.78, sends: { reverb: 0.26 }, defaultNote: 55
+  },
+  {
+    id: 'str_cello_solo', name: 'Solo Cello', tags: ['solo', 'low'],
+    oscs: [{ wave: 'saw', level: 0.6 }, { wave: 'triangle', level: 0.3, oct: -1 }],
+    filter: { type: 'lowpass', cutoff: 1500, q: 2.2, env: 1.6, keytrack: 0.8 },
+    ampEnv: env(0.1, 0.7, 0.85, 0.34), filtEnv: env(0.16, 0.7, 0.6, 0.26),
+    lfo: { wave: 'sine', rate: 4.8, depth: 0.018, target: 'pitch', delay: 0.4 },
+    gain: 0.78, sends: { reverb: 0.42 }, defaultNote: 45
+  },
+  {
+    id: 'str_tremolo_high', name: 'High Tremolo', tags: ['tremolo', 'tense'],
+    oscs: [{ wave: 'saw', level: 0.5, unison: 3, spread: 14 }],
+    filter: { type: 'lowpass', cutoff: 3000, q: 1.6, env: 1.4, keytrack: 0.7 },
+    ampEnv: env(0.1, 0.6, 0.85, 0.34), filtEnv: env(0.16, 0.6, 0.6, 0.26),
+    lfo: { wave: 'sine', rate: 15, depth: 0.55, target: 'amp' },
+    gain: 0.6, sends: { reverb: 0.44 }, defaultNote: 72
+  },
+  {
+    id: 'str_sul_tasto', name: 'Sul Tasto', tags: ['soft', 'flute-like'],
+    oscs: [{ wave: 'sine', level: 0.6 }, { wave: 'saw', level: 0.22, cent: 6 }],
+    filter: { type: 'lowpass', cutoff: 1400, q: 1.4, env: 0.8, keytrack: 0.8 },
+    ampEnv: env(0.2, 0.8, 0.85, 0.5), filtEnv: env(0.3, 0.8, 0.6, 0.3),
+    lfo: { wave: 'sine', rate: 4.4, depth: 0.012, target: 'pitch', delay: 0.5 },
+    gain: 0.9, sends: { reverb: 0.46 }, defaultNote: 64
+  },
+  {
+    id: 'str_synth_ensemble', name: 'Synth Ensemble', tags: ['retro', 'wide'],
+    oscs: [
+      { wave: 'saw', level: 0.34, cent: -12, pan: -0.4 },
+      { wave: 'saw', level: 0.34, cent: 12, pan: 0.4 },
+      { wave: 'saw', level: 0.2, oct: -1 }
+    ],
+    filter: { type: 'lowpass', cutoff: 2600, q: 1.2, env: 1, keytrack: 0.5 },
+    ampEnv: env(0.1, 0.8, 0.85, 0.4), filtEnv: env(0.16, 0.8, 0.65, 0.3),
+    gain: 0.46, sends: { reverb: 0.42 }, defaultNote: 55,
+    fx: [{ type: 'chorus', rate: 0.6, depth: 0.005, delay: 0.013, feedback: 0.18, mix: 0.45 }]
+  },
+  {
+    id: 'str_dark_ensemble', name: 'Dark Ensemble', tags: ['low', 'ominous'],
+    oscs: [{ wave: 'saw', level: 0.4, unison: 4, spread: 16 }, { wave: 'sub', level: 0.3, oct: -1 }],
+    filter: { type: 'lowpass', cutoff: 1200, q: 1.8, env: 1.2, keytrack: 0.5 },
+    ampEnv: env(0.2, 1, 0.85, 0.6), filtEnv: env(0.3, 1, 0.5, 0.4),
+    gain: 0.56, sends: { reverb: 0.48 }, defaultNote: 40
+  },
+  {
+    id: 'str_ponticello_high', name: 'Glassy Ponticello', tags: ['harsh', 'thin'],
+    oscs: [{ wave: 'razor', level: 0.4 }, { wave: 'glass', level: 0.3, oct: 1 }],
+    noise: { color: 'white', level: 0.14, hp: 5000, decay: 0.5 },
+    filter: { type: 'highpass', cutoff: 1800, q: 1.2, env: 1, keytrack: 0.6 },
+    ampEnv: env(0.1, 0.7, 0.8, 0.34), filtEnv: env(0.16, 0.7, 0.6, 0.26),
+    gain: 0.68, sends: { reverb: 0.44 }, defaultNote: 72
+  },
+  {
+    id: 'str_hit', name: 'String Hit', tags: ['stab', 'orchestral'],
+    oscs: [
+      { wave: 'saw', level: 0.4, unison: 4, spread: 18 },
+      { wave: 'saw', level: 0.25, oct: -1 }
+    ],
+    filter: { type: 'lowpass', cutoff: 2400, q: 2.6, env: 2.4, keytrack: 0.5 },
+    ampEnv: env(0.004, 0.34, 0.0, 0.12), filtEnv: env(0.006, 0.2, 0.05, 0.1),
+    gain: 0.62, sends: { reverb: 0.4 }, defaultNote: 48
   }
 ];

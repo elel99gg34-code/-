@@ -212,5 +212,72 @@ export const HATS = [
     id: 'hat_pitched', name: 'Pitched Hat', tags: ['tonal', 'melodic'],
     ring: { partials: [1, 2, 3, 4.2], base: 880, wave: 'square', filter: 'bandpass', cut: 4200, q: 1.6, decay: 0.07, level: 0.5 },
     gain: 0.46, defaultNote: 42
+  },
+  {
+    id: 'hat_openlong2', name: 'Splash Hat', tags: ['open', 'wash'],
+    ring: { partials: [1, 1.342, 1.7183, 2.0473, 2.6415, 3.1213], base: 420, wave: 'square', filter: 'highpass', cut: 7200, q: 0.5, decay: 0.75, level: 0.5 },
+    noises: [{ color: 'violet', level: 0.3, hp: 8000, decay: 0.5 }],
+    gain: 0.5, sends: { reverb: 0.26 }, defaultNote: 46
+  },
+  {
+    id: 'hat_tight909', name: '909 Tight', tags: ['closed', 'classic'],
+    ring: { partials: [1, 1.342, 1.7183, 2.0473, 2.6415, 3.1213], base: 340, wave: 'square', filter: 'highpass', cut: 9000, q: 0.6, decay: 0.038, level: 0.6 },
+    gain: 0.62, defaultNote: 42
+  },
+  {
+    id: 'hat_whitetick', name: 'White Tick', tags: ['closed', 'digital'],
+    noises: [{ color: 'violet', level: 0.85, hp: 9500, decay: 0.022 }],
+    gain: 0.6, defaultNote: 42
+  },
+  {
+    id: 'hat_swishopen', name: 'Swish', tags: ['open', 'soft'],
+    noises: [{ color: 'white', level: 0.6, bp: 7000, q: 0.5, attack: 0.02, decay: 0.34 }],
+    gain: 0.68, sends: { reverb: 0.2 }, defaultNote: 46
+  },
+  {
+    id: 'hat_crushed', name: 'Crushed Hat', tags: ['lofi', 'digital'],
+    ring: { partials: [1, 1.342, 1.7183, 2.0473, 2.6415, 3.1213], base: 360, wave: 'square', filter: 'highpass', cut: 7600, q: 0.6, decay: 0.05, level: 0.6 },
+    gain: 0.72, defaultNote: 42,
+    fx: [{ type: 'crush', bits: 4, reduction: 5, mix: 0.9 }]
+  },
+  {
+    id: 'hat_brushed', name: 'Brushed Hat', tags: ['soft', 'jazz'],
+    noises: [{ color: 'pink', level: 0.7, bp: 5200, q: 0.45, attack: 0.008, decay: 0.09 }],
+    gain: 0.75, sends: { reverb: 0.12 }, defaultNote: 42
+  },
+  {
+    id: 'hat_metaltick', name: 'Metal Tick', tags: ['metal', 'closed'],
+    ring: { partials: [1, 1.51, 2.13, 2.92, 3.71, 4.66], base: 520, wave: 'square', filter: 'highpass', cut: 8400, q: 0.7, decay: 0.03, level: 0.65 },
+    noises: [{ color: 'metal', level: 0.3, hp: 9000, decay: 0.018 }],
+    gain: 0.68, defaultNote: 42
+  },
+  {
+    id: 'hat_gated_open', name: 'Gated Open', tags: ['open', 'gated'],
+    ring: { partials: [1, 1.342, 1.7183, 2.0473, 2.6415, 3.1213], base: 380, wave: 'square', filter: 'highpass', cut: 7800, q: 0.6, decay: 0.006, hold: 0.13, level: 0.6 },
+    gain: 0.55, defaultNote: 46
+  },
+  {
+    id: 'hat_airy', name: 'Airy Hat', tags: ['soft', 'high'],
+    noises: [{ color: 'violet', level: 0.6, hp: 11000, attack: 0.004, decay: 0.07 }],
+    gain: 0.95, sends: { reverb: 0.16 }, defaultNote: 42
+  },
+  {
+    id: 'hat_reverse_open', name: 'Reverse Open', tags: ['reverse', 'fx'],
+    noises: [{ color: 'white', level: 0.8, hp: 6800, attack: 0.22, decay: 0.02 }],
+    gain: 0.62, sends: { reverb: 0.2 }, defaultNote: 46
+  },
+  {
+    id: 'hat_bitclosed', name: 'Bit Hat', tags: ['digital', 'closed'],
+    noises: [{ color: 'blue', level: 0.8, hp: 7000, decay: 0.026 }],
+    gain: 0.68, defaultNote: 42,
+    fx: [{ type: 'crush', bits: 3, reduction: 6, jitter: 0.18, mix: 1 }]
+  },
+  {
+    id: 'hat_doublehit', name: 'Double Hat', tags: ['closed', 'flam'],
+    noises: [
+      { color: 'white', level: 0.7, hp: 8200, decay: 0.02 },
+      { color: 'white', level: 0.55, hp: 8200, attack: 0.03, decay: 0.03 }
+    ],
+    gain: 0.68, defaultNote: 42
   }
 ];

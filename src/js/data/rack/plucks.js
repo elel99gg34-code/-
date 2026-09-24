@@ -256,5 +256,100 @@ export const PLUCKS = [
     filter: { type: 'lowpass', cutoff: 900, q: 3.2, env: 2.2, keytrack: 0.6, velToEnv: 0.85 },
     ampEnv: env(0.002, 0.6, 0.0, 0.2), filtEnv: env(0.002, 0.22, 0.06, 0.12),
     gain: 0.6, sends: { reverb: 0.34 }, defaultNote: 55
+  },
+  {
+    id: 'plk_harpsi_pluck', name: 'Quill Pluck', tags: ['bright', 'wire'],
+    oscs: [{ wave: 'wire', level: 0.6 }, { wave: 'saw', level: 0.25, oct: 1 }],
+    filter: { type: 'lowpass', cutoff: 4600, q: 2, env: 2, keytrack: 0.8 },
+    ampEnv: env(0.001, 0.5, 0.0, 0.16), filtEnv: env(0.002, 0.2, 0.1, 0.1),
+    gain: 0.6, sends: { reverb: 0.28 }, defaultNote: 64
+  },
+  {
+    id: 'plk_steelstring', name: 'Steel String Pluck', tags: ['acoustic', 'bright'],
+    oscs: [{ wave: 'saw', level: 0.45 }, { wave: 'glass', level: 0.3, oct: 1, cent: 5 }],
+    noise: { color: 'white', level: 0.1, hp: 4000, decay: 0.02 },
+    filter: { type: 'lowpass', cutoff: 4000, q: 1.8, env: 2, keytrack: 0.8 },
+    ampEnv: env(0.001, 1.1, 0.0, 0.36), filtEnv: env(0.002, 0.3, 0.1, 0.18),
+    gain: 0.6, sends: { reverb: 0.3 }, defaultNote: 60
+  },
+  {
+    id: 'plk_bassharp', name: 'Bass Harp', tags: ['low', 'soft'],
+    oscs: [{ wave: 'triangle', level: 0.7 }, { wave: 'sine', level: 0.35, oct: -1 }],
+    filter: { type: 'lowpass', cutoff: 1800, q: 1.4, env: 1.6, keytrack: 0.7 },
+    ampEnv: env(0.002, 1.4, 0.0, 0.5), filtEnv: env(0.004, 0.4, 0.1, 0.24),
+    gain: 0.62, sends: { reverb: 0.34 }, defaultNote: 43
+  },
+  {
+    id: 'plk_metalpluck', name: 'Metal Pluck', tags: ['metal', 'ring'],
+    oscs: [{ wave: 'metal', level: 0.5 }, { wave: 'sine', level: 0.4 }],
+    fm: { ratio: 4.01, index: 2.4, decay: 0.08, sustain: 0.0 },
+    filter: { type: 'lowpass', cutoff: 4400, q: 1.6, env: 1.8, keytrack: 0.8 },
+    ampEnv: env(0.001, 0.8, 0.0, 0.3), filtEnv: env(0.002, 0.25, 0.1, 0.14),
+    gain: 0.68, sends: { reverb: 0.34, delay: 0.14 }, defaultNote: 67
+  },
+  {
+    id: 'plk_pizzsynth', name: 'Synth Pizz', tags: ['short', 'string'],
+    oscs: [{ wave: 'saw', level: 0.6 }],
+    filter: { type: 'lowpass', cutoff: 2600, q: 3, env: 2.4, keytrack: 0.7 },
+    ampEnv: env(0.002, 0.2, 0.0, 0.07), filtEnv: env(0.003, 0.1, 0.05, 0.05),
+    gain: 0.78, sends: { reverb: 0.28 }, defaultNote: 60
+  },
+  {
+    id: 'plk_woodpluck', name: 'Wood Pluck', tags: ['dry', 'warm'],
+    oscs: [{ wave: 'triangle', level: 0.75 }],
+    fm: { ratio: 2.9, index: 1, decay: 0.03, sustain: 0.0 },
+    filter: { type: 'lowpass', cutoff: 2200, q: 1.6, env: 1.6, keytrack: 0.8 },
+    ampEnv: env(0.001, 0.4, 0.0, 0.14), filtEnv: env(0.002, 0.14, 0.05, 0.08),
+    gain: 0.78, sends: { reverb: 0.2 }, defaultNote: 60
+  },
+  {
+    id: 'plk_crystalpluck', name: 'Crystal Pluck', tags: ['glass', 'high'],
+    oscs: [{ wave: 'glass', level: 0.55 }, { wave: 'sine', level: 0.35, oct: 1 }],
+    fm: { ratio: 6.02, index: 1.4, decay: 0.05, sustain: 0.0 },
+    filter: { type: 'highpass', cutoff: 800, q: 0.8 },
+    ampEnv: env(0.001, 0.9, 0.0, 0.34),
+    gain: 1.05, sends: { reverb: 0.44, delay: 0.18 }, defaultNote: 79
+  },
+  {
+    id: 'plk_rubberpluck', name: 'Rubber Pluck', tags: ['soft', 'round'],
+    oscs: [{ wave: 'sine', level: 0.8 }, { wave: 'triangle', level: 0.3, oct: 1 }],
+    filter: { type: 'lowpass', cutoff: 1500, q: 3.2, env: 2.4, keytrack: 0.7 },
+    ampEnv: env(0.002, 0.35, 0.0, 0.12), filtEnv: env(0.003, 0.12, 0.05, 0.07),
+    gain: 0.86, sends: { reverb: 0.24 }, defaultNote: 55
+  },
+  {
+    id: 'plk_gritpluck', name: 'Grit Pluck', tags: ['distorted', 'punk'],
+    oscs: [{ wave: 'grind', level: 0.6 }],
+    filter: { type: 'lowpass', cutoff: 2400, q: 3.4, env: 2.4, keytrack: 0.6 },
+    ampEnv: env(0.001, 0.28, 0.0, 0.09), filtEnv: env(0.002, 0.12, 0.05, 0.06),
+    shaper: { curve: 'fuzz', drive: 0.3 },
+    gain: 0.62, sends: { reverb: 0.22, delay: 0.16 }, defaultNote: 60
+  },
+  {
+    id: 'plk_shamisen', name: 'Shamisen', tags: ['buzz', 'east'],
+    oscs: [{ wave: 'saw', level: 0.5 }, { wave: 'wire', level: 0.35, cent: 9 }],
+    noise: { color: 'white', level: 0.14, bp: 3000, q: 1.4, decay: 0.05 },
+    filter: { type: 'lowpass', cutoff: 3200, q: 2.4, env: 2, keytrack: 0.8 },
+    ampEnv: env(0.001, 0.7, 0.0, 0.24), filtEnv: env(0.002, 0.2, 0.08, 0.12),
+    gain: 0.62, sends: { reverb: 0.3 }, defaultNote: 57
+  },
+  {
+    id: 'plk_autoharp', name: 'Autoharp', tags: ['strum', 'bright'],
+    oscs: [
+      { wave: 'glass', level: 0.35 },
+      { wave: 'saw', level: 0.25, semi: 7, cent: 5 },
+      { wave: 'sine', level: 0.25, oct: 1 }
+    ],
+    filter: { type: 'lowpass', cutoff: 4600, q: 1.4, env: 1.6, keytrack: 0.8 },
+    ampEnv: env(0.002, 1.2, 0.0, 0.44), filtEnv: env(0.004, 0.35, 0.1, 0.2),
+    gain: 0.62, sends: { reverb: 0.4 }, defaultNote: 64
+  },
+  {
+    id: 'plk_sub_pluck', name: 'Sub Pluck', tags: ['low', 'tight'],
+    oscs: [{ wave: 'sine', level: 0.9 }],
+    sub: { wave: 'sine', oct: -1, level: 0.3, bypassFilter: true },
+    filter: { type: 'lowpass', cutoff: 900, q: 2.4, env: 2, keytrack: 0.6 },
+    ampEnv: env(0.002, 0.3, 0.0, 0.1), filtEnv: env(0.003, 0.12, 0.05, 0.06),
+    gain: 0.8, defaultNote: 43
   }
 ];

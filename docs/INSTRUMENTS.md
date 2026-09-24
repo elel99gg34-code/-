@@ -1,4 +1,4 @@
-# The Rack — all 590 instruments
+# The Rack — all 890 instruments
 
 Every instrument is synthesised from scratch by `src/js/audio/voice.js`. There are no samples anywhere in this app: the whole rack is a few kilobytes of parameters, so it renders identically at any sample rate.
 
@@ -8,28 +8,31 @@ This file is generated — run `npm run docs` after changing the rack.
 
 | Family | Count | Colour |
 |---|---:|---|
-| Kicks | 42 | `#ff3b30` |
-| Snares | 42 | `#ff9f0a` |
-| Hats | 36 | `#ffd60a` |
-| Percussion | 40 | `#32d74b` |
-| Cymbals | 22 | `#66d4cf` |
-| Bass | 54 | `#0a84ff` |
-| Guitars | 40 | `#bf5af2` |
-| Leads | 54 | `#ff2d95` |
-| Pads | 34 | `#5e5ce6` |
-| Plucks | 30 | `#64d2ff` |
-| Organs & Keys | 22 | `#efe3c8` |
-| Chip & Console | 20 | `#c3f73a` |
-| Mallets & Bells | 20 | `#d6a35c` |
-| Strings & Bows | 20 | `#a8e6cf` |
-| Brass & Winds | 22 | `#e07a5f` |
-| Voices | 26 | `#ffb3c7` |
-| Modular & Experimental | 22 | `#b388ff` |
-| Atmospheres | 18 | `#7c9cbf` |
-| FX & Noise | 26 | `#8e8e93` |
-| **Total** | **590** | |
+| Kicks | 54 | `#ff3b30` |
+| Snares | 54 | `#ff9f0a` |
+| Hats | 48 | `#ffd60a` |
+| Percussion | 52 | `#32d74b` |
+| Cymbals | 32 | `#66d4cf` |
+| Bass | 68 | `#0a84ff` |
+| Guitars | 52 | `#bf5af2` |
+| Leads | 68 | `#ff2d95` |
+| Pads | 46 | `#5e5ce6` |
+| Plucks | 42 | `#64d2ff` |
+| Organs & Keys | 34 | `#efe3c8` |
+| Chip & Console | 32 | `#c3f73a` |
+| Toys & Junk | 24 | `#ff8fab` |
+| Mallets & Bells | 32 | `#d6a35c` |
+| Strings & Bows | 32 | `#a8e6cf` |
+| Brass & Winds | 34 | `#e07a5f` |
+| Voices | 38 | `#ffb3c7` |
+| Sequences & Gates | 24 | `#4dd0a7` |
+| Modular & Experimental | 34 | `#b388ff` |
+| Atmospheres | 30 | `#7c9cbf` |
+| Noise & Harsh | 22 | `#d94f30` |
+| FX & Noise | 38 | `#8e8e93` |
+| **Total** | **890** | |
 
-## Kicks (42)
+## Kicks (54)
 
 | # | Instrument | Engine | Character |
 |---:|---|---|---|
@@ -75,8 +78,20 @@ This file is generated — run `npm run docs` after changing the rack.
 | 40 | **Digital Kick** | drum | fm, clean |
 | 41 | **Click Layer** | drum | attack, layered |
 | 42 | **Big Room Kick** | drum | edm, long |
+| 43 | **Sub Drop Kick** | drum | sub, fall |
+| 44 | **Knock** | drum | tight, wood |
+| 45 | **Tape Saturated** | drum | lofi, warm |
+| 46 | **Rave Kick** | drum | hard, dance |
+| 47 | **Tribal Kick** | drum | acoustic, deep |
+| 48 | **Pumped Kick** | drum | dance, long |
+| 49 | **Distorted 808** | drum | sub, distorted |
+| 50 | **Clipped Kick** | drum | hard, square |
+| 51 | **Layered Sub** | drum | sub, layered |
+| 52 | **Garage Kick** | drum | garage, snap |
+| 53 | **808 Short** | drum | sub, tight |
+| 54 | **Metal Kick** | drum | metal, trigger |
 
-## Snares (42)
+## Snares (54)
 
 | # | Instrument | Engine | Character |
 |---:|---|---|---|
@@ -122,8 +137,20 @@ This file is generated — run `npm run docs` after changing the rack.
 | 40 | **Flam** | drum | double, roll |
 | 41 | **Power Rim** | drum | rimshot, loud |
 | 42 | **Digital Snare** | drum | fm, clean |
+| 43 | **Clap Stack** | drum | clap, layered |
+| 44 | **Rim Click Snare** | drum | tight, wood |
+| 45 | **Gated Noise** | drum | gated, big |
+| 46 | **Trap Snare** | drum | trap, tight |
+| 47 | **Wood & Wire** | drum | acoustic, layered |
+| 48 | **Clang Snare** | drum | metal, industrial |
+| 49 | **Tight Gate** | drum | gated, short |
+| 50 | **Bitcrushed Snare** | drum | lofi, digital |
+| 51 | **Deep Gated** | drum | gated, low |
+| 52 | **Snappy** | drum | bright, tight |
+| 53 | **Loose Skin** | drum | acoustic, fat |
+| 54 | **Pure Noise Snare** | drum | noise, clean |
 
-## Hats (36)
+## Hats (48)
 
 | # | Instrument | Engine | Character |
 |---:|---|---|---|
@@ -163,8 +190,20 @@ This file is generated — run `npm run docs` after changing the rack.
 | 34 | **Suck Hat** | drum | fx, reverse |
 | 35 | **Wash Hat** | drum | long, noisy |
 | 36 | **Pitched Hat** | drum | tonal, melodic |
+| 37 | **Splash Hat** | drum | open, wash |
+| 38 | **909 Tight** | drum | closed, classic |
+| 39 | **White Tick** | drum | closed, digital |
+| 40 | **Swish** | drum | open, soft |
+| 41 | **Crushed Hat** | drum | lofi, digital |
+| 42 | **Brushed Hat** | drum | soft, jazz |
+| 43 | **Metal Tick** | drum | metal, closed |
+| 44 | **Gated Open** | drum | open, gated |
+| 45 | **Airy Hat** | drum | soft, high |
+| 46 | **Reverse Open** | drum | reverse, fx |
+| 47 | **Bit Hat** | drum | digital, closed |
+| 48 | **Double Hat** | drum | closed, flam |
 
-## Percussion (40)
+## Percussion (52)
 
 | # | Instrument | Engine | Character |
 |---:|---|---|---|
@@ -208,8 +247,20 @@ This file is generated — run `npm run docs` after changing the rack.
 | 38 | **Whip** | drum | crack, sharp |
 | 39 | **Hammer** | drum | industrial, impact |
 | 40 | **Bucket Hit** | drum | junk, plastic |
+| 41 | **Surdo** | drum | low, hand |
+| 42 | **Repinique** | drum | high, hand |
+| 43 | **Taiko** | drum | big, deep |
+| 44 | **Wood Block High** | drum | wood, tight |
+| 45 | **Metal Block** | drum | metal, tight |
+| 46 | **Tight Clap** | drum | clap, dry |
+| 47 | **Floor Tom** | drum | low, acoustic |
+| 48 | **Roto Tom** | drum | pitched, bend |
+| 49 | **Big Cowbell** | drum | metal, loud |
+| 50 | **Metal Scrape Hit** | drum | junk, scrape |
+| 51 | **Boot Stomp** | drum | low, junk |
+| 52 | **Drum Sticks** | drum | wood, count |
 
-## Cymbals (22)
+## Cymbals (32)
 
 | # | Instrument | Engine | Character |
 |---:|---|---|---|
@@ -235,8 +286,18 @@ This file is generated — run `npm run docs` after changing the rack.
 | 20 | **Long Sizzle** | drum | rivets, wash |
 | 21 | **Reverse Splash** | drum | fx, swell |
 | 22 | **Junk Lid** | drum | trash, clang |
+| 23 | **Thin Crash** | drum | bright, fast |
+| 24 | **Ride Ping** | drum | ride, defined |
+| 25 | **Cymbal Swell** | drum | swell, reverse |
+| 26 | **Trash Stack Short** | drum | stack, short |
+| 27 | **Small Gong** | drum | gong, metal |
+| 28 | **Foot Splash** | drum | pedal, short |
+| 29 | **Ride Bell Cup** | drum | bell, cut |
+| 30 | **Crushed Crash** | drum | lofi, digital |
+| 31 | **Long Wash** | drum | wash, ambient |
+| 32 | **Hand Clash** | drum | orchestral, big |
 
-## Bass (54)
+## Bass (68)
 
 | # | Instrument | Engine | Character |
 |---:|---|---|---|
@@ -294,8 +355,22 @@ This file is generated — run `npm run docs` after changing the rack.
 | 52 | **Noise Bass** | synth | industrial, harsh |
 | 53 | **Stack Sub** | synth | layered, huge |
 | 54 | **Bass Guitar** | synth | organic, fingered |
+| 55 | **Neuro Bass** | synth | dnb, morphing |
+| 56 | **P-Bass** | synth | finger, round |
+| 57 | **Fretless** | synth | smooth, glide |
+| 58 | **Squelch** | synth | acid, wet |
+| 59 | **Dirty Growl** | synth | distorted, wide |
+| 60 | **Synthpop Bass** | synth | bright, retro |
+| 61 | **808 Long Tail** | synth | sub, trap |
+| 62 | **Slow Wobble** | synth | dubstep, lfo |
+| 63 | **Plucked Sub** | synth | sub, short |
+| 64 | **Detuned Saw Bass** | synth | wide, thick |
+| 65 | **Bit Sub** | synth | digital, sub |
+| 66 | **Hoover Bass** | synth | rave, sweep |
+| 67 | **Gated Sub** | synth | sub, gate |
+| 68 | **Pedal Sub** | synth | organ, drone |
 
-## Guitars (40)
+## Guitars (52)
 
 | # | Instrument | Engine | Character |
 |---:|---|---|---|
@@ -339,8 +414,20 @@ This file is generated — run `npm run docs` after changing the rack.
 | 38 | **Lo-Fi Guitar** | synth | lofi, dusty |
 | 39 | **Ambient Loop** | synth | ambient, wash |
 | 40 | **Strum Chord** | synth | chord, wide |
+| 41 | **Hardcore Chug** | synth | palm, heavy |
+| 42 | **Open Chord** | synth | clean, ring |
+| 43 | **Tapped Lead** | synth | lead, fast |
+| 44 | **Ring Guitar** | synth | metal, weird |
+| 45 | **Slapback** | synth | clean, rockabilly |
+| 46 | **Germanium Fuzz** | synth | fuzz, vintage |
+| 47 | **Shoegaze Wall** | synth | wall, ambient |
+| 48 | **Barre Chord** | synth | punk, crunch |
+| 49 | **Pedal Steel** | synth | glide, clean |
+| 50 | **High Strung** | synth | bright, clean |
+| 51 | **Gated Chug** | synth | palm, tight |
+| 52 | **High Ebow** | synth | sustain, lead |
 
-## Leads (54)
+## Leads (68)
 
 | # | Instrument | Engine | Character |
 |---:|---|---|---|
@@ -398,8 +485,22 @@ This file is generated — run `npm run docs` after changing the rack.
 | 52 | **Unison Wall** | synth | huge, detuned |
 | 53 | **Glass Lead** | synth | bright, clean |
 | 54 | **Warning Lead** | synth | siren, alarm |
+| 55 | **Wide PWM** | synth | pwm, wide |
+| 56 | **Power Fifths** | synth | power, wide |
+| 57 | **Pure Sine Lead** | synth | clean, simple |
+| 58 | **Sync Screamer** | synth | sync, harsh |
+| 59 | **Hollow Lead** | synth | hollow, reed |
+| 60 | **FM Glass Lead** | synth | fm, bright |
+| 61 | **Vowel Lead** | synth | formant, vox |
+| 62 | **Supersaw XL** | synth | wide, anthem |
+| 63 | **Bit Lead** | synth | digital, lofi |
+| 64 | **Saw + Square** | synth | classic, fat |
+| 65 | **Seagull** | synth | high, sweep |
+| 66 | **Organ Lead** | synth | organ, cut |
+| 67 | **Duty Sweep** | synth | pwm, moving |
+| 68 | **Shout** | synth | harsh, punk |
 
-## Pads (34)
+## Pads (46)
 
 | # | Instrument | Engine | Character |
 |---:|---|---|---|
@@ -437,8 +538,20 @@ This file is generated — run `npm run docs` after changing the rack.
 | 32 | **Wide Pad** | synth | stereo, huge |
 | 33 | **Bright Pad** | synth | open, airy |
 | 34 | **Lo-Fi Pad** | synth | lofi, dusty |
+| 35 | **Shimmer Pad** | synth | bright, wide |
+| 36 | **Dust Pad** | synth | lofi, grain |
+| 37 | **Hollow Pad** | synth | hollow, reed |
+| 38 | **Swell Strings** | synth | string, slow |
+| 39 | **Ghost Pad** | synth | vox, eerie |
+| 40 | **Poly Pad** | synth | classic, warm |
+| 41 | **Submerged Pad** | synth | dark, filtered |
+| 42 | **Brass Pad** | synth | brass, full |
+| 43 | **Grit Wall Pad** | synth | harsh, wide |
+| 44 | **Bell Pad** | synth | bell, shimmer |
+| 45 | **String Machine** | synth | retro, chorus |
+| 46 | **Deep Drone Pad** | synth | drone, sub |
 
-## Plucks (30)
+## Plucks (42)
 
 | # | Instrument | Engine | Character |
 |---:|---|---|---|
@@ -472,8 +585,20 @@ This file is generated — run `npm run docs` after changing the rack.
 | 28 | **Soft Pluck** | synth | gentle, round |
 | 29 | **Wide Pluck** | synth | stereo, lush |
 | 30 | **Dark Pluck** | synth | muted, moody |
+| 31 | **Quill Pluck** | synth | bright, wire |
+| 32 | **Steel String Pluck** | synth | acoustic, bright |
+| 33 | **Bass Harp** | synth | low, soft |
+| 34 | **Metal Pluck** | synth | metal, ring |
+| 35 | **Synth Pizz** | synth | short, string |
+| 36 | **Wood Pluck** | synth | dry, warm |
+| 37 | **Crystal Pluck** | synth | glass, high |
+| 38 | **Rubber Pluck** | synth | soft, round |
+| 39 | **Grit Pluck** | synth | distorted, punk |
+| 40 | **Shamisen** | synth | buzz, east |
+| 41 | **Autoharp** | synth | strum, bright |
+| 42 | **Sub Pluck** | synth | low, tight |
 
-## Organs & Keys (22)
+## Organs & Keys (34)
 
 | # | Instrument | Engine | Character |
 |---:|---|---|---|
@@ -499,8 +624,20 @@ This file is generated — run `npm run docs` after changing the rack.
 | 20 | **Spinet** | synth | plucked, thin |
 | 21 | **Synth Piano** | synth | digital, hybrid |
 | 22 | **Lo-Fi Piano** | synth | lofi, dusty |
+| 23 | **Rhodes Bark** | synth | ep, hard |
+| 24 | **Overdriven B3** | synth | organ, dirty |
+| 25 | **Leslie Fast** | synth | organ, rotary |
+| 26 | **Prepared Piano** | synth | piano, muted |
+| 27 | **Reed Organ** | synth | reed, pump |
+| 28 | **Bright Clav** | synth | funk, tight |
+| 29 | **Celeste Keys** | synth | bell, soft |
+| 30 | **Tack Piano** | synth | piano, bright |
+| 31 | **FM Piano** | synth | fm, digital |
+| 32 | **Organ Bass Pedal** | synth | organ, low |
+| 33 | **Dirty Wurli** | synth | ep, crunch |
+| 34 | **Gospel Organ** | synth | organ, full |
 
-## Chip & Console (20)
+## Chip & Console (32)
 
 | # | Instrument | Engine | Character |
 |---:|---|---|---|
@@ -524,8 +661,49 @@ This file is generated — run `npm run docs` after changing the rack.
 | 18 | **Jump** | synth | sfx, arcade |
 | 19 | **Hurt Blip** | synth | sfx, noisy |
 | 20 | **Power Up** | synth | sfx, rise |
+| 21 | **Pulse 75%** | synth | nes, inverted |
+| 22 | **Chip Vibrato** | synth | nes, lead |
+| 23 | **Chip Echo** | synth | delay, lead |
+| 24 | **Duty Sweep Chip** | synth | nes, moving |
+| 25 | **DPCM Drum** | synth | nes, drum |
+| 26 | **SID Pulse** | synth | c64, pwm |
+| 27 | **SID Bass** | synth | c64, low |
+| 28 | **Game Boy Bass** | synth | gameboy, wave |
+| 29 | **FM Chip Lead** | synth | ym2612, bright |
+| 30 | **FM Chip Snare** | synth | ym2612, drum |
+| 31 | **Chip Alarm** | synth | siren, game |
+| 32 | **Game Over** | synth | jingle, fall |
 
-## Mallets & Bells (20)
+## Toys & Junk (24)
+
+| # | Instrument | Engine | Character |
+|---:|---|---|---|
+| 1 | **Tin Toy Piano** | synth | plastic, bright |
+| 2 | **Toy Glockenspiel** | synth | metal, mistuned |
+| 3 | **Music Box Comb** | synth | tine, fragile |
+| 4 | **Plastic Xylophone** | synth | bar, dull |
+| 5 | **Kazoo** | synth | buzz, nasal |
+| 6 | **Tin Whistle** | synth | breath, thin |
+| 7 | **Rubber Band** | synth | twang, slack |
+| 8 | **Comb & Paper** | synth | buzz, lofi |
+| 9 | **Blown Bottle** | synth | hollow, breath |
+| 10 | **Door Spring** | synth | boing, junk |
+| 11 | **Can Lid** | synth | junk, metal |
+| 12 | **Saw Blade** | synth | junk, wobble |
+| 13 | **Desk Ruler** | synth | twang, buzz |
+| 14 | **Saucepan** | synth | junk, clang |
+| 15 | **Radiator Pipe** | synth | junk, ring |
+| 16 | **Keychain** | synth | jangle, metal |
+| 17 | **Zipper** | synth | scrape, junk |
+| 18 | **Squeaky Toy** | synth | high, comic |
+| 19 | **Wobble Board** | synth | boing, wobble |
+| 20 | **Mbira** | synth | tine, buzz |
+| 21 | **Slide Whistle** | synth | glide, comic |
+| 22 | **Duck Call** | synth | reed, comic |
+| 23 | **Cap Gun** | synth | hit, snap |
+| 24 | **Bontempi Organ** | synth | reed, cheap |
+
+## Mallets & Bells (32)
 
 | # | Instrument | Engine | Character |
 |---:|---|---|---|
@@ -549,8 +727,20 @@ This file is generated — run `npm run docs` after changing the rack.
 | 18 | **Singing Bowl** | synth | bell, meditative |
 | 19 | **Temple Bell** | synth | bell, deep |
 | 20 | **Metallophone** | synth | bar, metal |
+| 21 | **Bowed Vibes** | synth | bar, swell |
+| 22 | **Glass Bowl** | synth | bowl, pure |
+| 23 | **Hard Marimba** | synth | bar, attack |
+| 24 | **Tuned Cowbell** | synth | metal, pitched |
+| 25 | **Agogo Bells** | synth | metal, bright |
+| 26 | **Church Bell** | synth | bell, huge |
+| 27 | **High Steel Pan** | synth | steel, bright |
+| 28 | **Bass Kalimba** | synth | tine, low |
+| 29 | **Low Tubular** | synth | tube, deep |
+| 30 | **Tuned Woodblock** | synth | wood, dry |
+| 31 | **Dark Bell** | synth | bell, low |
+| 32 | **Thumb Chime** | synth | chime, small |
 
-## Strings & Bows (20)
+## Strings & Bows (32)
 
 | # | Instrument | Engine | Character |
 |---:|---|---|---|
@@ -574,8 +764,20 @@ This file is generated — run `npm run docs` after changing the rack.
 | 18 | **Spiccato** | synth | short, bouncing |
 | 19 | **Fiddle** | synth | folk, raw |
 | 20 | **Bowed Pad** | synth | sustain, lush |
+| 21 | **String Octet** | synth | ensemble, full |
+| 22 | **Warm Solo Violin** | synth | solo, warm |
+| 23 | **Marcato** | synth | short, accent |
+| 24 | **High Harmonics** | synth | harmonic, thin |
+| 25 | **Bartok Snap** | synth | pizz, snap |
+| 26 | **Solo Cello** | synth | solo, low |
+| 27 | **High Tremolo** | synth | tremolo, tense |
+| 28 | **Sul Tasto** | synth | soft, flute-like |
+| 29 | **Synth Ensemble** | synth | retro, wide |
+| 30 | **Dark Ensemble** | synth | low, ominous |
+| 31 | **Glassy Ponticello** | synth | harsh, thin |
+| 32 | **String Hit** | synth | stab, orchestral |
 
-## Brass & Winds (22)
+## Brass & Winds (34)
 
 | # | Instrument | Engine | Character |
 |---:|---|---|---|
@@ -601,8 +803,20 @@ This file is generated — run `npm run docs` after changing the rack.
 | 20 | **Piccolo** | synth | high, piercing |
 | 21 | **Bassoon** | synth | reed, low |
 | 22 | **Shakuhachi** | synth | breathy, eastern |
+| 23 | **Horn Section** | synth | section, full |
+| 24 | **Brass Fall** | synth | fall, fx |
+| 25 | **Brass Doit** | synth | rise, fx |
+| 26 | **Harmon Mute** | synth | muted, thin |
+| 27 | **Soft French Horn** | synth | warm, round |
+| 28 | **Contrabassoon** | synth | low, reed |
+| 29 | **Pan Flute** | synth | breath, hollow |
+| 30 | **Recorder** | synth | breath, simple |
+| 31 | **Growl Sax** | synth | sax, dirty |
+| 32 | **Solo Tuba** | synth | low, round |
+| 33 | **Ska Stab** | synth | stab, section |
+| 34 | **Synth Brass** | synth | retro, fat |
 
-## Voices (26)
+## Voices (38)
 
 | # | Instrument | Engine | Character |
 |---:|---|---|---|
@@ -632,8 +846,49 @@ This file is generated — run `npm run docs` after changing the rack.
 | 24 | **Opera** | synth | vibrato, big |
 | 25 | **Radio Voice** | synth | lofi, narrow |
 | 26 | **Vocal Chop** | synth | stab, edm |
+| 27 | **Mmm** | synth | hum, closed |
+| 28 | **Sisters** | synth | choir, wide |
+| 29 | **Gang Shout** | synth | punk, crowd |
+| 30 | **Dark Ahh** | synth | choir, low |
+| 31 | **Formant Sweep** | synth | formant, moving |
+| 32 | **High Whisper** | synth | breath, thin |
+| 33 | **Monk Chant** | synth | chant, low |
+| 34 | **Low Robot** | synth | robot, digital |
+| 35 | **Bright Ooh** | synth | choir, high |
+| 36 | **Gasp** | synth | breath, hit |
+| 37 | **Voice Pad** | synth | pad, wide |
+| 38 | **Megaphone** | synth | radio, harsh |
 
-## Modular & Experimental (22)
+## Sequences & Gates (24)
+
+| # | Instrument | Engine | Character |
+|---:|---|---|---|
+| 1 | **Gate 16ths** | synth | gate, saw |
+| 2 | **Gate 8ths** | synth | gate, pad |
+| 3 | **Trance Gate** | synth | gate, supersaw |
+| 4 | **Stutter Gate** | synth | gate, glitch |
+| 5 | **Arp Cascade** | synth | arp, delay |
+| 6 | **Pulse Gate** | synth | gate, hollow |
+| 7 | **Chopped Chord** | synth | gate, chord |
+| 8 | **Offbeat Stab** | synth | gate, house |
+| 9 | **Triplet Gate** | synth | gate, swing |
+| 10 | **Ratchet Gate** | synth | gate, fast |
+| 11 | **Rolling Bass** | synth | gate, bass |
+| 12 | **Acid Sequence** | synth | acid, gate |
+| 13 | **Bleep Run** | synth | chip, gate |
+| 14 | **Dub Skank** | synth | chord, dub |
+| 15 | **House Stab** | synth | stab, chord |
+| 16 | **Techno Loop** | synth | gate, dark |
+| 17 | **Shuffle Gate** | synth | gate, swing |
+| 18 | **Half Gate** | synth | gate, soft |
+| 19 | **Glitch Gate** | synth | gate, digital |
+| 20 | **Pumper** | synth | sidechain, pad |
+| 21 | **Strobe** | synth | gate, fast |
+| 22 | **Morse** | synth | gate, radio |
+| 23 | **Ping Pong Seq** | synth | delay, wide |
+| 24 | **Cascade** | synth | delay, arp |
+
+## Modular & Experimental (34)
 
 | # | Instrument | Engine | Character |
 |---:|---|---|---|
@@ -659,8 +914,20 @@ This file is generated — run `npm run docs` after changing the rack.
 | 20 | **Rumble Module** | synth | sub, noise |
 | 21 | **Shimmer Cell** | synth | bright, texture |
 | 22 | **Burst Generator** | synth | percussive, noise |
+| 23 | **East Coast** | synth | subtractive, classic |
+| 24 | **Phase Distortion** | synth | digital, cz |
+| 25 | **Vactrol Bounce** | synth | lpg, organic |
+| 26 | **Noise Oscillator** | synth | noise, pitched |
+| 27 | **Cross Modulation** | synth | fm, metallic |
+| 28 | **Slew Limiter** | synth | glide, soft |
+| 29 | **Comb Resonator** | synth | comb, metallic |
+| 30 | **Stepped Voltage** | synth | sample-hold, random |
+| 31 | **Drone Bank** | synth | drone, stacked |
+| 32 | **Feedback Network** | synth | feedback, chaos |
+| 33 | **Rungler** | synth | chaos, digital |
+| 34 | **Resonator Bank** | synth | resonant, bright |
 
-## Atmospheres (18)
+## Atmospheres (30)
 
 | # | Instrument | Engine | Character |
 |---:|---|---|---|
@@ -682,8 +949,47 @@ This file is generated — run `npm run docs` after changing the rack.
 | 16 | **Snowfall** | synth | soft, high |
 | 17 | **Subway** | synth | industrial, rumble |
 | 18 | **Deep Space** | synth | drone, vast |
+| 19 | **Distant Thunder** | synth | weather, low |
+| 20 | **Power Lines** | synth | hum, electric |
+| 21 | **Factory Floor** | synth | machine, rhythmic |
+| 22 | **Nave Air** | synth | space, still |
+| 23 | **Tape Hiss Bed** | synth | lofi, bed |
+| 24 | **Traffic** | synth | city, bed |
+| 25 | **Night Insects** | synth | nature, high |
+| 26 | **Interstellar** | synth | space, drone |
+| 27 | **Dripping Cave** | synth | water, sparse |
+| 28 | **Pylon Wind** | synth | wind, metal |
+| 29 | **Stadium Crowd** | synth | crowd, big |
+| 30 | **Geiger Field** | synth | crackle, tense |
 
-## FX & Noise (26)
+## Noise & Harsh (22)
+
+| # | Instrument | Engine | Character |
+|---:|---|---|---|
+| 1 | **Noise Wall** | synth | wall, harsh |
+| 2 | **Crackle Field** | synth | crackle, dry |
+| 3 | **Feedback Loop** | synth | squeal, loud |
+| 4 | **Contact Mic** | synth | scrape, junk |
+| 5 | **Pedal Squeal** | synth | squeal, fuzz |
+| 6 | **Metal Scrape** | synth | scrape, metal |
+| 7 | **Power Electronics** | synth | wall, brutal |
+| 8 | **Feedback Screech** | synth | high, painful |
+| 9 | **Bit Rot** | synth | digital, broken |
+| 10 | **Clipped Wall** | synth | wall, square |
+| 11 | **Sizzle Field** | synth | high, texture |
+| 12 | **Rumble Wall** | synth | low, wall |
+| 13 | **Radio Jammer** | synth | radio, noise |
+| 14 | **Grind Loop** | synth | machine, loop |
+| 15 | **Air Raid Siren** | synth | siren, loud |
+| 16 | **Input Overload** | synth | clip, brutal |
+| 17 | **Tearing** | synth | rip, texture |
+| 18 | **Static Blast** | synth | burst, digital |
+| 19 | **Mains Hum** | synth | hum, drone |
+| 20 | **Gargle** | synth | modulated, wet |
+| 21 | **Pulse Wall** | synth | wall, rhythmic |
+| 22 | **Collapse** | synth | fall, brutal |
+
+## FX & Noise (38)
 
 | # | Instrument | Engine | Character |
 |---:|---|---|---|
@@ -713,3 +1019,15 @@ This file is generated — run `npm run docs` after changing the rack.
 | 24 | **Turntable Scratch** | synth | dj, fx |
 | 25 | **Rewind** | synth | fx, rise |
 | 26 | **Drop Hit** | synth | hit, huge |
+| 27 | **Long Riser** | synth | transition, build |
+| 28 | **Snare Rush** | synth | build, noise |
+| 29 | **Vinyl Stop** | synth | fall, dj |
+| 30 | **Reverse Crash Swell** | synth | reverse, swell |
+| 31 | **Gunshot** | synth | hit, harsh |
+| 32 | **Swoosh** | synth | transition, pan |
+| 33 | **Dial Up** | synth | digital, retro |
+| 34 | **Laser Sweep** | synth | digital, fall |
+| 35 | **Bass Drop** | synth | transition, sub |
+| 36 | **Metal Impact** | synth | hit, industrial |
+| 37 | **Reverse Riser** | synth | reverse, build |
+| 38 | **Error Buzz** | synth | digital, harsh |

@@ -2,7 +2,7 @@
 
 A punk electronic music studio that installs as a Windows program and runs entirely offline.
 
-**590 instruments, all synthesised** — no sample library, no downloads, no account. Write patterns on a step grid or a piano roll, arrange them into a song, mix them, and bounce the result to WAV or MP3.
+**890 instruments, all synthesised** — no sample library, no downloads, no account. Write patterns on a step grid or a piano roll, arrange them into a song, mix them, and bounce the result to WAV or MP3.
 
 ![Studio](docs/screenshots/studio.png)
 
@@ -12,7 +12,7 @@ A punk electronic music studio that installs as a Windows program and runs entir
 
 | | |
 |---|---|
-| **590 instruments** | 19 families: 42 kicks, 42 snares, 36 hats, 40 percussion, 22 cymbals, 54 basses, 40 guitars, 54 leads, 34 pads, 30 plucks, 22 organs & keys, 20 chip & console, 20 mallets & bells, 20 strings & bows, 22 brass & winds, 26 voices, 22 modular & experimental, 18 atmospheres, 26 FX. Every one is a distinct patch for the synthesis engine — see [docs/INSTRUMENTS.md](docs/INSTRUMENTS.md). |
+| **890 instruments** | 22 families: 54 kicks, 54 snares, 48 hats, 52 percussion, 32 cymbals, 68 basses, 52 guitars, 68 leads, 46 pads, 42 plucks, 34 organs & keys, 32 chip & console, 24 toys & junk, 32 mallets & bells, 32 strings & bows, 34 brass & winds, 38 voices, 24 sequences & gates, 34 modular & experimental, 30 atmospheres, 22 noise & harsh, 38 FX. Every one is a distinct patch for the synthesis engine — see [docs/INSTRUMENTS.md](docs/INSTRUMENTS.md). |
 | **Editing** | Step grid for the whole pattern, piano roll per track, velocity, note length, probability, swing, scale snapping, 1–128 steps per pattern, unlimited patterns. |
 | **Instrument editor** | Per-track macros (tune, cutoff, resonance, filter envelope, drive, FM, LFO, glide, envelopes) layered on top of the preset, plus up to six insert effects per track. |
 | **Effects** | Drive (10 curves), bitcrusher, filter with LFO, chorus, phaser, ping-pong delay, convolution reverb (7 spaces), compressor, EQ, trance gate, auto-pan/tremolo, ring modulator, stereo width, vinyl noise floor. |
@@ -45,7 +45,7 @@ Both folders are reachable from **Help → Open project vault folder** inside th
 ## A first pass through the app
 
 1. It opens on a demo project called **First Riot** — hit `Space` and you'll hear it.
-2. **Rack** (`F3`) lists all 590 instruments, grouped into 19 families. Click one to audition it, `+ TRACK` to add it to the project.
+2. **Rack** (`F3`) lists all 890 instruments, grouped into 22 families. Click one to audition it, `+ TRACK` to add it to the project.
 3. **Studio** (`F2`) is the sequencer. Click cells to draw notes, right-click to erase, drag to paint a run. `PIANO ROLL` switches the selected track to a pitch editor.
 4. The right-hand panel edits whatever track is selected: swap its preset, turn the macros, add effects.
 5. **Song** (`F6`) chains patterns into an arrangement. Scroll on a block to change how many times it repeats.
@@ -113,7 +113,7 @@ That last step is deliberate. electron-builder's own NSIS target *executes* the 
 
 `npm run dist:win:fast` recompiles the installer from an existing `dist/win-unpacked` without repackaging, which turns a five-minute cycle into about ninety seconds.
 
-`npm run verify` is the real test: it launches the app under a real Chromium, renders all 590 instruments offline, checks that none of them is silent, bounces the demo song, encodes it as WAV and MP3, runs the transport, and exercises undo and every view. It passes both against the source tree and against the packaged app, so the asar and AudioWorklet paths are covered too.
+`npm run verify` is the real test: it launches the app under a real Chromium, renders all 890 instruments offline, checks that none of them is silent, bounces the demo song, encodes it as WAV and MP3, runs the transport, and exercises undo and every view. It passes both against the source tree and against the packaged app, so the asar and AudioWorklet paths are covered too.
 
 ---
 
@@ -136,7 +136,7 @@ src/
       worklets/        bitcrusher and saturator AudioWorklet processors
     data/
       instruments.js   the index: families, defaults, field reference
-      rack/            one module per family, 590 instruments in total
+      rack/            one module per family, 890 instruments in total
     state/project.js   the project model, migration and the undo stack
     ui/                sequencer, inspector, rack, mixer, song, vault, export
     lib/               helpers, WAV encoder, MP3 bridge
@@ -146,7 +146,7 @@ Two ideas hold the audio side together:
 
 **One graph builder, two contexts.** `buildGraph()` assembles the mixer identically in the live `AudioContext` and in the `OfflineAudioContext` used for rendering, and every voice is fully scheduled ahead of time rather than driven by callbacks. What you hear is what gets exported, sample for sample.
 
-**Instruments are data, not samples.** An instrument is an oscillator bank, an optional sub and noise layer, an FM operator, a filter with its own envelope, an amp envelope, an LFO and a waveshaper — described as a plain object. That is why 590 instruments cost a few kilobytes and render correctly at 96 kHz.
+**Instruments are data, not samples.** An instrument is an oscillator bank, an optional sub and noise layer, an FM operator, a filter with its own envelope, an amp envelope, an LFO and a waveshaper — described as a plain object. That is why 890 instruments cost a few kilobytes and render correctly at 96 kHz.
 
 The renderer is plain ES modules with no build step. It is served over a custom `app://` scheme so modules and AudioWorklets load under a strict CSP, with `contextIsolation` on and Node disabled in the renderer.
 

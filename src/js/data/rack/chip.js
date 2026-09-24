@@ -186,5 +186,115 @@ export const CHIP = [
     pitchEnv: { amt: -24, d: 0.42 },
     gain: 0.48, sends: { delay: 0.14 }, defaultNote: 72,
     fx: [{ type: 'crush', bits: 4, reduction: 3, mix: 1 }]
+  },
+  {
+    id: 'chp_pulse75', name: 'Pulse 75%', tags: ['nes', 'inverted'],
+    oscs: [{ wave: 'pulse25', level: 1, cent: 0 }],
+    filter: { type: 'lowpass', cutoff: 8500, q: 0.5, env: 0.2, keytrack: 0.7 },
+    ampEnv: env(0.001, 0.06, 0.76, 0.02), filtEnv: env(0.001, 0.1, 0.7, 0.02),
+    gain: 0.42, defaultNote: 72,
+    fx: [{ type: 'crush', bits: 4, reduction: 3, mix: 1 }]
+  },
+  {
+    id: 'chp_vibrato', name: 'Chip Vibrato', tags: ['nes', 'lead'],
+    oscs: [{ wave: 'pulse25', level: 1 }],
+    filter: { type: 'lowpass', cutoff: 9000, q: 0.5, env: 0.2, keytrack: 0.7 },
+    ampEnv: env(0.001, 0.08, 0.8, 0.03), filtEnv: env(0.001, 0.1, 0.7, 0.03),
+    lfo: { wave: 'sine', rate: 7, depth: 0.03, target: 'pitch', delay: 0.12 },
+    gain: 0.44, defaultNote: 76,
+    fx: [{ type: 'crush', bits: 4, reduction: 3, mix: 1 }]
+  },
+  {
+    id: 'chp_echo', name: 'Chip Echo', tags: ['delay', 'lead'],
+    oscs: [{ wave: 'square', level: 0.9 }],
+    filter: { type: 'lowpass', cutoff: 8000, q: 0.5, env: 0.3, keytrack: 0.7 },
+    ampEnv: env(0.001, 0.05, 0.0, 0.02), filtEnv: env(0.001, 0.06, 0.2, 0.02),
+    gain: 0.6, sends: { delay: 0.3 }, defaultNote: 79,
+    fx: [
+      { type: 'delay', timeL: 0.11, timeR: 0.11, feedback: 0.5, damp: 6000, mix: 0.44 },
+      { type: 'crush', bits: 4, reduction: 3, mix: 1 }
+    ]
+  },
+  {
+    id: 'chp_dutysweep', name: 'Duty Sweep Chip', tags: ['nes', 'moving'],
+    oscs: [{ wave: 'pulse12', level: 0.6 }, { wave: 'pulse25', level: 0.5 }],
+    filter: { type: 'lowpass', cutoff: 7000, q: 1.2, env: 0.6, keytrack: 0.7 },
+    ampEnv: env(0.001, 0.1, 0.8, 0.03), filtEnv: env(0.002, 0.2, 0.5, 0.04),
+    lfo: { wave: 'triangle', rate: 2.4, depth: 0.4, target: 'filter' },
+    gain: 0.46, defaultNote: 72,
+    fx: [{ type: 'crush', bits: 4, reduction: 3, mix: 1 }]
+  },
+  {
+    id: 'chp_dpcm', name: 'DPCM Drum', tags: ['nes', 'drum'],
+    noise: { color: 'white', level: 0.8, bp: 1400, q: 0.9, decay: 0.07 },
+    oscs: [{ wave: 'triangle', level: 0.3 }],
+    filter: { type: 'lowpass', cutoff: 3600, q: 1, env: 1.4, keytrack: 0.3 },
+    ampEnv: env(0.001, 0.1, 0.0, 0.03), filtEnv: env(0.002, 0.08, 0.0, 0.03),
+    pitchEnv: { amt: -12, d: 0.05 },
+    gain: 0.8, defaultNote: 48,
+    fx: [{ type: 'crush', bits: 3, reduction: 6, mix: 1 }]
+  },
+  {
+    id: 'chp_sid_pulse', name: 'SID Pulse', tags: ['c64', 'pwm'],
+    oscs: [{ wave: 'pulse25', level: 0.6 }, { wave: 'pulse12', level: 0.5, cent: 6 }],
+    filter: { type: 'lowpass', cutoff: 2600, q: 3.4, env: 1.6, keytrack: 0.7 },
+    ampEnv: env(0.002, 0.14, 0.7, 0.05), filtEnv: env(0.004, 0.2, 0.4, 0.06),
+    lfo: { wave: 'triangle', rate: 3.2, depth: 0.4, target: 'filter' },
+    gain: 0.68, defaultNote: 64,
+    fx: [{ type: 'crush', bits: 8, reduction: 2, mix: 0.7 }]
+  },
+  {
+    id: 'chp_sid_bass', name: 'SID Bass', tags: ['c64', 'low'],
+    oscs: [{ wave: 'saw', level: 0.8 }],
+    sub: { wave: 'square', oct: -1, level: 0.3 },
+    filter: { type: 'lowpass', cutoff: 900, q: 5, env: 2.4, keytrack: 0.5 },
+    ampEnv: env(0.002, 0.2, 0.6, 0.04), filtEnv: env(0.004, 0.16, 0.2, 0.06),
+    gain: 0.66, defaultNote: 36,
+    fx: [{ type: 'crush', bits: 8, reduction: 2, mix: 0.7 }]
+  },
+  {
+    id: 'chp_gb_bass', name: 'Game Boy Bass', tags: ['gameboy', 'wave'],
+    oscs: [{ wave: 'triangle', level: 0.9 }],
+    filter: { type: 'lowpass', cutoff: 1400, q: 1.6, env: 1, keytrack: 0.5 },
+    ampEnv: env(0.001, 0.1, 0.8, 0.03), filtEnv: env(0.002, 0.14, 0.6, 0.04),
+    gain: 0.68, defaultNote: 40,
+    fx: [{ type: 'crush', bits: 4, reduction: 4, mix: 1 }]
+  },
+  {
+    id: 'chp_fm_lead', name: 'FM Chip Lead', tags: ['ym2612', 'bright'],
+    oscs: [{ wave: 'sine', level: 0.8 }],
+    fm: { ratio: 3, index: 4, decay: 0.2, sustain: 0.4 },
+    filter: { type: 'lowpass', cutoff: 7000, q: 0.8, env: 0.6, keytrack: 0.8 },
+    ampEnv: env(0.002, 0.2, 0.75, 0.06), filtEnv: env(0.004, 0.2, 0.6, 0.06),
+    gain: 0.6, sends: { delay: 0.2 }, defaultNote: 72,
+    fx: [{ type: 'crush', bits: 9, reduction: 2, mix: 0.6 }]
+  },
+  {
+    id: 'chp_fm_snare', name: 'FM Chip Snare', tags: ['ym2612', 'drum'],
+    noise: { color: 'white', level: 0.7, bp: 2400, q: 0.8, decay: 0.08 },
+    oscs: [{ wave: 'sine', level: 0.35 }],
+    fm: { ratio: 6.7, index: 5, decay: 0.05, sustain: 0.0 },
+    filter: { type: 'highpass', cutoff: 800, q: 0.8, env: 1, keytrack: 0.3 },
+    ampEnv: env(0.001, 0.12, 0.0, 0.03), filtEnv: env(0.002, 0.1, 0.0, 0.03),
+    gain: 0.78, defaultNote: 55,
+    fx: [{ type: 'crush', bits: 8, reduction: 2, mix: 0.6 }]
+  },
+  {
+    id: 'chp_alarm', name: 'Chip Alarm', tags: ['siren', 'game'],
+    oscs: [{ wave: 'square', level: 0.9 }],
+    filter: { type: 'lowpass', cutoff: 6000, q: 1, env: 0.4, keytrack: 0.7 },
+    ampEnv: env(0.001, 0.2, 0.85, 0.03), filtEnv: env(0.002, 0.2, 0.7, 0.04),
+    lfo: { wave: 'square', rate: 9, depth: 0.09, target: 'pitch' },
+    gain: 0.46, defaultNote: 79,
+    fx: [{ type: 'crush', bits: 4, reduction: 3, mix: 1 }]
+  },
+  {
+    id: 'chp_gameover', name: 'Game Over', tags: ['jingle', 'fall'],
+    oscs: [{ wave: 'pulse25', level: 0.9 }],
+    filter: { type: 'lowpass', cutoff: 5000, q: 1.2, env: 0.8, keytrack: 0.6 },
+    ampEnv: env(0.001, 0.6, 0.0, 0.1), filtEnv: env(0.002, 0.4, 0.1, 0.08),
+    pitchEnv: { amt: -14, d: 0.45 },
+    gain: 0.5, defaultNote: 67,
+    fx: [{ type: 'crush', bits: 4, reduction: 3, mix: 1 }]
   }
 ];

@@ -215,5 +215,105 @@ export const MODULAR = [
     ampEnv: env(0.001, 0.16, 0.0, 0.06), filtEnv: env(0.002, 0.12, 0.05, 0.05),
     gain: 0.9, sends: { reverb: 0.24, delay: 0.18 }, defaultNote: 72,
     fx: [{ type: 'crush', bits: 5, reduction: 6, jitter: 0.35, mix: 0.7 }]
+  },
+  {
+    id: 'mod_eastcoast', name: 'East Coast', tags: ['subtractive', 'classic'],
+    oscs: [{ wave: 'saw', level: 0.5 }, { wave: 'square', level: 0.35, cent: 7 }],
+    filter: { type: 'lowpass', cutoff: 1400, q: 4, env: 2.4, keytrack: 0.6 },
+    ampEnv: env(0.006, 0.5, 0.7, 0.2), filtEnv: env(0.01, 0.4, 0.3, 0.16),
+    gain: 0.5, sends: { reverb: 0.24 }, defaultNote: 55
+  },
+  {
+    id: 'mod_phasedist', name: 'Phase Distortion', tags: ['digital', 'cz'],
+    oscs: [{ wave: 'razor', level: 0.6 }],
+    fm: { ratio: 1, index: 4.4, decay: 0.4, sustain: 0.3 },
+    filter: { type: 'lowpass', cutoff: 3200, q: 2, env: 1.8, keytrack: 0.7 },
+    ampEnv: env(0.004, 0.5, 0.7, 0.16), filtEnv: env(0.01, 0.4, 0.3, 0.14),
+    gain: 0.5, sends: { reverb: 0.26 }, defaultNote: 60
+  },
+  {
+    id: 'mod_vactrol', name: 'Vactrol Bounce', tags: ['lpg', 'organic'],
+    oscs: [{ wave: 'triangle', level: 0.7 }, { wave: 'sine', level: 0.3, semi: 7 }],
+    filter: { type: 'lowpass', cutoff: 1400, q: 1.6, env: 2.6, keytrack: 0.6 },
+    ampEnv: env(0.002, 0.5, 0.0, 0.2), filtEnv: env(0.002, 0.3, 0.0, 0.14),
+    gain: 0.85, sends: { reverb: 0.36 }, defaultNote: 60
+  },
+  {
+    id: 'mod_noiseosc', name: 'Noise Oscillator', tags: ['noise', 'pitched'],
+    noise: { color: 'white', level: 0.6, bp: 1600, q: 3.4, keytrack: 1, decay: 0.8 },
+    oscs: [{ wave: 'sine', level: 0.3 }],
+    filter: { type: 'bandpass', cutoff: 1400, q: 2.2, env: 1.4, keytrack: 0.9 },
+    ampEnv: env(0.006, 0.5, 0.7, 0.2), filtEnv: env(0.02, 0.4, 0.5, 0.16),
+    gain: 1.2, sends: { reverb: 0.34 }, defaultNote: 60
+  },
+  {
+    id: 'mod_crossmod', name: 'Cross Modulation', tags: ['fm', 'metallic'],
+    oscs: [{ wave: 'sine', level: 0.5 }, { wave: 'metal', level: 0.3, semi: 5 }],
+    fm: { ratio: 1.33, index: 7, decay: 0.5, sustain: 0.4 },
+    filter: { type: 'lowpass', cutoff: 3400, q: 1.6, env: 1.4, keytrack: 0.7 },
+    ampEnv: env(0.004, 0.6, 0.6, 0.24), filtEnv: env(0.01, 0.5, 0.4, 0.2),
+    gain: 0.68, sends: { reverb: 0.34, delay: 0.16 }, defaultNote: 60
+  },
+  {
+    id: 'mod_slewlimit', name: 'Slew Limiter', tags: ['glide', 'soft'],
+    oscs: [{ wave: 'triangle', level: 0.75 }],
+    filter: { type: 'lowpass', cutoff: 1800, q: 1.2, env: 1.6, keytrack: 0.7 },
+    ampEnv: env(0.14, 0.6, 0.8, 0.4), filtEnv: env(0.2, 0.6, 0.5, 0.3),
+    pitchEnv: { amt: 3, d: 0.25 },
+    gain: 0.86, sends: { reverb: 0.3 }, defaultNote: 55
+  },
+  {
+    id: 'mod_combfilter', name: 'Comb Resonator', tags: ['comb', 'metallic'],
+    oscs: [{ wave: 'buzz', level: 0.45 }],
+    noise: { color: 'white', level: 0.3, hp: 600, decay: 0.03 },
+    filter: { type: 'bandpass', cutoff: 1200, q: 5, env: 1.6, keytrack: 0.95 },
+    ampEnv: env(0.002, 0.7, 0.2, 0.3), filtEnv: env(0.004, 0.4, 0.3, 0.2),
+    gain: 0.85, sends: { reverb: 0.36, delay: 0.22 }, defaultNote: 60
+  },
+  {
+    id: 'mod_stepped', name: 'Stepped Voltage', tags: ['sample-hold', 'random'],
+    oscs: [{ wave: 'square', level: 0.6 }],
+    filter: { type: 'lowpass', cutoff: 2400, q: 3.4, env: 1.8, keytrack: 0.6 },
+    ampEnv: env(0.004, 0.4, 0.8, 0.1), filtEnv: env(0.01, 0.3, 0.4, 0.1),
+    lfo: { wave: 'square', rate: 9.5, depth: 0.6, target: 'filter' },
+    gain: 0.56, sends: { reverb: 0.24, delay: 0.18 }, defaultNote: 60
+  },
+  {
+    id: 'mod_dronebank', name: 'Drone Bank', tags: ['drone', 'stacked'],
+    oscs: [
+      { wave: 'saw', level: 0.3, cent: -14 },
+      { wave: 'saw', level: 0.3, cent: 14 },
+      { wave: 'square', level: 0.2, semi: 7 },
+      { wave: 'sub', level: 0.25, oct: -1 }
+    ],
+    filter: { type: 'lowpass', cutoff: 1400, q: 2, env: 0.6, keytrack: 0.4 },
+    ampEnv: env(0.8, 2, 0.9, 1.6), filtEnv: env(1.2, 1.8, 0.7, 1),
+    lfo: { wave: 'sine', rate: 0.11, depth: 0.35, target: 'filter' },
+    gain: 0.44, sends: { reverb: 0.5 }, defaultNote: 40
+  },
+  {
+    id: 'mod_pingpongfb', name: 'Feedback Network', tags: ['feedback', 'chaos'],
+    oscs: [{ wave: 'sine', level: 0.5 }, { wave: 'glass', level: 0.3, semi: 7 }],
+    filter: { type: 'bandpass', cutoff: 1800, q: 3, env: 1.6, keytrack: 0.8 },
+    ampEnv: env(0.002, 0.3, 0.2, 0.14), filtEnv: env(0.006, 0.3, 0.3, 0.12),
+    gain: 0.9, sends: { reverb: 0.4, delay: 0.3 }, defaultNote: 67,
+    fx: [{ type: 'delay', timeL: 0.043, timeR: 0.067, feedback: 0.76, damp: 4800, mix: 0.5 }]
+  },
+  {
+    id: 'mod_rungler', name: 'Rungler', tags: ['chaos', 'digital'],
+    oscs: [{ wave: 'square', level: 0.5 }, { wave: 'wire', level: 0.35, cent: 23 }],
+    fm: { ratio: 1.77, index: 5.5, decay: 0.6, sustain: 0.5 },
+    filter: { type: 'lowpass', cutoff: 2600, q: 3, env: 1.6, keytrack: 0.5 },
+    ampEnv: env(0.004, 0.5, 0.7, 0.14), filtEnv: env(0.01, 0.4, 0.3, 0.12),
+    lfo: { wave: 'square', rate: 13, depth: 0.35, target: 'pitch' },
+    gain: 0.5, sends: { reverb: 0.26, delay: 0.2 }, defaultNote: 55
+  },
+  {
+    id: 'mod_resonantbank', name: 'Resonator Bank', tags: ['resonant', 'bright'],
+    oscs: [{ wave: 'glass', level: 0.4 }, { wave: 'sine', level: 0.35, semi: 7 }],
+    noise: { color: 'white', level: 0.25, hp: 1200, decay: 0.02 },
+    filter: { type: 'bandpass', cutoff: 2200, q: 4.5, env: 1.4, keytrack: 0.9 },
+    ampEnv: env(0.001, 1.2, 0.1, 0.5), filtEnv: env(0.004, 0.6, 0.3, 0.3),
+    gain: 0.95, sends: { reverb: 0.48, delay: 0.18 }, defaultNote: 67
   }
 ];

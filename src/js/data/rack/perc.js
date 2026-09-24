@@ -256,5 +256,85 @@ export const PERC = [
     ring: { partials: [1, 1.9, 3.1], base: 380, wave: 'sine', filter: 'bandpass', cut: 900, q: 1.6, decay: 0.16, level: 0.3 },
     noises: [{ color: 'pink', level: 0.3, bp: 1800, q: 1.4, decay: 0.03 }],
     shaper: { curve: 'crush', drive: 0.4 }, gain: 0.6, defaultNote: 52
+  },
+  {
+    id: 'perc_surdo', name: 'Surdo', tags: ['low', 'hand'],
+    bodies: [{ wave: 'sine', f0: 110, f1: 72, pitchDecay: 0.06, decay: 0.52, level: 1 }],
+    noises: [{ color: 'brown', level: 0.16, lp: 1200, decay: 0.08 }],
+    gain: 0.76, sends: { reverb: 0.2 }, defaultNote: 41
+  },
+  {
+    id: 'perc_repinique', name: 'Repinique', tags: ['high', 'hand'],
+    bodies: [{ wave: 'triangle', f0: 430, f1: 300, pitchDecay: 0.02, decay: 0.14, level: 0.9 }],
+    noises: [{ color: 'white', level: 0.28, bp: 3000, q: 1.1, decay: 0.03 }],
+    gain: 0.74, sends: { reverb: 0.16 }, defaultNote: 50
+  },
+  {
+    id: 'perc_taiko', name: 'Taiko', tags: ['big', 'deep'],
+    bodies: [
+      { wave: 'sine', f0: 132, f1: 66, pitchDecay: 0.05, decay: 0.6, level: 1 },
+      { wave: 'triangle', f0: 260, f1: 150, pitchDecay: 0.02, decay: 0.12, level: 0.3 }
+    ],
+    noises: [{ color: 'brown', level: 0.22, lp: 1800, decay: 0.1 }],
+    gain: 0.74, sends: { reverb: 0.3 }, defaultNote: 40
+  },
+  {
+    id: 'perc_woodblock_hi', name: 'Wood Block High', tags: ['wood', 'tight'],
+    bodies: [{ wave: 'triangle', f0: 1250, f1: 1080, pitchDecay: 0.008, decay: 0.05, level: 0.9 }],
+    click: { level: 0.4, decay: 0.0012, hp: 4200 },
+    gain: 0.86, defaultNote: 76
+  },
+  {
+    id: 'perc_metalblock', name: 'Metal Block', tags: ['metal', 'tight'],
+    ring: { partials: [1, 2.31, 3.79, 5.42], base: 900, wave: 'square', filter: 'bandpass', cut: 3200, q: 0.8, decay: 0.09, level: 0.7 },
+    click: { level: 0.34, decay: 0.001, hp: 5200 },
+    gain: 0.85, sends: { reverb: 0.16 }, defaultNote: 72
+  },
+  {
+    id: 'perc_handclap_tight', name: 'Tight Clap', tags: ['clap', 'dry'],
+    noises: [
+      { color: 'white', level: 0.6, bp: 1600, q: 1.4, decay: 0.008 },
+      { color: 'white', level: 0.6, bp: 1800, q: 1.2, attack: 0.008, decay: 0.05 }
+    ],
+    gain: 0.78, defaultNote: 39
+  },
+  {
+    id: 'perc_tom_floor', name: 'Floor Tom', tags: ['low', 'acoustic'],
+    bodies: [
+      { wave: 'sine', f0: 118, f1: 74, pitchDecay: 0.06, decay: 0.48, level: 1 },
+      { wave: 'triangle', f0: 235, f1: 160, pitchDecay: 0.03, decay: 0.12, level: 0.28 }
+    ],
+    noises: [{ color: 'brown', level: 0.14, lp: 1400, decay: 0.07 }],
+    gain: 0.76, sends: { reverb: 0.2 }, defaultNote: 41
+  },
+  {
+    id: 'perc_rototom', name: 'Roto Tom', tags: ['pitched', 'bend'],
+    bodies: [{ wave: 'triangle', f0: 380, f1: 210, pitchDecay: 0.1, decay: 0.3, level: 0.95 }],
+    noises: [{ color: 'white', level: 0.14, bp: 2400, q: 1.2, decay: 0.03 }],
+    gain: 0.78, sends: { reverb: 0.2 }, defaultNote: 48
+  },
+  {
+    id: 'perc_bell_cow2', name: 'Big Cowbell', tags: ['metal', 'loud'],
+    ring: { partials: [1, 1.48, 1.94, 2.61], base: 420, wave: 'square', filter: 'bandpass', cut: 2400, q: 0.7, decay: 0.28, level: 0.8 },
+    gain: 0.68, sends: { reverb: 0.18 }, defaultNote: 56
+  },
+  {
+    id: 'perc_scrape', name: 'Metal Scrape Hit', tags: ['junk', 'scrape'],
+    noises: [{ color: 'metal', level: 0.8, hp: 3000, attack: 0.006, decay: 0.16, rate: 0.6 }],
+    gain: 0.8, sends: { reverb: 0.22 }, defaultNote: 60
+  },
+  {
+    id: 'perc_stomp', name: 'Boot Stomp', tags: ['low', 'junk'],
+    bodies: [{ wave: 'sine', f0: 95, f1: 58, pitchDecay: 0.03, decay: 0.2, level: 0.9 }],
+    noises: [{ color: 'brown', level: 0.5, lp: 900, decay: 0.09 }],
+    click: { level: 0.3, decay: 0.002, hp: 1800 },
+    gain: 0.8, sends: { reverb: 0.24 }, defaultNote: 36
+  },
+  {
+    id: 'perc_sticks', name: 'Drum Sticks', tags: ['wood', 'count'],
+    bodies: [{ wave: 'triangle', f0: 900, f1: 720, pitchDecay: 0.005, decay: 0.03, level: 0.7 }],
+    noises: [{ color: 'white', level: 0.35, bp: 4200, q: 1.6, decay: 0.012 }],
+    click: { level: 0.45, decay: 0.001, hp: 5000 },
+    gain: 0.82, defaultNote: 62
   }
 ];

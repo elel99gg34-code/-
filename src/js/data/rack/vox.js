@@ -247,5 +247,104 @@ export const VOICES = [
     filter: { type: 'bandpass', cutoff: 1400, q: 1.8, env: 2.4, keytrack: 0.6, velToEnv: 0.85 },
     ampEnv: env(0.005, 0.22, 0.0, 0.09), filtEnv: env(0.006, 0.16, 0.05, 0.08),
     gain: 1.05, sends: { reverb: 0.34, delay: 0.26 }, defaultNote: 67
+  },
+  {
+    id: 'vox_mmm', name: 'Mmm', tags: ['hum', 'closed'],
+    oscs: [{ wave: 'vox', level: 0.6 }, { wave: 'sine', level: 0.4, oct: -1 }],
+    filter: { type: 'lowpass', cutoff: 900, q: 2, env: 1, keytrack: 0.8 },
+    ampEnv: env(0.06, 0.4, 0.85, 0.24), filtEnv: env(0.08, 0.4, 0.6, 0.2),
+    lfo: { wave: 'sine', rate: 5, depth: 0.014, target: 'pitch', delay: 0.35 },
+    gain: 1.1, sends: { reverb: 0.4 }, defaultNote: 55
+  },
+  {
+    id: 'vox_sisters', name: 'Sisters', tags: ['choir', 'wide'],
+    oscs: [
+      { wave: 'vox', level: 0.35, cent: -12, pan: -0.5 },
+      { wave: 'vox', level: 0.35, cent: 12, pan: 0.5 },
+      { wave: 'sine', level: 0.2, oct: 1 }
+    ],
+    filter: { type: 'bandpass', cutoff: 1100, q: 1.4, env: 1.4, keytrack: 0.8 },
+    ampEnv: env(0.14, 0.8, 0.85, 0.5), filtEnv: env(0.2, 0.8, 0.6, 0.34),
+    gain: 1.15, sends: { reverb: 0.5 }, defaultNote: 67
+  },
+  {
+    id: 'vox_shout', name: 'Gang Shout', tags: ['punk', 'crowd'],
+    oscs: [{ wave: 'vox', level: 0.5, unison: 4, spread: 26 }, { wave: 'grind', level: 0.2 }],
+    filter: { type: 'bandpass', cutoff: 1300, q: 1.4, env: 2, keytrack: 0.6 },
+    ampEnv: env(0.01, 0.4, 0.6, 0.2), filtEnv: env(0.02, 0.4, 0.4, 0.16),
+    shaper: { curve: 'fuzz', drive: 0.34 },
+    gain: 0.95, sends: { reverb: 0.4 }, defaultNote: 52
+  },
+  {
+    id: 'vox_ahh_dark', name: 'Dark Ahh', tags: ['choir', 'low'],
+    oscs: [{ wave: 'vox', level: 0.55, unison: 3, spread: 16 }, { wave: 'sub', level: 0.25, oct: -1 }],
+    filter: { type: 'lowpass', cutoff: 1100, q: 1.8, env: 1.2, keytrack: 0.7 },
+    ampEnv: env(0.2, 0.9, 0.85, 0.6), filtEnv: env(0.3, 0.9, 0.55, 0.4),
+    gain: 0.85, sends: { reverb: 0.5 }, defaultNote: 43
+  },
+  {
+    id: 'vox_formant_sweep', name: 'Formant Sweep', tags: ['formant', 'moving'],
+    oscs: [{ wave: 'vox', level: 0.7 }, { wave: 'saw', level: 0.2, cent: 6 }],
+    filter: { type: 'bandpass', cutoff: 800, q: 2.4, env: 2.6, keytrack: 0.6 },
+    ampEnv: env(0.03, 0.6, 0.85, 0.24), filtEnv: env(0.3, 0.8, 0.4, 0.3),
+    lfo: { wave: 'triangle', rate: 0.5, depth: 0.6, target: 'filter' },
+    gain: 1.3, sends: { reverb: 0.4, delay: 0.16 }, defaultNote: 60
+  },
+  {
+    id: 'vox_whisper_high', name: 'High Whisper', tags: ['breath', 'thin'],
+    noise: { color: 'white', level: 0.65, bp: 2600, q: 1.4, keytrack: 0.8, decay: 0.6 },
+    oscs: [{ wave: 'vox', level: 0.16 }],
+    filter: { type: 'bandpass', cutoff: 2400, q: 1.2, env: 1.4, keytrack: 0.7 },
+    ampEnv: env(0.05, 0.4, 0.7, 0.24), filtEnv: env(0.08, 0.4, 0.5, 0.2),
+    gain: 1.1, sends: { reverb: 0.42 }, defaultNote: 72
+  },
+  {
+    id: 'vox_monk', name: 'Monk Chant', tags: ['chant', 'low'],
+    oscs: [{ wave: 'vox', level: 0.6 }, { wave: 'sine', level: 0.3, semi: 7 }],
+    filter: { type: 'lowpass', cutoff: 1300, q: 1.6, env: 1, keytrack: 0.8 },
+    ampEnv: env(0.24, 1, 0.85, 0.7), filtEnv: env(0.3, 1, 0.6, 0.5),
+    gain: 1.05, sends: { reverb: 0.54 }, defaultNote: 45
+  },
+  {
+    id: 'vox_robotlow', name: 'Low Robot', tags: ['robot', 'digital'],
+    oscs: [{ wave: 'vox', level: 0.55 }, { wave: 'square', level: 0.3, oct: -1 }],
+    filter: { type: 'bandpass', cutoff: 800, q: 1.8, env: 1.6, keytrack: 0.6 },
+    ampEnv: env(0.006, 0.3, 0.85, 0.08), filtEnv: env(0.01, 0.3, 0.5, 0.1),
+    gain: 1.25, sends: { delay: 0.2 }, defaultNote: 48,
+    fx: [{ type: 'crush', bits: 6, reduction: 4, mix: 0.7 }]
+  },
+  {
+    id: 'vox_ooh_bright', name: 'Bright Ooh', tags: ['choir', 'high'],
+    oscs: [{ wave: 'vox', level: 0.55, oct: 1 }, { wave: 'sine', level: 0.3, oct: 1, cent: 7 }],
+    filter: { type: 'bandpass', cutoff: 1800, q: 1.2, env: 1.2, keytrack: 0.8 },
+    ampEnv: env(0.12, 0.7, 0.85, 0.44), filtEnv: env(0.18, 0.7, 0.6, 0.3),
+    gain: 1.1, sends: { reverb: 0.48 }, defaultNote: 72
+  },
+  {
+    id: 'vox_gasp', name: 'Gasp', tags: ['breath', 'hit'],
+    noise: { color: 'white', level: 0.8, bp: 1800, q: 1, decay: 0.16 },
+    oscs: [{ wave: 'vox', level: 0.2 }],
+    filter: { type: 'bandpass', cutoff: 1600, q: 1.1, env: 2, keytrack: 0.5 },
+    ampEnv: env(0.01, 0.2, 0.0, 0.07), filtEnv: env(0.02, 0.16, 0.1, 0.07),
+    gain: 1.05, sends: { reverb: 0.3 }, defaultNote: 64
+  },
+  {
+    id: 'vox_ensemble_pad', name: 'Voice Pad', tags: ['pad', 'wide'],
+    oscs: [
+      { wave: 'vox', level: 0.34, unison: 4, spread: 20 },
+      { wave: 'sine', level: 0.24, oct: -1 }
+    ],
+    filter: { type: 'bandpass', cutoff: 1000, q: 1.2, env: 1.2, keytrack: 0.7 },
+    ampEnv: env(0.6, 1.6, 0.85, 1.2), filtEnv: env(0.8, 1.4, 0.6, 0.8),
+    lfo: { wave: 'sine', rate: 0.2, depth: 0.3, target: 'filter' },
+    gain: 1.1, sends: { reverb: 0.56, delay: 0.16 }, defaultNote: 60
+  },
+  {
+    id: 'vox_megaphone', name: 'Megaphone', tags: ['radio', 'harsh'],
+    oscs: [{ wave: 'vox', level: 0.7 }, { wave: 'buzz', level: 0.2 }],
+    filter: { type: 'bandpass', cutoff: 1700, q: 2, env: 1.4, keytrack: 0.6 },
+    ampEnv: env(0.01, 0.3, 0.8, 0.1), filtEnv: env(0.02, 0.3, 0.5, 0.1),
+    shaper: { curve: 'hard', drive: 0.44 },
+    gain: 0.95, sends: { reverb: 0.26 }, defaultNote: 60
   }
 ];

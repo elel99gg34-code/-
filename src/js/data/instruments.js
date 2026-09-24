@@ -1,4 +1,4 @@
-/* THE RACK — 590 instruments.
+/* THE RACK — 890 instruments.
  *
  * Nothing here is a sample. Every instrument is a parameter set for the
  * synthesis engine in audio/voice.js, so the whole rack is a few kilobytes
@@ -51,6 +51,9 @@ import { BRASS } from './rack/brass.js';
 import { ATMOS } from './rack/atmos.js';
 import { CHIP } from './rack/chip.js';
 import { MODULAR } from './rack/modular.js';
+import { TOYS } from './rack/toys.js';
+import { SEQ } from './rack/seq.js';
+import { HARSH } from './rack/harsh.js';
 
 export const CATEGORIES = [
   { id: 'kick', name: 'Kicks', color: '#ff3b30', icon: '●' },
@@ -65,12 +68,15 @@ export const CATEGORIES = [
   { id: 'pluck', name: 'Plucks', color: '#64d2ff', icon: '♦' },
   { id: 'key', name: 'Organs & Keys', color: '#efe3c8', icon: '▦' },
   { id: 'chip', name: 'Chip & Console', color: '#c3f73a', icon: '▣' },
+  { id: 'toy', name: 'Toys & Junk', color: '#ff8fab', icon: '⚈' },
   { id: 'mallet', name: 'Mallets & Bells', color: '#d6a35c', icon: '✦' },
   { id: 'string', name: 'Strings & Bows', color: '#a8e6cf', icon: '⌒' },
   { id: 'brass', name: 'Brass & Winds', color: '#e07a5f', icon: '◭' },
   { id: 'vox', name: 'Voices', color: '#ffb3c7', icon: '◐' },
+  { id: 'seq', name: 'Sequences & Gates', color: '#4dd0a7', icon: '▓' },
   { id: 'modular', name: 'Modular & Experimental', color: '#b388ff', icon: '◈' },
   { id: 'atmos', name: 'Atmospheres', color: '#7c9cbf', icon: '≋' },
+  { id: 'harsh', name: 'Noise & Harsh', color: '#d94f30', icon: '☠' },
   { id: 'fx', name: 'FX & Noise', color: '#8e8e93', icon: '∿' }
 ];
 
@@ -102,12 +108,15 @@ export const INSTRUMENTS = [
   ...tag(PLUCKS, 'pluck', 'synth'),
   ...tag(KEYS, 'key', 'synth'),
   ...tag(CHIP, 'chip', 'synth'),
+  ...tag(TOYS, 'toy', 'synth'),
   ...tag(MALLETS, 'mallet', 'synth'),
   ...tag(STRINGS, 'string', 'synth'),
   ...tag(BRASS, 'brass', 'synth'),
   ...tag(VOICES, 'vox', 'synth'),
+  ...tag(SEQ, 'seq', 'synth'),
   ...tag(MODULAR, 'modular', 'synth'),
   ...tag(ATMOS, 'atmos', 'synth'),
+  ...tag(HARSH, 'harsh', 'synth'),
   ...tag(FXINST, 'fx', 'synth')
 ];
 

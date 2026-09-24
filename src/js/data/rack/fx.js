@@ -258,5 +258,114 @@ export const FXINST = [
     pitchEnv: { amt: 12, d: 0.4 },
     shaper: { curve: 'tube', drive: 0.44 },
     gain: 0.5, sends: { reverb: 0.45 }, defaultNote: 40
+  },
+  {
+    id: 'fx_riser_long', name: 'Long Riser', tags: ['transition', 'build'],
+    oscs: [{ wave: 'saw', level: 0.4, unison: 4, spread: 24 }],
+    noise: { color: 'white', level: 0.35, hp: 2000 },
+    filter: { type: 'bandpass', cutoff: 800, q: 2.2, env: 3.4, keytrack: 0.3 },
+    ampEnv: env(2.6, 0.3, 0.9, 0.2), filtEnv: env(3, 0.4, 0.8, 0.2),
+    pitchEnv: { amt: 12, d: 3 },
+    gain: 0.6, sends: { reverb: 0.4 }, defaultNote: 55
+  },
+  {
+    id: 'fx_snare_rush', name: 'Snare Rush', tags: ['build', 'noise'],
+    noise: { color: 'white', level: 0.8, bp: 2200, q: 0.8 },
+    oscs: [{ wave: 'triangle', level: 0.2 }],
+    filter: { type: 'bandpass', cutoff: 2200, q: 1, env: 2, keytrack: 0.3 },
+    ampEnv: env(0.6, 0.4, 0.8, 0.14), filtEnv: env(0.8, 0.4, 0.7, 0.16),
+    gain: 0.6, sends: { reverb: 0.3 }, defaultNote: 55,
+    fx: [{ type: 'gate', depth: 1, shape: 0.05, pattern: [1, 1, 1, 1, 1, 1, 1, 1] }]
+  },
+  {
+    id: 'fx_vinyl_stop', name: 'Vinyl Stop', tags: ['fall', 'dj'],
+    oscs: [{ wave: 'saw', level: 0.5, unison: 2, spread: 10 }],
+    noise: { color: 'vinyl', level: 0.3, lp: 5000 },
+    filter: { type: 'lowpass', cutoff: 2600, q: 1.6, env: 1.6, keytrack: 0.4 },
+    ampEnv: env(0.002, 0.7, 0.0, 0.2), filtEnv: env(0.004, 0.5, 0.05, 0.2),
+    pitchEnv: { amt: -32, d: 0.55 },
+    gain: 0.6, sends: { reverb: 0.24 }, defaultNote: 60
+  },
+  {
+    id: 'fx_crash_rev', name: 'Reverse Crash Swell', tags: ['reverse', 'swell'],
+    noise: { color: 'violet', level: 0.8, hp: 5000 },
+    oscs: [{ wave: 'metal', level: 0.2 }],
+    filter: { type: 'highpass', cutoff: 4200, q: 0.8, env: 1.6, keytrack: 0.3 },
+    ampEnv: env(1, 0.06, 0.0, 0.04), filtEnv: env(1.1, 0.1, 0.0, 0.05),
+    gain: 0.55, sends: { reverb: 0.34 }, defaultNote: 72
+  },
+  {
+    id: 'fx_gunshot', name: 'Gunshot', tags: ['hit', 'harsh'],
+    noise: { color: 'white', level: 1, hp: 500, decay: 0.12 },
+    oscs: [{ wave: 'square', level: 0.3 }],
+    filter: { type: 'lowpass', cutoff: 3600, q: 1.4, env: 2.4, keytrack: 0.2 },
+    ampEnv: env(0.0005, 0.22, 0.0, 0.08), filtEnv: env(0.001, 0.12, 0.0, 0.06),
+    pitchEnv: { amt: -30, d: 0.05 },
+    shaper: { curve: 'hard', drive: 0.44 },
+    gain: 0.5, sends: { reverb: 0.34 }, defaultNote: 48
+  },
+  {
+    id: 'fx_swoosh', name: 'Swoosh', tags: ['transition', 'pan'],
+    noise: { color: 'white', level: 0.8, bp: 2400, q: 1.2, sweep: 3, sweepTime: 0.4 },
+    filter: { type: 'bandpass', cutoff: 2200, q: 1.4, env: 2.6, keytrack: 0.3 },
+    ampEnv: env(0.1, 0.5, 0.3, 0.16), filtEnv: env(0.14, 0.5, 0.2, 0.2),
+    lfo: { wave: 'sine', rate: 1.6, depth: 0.9, target: 'pan' },
+    gain: 0.85, sends: { reverb: 0.34 }, defaultNote: 60
+  },
+  {
+    id: 'fx_dialup', name: 'Dial Up', tags: ['digital', 'retro'],
+    oscs: [{ wave: 'square', level: 0.4 }, { wave: 'saw', level: 0.3, cent: 37 }],
+    noise: { color: 'white', level: 0.25, bp: 2000, q: 1.6 },
+    filter: { type: 'bandpass', cutoff: 1800, q: 2, env: 1.6, keytrack: 0.6 },
+    ampEnv: env(0.006, 0.5, 0.8, 0.12), filtEnv: env(0.02, 0.4, 0.5, 0.14),
+    lfo: { wave: 'square', rate: 7.5, depth: 0.25, target: 'pitch' },
+    gain: 0.6, sends: { delay: 0.2 }, defaultNote: 67,
+    fx: [{ type: 'crush', bits: 6, reduction: 4, mix: 0.7 }]
+  },
+  {
+    id: 'fx_laser_sweep', name: 'Laser Sweep', tags: ['digital', 'fall'],
+    oscs: [{ wave: 'square', level: 0.75 }],
+    filter: { type: 'lowpass', cutoff: 5200, q: 2.6, env: 1.4, keytrack: 0.6 },
+    ampEnv: env(0.001, 0.3, 0.0, 0.08), filtEnv: env(0.002, 0.2, 0.05, 0.06),
+    pitchEnv: { amt: -30, d: 0.24 },
+    gain: 0.6, sends: { reverb: 0.26, delay: 0.24 }, defaultNote: 84
+  },
+  {
+    id: 'fx_bassdrop', name: 'Bass Drop', tags: ['transition', 'sub'],
+    oscs: [{ wave: 'sine', level: 0.9 }],
+    sub: { wave: 'sine', oct: -1, level: 0.4, bypassFilter: true },
+    filter: { type: 'lowpass', cutoff: 900, q: 1.4, env: 1, keytrack: 0.3 },
+    ampEnv: env(0.006, 2, 0.0, 0.6), filtEnv: env(0.01, 1, 0.1, 0.4),
+    pitchEnv: { amt: -36, d: 1.4 },
+    gain: 0.68, defaultNote: 55
+  },
+  {
+    id: 'fx_impact_metal', name: 'Metal Impact', tags: ['hit', 'industrial'],
+    oscs: [{ wave: 'metal', level: 0.5 }, { wave: 'sine', level: 0.4 }],
+    fm: { ratio: 1.63, index: 6, decay: 0.3, sustain: 0.05 },
+    noise: { color: 'metal', level: 0.35, hp: 2400, decay: 0.3 },
+    filter: { type: 'lowpass', cutoff: 2400, q: 1.6, env: 2.4, keytrack: 0.3 },
+    ampEnv: env(0.001, 1.6, 0.0, 0.6), filtEnv: env(0.004, 0.5, 0.06, 0.3),
+    pitchEnv: { amt: -10, d: 0.3 },
+    shaper: { curve: 'hard', drive: 0.34 },
+    gain: 0.5, sends: { reverb: 0.46 }, defaultNote: 43
+  },
+  {
+    id: 'fx_reverse_riser', name: 'Reverse Riser', tags: ['reverse', 'build'],
+    oscs: [{ wave: 'saw', level: 0.4, unison: 3, spread: 20 }],
+    noise: { color: 'white', level: 0.3, hp: 1600 },
+    filter: { type: 'lowpass', cutoff: 1600, q: 2.4, env: 2.6, keytrack: 0.3 },
+    ampEnv: env(1.6, 0.05, 0.0, 0.04), filtEnv: env(1.7, 0.1, 0.0, 0.05),
+    pitchEnv: { amt: -7, d: 1.6 },
+    gain: 0.6, sends: { reverb: 0.4 }, defaultNote: 60
+  },
+  {
+    id: 'fx_error', name: 'Error Buzz', tags: ['digital', 'harsh'],
+    oscs: [{ wave: 'square', level: 0.5 }, { wave: 'square', level: 0.4, cent: 41 }],
+    filter: { type: 'lowpass', cutoff: 2800, q: 1.6, env: 0.8, keytrack: 0.5 },
+    ampEnv: env(0.001, 0.3, 0.7, 0.03), filtEnv: env(0.002, 0.3, 0.6, 0.04),
+    shaper: { curve: 'rect', drive: 0.4 },
+    gain: 0.4, defaultNote: 48,
+    fx: [{ type: 'gate', depth: 1, shape: 0.02, pattern: [1, 1, 0, 0, 1, 1, 0, 0] }]
   }
 ];

@@ -232,5 +232,111 @@ export const KEYS = [
     lfo: { wave: 'sine', rate: 0.42, depth: 0.12, target: 'pitch', fade: 1 },
     shaper: { curve: 'crush', drive: 0.34 },
     gain: 0.5, sends: { reverb: 0.3 }, defaultNote: 60
+  },
+  {
+    id: 'key_rhodes_bark', name: 'Rhodes Bark', tags: ['ep', 'hard'],
+    oscs: [{ wave: 'sine', level: 0.8 }],
+    fm: { ratio: 14, index: 4.4, decay: 0.12, sustain: 0.04 },
+    filter: { type: 'lowpass', cutoff: 3800, q: 1.2, env: 1.6, keytrack: 0.8, velToEnv: 0.9 },
+    ampEnv: env(0.002, 1.6, 0.25, 0.4), filtEnv: env(0.003, 0.4, 0.2, 0.2),
+    shaper: { curve: 'tube', drive: 0.26 },
+    gain: 0.62, sends: { reverb: 0.26 }, defaultNote: 60
+  },
+  {
+    id: 'key_b3_drive', name: 'Overdriven B3', tags: ['organ', 'dirty'],
+    oscs: [
+      { wave: 'organ', level: 0.5 },
+      { wave: 'sine', level: 0.3, oct: 1 },
+      { wave: 'sine', level: 0.22, semi: 19 }
+    ],
+    filter: { type: 'lowpass', cutoff: 4200, q: 1, env: 0.4, keytrack: 0.6 },
+    ampEnv: env(0.006, 0.2, 0.95, 0.06), filtEnv: env(0.01, 0.2, 0.8, 0.06),
+    shaper: { curve: 'tube', drive: 0.5 },
+    gain: 0.34, sends: { reverb: 0.28 }, defaultNote: 55
+  },
+  {
+    id: 'key_leslie_fast', name: 'Leslie Fast', tags: ['organ', 'rotary'],
+    oscs: [{ wave: 'organ', level: 0.55 }, { wave: 'sine', level: 0.3, oct: 1, cent: 6 }],
+    filter: { type: 'lowpass', cutoff: 3600, q: 1.2, env: 0.5, keytrack: 0.6 },
+    ampEnv: env(0.008, 0.2, 0.95, 0.08), filtEnv: env(0.01, 0.2, 0.8, 0.08),
+    lfo: { wave: 'sine', rate: 6.4, depth: 0.7, target: 'pan' },
+    gain: 0.46, sends: { reverb: 0.3 }, defaultNote: 60
+  },
+  {
+    id: 'key_prepared', name: 'Prepared Piano', tags: ['piano', 'muted'],
+    oscs: [{ wave: 'triangle', level: 0.6 }, { wave: 'metal', level: 0.25, semi: 13 }],
+    fm: { ratio: 5.3, index: 2.2, decay: 0.09, sustain: 0.02 },
+    noise: { color: 'metal', level: 0.1, hp: 4000, decay: 0.05 },
+    filter: { type: 'lowpass', cutoff: 2800, q: 1.4, env: 1.6, keytrack: 0.8 },
+    ampEnv: env(0.001, 0.9, 0.0, 0.3), filtEnv: env(0.002, 0.3, 0.1, 0.16),
+    gain: 0.7, sends: { reverb: 0.3 }, defaultNote: 60
+  },
+  {
+    id: 'key_reedorgan', name: 'Reed Organ', tags: ['reed', 'pump'],
+    oscs: [{ wave: 'reed', level: 0.55 }, { wave: 'hollow', level: 0.35, oct: 1 }],
+    filter: { type: 'lowpass', cutoff: 2600, q: 1.2, env: 0.6, keytrack: 0.6 },
+    ampEnv: env(0.05, 0.2, 0.9, 0.16), filtEnv: env(0.07, 0.3, 0.7, 0.12),
+    lfo: { wave: 'sine', rate: 4.4, depth: 0.014, target: 'pitch', delay: 0.3 },
+    gain: 0.6, sends: { reverb: 0.3 }, defaultNote: 55
+  },
+  {
+    id: 'key_clavi_bright', name: 'Bright Clav', tags: ['funk', 'tight'],
+    oscs: [{ wave: 'wire', level: 0.6 }, { wave: 'square', level: 0.25, oct: 1 }],
+    filter: { type: 'lowpass', cutoff: 3600, q: 3.4, env: 2.4, keytrack: 0.8, velToEnv: 0.8 },
+    ampEnv: env(0.001, 0.4, 0.15, 0.1), filtEnv: env(0.002, 0.16, 0.1, 0.07),
+    gain: 0.62, sends: { reverb: 0.18 }, defaultNote: 60
+  },
+  {
+    id: 'key_celeste_key', name: 'Celeste Keys', tags: ['bell', 'soft'],
+    oscs: [{ wave: 'bell', level: 0.5 }, { wave: 'sine', level: 0.45, oct: 1 }],
+    fm: { ratio: 3.51, index: 1.4, decay: 0.2, sustain: 0.05 },
+    filter: { type: 'highpass', cutoff: 500, q: 0.7 },
+    ampEnv: env(0.002, 1.4, 0.0, 0.5),
+    gain: 0.86, sends: { reverb: 0.44 }, defaultNote: 72
+  },
+  {
+    id: 'key_tack_piano', name: 'Tack Piano', tags: ['piano', 'bright'],
+    oscs: [{ wave: 'saw', level: 0.4 }, { wave: 'glass', level: 0.4, cent: 6 }],
+    noise: { color: 'metal', level: 0.12, hp: 5000, decay: 0.02 },
+    filter: { type: 'lowpass', cutoff: 5000, q: 1.6, env: 2, keytrack: 0.8, velToEnv: 0.8 },
+    ampEnv: env(0.001, 1.2, 0.05, 0.36), filtEnv: env(0.002, 0.3, 0.1, 0.18),
+    gain: 0.52, sends: { reverb: 0.26 }, defaultNote: 60
+  },
+  {
+    id: 'key_fmpiano', name: 'FM Piano', tags: ['fm', 'digital'],
+    oscs: [{ wave: 'sine', level: 0.85 }],
+    fm: { ratio: 2, index: 3.2, decay: 0.3, sustain: 0.08 },
+    filter: { type: 'lowpass', cutoff: 5200, q: 1, env: 1.2, keytrack: 0.8 },
+    ampEnv: env(0.002, 1.5, 0.1, 0.4), filtEnv: env(0.004, 0.4, 0.15, 0.2),
+    gain: 0.62, sends: { reverb: 0.3 }, defaultNote: 60
+  },
+  {
+    id: 'key_organ_bass', name: 'Organ Bass Pedal', tags: ['organ', 'low'],
+    oscs: [{ wave: 'organ', level: 0.6 }, { wave: 'sine', level: 0.4, oct: -1 }],
+    filter: { type: 'lowpass', cutoff: 1400, q: 1, env: 0.4, keytrack: 0.5 },
+    ampEnv: env(0.01, 0.2, 0.95, 0.1), filtEnv: env(0.02, 0.2, 0.8, 0.08),
+    gain: 0.56, sends: { reverb: 0.2 }, defaultNote: 36
+  },
+  {
+    id: 'key_wurli_dirty', name: 'Dirty Wurli', tags: ['ep', 'crunch'],
+    oscs: [{ wave: 'sine', level: 0.75 }],
+    fm: { ratio: 9, index: 3.4, decay: 0.16, sustain: 0.06 },
+    filter: { type: 'lowpass', cutoff: 3000, q: 1.4, env: 1.4, keytrack: 0.8 },
+    ampEnv: env(0.002, 1.3, 0.2, 0.34), filtEnv: env(0.003, 0.34, 0.16, 0.18),
+    shaper: { curve: 'fuzz', drive: 0.34 },
+    gain: 0.46, sends: { reverb: 0.26 }, defaultNote: 60
+  },
+  {
+    id: 'key_gospel_organ', name: 'Gospel Organ', tags: ['organ', 'full'],
+    oscs: [
+      { wave: 'organ', level: 0.45 },
+      { wave: 'sine', level: 0.3, oct: 1 },
+      { wave: 'sine', level: 0.22, semi: 19 },
+      { wave: 'sine', level: 0.16, oct: 2 }
+    ],
+    filter: { type: 'lowpass', cutoff: 4600, q: 1, env: 0.4, keytrack: 0.6 },
+    ampEnv: env(0.006, 0.2, 0.95, 0.08), filtEnv: env(0.01, 0.2, 0.8, 0.06),
+    lfo: { wave: 'sine', rate: 5.8, depth: 0.4, target: 'pan' },
+    gain: 0.4, sends: { reverb: 0.36 }, defaultNote: 60
   }
 ];

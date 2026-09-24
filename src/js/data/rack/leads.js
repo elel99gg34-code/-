@@ -478,5 +478,124 @@ export const LEADS = [
     lfo: { wave: 'triangle', rate: 2.4, depth: 2.2, target: 'pitch', fade: 0.05 },
     shaper: { curve: 'hard', drive: 0.42 },
     gain: 0.6, sends: { reverb: 0.24 }, defaultNote: 67
+  },
+  {
+    id: 'lead_pwmwide', name: 'Wide PWM', tags: ['pwm', 'wide'],
+    oscs: [
+      { wave: 'pulse25', level: 0.4, cent: -9, pan: -0.5 },
+      { wave: 'pulse12', level: 0.4, cent: 9, pan: 0.5 }
+    ],
+    filter: { type: 'lowpass', cutoff: 3600, q: 2.4, env: 1.6, keytrack: 0.7 },
+    ampEnv: env(0.006, 0.4, 0.8, 0.14), filtEnv: env(0.02, 0.4, 0.5, 0.14),
+    lfo: { wave: 'sine', rate: 0.6, depth: 0.35, target: 'filter' },
+    gain: 0.5, sends: { reverb: 0.26, delay: 0.16 }, defaultNote: 67
+  },
+  {
+    id: 'lead_fifthstack', name: 'Power Fifths', tags: ['power', 'wide'],
+    oscs: [{ wave: 'fifth', level: 0.6, unison: 2, spread: 12 }, { wave: 'saw', level: 0.3, oct: -1 }],
+    filter: { type: 'lowpass', cutoff: 3200, q: 2, env: 1.6, keytrack: 0.6 },
+    ampEnv: env(0.006, 0.4, 0.8, 0.14), filtEnv: env(0.01, 0.35, 0.5, 0.12),
+    shaper: { curve: 'tube', drive: 0.28 },
+    gain: 0.42, sends: { reverb: 0.24 }, defaultNote: 64
+  },
+  {
+    id: 'lead_sinepure', name: 'Pure Sine Lead', tags: ['clean', 'simple'],
+    oscs: [{ wave: 'sine', level: 1 }],
+    filter: { type: 'lowpass', cutoff: 6000, q: 0.7, env: 0.4, keytrack: 0.8 },
+    ampEnv: env(0.01, 0.3, 0.9, 0.12), filtEnv: env(0.02, 0.3, 0.8, 0.1),
+    lfo: { wave: 'sine', rate: 5.4, depth: 0.014, target: 'pitch', delay: 0.3 },
+    gain: 0.75, sends: { reverb: 0.3, delay: 0.16 }, defaultNote: 72
+  },
+  {
+    id: 'lead_hardsync2', name: 'Sync Screamer', tags: ['sync', 'harsh'],
+    oscs: [{ wave: 'razor', level: 0.55 }, { wave: 'buzz', level: 0.35, semi: 12, cent: 13 }],
+    filter: { type: 'lowpass', cutoff: 2600, q: 5, env: 2.6, keytrack: 0.6 },
+    ampEnv: env(0.004, 0.4, 0.8, 0.12), filtEnv: env(0.01, 0.3, 0.3, 0.12),
+    lfo: { wave: 'sine', rate: 0.35, depth: 0.5, target: 'filter' },
+    shaper: { curve: 'hard', drive: 0.34 },
+    gain: 0.36, sends: { reverb: 0.22, delay: 0.14 }, defaultNote: 67
+  },
+  {
+    id: 'lead_clarinetlead', name: 'Hollow Lead', tags: ['hollow', 'reed'],
+    oscs: [{ wave: 'hollow', level: 0.8 }],
+    filter: { type: 'lowpass', cutoff: 2800, q: 1.6, env: 1, keytrack: 0.8 },
+    ampEnv: env(0.02, 0.3, 0.9, 0.12), filtEnv: env(0.03, 0.3, 0.7, 0.1),
+    lfo: { wave: 'sine', rate: 5, depth: 0.016, target: 'pitch', delay: 0.3 },
+    gain: 0.8, sends: { reverb: 0.3 }, defaultNote: 67
+  },
+  {
+    id: 'lead_fmglass', name: 'FM Glass Lead', tags: ['fm', 'bright'],
+    oscs: [{ wave: 'sine', level: 0.8 }],
+    fm: { ratio: 3.5, index: 3.6, decay: 0.4, sustain: 0.35 },
+    filter: { type: 'lowpass', cutoff: 5600, q: 1.2, env: 1, keytrack: 0.8 },
+    ampEnv: env(0.004, 0.5, 0.7, 0.16), filtEnv: env(0.01, 0.4, 0.5, 0.14),
+    gain: 0.62, sends: { reverb: 0.34, delay: 0.2 }, defaultNote: 72
+  },
+  {
+    id: 'lead_talkbox2', name: 'Vowel Lead', tags: ['formant', 'vox'],
+    oscs: [{ wave: 'vox', level: 0.8 }, { wave: 'saw', level: 0.25, cent: 6 }],
+    filter: { type: 'bandpass', cutoff: 1100, q: 2, env: 1.8, keytrack: 0.7 },
+    ampEnv: env(0.01, 0.4, 0.85, 0.14), filtEnv: env(0.03, 0.4, 0.4, 0.14),
+    lfo: { wave: 'sine', rate: 3, depth: 0.5, target: 'filter', delay: 0.15 },
+    gain: 1.15, sends: { reverb: 0.3, delay: 0.16 }, defaultNote: 64
+  },
+  {
+    id: 'lead_supersaw_wide', name: 'Supersaw XL', tags: ['wide', 'anthem'],
+    oscs: [
+      { wave: 'saw', level: 0.4, unison: 7, spread: 30, width: 1 },
+      { wave: 'saw', level: 0.2, oct: -1, unison: 2, spread: 10 }
+    ],
+    filter: { type: 'lowpass', cutoff: 4200, q: 1.4, env: 1.4, keytrack: 0.6 },
+    ampEnv: env(0.01, 0.6, 0.85, 0.24), filtEnv: env(0.04, 0.6, 0.6, 0.2),
+    gain: 0.34, sends: { reverb: 0.36, delay: 0.2 }, defaultNote: 64
+  },
+  {
+    id: 'lead_bitlead', name: 'Bit Lead', tags: ['digital', 'lofi'],
+    oscs: [{ wave: 'square', level: 0.7 }],
+    filter: { type: 'lowpass', cutoff: 4400, q: 1.6, env: 1.2, keytrack: 0.7 },
+    ampEnv: env(0.002, 0.3, 0.8, 0.06), filtEnv: env(0.006, 0.3, 0.5, 0.08),
+    gain: 0.6, sends: { delay: 0.22 }, defaultNote: 72,
+    fx: [{ type: 'crush', bits: 5, reduction: 4, jitter: 0.1, mix: 0.9 }]
+  },
+  {
+    id: 'lead_sawsquare', name: 'Saw + Square', tags: ['classic', 'fat'],
+    oscs: [{ wave: 'saw', level: 0.5 }, { wave: 'square', level: 0.4, oct: -1, cent: 5 }],
+    filter: { type: 'lowpass', cutoff: 3000, q: 2.6, env: 1.8, keytrack: 0.6 },
+    ampEnv: env(0.005, 0.4, 0.8, 0.14), filtEnv: env(0.01, 0.3, 0.4, 0.12),
+    gain: 0.5, sends: { reverb: 0.24, delay: 0.14 }, defaultNote: 64
+  },
+  {
+    id: 'lead_seagull', name: 'Seagull', tags: ['high', 'sweep'],
+    oscs: [{ wave: 'saw', level: 0.6 }],
+    filter: { type: 'bandpass', cutoff: 3200, q: 3, env: 2.4, keytrack: 0.8 },
+    ampEnv: env(0.02, 0.5, 0.8, 0.16), filtEnv: env(0.06, 0.6, 0.4, 0.2),
+    pitchEnv: { amt: 7, d: 0.4 },
+    lfo: { wave: 'sine', rate: 4.2, depth: 0.05, target: 'pitch', fade: 0.3 },
+    gain: 0.85, sends: { reverb: 0.4, delay: 0.24 }, defaultNote: 84
+  },
+  {
+    id: 'lead_organlead', name: 'Organ Lead', tags: ['organ', 'cut'],
+    oscs: [{ wave: 'organ', level: 0.7 }, { wave: 'square', level: 0.2, oct: 1 }],
+    filter: { type: 'lowpass', cutoff: 4400, q: 1.4, env: 0.8, keytrack: 0.7 },
+    ampEnv: env(0.004, 0.2, 0.95, 0.06), filtEnv: env(0.01, 0.2, 0.8, 0.06),
+    shaper: { curve: 'tube', drive: 0.3 },
+    gain: 0.5, sends: { reverb: 0.26 }, defaultNote: 67
+  },
+  {
+    id: 'lead_duty_sweep', name: 'Duty Sweep', tags: ['pwm', 'moving'],
+    oscs: [{ wave: 'pulse12', level: 0.45 }, { wave: 'pulse25', level: 0.45, cent: 7 }],
+    filter: { type: 'lowpass', cutoff: 3400, q: 2.8, env: 1.6, keytrack: 0.6 },
+    ampEnv: env(0.006, 0.4, 0.85, 0.12), filtEnv: env(0.02, 0.4, 0.5, 0.14),
+    lfo: { wave: 'triangle', rate: 1.2, depth: 0.5, target: 'filter' },
+    gain: 0.52, sends: { reverb: 0.24, delay: 0.18 }, defaultNote: 67
+  },
+  {
+    id: 'lead_shoutlead', name: 'Shout', tags: ['harsh', 'punk'],
+    oscs: [{ wave: 'grind', level: 0.55 }, { wave: 'razor', level: 0.35, cent: -11 }],
+    filter: { type: 'bandpass', cutoff: 1800, q: 2.2, env: 2, keytrack: 0.7 },
+    ampEnv: env(0.006, 0.3, 0.8, 0.1), filtEnv: env(0.02, 0.3, 0.4, 0.12),
+    lfo: { wave: 'sine', rate: 6, depth: 0.03, target: 'pitch', delay: 0.1 },
+    shaper: { curve: 'fuzz', drive: 0.42 },
+    gain: 0.6, sends: { reverb: 0.24, delay: 0.14 }, defaultNote: 64
   }
 ];
