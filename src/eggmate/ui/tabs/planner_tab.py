@@ -4,23 +4,25 @@ from __future__ import annotations
 from PySide6.QtWidgets import QDoubleSpinBox, QVBoxLayout, QWidget
 
 from ...core import fmt, planner
-from ...core.models import Dataset
 from ...core.planner import LOCKED, SAFE, TIGHT
 from .. import theme, widgets
+from ..context import AppContext
 
 STATUS_COLOR = {SAFE: theme.GOOD, TIGHT: theme.WARN, LOCKED: theme.TEXT_DIM}
 
 
 class PlannerTab(QWidget):
-    def __init__(self, dataset: Dataset) -> None:
+    def __init__(self, ctx: AppContext) -> None:
         super().__init__()
+        self.ctx = ctx
+        dataset = ctx.dataset
         self.dataset = dataset
 
         self.speed_input = widgets.AmountEdit("예: 250000, 1.5m, 7b", "10000")
         self.margin_input = QDoubleSpinBox()
         self.margin_input.setRange(1.0, 10.0)
         self.margin_input.setSingleStep(0.5)
-        self.margin_input.setValue(float(dataset.mechanics.get("safety_margin_recommended", 2.0)))
+        self.margin_input.setValue(ctx.settings.safety_margin)
         self.margin_input.setSuffix(" 배 안전 마진")
 
         self.next_goal = widgets.big()

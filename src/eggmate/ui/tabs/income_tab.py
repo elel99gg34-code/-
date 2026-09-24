@@ -1,18 +1,20 @@
 """수입 계산기 - 무게와 뮤테이션을 반영한 실제 $/s."""
 from __future__ import annotations
 
-from PySide6.QtWidgets import QComboBox, QDoubleSpinBox, QLabel, QVBoxLayout, QWidget
+from PySide6.QtWidgets import QComboBox, QDoubleSpinBox, QPushButton, QVBoxLayout, QWidget
 
 from ...core import fmt, income
-from ...core.models import Dataset
 from .. import theme, widgets
+from ..context import AppContext
 
 CUSTOM = "— 직접 입력 —"
 
 
 class IncomeTab(QWidget):
-    def __init__(self, dataset: Dataset) -> None:
+    def __init__(self, ctx: AppContext) -> None:
         super().__init__()
+        self.ctx = ctx
+        dataset = ctx.dataset
         self.dataset = dataset
         self.model = dataset.income_model
 
@@ -70,12 +72,17 @@ class IncomeTab(QWidget):
         reverse.addRow("목표 수입", self.target_input)
         reverse.addRow("", self.target_answer)
 
+        self.copy_button = widgets.copy_button(self._as_text, "결과 복사")
+        self.save_button = QPushButton("최근 계산에 저장")
+        self.save_button.clicked.connect(self._remember)
+
         inner = QWidget()
         layout = QVBoxLayout(inner)
         layout.setContentsMargins(14, 14, 14, 14)
         layout.setSpacing(12)
         layout.addWidget(widgets.group("입력", inputs))
         layout.addWidget(widgets.group("결과", results))
+        layout.addWidget(widgets.row(self.copy_button, self.save_button))
         layout.addWidget(widgets.group("역산 — 이 수입을 내려면 무게가 얼마나 필요한가", reverse))
         layout.addWidget(widgets.group("뮤테이션별 비교", widgets.column(self.compare_table)))
         layout.addWidget(widgets.hint(
@@ -156,3 +163,22 @@ class IncomeTab(QWidget):
             f"기본 무게의 약 {needed:,.1f}배가 필요합니다. "
             f"(현재 설정 {self.ratio_input.value():,.2f}배)"
         )
+
+    # ------------------------------------------------------------------
+    def _as_text(self) -> str:
+        base = self.base_input.value(default=0.0) or 0.0
+        ratio = self.ratio_input.value()
+        mutation = self.mutation_picker.currentData() or 1.0
+        result = income.compute(base, ratio, mutation, self.model)
+        return (
+            f"EggMate 수입 계산\n"
+            f"기본 {fmt.compact(base)}/s × 무게 {ratio:g}배 × 뮤테이션 {mutation:g}배\n"
+            f"= {fmt.compact(result.total)}/s  "
+            f"(분당 {fmt.compact(result.total * 60)}, 시간당 {fmt.compact(result.total * 3600)})"
+        )
+
+    def _remember(self) -> None:
+        self.ctx.settings.remember_calculation(
+            "수입", self._as_text().splitlines()[-1].strip()
+        )
+        self.ctx.save_settings()

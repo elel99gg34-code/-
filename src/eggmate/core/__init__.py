@@ -1,5 +1,21 @@
-from . import dataset, diagnostics, fmt, fuse, income, models, odds, planner, storage
+from . import (
+    collection,
+    dataset,
+    diagnostics,
+    fmt,
+    fuse,
+    growth,
+    income,
+    models,
+    odds,
+    pen,
+    planner,
+    settings,
+    simulate,
+    storage,
+)
 
 __all__ = [
-    "dataset", "diagnostics", "fmt", "fuse", "income", "models", "odds", "planner", "storage",
+    "collection", "dataset", "diagnostics", "fmt", "fuse", "growth", "income",
+    "models", "odds", "pen", "planner", "settings", "simulate", "storage",
 ]

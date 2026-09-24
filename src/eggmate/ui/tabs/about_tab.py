@@ -17,8 +17,8 @@ from PySide6.QtWidgets import (
 
 from ... import __version__
 from ...core import dataset as dataset_module
-from ...core.models import Dataset
 from .. import theme, widgets
+from ..context import AppContext
 
 POLICY = """이 앱은 로블록스 클라이언트와 전혀 상호작용하지 않습니다.
 
@@ -41,10 +41,12 @@ POLICY = """이 앱은 로블록스 클라이언트와 전혀 상호작용하지
 
 
 class AboutTab(QWidget):
-    def __init__(self, dataset: Dataset, data_path: Path, on_reload) -> None:
+    def __init__(self, ctx: AppContext, on_reload) -> None:
         super().__init__()
+        self.ctx = ctx
+        dataset = ctx.dataset
         self.dataset = dataset
-        self.data_path = data_path
+        self.data_path = ctx.data_path
         self.on_reload = on_reload
 
         header = QLabel(

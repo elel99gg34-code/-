@@ -57,3 +57,35 @@ def test_duration(seconds, expected):
 
 def test_duration_infinite():
     assert fmt.duration(float("inf")) == "영원히 못 갚음"
+
+
+# ---------------------------------------------------------------------------
+# 끝자리 0 잘림 — 히스토그램 축이 50K 를 5K 로 표시한 적이 있어 테스트로 고정한다.
+# ---------------------------------------------------------------------------
+@pytest.mark.parametrize("value,expected", [
+    (50_000, "50K"), (49_600, "50K"), (100_000, "100K"), (20_000, "20K"),
+    (1_000, "1K"), (300, "300"), (2_000_000_000, "2B"),
+])
+def test_compact_keeps_trailing_zeros_without_decimals(value, expected):
+    assert fmt.compact(value, digits=0) == expected
+
+
+@pytest.mark.parametrize("digits", [0, 1, 2, 3])
+def test_compact_never_shrinks_the_magnitude(digits):
+    """반올림은 해도 자릿수가 줄어들면 안 된다."""
+    for value in (50_000, 100_000, 20_000, 909_000, 1_000_000):
+        text = fmt.compact(value, digits=digits)
+        assert fmt.parse_amount(text) == pytest.approx(value, rel=0.6), text
+
+
+def test_korean_keeps_trailing_zeros():
+    assert fmt.korean(50_000) == "5만"
+    assert fmt.korean(100_000) == "10만"
+    assert fmt.korean(2_000_000_000) == "20억"
+
+
+def test_trim_only_touches_the_fraction():
+    assert fmt._trim("50") == "50"
+    assert fmt._trim("50.00") == "50"
+    assert fmt._trim("1.50") == "1.5"
+    assert fmt._trim("100") == "100"

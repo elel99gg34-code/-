@@ -4,15 +4,17 @@ from __future__ import annotations
 from PySide6.QtWidgets import QCheckBox, QComboBox, QDoubleSpinBox, QVBoxLayout, QWidget
 
 from ...core import fmt, fuse
-from ...core.models import Dataset
 from .. import theme, widgets
+from ..context import AppContext
 
 CUSTOM = "— 직접 입력 —"
 
 
 class FuseTab(QWidget):
-    def __init__(self, dataset: Dataset) -> None:
+    def __init__(self, ctx: AppContext) -> None:
         super().__init__()
+        self.ctx = ctx
+        dataset = ctx.dataset
         self.dataset = dataset
 
         self.input_pet = self._pet_combo()

@@ -13,14 +13,19 @@ import pytest
 
 CORE_MODULES = [
     "eggmate.core",
+    "eggmate.core.collection",
     "eggmate.core.dataset",
     "eggmate.core.diagnostics",
     "eggmate.core.fmt",
     "eggmate.core.fuse",
+    "eggmate.core.growth",
     "eggmate.core.income",
     "eggmate.core.models",
     "eggmate.core.odds",
+    "eggmate.core.pen",
     "eggmate.core.planner",
+    "eggmate.core.settings",
+    "eggmate.core.simulate",
     "eggmate.core.storage",
 ]
 

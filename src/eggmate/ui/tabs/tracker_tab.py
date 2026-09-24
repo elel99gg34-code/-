@@ -18,18 +18,19 @@ from PySide6.QtWidgets import (
 )
 
 from ...core import odds
-from ...core.models import Dataset
-from ...core.storage import HatchLog
 from .. import theme, widgets
+from ..context import AppContext
 
 ANY = "(선택 안 함)"
 
 
 class TrackerTab(QWidget):
-    def __init__(self, dataset: Dataset, log: HatchLog) -> None:
+    def __init__(self, ctx: AppContext) -> None:
         super().__init__()
+        self.ctx = ctx
+        dataset = ctx.dataset
         self.dataset = dataset
-        self.log = log
+        self.log = ctx.hatches
 
         self.pet_input = QComboBox()
         self.pet_input.setEditable(True)

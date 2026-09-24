@@ -23,6 +23,17 @@ _PARSE_UNITS = {
 _NUM_RE = re.compile(r"^\s*([0-9]*\.?[0-9]+)\s*([a-zA-Z가-힣]*)\s*$")
 
 
+def _trim(text: str) -> str:
+    """소수부의 잉여 0만 떼어낸다.
+
+    무작정 rstrip("0") 하면 소수점이 없는 '50' 이 '5' 가 되어 버린다.
+    (히스토그램 축이 50K 를 5K 로 표시한 적이 있다.)
+    """
+    if "." not in text:
+        return text
+    return text.rstrip("0").rstrip(".")
+
+
 def compact(value: float | None, digits: int = 2) -> str:
     """1800000000 -> '1.8B'. 게임 UI와 같은 표기."""
     if value is None:
@@ -34,10 +45,8 @@ def compact(value: float | None, digits: int = 2) -> str:
     for threshold, suffix in _SUFFIXES:
         if v >= threshold:
             scaled = v / threshold
-            text = f"{scaled:.{digits}f}".rstrip("0").rstrip(".")
-            return ("-" if neg else "") + text + suffix
-    text = f"{v:.{digits}f}".rstrip("0").rstrip(".")
-    return ("-" if neg else "") + text
+            return ("-" if neg else "") + _trim(f"{scaled:.{digits}f}") + suffix
+    return ("-" if neg else "") + _trim(f"{v:.{digits}f}")
 
 
 def korean(value: float | None) -> str:
@@ -51,10 +60,8 @@ def korean(value: float | None) -> str:
     for threshold, unit in ((1e12, "조"), (1e8, "억"), (1e4, "만")):
         if v >= threshold:
             scaled = v / threshold
-            text = f"{scaled:.2f}".rstrip("0").rstrip(".")
-            return ("-" if neg else "") + text + unit
-    text = f"{v:.2f}".rstrip("0").rstrip(".")
-    return ("-" if neg else "") + text
+            return ("-" if neg else "") + _trim(f"{scaled:.2f}") + unit
+    return ("-" if neg else "") + _trim(f"{v:.2f}")
 
 
 def money(value: float | None) -> str:
