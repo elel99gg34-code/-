@@ -1,161 +1,161 @@
 # RIOT MACHINE
 
-A punk electronic music studio that installs as a Windows program and runs entirely offline.
+윈도우 프로그램으로 설치되고 완전히 오프라인으로 돌아가는 펑크 전자음악 스튜디오.
 
-**890 instruments, all synthesised** — no sample library, no downloads, no account. Write patterns on a step grid or a piano roll, arrange them into a song, mix them, and bounce the result to WAV or MP3.
+**악기 890개, 전부 신디사이즈** — 샘플 라이브러리 없고, 추가 다운로드 없고, 계정도 없다. 스텝 그리드나 피아노 롤로 패턴을 찍고, 곡으로 배열하고, 믹스해서 WAV나 MP3로 뽑는다.
 
-![Studio](docs/screenshots/studio.png)
+![스튜디오](docs/screenshots/studio.png)
 
 ---
 
-## What's in it
+## 뭐가 들어있나
 
 | | |
 |---|---|
-| **890 instruments** | 22 families: 54 kicks, 54 snares, 48 hats, 52 percussion, 32 cymbals, 68 basses, 52 guitars, 68 leads, 46 pads, 42 plucks, 34 organs & keys, 32 chip & console, 24 toys & junk, 32 mallets & bells, 32 strings & bows, 34 brass & winds, 38 voices, 24 sequences & gates, 34 modular & experimental, 30 atmospheres, 22 noise & harsh, 38 FX. Every one is a distinct patch for the synthesis engine — see [docs/INSTRUMENTS.md](docs/INSTRUMENTS.md). |
-| **Editing** | Step grid for the whole pattern, piano roll per track, velocity, note length, probability, swing, scale snapping, 1–128 steps per pattern, unlimited patterns. |
-| **Instrument editor** | Per-track macros (tune, cutoff, resonance, filter envelope, drive, FM, LFO, glide, envelopes) layered on top of the preset, plus up to six insert effects per track. |
-| **Effects** | Drive (10 curves), bitcrusher, filter with LFO, chorus, phaser, ping-pong delay, convolution reverb (7 spaces), compressor, EQ, trance gate, auto-pan/tremolo, ring modulator, stereo width, vinyl noise floor. |
-| **Mixer** | Per-track fader, pan, mute, solo, two global send buses (reverb and delay), live meters, and a mastering chain: EQ → saturation → width → glue compressor → limiter. |
-| **Preview** | Audition any instrument with one click, play the selected track from your computer keyboard, or loop a pattern while you edit it. |
-| **Download** | Offline render to WAV (16/24-bit or 32-bit float) or MP3 (128–320 kbps) at 44.1, 48 or 96 kHz. Bounce the arrangement, one pattern on repeat, a single instrument, or every track as separate stems. |
-| **Storage** | A local project vault: save, open, rename, duplicate, delete. Projects are plain `.riot` JSON you can import and export. The current session is also cached, so closing and reopening picks up where you left off. |
+| **악기 890개** | 22개 패밀리: 킥 54, 스네어 54, 하이햇 48, 퍼커션 52, 심벌 32, 베이스 68, 기타 52, 리드 68, 패드 46, 플럭 42, 오르간·건반 34, 칩·콘솔 32, 장난감·잡동사니 24, 말렛·벨 32, 스트링·활 32, 브라스·관악 34, 보이스 38, 시퀀스·게이트 24, 모듈러·실험 34, 앰비언스 30, 노이즈·하시 22, FX 38. 전부 신디시스 엔진용 개별 패치다 — 전체 목록은 [docs/INSTRUMENTS.md](docs/INSTRUMENTS.md). |
+| **편집** | 패턴 전체를 보는 스텝 그리드, 트랙별 피아노 롤, 벨로시티, 노트 길이, 확률, 스윙, 스케일 스냅, 패턴당 1~128스텝, 패턴 개수 무제한. |
+| **악기 편집기** | 프리셋 위에 얹는 트랙별 매크로 (튠, 컷오프, 레조넌스, 필터 엔벨로프, 드라이브, FM, LFO, 글라이드, 엔벨로프) + 트랙당 인서트 이펙트 최대 6개. |
+| **이펙트** | 드라이브(커브 10종), 비트크러셔, LFO 달린 필터, 코러스, 페이저, 핑퐁 딜레이, 컨볼루션 리버브(공간 7종), 컴프레서, EQ, 트랜스 게이트, 오토팬/트레몰로, 링 모듈레이터, 스테레오 와이드닝, 바이닐 노이즈 플로어. |
+| **믹서** | 트랙별 페이더·팬·뮤트·솔로, 글로벌 센드 버스 2개(리버브/딜레이), 실시간 미터, 그리고 마스터링 체인: EQ → 새추레이션 → 와이드닝 → 글루 컴프 → 리미터. |
+| **미리듣기** | 악기 아무거나 클릭 한 번으로 들어보기, 선택한 트랙을 컴퓨터 키보드로 연주하기, 편집하면서 패턴 루프 돌리기. |
+| **내보내기** | 오프라인 렌더링으로 WAV(16/24비트 또는 32비트 float)나 MP3(128~320kbps), 샘플레이트 44.1/48/96kHz. 배열 전체, 패턴 하나 반복, 악기 하나, 또는 트랙별 스템 전부 따로 뽑기. |
+| **저장소** | 로컬 프로젝트 보관함: 저장·열기·이름변경·복제·삭제. 프로젝트는 그냥 `.riot` JSON이라 내보내고 가져올 수 있다. 현재 작업은 자동 캐시되니까 껐다 켜도 하던 데서 이어진다. |
 
 ---
 
-## Install (Windows)
+## 설치 (윈도우)
 
-Run **`RIOT-MACHINE-Setup-1.0.0-x64.exe`**.
+**`RIOT-MACHINE-Setup-1.0.0-x64.exe`** 를 실행한다.
 
-It is a normal NSIS installer: it asks where to put the program, adds a Start Menu entry and a desktop shortcut, and can be removed from *Apps & features* like anything else. It installs per-user by default, so it needs no administrator rights.
+평범한 NSIS 인스톨러다. 설치 위치를 묻고, 시작 메뉴 항목과 바탕화면 바로가기를 만들고, *앱 및 기능* 에서 다른 프로그램처럼 제거된다. 기본이 현재 사용자 전용 설치라 관리자 권한이 필요 없다.
 
-The installer is not code-signed, so SmartScreen will show "Windows protected your PC" the first time. Choose *More info → Run anyway*.
+코드 서명이 안 돼 있어서 처음 실행할 때 SmartScreen이 "Windows에서 PC를 보호했습니다"를 띄운다. *추가 정보 → 실행* 을 누르면 된다.
 
-Where your files live after installing:
+설치 후 파일이 저장되는 곳:
 
 ```
-%APPDATA%\RIOT MACHINE\vault\      your saved projects (.riot)
-%APPDATA%\RIOT MACHINE\renders\    bounces written with "save to renders folder"
+%APPDATA%\RIOT MACHINE\vault\      저장한 프로젝트 (.riot)
+%APPDATA%\RIOT MACHINE\renders\    "renders 폴더에 저장"으로 뽑은 결과물
 ```
 
-Both folders are reachable from **Help → Open project vault folder** inside the app.
+둘 다 앱 안에서 **Help → Open project vault folder** 로 열 수 있다.
 
 ---
 
-## A first pass through the app
+## 처음 한 바퀴
 
-1. It opens on a demo project called **First Riot** — hit `Space` and you'll hear it.
-2. **Rack** (`F3`) lists all 890 instruments, grouped into 22 families. Click one to audition it, `+ TRACK` to add it to the project.
-3. **Studio** (`F2`) is the sequencer. Click cells to draw notes, right-click to erase, drag to paint a run. `PIANO ROLL` switches the selected track to a pitch editor.
-4. The right-hand panel edits whatever track is selected: swap its preset, turn the macros, add effects.
-5. **Song** (`F6`) chains patterns into an arrangement. Scroll on a block to change how many times it repeats.
-6. **Mixer** (`F4`) balances everything.
-7. `Ctrl+E` bounces it to a file. `Ctrl+S` saves it to the vault (`F7`).
+1. **First Riot** 이라는 데모 프로젝트가 열려 있다 — `Space` 누르면 바로 들린다.
+2. **Rack** (`F3`) 에 악기 890개가 22개 패밀리로 정리돼 있다. 클릭하면 들어보고, `+ TRACK` 으로 프로젝트에 추가한다.
+3. **Studio** (`F2`) 가 시퀀서다. 칸을 클릭해서 노트를 찍고, 우클릭으로 지우고, 드래그로 쭉 칠한다. `PIANO ROLL` 을 누르면 선택한 트랙이 음정 편집기로 바뀐다.
+4. 오른쪽 패널은 지금 선택된 트랙을 편집한다 — 프리셋 교체, 매크로 조절, 이펙트 추가.
+5. **Song** (`F6`) 에서 패턴들을 이어 붙여 곡을 만든다. 블록 위에서 스크롤하면 반복 횟수가 바뀐다.
+6. **Mixer** (`F4`) 에서 밸런스를 잡는다.
+7. `Ctrl+E` 로 파일로 뽑고, `Ctrl+S` 로 보관함(`F7`)에 저장한다.
 
-### Keyboard
+### 단축키
 
 | | |
 |---|---|
-| `Space` / `Esc` | Play–stop / stop |
-| `Ctrl+L` | Song mode (play the arrangement instead of one pattern) |
-| `Ctrl+T` / `Ctrl+M` | Tap tempo / metronome |
-| Click · right-click · drag | Draw · erase · paint |
-| `Alt`+wheel | Nudge a note's velocity |
-| `Shift`+drag | Snap piano-roll notes to the project scale |
-| `Z S X D C…` / `Q 2 W 3 E…` | Play the selected track, lower and upper octave |
-| `[` `]` | Octave down / up |
-| `↑` `↓` | Previous / next track |
-| `Shift`+`1`–`9` | Jump to a pattern |
-| `Ctrl+Z` / `Ctrl+Shift+Z` | Undo / redo |
-| `Ctrl+S` · `Ctrl+E` · `Ctrl+N` | Save · export audio · new project |
-| `F1` … `F7` | Help, Studio, Rack, Mixer, Song, Vault |
+| `Space` / `Esc` | 재생–정지 / 정지 |
+| `Ctrl+L` | 송 모드 (패턴 하나가 아니라 배열 전체 재생) |
+| `Ctrl+T` / `Ctrl+M` | 탭 템포 / 메트로놈 |
+| 클릭 · 우클릭 · 드래그 | 찍기 · 지우기 · 칠하기 |
+| `Alt`+휠 | 노트 벨로시티 미세 조절 |
+| `Shift`+드래그 | 피아노 롤 노트를 프로젝트 스케일에 스냅 |
+| `Z S X D C…` / `Q 2 W 3 E…` | 선택한 트랙 연주, 아래 옥타브와 위 옥타브 |
+| `[` `]` | 옥타브 down / up |
+| `↑` `↓` | 이전 / 다음 트랙 |
+| `Shift`+`1`–`9` | 해당 패턴으로 점프 |
+| `Ctrl+Z` / `Ctrl+Shift+Z` | 실행 취소 / 다시 실행 |
+| `Ctrl+S` · `Ctrl+E` · `Ctrl+N` | 저장 · 오디오 내보내기 · 새 프로젝트 |
+| `F1` … `F7` | 도움말, 스튜디오, 랙, 믹서, 송, 보관함 |
 
 ---
 
-## Screenshots
+## 스크린샷
 
-| Rack | Mixer |
+| 랙 | 믹서 |
 |---|---|
-| ![Rack](docs/screenshots/rack.png) | ![Mixer](docs/screenshots/mixer.png) |
+| ![랙](docs/screenshots/rack.png) | ![믹서](docs/screenshots/mixer.png) |
 
-| Piano roll | Arrangement |
+| 피아노 롤 | 배열 |
 |---|---|
-| ![Piano roll](docs/screenshots/pianoroll.png) | ![Arrangement](docs/screenshots/song.png) |
+| ![피아노 롤](docs/screenshots/pianoroll.png) | ![배열](docs/screenshots/song.png) |
 
-| Project vault | Help |
+| 프로젝트 보관함 | 도움말 |
 |---|---|
-| ![Vault](docs/screenshots/vault.png) | ![Help](docs/screenshots/help.png) |
+| ![보관함](docs/screenshots/vault.png) | ![도움말](docs/screenshots/help.png) |
 
 ---
 
-## Building it yourself
+## 직접 빌드하기
 
-Requires Node 18 or newer.
+Node 18 이상 필요.
 
 ```bash
-npm install         # pulls Electron and electron-builder
-npm start           # run the app from source
-npm run verify      # boot the real app and assert 20 end-to-end checks
+npm install         # Electron과 electron-builder를 받는다
+npm start           # 소스에서 바로 앱 실행
+npm run verify      # 실제 앱을 띄워서 20개 end-to-end 체크를 검증
 npm run dist:win    # -> dist/RIOT-MACHINE-Setup-1.0.0-x64.exe
 ```
 
-`npm run dist:win` works on Windows, Linux and macOS alike. It runs in three steps, each its own script:
+`npm run dist:win` 은 윈도우·리눅스·맥에서 똑같이 돌아간다. 세 단계로 나뉘고 각각 별도 스크립트다:
 
 | | |
 |---|---|
-| `scripts/make-icons.js` | draws the app icon and writes `icon.ico` / `icon.png` — a small rasterizer, PNG via zlib, ICO by hand. No image library. |
-| `scripts/make-installer-art.js` | draws the installer's sidebar and header as BMPs, including a 5×7 bitmap typeface for the wordmark. |
-| `scripts/make-installer.js` | has electron-builder package the app into `dist/win-unpacked`, then compiles the NSIS installer with `makensis` directly. |
+| `scripts/make-icons.js` | 앱 아이콘을 그려서 `icon.ico` / `icon.png` 로 쓴다 — 작은 래스터라이저, zlib로 PNG, ICO는 손으로. 이미지 라이브러리 안 쓴다. |
+| `scripts/make-installer-art.js` | 인스톨러 사이드바와 헤더를 BMP로 그린다. 워드마크용 5×7 비트맵 서체까지 직접 만들었다. |
+| `scripts/make-installer.js` | electron-builder로 앱을 `dist/win-unpacked` 에 패키징한 다음, NSIS 인스톨러를 `makensis` 로 직접 컴파일한다. |
 
-`npm run docs` regenerates [docs/INSTRUMENTS.md](docs/INSTRUMENTS.md) from the rack tables, so the catalogue cannot drift from the code.
+`npm run docs` 는 [docs/INSTRUMENTS.md](docs/INSTRUMENTS.md) 를 랙 테이블에서 다시 생성한다. 목록이 코드와 어긋날 수가 없게 해뒀다.
 
-That last step is deliberate. electron-builder's own NSIS target *executes* the finished installer during the build to produce its uninstaller, which needs a working 32-bit Windows loader and therefore Wine on any non-Windows host. A classic `WriteUninstaller` script does not, so the installer script is generated and compiled here instead — `dist/riot-installer.nsi` is written out on every build if you want to read it.
+마지막 단계를 이렇게 한 건 의도적이다. electron-builder 자체 NSIS 타겟은 빌드 중에 완성된 인스톨러를 *실행해서* 언인스톨러를 만드는데, 그러려면 32비트 윈도우 로더가 필요하고 윈도우가 아닌 호스트에서는 Wine이 있어야 한다. 고전적인 `WriteUninstaller` 방식은 그게 필요 없어서, 인스톨러 스크립트를 여기서 생성하고 컴파일한다 — 빌드할 때마다 `dist/riot-installer.nsi` 가 같이 나오니까 읽어봐도 된다.
 
-`npm run dist:win:fast` recompiles the installer from an existing `dist/win-unpacked` without repackaging, which turns a five-minute cycle into about ninety seconds.
+`npm run dist:win:fast` 는 이미 있는 `dist/win-unpacked` 에서 인스톨러만 다시 컴파일한다. 5분 걸리던 사이클이 90초쯤으로 줄어든다.
 
-`npm run verify` is the real test: it launches the app under a real Chromium, renders all 890 instruments offline, checks that none of them is silent, bounces the demo song, encodes it as WAV and MP3, runs the transport, and exercises undo and every view. It passes both against the source tree and against the packaged app, so the asar and AudioWorklet paths are covered too.
+`npm run verify` 가 진짜 테스트다. 실제 Chromium 위에서 앱을 띄우고, 890개 악기를 전부 오프라인 렌더링해서 무음인 게 없는지 확인하고, 데모 곡을 바운스해서 WAV와 MP3로 인코딩하고, 트랜스포트를 돌리고, 실행 취소와 모든 뷰를 거친다. 소스 트리와 패키징된 앱 양쪽에서 통과하니까 asar 경로와 AudioWorklet 경로도 같이 커버된다.
 
 ---
 
-## How it works
+## 어떻게 돌아가나
 
 ```
 electron/
-  main.js              window, menus, the app:// protocol, vault and file IPC
-  preload.js           the only API surface the renderer can see
+  main.js              창, 메뉴, app:// 프로토콜, 보관함·파일 IPC
+  preload.js           렌더러가 볼 수 있는 유일한 API 표면
 src/
-  index.html           the shell
-  css/app.css          the whole visual system
+  index.html           껍데기
+  css/app.css          시각 시스템 전체
   js/
-    app.js             controller: project state, views, transport, shortcuts
+    app.js             컨트롤러: 프로젝트 상태, 뷰, 트랜스포트, 단축키
     audio/
-      dsp.js           wavetables, distortion curves, noise, impulse responses
-      voice.js         one note in, one voice graph out (synth and drum)
-      fx.js            the effect units
-      engine.js        mixer graph, scheduler, offline render
-      worklets/        bitcrusher and saturator AudioWorklet processors
+      dsp.js           웨이브테이블, 디스토션 커브, 노이즈, 임펄스 응답
+      voice.js         노트 하나 넣으면 보이스 그래프 하나 (신스와 드럼)
+      fx.js            이펙트 유닛들
+      engine.js        믹서 그래프, 스케줄러, 오프라인 렌더
+      worklets/        비트크러셔와 새추레이터 AudioWorklet 프로세서
     data/
-      instruments.js   the index: families, defaults, field reference
-      rack/            one module per family, 890 instruments in total
-    state/project.js   the project model, migration and the undo stack
-    ui/                sequencer, inspector, rack, mixer, song, vault, export
-    lib/               helpers, WAV encoder, MP3 bridge
+      instruments.js   인덱스: 패밀리, 기본값, 필드 레퍼런스
+      rack/            패밀리당 모듈 하나, 총 890개 악기
+    state/project.js   프로젝트 모델, 마이그레이션, 실행 취소 스택
+    ui/                시퀀서, 인스펙터, 랙, 믹서, 송, 보관함, 익스포트
+    lib/               헬퍼, WAV 인코더, MP3 브리지
 ```
 
-Two ideas hold the audio side together:
+오디오 쪽을 지탱하는 생각은 두 개다.
 
-**One graph builder, two contexts.** `buildGraph()` assembles the mixer identically in the live `AudioContext` and in the `OfflineAudioContext` used for rendering, and every voice is fully scheduled ahead of time rather than driven by callbacks. What you hear is what gets exported, sample for sample.
+**그래프 빌더 하나, 컨텍스트 둘.** `buildGraph()` 가 실시간 `AudioContext` 와 렌더링용 `OfflineAudioContext` 에서 믹서를 똑같이 조립하고, 모든 보이스는 콜백으로 굴리지 않고 미리 전부 스케줄한다. 그래서 들리는 것과 내보낸 것이 샘플 단위로 같다.
 
-**Instruments are data, not samples.** An instrument is an oscillator bank, an optional sub and noise layer, an FM operator, a filter with its own envelope, an amp envelope, an LFO and a waveshaper — described as a plain object. That is why 890 instruments cost a few kilobytes and render correctly at 96 kHz.
+**악기는 샘플이 아니라 데이터다.** 악기 하나는 오실레이터 뱅크, 선택적인 서브와 노이즈 레이어, FM 오퍼레이터, 자기 엔벨로프를 가진 필터, 앰프 엔벨로프, LFO, 웨이브셰이퍼를 그냥 객체로 적어놓은 것이다. 890개 악기가 몇 킬로바이트밖에 안 되고 96kHz에서도 제대로 렌더되는 이유다.
 
-The renderer is plain ES modules with no build step. It is served over a custom `app://` scheme so modules and AudioWorklets load under a strict CSP, with `contextIsolation` on and Node disabled in the renderer.
+렌더러는 빌드 스텝 없는 순수 ES 모듈이다. 커스텀 `app://` 스킴으로 서빙해서 엄격한 CSP 아래에서도 모듈과 AudioWorklet이 로드되고, `contextIsolation` 은 켜져 있고 렌더러에서 Node는 꺼져 있다.
 
 ---
 
-## Licence and credits
+## 라이선스와 크레딧
 
-The application is MIT licensed.
+애플리케이션은 MIT 라이선스다.
 
-MP3 export uses **LAME** through [`@breezystack/lamejs`](https://www.npmjs.com/package/@breezystack/lamejs), which is LGPL-3.0. It is vendored unmodified at `src/js/lib/vendor/lamejs.iife.js` and loaded as a separate library at runtime; its licence is at `src/js/lib/vendor/LAME-LICENSE.txt`. LAME's home is <https://lame.sourceforge.io/>. WAV export is written by this project and has no third-party code in it.
+MP3 내보내기는 [`@breezystack/lamejs`](https://www.npmjs.com/package/@breezystack/lamejs) 를 통해 **LAME** 을 쓰고, 이건 LGPL-3.0이다. `src/js/lib/vendor/lamejs.iife.js` 에 수정 없이 그대로 넣어놨고 런타임에 별도 라이브러리로 로드한다. 라이선스 전문은 `src/js/lib/vendor/LAME-LICENSE.txt` 에 있다. LAME 홈페이지는 <https://lame.sourceforge.io/>. WAV 내보내기는 이 프로젝트에서 직접 쓴 거라 서드파티 코드가 안 들어간다.
 
-Everything else — every instrument, every effect, the icon — is generated by code in this repository.
+그 외 전부 — 악기 하나하나, 이펙트, 아이콘까지 — 이 저장소의 코드가 생성한다.
